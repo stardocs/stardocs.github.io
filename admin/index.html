@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<div class="navbar" id="nav1" gumby-pin="#theFooter" gumby-constrain="false" gumby-fixed="top">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -50,14 +50,14 @@
 
 <div id="the-header">
   <div class="row valign">
-    <div class="three columns">
+    <div class="four columns">
       <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
       <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="nine columns" id="header-quote">
+    <div class="eight columns" id="header-quote">
       <p><strong>In man-machine symbiosis, it is man who must adjust: The machines can't.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
       <h1 class=""><span id="title-subhead">Administration</span></h1>
       <p><em></em></p>
@@ -74,9 +74,9 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="three columns">
+        <div class="four columns">
         
-          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-fixed="top|thefooter">
+          <nav id="sidebar-nav-holder" class="vertical-nav">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -96,8 +96,8 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Stardog-Server-Administration" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Stardog-Server-Administration">Stardog Server Administration</a>
-        <!-- <li><a href="#sd-Stardog-Server-Administration" class="skiplink">Stardog Server Administration</a> -->
+        <li><a href="#sd-Server-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Server-Admin">Server Admin</a>
+        <!-- <li><a href="#sd-Server-Admin" class="skiplink">Server Admin</a> -->
             
                 
 <ul class="toc">
@@ -108,8 +108,8 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Administering-Databases" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Administering-Databases">Administering Databases</a>
-        <!-- <li><a href="#sd-Administering-Databases" class="skiplink">Administering Databases</a> -->
+        <li><a href="#sd-Database-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Database-Admin">Database Admin</a>
+        <!-- <li><a href="#sd-Database-Admin" class="skiplink">Database Admin</a> -->
             
                 
 <ul class="toc">
@@ -122,6 +122,18 @@
     <!-- [data-target='-->
         <li><a href="#sd-Capacity-Planning" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Capacity-Planning">Capacity Planning</a>
         <!-- <li><a href="#sd-Capacity-Planning" class="skiplink">Capacity Planning</a> -->
+            
+                
+<ul class="toc">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Using-Stardog-on-Windows" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Using-Stardog-on-Windows">Using Stardog on Windows</a>
+        <!-- <li><a href="#sd-Using-Stardog-on-Windows" class="skiplink">Using Stardog on Windows</a> -->
             
                 
 <ul class="toc">
@@ -182,7 +194,7 @@
 
         
         </div>
-        <div class="nine columns"><p>In this chapter—which I have written reluctantly—we describe the administration of Stardog Server and
+        <div class="eight columns"><p>In this chapter we describe the administration of Stardog Server and
 Stardog databases, including how to use the various
 Stardog command-line programs and how to configure a Stardog Server and
 its databases. An important part of Stardog administration is security,
@@ -340,7 +352,7 @@ key-value pairs which themselves are <code>=</code> delimited. Key names must be
 <p>Finally, in the case where the scheme is SNARL, the machine is
 “localhost”, and the port is the default SNARL port, a connection string
 may consist of the “databaseName” only.</p>
-<h2 id="sd-Stardog-Server-Administration">Stardog Server Administration</h2>
+<h2 id="sd-Server-Admin">Server Admin</h2>
 <p>Stardog Server is multi-protocol beast: it supports both SNARL and HTTP
 protocols. The default port for SNARL is <strong>5820</strong>; the default port for
 HTTP is <strong>5822</strong>. <strong>All administrative functions work over SNARL or HTTP
@@ -464,7 +476,7 @@ interface; see the <a href="../java/">Java Chapter</a> for more information; and
 the log rotation policy (file size or time).</p>
 <p>Slow query logging is also available. See the “Managing Queries” section
 below.</p>
-<h2 id="sd-Administering-Databases">Administering Databases</h2>
+<h2 id="sd-Database-Admin">Database Admin</h2>
 <p>Stardog is a multi-tenancacy system and will happily provide access to
 multiple, distinct, disjoint databases.</p>
 <h3>Configuring a Database</h3>
@@ -1123,7 +1135,7 @@ significantly better with quads indexing.</p>
 there is very little disk space used outside the databases. To calculate
 the total disk space needed for multiple databases, one can simply sum
 up the disk space needed by each database.</p>
-<h3>Using Stardog on Windows</h3>
+<h2 id="sd-Using-Stardog-on-Windows">Using Stardog on Windows</h2>
 <p>Stardog provides Windows batch (<code>.bat</code>) files for use on Windows; they
 provide roughly the same set of functionality provided by the Bash
 scripts which are used on *nix systems. There are however, a few small
