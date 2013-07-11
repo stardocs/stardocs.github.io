@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1" gumby-pin="#theFooter" gumby-constrain="false" gumby-fixed="top">
+<div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="four columns">
         
-          <nav id="sidebar-nav-holder" class="vertical-nav">
+          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -191,7 +191,7 @@ Stardog Integrity Constraint Validation ("ICV") validates RDF data stored in a S
 
 <h2 id="sd-ICV-Quick-Start">ICV Quick Start</h2>
 <p>To use ICV in Stardog, you need some data and some constraints. To get you started very quickly, we've included a sample database and constraints in the Stardog distribution. This section explains how to use ICV in Stardog using that sample info.</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog icv</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog icv</code></pre>
 <p>@TODO write me</p>
 <h2 id="sd-Validating-Linked-Data">Validating Linked Data</h2>
 <p>The use of high-level languages (OWL 2, SWRL, and SPARQL) to validate

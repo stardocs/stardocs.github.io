@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1" gumby-pin="#theFooter" gumby-constrain="false" gumby-fixed="top">
+<div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -76,7 +76,7 @@
     <div class="row">
         <div class="four columns">
         
-          <nav id="sidebar-nav-holder" class="vertical-nav">
+          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -203,7 +203,7 @@ entailment
 regime</a>.</p>
 <p>To execute a SPARQL query against a Stardog database, use the <code>query</code>
 subcommand:</p>
-<pre class="highlighted"><code class="sql">$ stardog query myDb "<span class="operator"><span class="keyword">select</span> * <span class="keyword">where</span> { ?s ?p ?o }<span class="string">"</span></span></code></pre>
+<pre class="highlighted"><code class="sql">$ stardog query myDb "<span class="operator"><span class="keyword">select</span> * <span class="keyword">where</span> { ?s ?p ?o }<span class="string">"</code></pre>
 <p>Detailed information on using the query command in Stardog can be found
 on its <a href="/docs/man/query-execute.html">manpage</a></p>
 <h2 id="sd-Adding-amp--Removing-Data">Adding &amp; Removing Data</h2>
@@ -230,13 +230,13 @@ format, i.e., RDF/XML, Turtle, Trig), OR</li>
 <li>one Named Graph and one or more RDF files.</li>
 </ol>
 <p>For example,</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog data remove -g <span class="symbol">http:</span>/<span class="regexp">/foo myDatabase</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog data remove -g <span class="symbol">http:</span>/<span class="regexp">/foo myDatabase</code></pre>
 <p>will remove the named graph <code>http://foo</code> and all its triples from
 <code>myDatabase</code>.</p>
 <pre class="highlighted"><code class="haskell">$ stardog <span class="typedef"><span class="keyword">data</span> remove myDatabase 1.rdf</span></code></pre>
 <p>will remove the triples in <code>1.rdf</code> from (the default graph of)
 <code>myDatabase</code>.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">data</span> <span class="comment">remove</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">http://foo</span> <span class="literal">-</span><span class="comment">f</span> <span class="comment">TURTLE</span> <span class="comment">myDatabase</span> <span class="comment">2</span>.<span class="comment">rdf</span> <span class="comment">3</span>.<span class="comment">rdf</span></code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">data</span> <span class="comment">remove</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">http://foo</span> <span class="literal">-</span><span class="comment">f</span> <span class="comment">TURTLE</span> <span class="comment">myDatabase</span> <span class="comment">2</span>.<span class="comment">rdf</span> <span class="comment">3</span>.<span class="comment">rdf</code></pre>
 <p>will remove the triples in the Turtle files <code>2.rdf</code> and <code>3.rdf</code> from the
 named graph <code>http://foo</code> of <code>myDatabase</code>.</p>
 <p>Strict or loose parsing may be set for the input payload by using
@@ -266,7 +266,7 @@ export a single named graph only.</li>
 <p>For example,</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">data</span> <span class="comment">export</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">format</span> <span class="comment">TURTLE</span> <span class="comment">myDatabase</span> <span class="comment">myDatabase_output</span>.<span class="comment">ttl</span>
 
-<span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">data</span> <span class="comment">export</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">graph</span>-<span class="comment">uri</span> <span class="comment">http://example</span>.<span class="comment">org/context</span> <span class="comment">myDatabase</span> <span class="comment">myDatabase_output</span>.<span class="comment">nt</span></code></pre>
+<span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">data</span> <span class="comment">export</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">graph</span>-<span class="comment">uri</span> <span class="comment">http://example</span>.<span class="comment">org/context</span> <span class="comment">myDatabase</span> <span class="comment">myDatabase_output</span>.<span class="comment">nt</code></pre>
 <h2 id="sd-Searching">Searching</h2>
 <p>Stardog includes an RDF-aware semantic search capability: it will index
 RDF literals and supports information retrieval-style queries over
@@ -297,7 +297,7 @@ you like to enhance your initial search results.</p>
 <pre class="highlighted"><code class="erlang">$ stardog help <span class="keyword">query</span> search</code></pre>
 <p>Okay, now let‘s do a search over the O’Reilly book catalog in RDF for
 everything mentioning “html”:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">query</span> <span class="comment">search</span> <span class="literal">-</span><span class="comment">q</span> <span class="comment">"html"</span> <span class="literal">-</span><span class="comment">l</span> <span class="comment">10</span> <span class="comment">catalog</span></code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">query</span> <span class="comment">search</span> <span class="literal">-</span><span class="comment">q</span> <span class="comment">"html"</span> <span class="literal">-</span><span class="comment">l</span> <span class="comment">10</span> <span class="comment">catalog</code></pre>
 <p>The results?</p>
 <pre class="highlighted"><code class="smalltalk"><span class="class">Index</span>    <span class="class">Score</span>    <span class="class">Hit</span>
 ====================
