@@ -308,12 +308,12 @@ property is to use the default graph only.</p>
 <p>In order to evaluate queries in Stardog using reasoning via the command
 line, a specific reasoning level must be specified in the <a href="../admin/">connection
 string</a>:</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"</code></pre>
 <h3>HTTP</h3>
 <p>For HTTP, the reasoning level is specified with the other connection
 parameters in the request header <code>SD-Connection-String</code>:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">curl</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin:admin</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">GET</span> <span class="literal">-</span><span class="comment">H</span> <span class="comment">"SD</span>-<span class="comment">Connection</span>-<span class="comment">String:</span> <span class="comment">reasoning=QL"</span> <span class="comment">\</span>
-  <span class="comment">"http://localhost:5822/myDB/query?query=</span>.<span class="string">.</span><span class="string">.</span><span class="comment">"</span></code></pre>
+  <span class="comment">"http://localhost:5822/myDB/query?query=</span>.<span class="string">.</span><span class="string">.</span><span class="comment">"</code></pre>
 <h3><code>ReasoningConnection</code> API</h3>
 <p>In order to use the ReasoningConnection API one needs to specify a
 reasoning level. See the <a href="../java/">Java Programming</a> chapter for
@@ -458,7 +458,7 @@ niece(s) and nephew(s):</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:isUncleOf</span>(<span class="number">?x</span>, <span class="number">?z</span>) &lt;- <span class="symbol">:isSiblingOf</span>(<span class="number">?x</span>, <span class="number">?y</span>), <span class="symbol">:isParentOf</span>(<span class="number">?y</span>, <span class="number">?z</span>), <span class="symbol">:Male</span>(<span class="number">?x</span>)</code></pre>
 <p>A super user can read all of the things!</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:Role</span>(<span class="number">?z</span>), <span class="symbol">:hasRole</span>(<span class="number">?x</span>, <span class="number">?z</span>), <span class="symbol">:readPermission</span>(<span class="number">?z</span>, <span class="number">?y</span>) &lt;- <span class="symbol">:SuperUser</span>(<span class="number">?x</span>)
-                   <span class="symbol">:Resource</span>(<span class="number">?y</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?z)</span></code></pre>
+                   <span class="symbol">:Resource</span>(<span class="number">?y</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?z)</code></pre>
 <h2 id="sd-Special-Predicates">Special Predicates</h2>
 <p>something something…</p>
 <h3>Direct/Strict Subclasses, Subproperties, &amp; Direct Types</h3>
@@ -509,7 +509,7 @@ warnings. <strong>Note that this support is effectively a gun with which users
 may shoot themselves in the foot if they do not use it carefully.</strong></p>
 <p>We can create new individuals with a rule by using the (non-standard)
 built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
 <p>This rule will be used to create a <em>random</em> bnode for each instance of
 the class <code>:Person</code> and also to assert that each new instance is also an
 instance of <code>:Parent</code>.</p>
@@ -520,7 +520,7 @@ meaningless in the sense that they should not be used in further
 queries; that is to say, these bnodes are not guaranteed by Stardog to
 be stable. Due to normalization, rules with more than one atom in the
 head are broken up into several rules. Thus,</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?y</span>), <span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?y</span>), <span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
 <p>will be normalized into:</p>
 <pre class="highlighted"><code class="avrasm">:Male(?<span class="built_in">y</span>) &lt;- :Person(?<span class="built_in">x</span>), http://www<span class="preprocessor">.w</span>3<span class="preprocessor">.org</span>/ns/sparql<span class="preprocessor">#UUID(?y).</span>
 
@@ -534,7 +534,7 @@ example, we can introduce a new class (<code>:Father</code>) and add the followi
 rule to our schema:</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?x</span>), <span class="symbol">:Parent</span>(<span class="number">?x</span>) &lt;- <span class="symbol">:Father</span>(<span class="number">?x</span>).</code></pre>
 <p>And then modify the original rule accordingly:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Father</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Father</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
 <h2 id="sd-Query-Rewriting">Query Rewriting</h2>
 <p>Query answering with reasoning in Stardog is based on the <em>query rewriting</em>
 technique: Stardog rewrites the user's query with respect to the schema, and then
