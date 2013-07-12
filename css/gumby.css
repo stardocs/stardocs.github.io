@@ -1901,20 +1901,22 @@ p#social a { decoration: none; }
 
 #inner-doc #inner-nav { margin-bottom: 40px; }
 
-#inner-doc #sidebar-nav-holder.end { position: absolute; }
+.sidebar-nav-holder.end { position: absolute; }
 
-#inner-doc #sidebar-nav { text-align: left; }
+.sidebar-nav { list-style: none; }
 
-@media only screen and (max-width: 767px) { #inner-doc #sidebar-nav { margin-bottom: 30px; } }
-#inner-doc #sidebar-nav li a { background: none; -o-transition: .4s; -ms-transition: .4s; -moz-transition: .4s; -webkit-transition: .4s; transition: .4s; }
+.sidebar-nav { text-align: left; }
 
-#inner-doc #sidebar-nav li.active a { color: #fff; background: #3085d6; }
+@media only screen and (max-width: 767px) { #sidebar-nav { margin-bottom: 30px; } }
+.sidebar-nav li a { background: none; -o-transition: .4s; -ms-transition: .4s; -moz-transition: .4s; -webkit-transition: .4s; transition: .4s; }
 
-#inner-doc #sidebar-nav li.active a:hover { background: #3085d6; }
+.sidebar-nav li.active a { color: #fff; background: #3085d6; }
 
-#inner-doc #sidebar-nav a { color: #555555; display: block; padding: 8px 14px; }
+.sidebar-nav li.active a:hover { background: #3085d6; }
 
-#inner-doc #sidebar-nav a:hover { background: #E9E9E9; }
+.sidebar-nav a { color: #555555; display: block; padding: 8px 14px; }
+
+.sidebar-nav a:hover { background: #E9E9E9; }
 
 cite { font-style: italic; }
 
