@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<!-- <div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -43,27 +43,22 @@
           </div>
         </li>
         <li><a href="#">Java API</a></li>
-        <!-- <li class="field"><input class="search input" type="search" placeholder="Search"></li> -->
       </ul>
     </div>
   </div>
 
 <div id="the-header">
   <div class="row valign">
-    <div class="four columns">
-      <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
+    <div class="three columns">
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="eight columns" id="header-quote">
-      <p><strong>A good system can't have a weak command language.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-      <h1 class=""><span id="title-subhead">Quick Start Guide</span></h1>
-      <p><em>This guide explains the basic steps to get you started quickly with Stardog on a Unix machine. We test every Stardog release extensively with various flavors of Linux and OS X. Please report a bug if you find issues on other platforms.</em></p>
+    <div class="nine columns" id="header-quote">
+      
     </div>
   </div>
- <!-- <div class="row">
+ <div class="row">
     <div class="three columns"></div>
     <div class="nine columns">
 
@@ -74,10 +69,17 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="four columns">
-        
+        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
+          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
+          
         </div>
-        <div class="eight columns"><p>First, tell Stardog where its home directory (where databases and other
+        <div class="nine columns">
+          <p><em>A good system can't have a weak command language.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
+          <h1 class=""><span id="title-subhead">Quick Start Guide</span></h1>
+          <p><em>This guide explains the basic steps to get you started quickly with Stardog on a Unix machine. We test every Stardog release extensively with various flavors of Linux and OS X. Please report a bug if you find issues on other platforms.</em></p>
+        <div id="mdblock">
+          <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ export STARDOG_HOME=/data/stardog</code></pre>
 <p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
@@ -97,7 +99,9 @@ parameter to specify which server:</p>
 <p>Sixth, query the database:</p>
 <pre class="highlighted"><code class="bash">$ ./stardog query myDB <span class="string">"SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"</span></code></pre>
 <p>Seventh, go have a beer: you&#39;ve earned it!</p>
-</div>
+
+        </div>
+        </div>
     </div>
   </div>
 

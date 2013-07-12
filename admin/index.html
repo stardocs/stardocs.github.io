@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<!-- <div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -43,27 +43,22 @@
           </div>
         </li>
         <li><a href="#">Java API</a></li>
-        <!-- <li class="field"><input class="search input" type="search" placeholder="Search"></li> -->
       </ul>
     </div>
   </div>
 
 <div id="the-header">
   <div class="row valign">
-    <div class="four columns">
-      <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
+    <div class="three columns">
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="eight columns" id="header-quote">
-      <p><strong>In man-machine symbiosis, it is man who must adjust: The machines can't.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-      <h1 class=""><span id="title-subhead">Administration</span></h1>
-      <p><em></em></p>
+    <div class="nine columns" id="header-quote">
+      
     </div>
   </div>
- <!-- <div class="row">
+ <div class="row">
     <div class="three columns"></div>
     <div class="nine columns">
 
@@ -74,9 +69,10 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="four columns">
-        
-          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
+        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
+          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
+          
+            <nav id="sidebar-nav-holder" class="vertical-nav">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -84,7 +80,7 @@
 <ul class="toc">
     
     <!-- [data-target='-->
-        <li><a href="#sd-Command-Line-Interface" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Command-Line-Interface">Command Line Interface</a>
+        <li><a href="#sd-Command-Line-Interface" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Command-Line-Interface">Command Line Interface</a>
         <!-- <li><a href="#sd-Command-Line-Interface" class="skiplink">Command Line Interface</a> -->
             
                 
@@ -96,7 +92,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Server-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Server-Admin">Server Admin</a>
+        <li><a href="#sd-Server-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Server-Admin">Server Admin</a>
         <!-- <li><a href="#sd-Server-Admin" class="skiplink">Server Admin</a> -->
             
                 
@@ -108,7 +104,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Database-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Database-Admin">Database Admin</a>
+        <li><a href="#sd-Database-Admin" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Database-Admin">Database Admin</a>
         <!-- <li><a href="#sd-Database-Admin" class="skiplink">Database Admin</a> -->
             
                 
@@ -120,7 +116,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Capacity-Planning" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Capacity-Planning">Capacity Planning</a>
+        <li><a href="#sd-Capacity-Planning" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Capacity-Planning">Capacity Planning</a>
         <!-- <li><a href="#sd-Capacity-Planning" class="skiplink">Capacity Planning</a> -->
             
                 
@@ -132,7 +128,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Using-Stardog-on-Windows" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Using-Stardog-on-Windows">Using Stardog on Windows</a>
+        <li><a href="#sd-Using-Stardog-on-Windows" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Using-Stardog-on-Windows">Using Stardog on Windows</a>
         <!-- <li><a href="#sd-Using-Stardog-on-Windows" class="skiplink">Using Stardog on Windows</a> -->
             
                 
@@ -192,9 +188,15 @@
           </nav>
 -->
 
-        
+          
         </div>
-        <div class="eight columns"><p>In this chapter we describe the administration of Stardog Server and
+        <div class="nine columns">
+          <p><em>In man-machine symbiosis, it is man who must adjust: The machines can't.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
+          <h1 class=""><span id="title-subhead">Administration</span></h1>
+          <p><em></em></p>
+        <div id="mdblock">
+          <p>In this chapter we describe the administration of Stardog Server and
 Stardog databases, including how to use the various
 Stardog command-line programs and how to configure a Stardog Server and
 its databases. An important part of Stardog administration is security,
@@ -269,7 +271,7 @@ command groups:</p>
     <span class="title">reasoning</span>   <span class="title">Commands</span> <span class="title">which</span> <span class="title">use</span> <span class="title">the</span> <span class="title">reasoning</span> <span class="title">capabilities</span> <span class="title">of</span> <span class="title">a</span> <span class="title">Stardog</span> <span class="title">database</span>
     <span class="title">version</span>     <span class="title">Prints</span> <span class="title">information</span> <span class="title">about</span> <span class="title">this</span> <span class="title">version</span> <span class="title">of</span> <span class="title">Stardog</span>
 
-<span class="title">See</span> '<span class="title">stardog</span> <span class="title">help</span> ' <span class="title">for</span> <span class="title">more</span> <span class="title">information</span> <span class="title">on</span> <span class="title">a</span> <span class="title">specific</span> <span class="title">command</span>.</span></code></pre>
+<span class="title">See</span> '<span class="title">stardog</span> <span class="title">help</span> ' <span class="title">for</span> <span class="title">more</span> <span class="title">information</span> <span class="title">on</span> <span class="title">a</span> <span class="title">specific</span> <span class="title">command</span>.</span></span></code></pre>
 <p>To get more information about a particular command, simply issue the
 help command for it including its command group:</p>
 <pre class="highlighted"><code class="erlang">$ stardog help <span class="keyword">query</span> execute</code></pre>
@@ -278,7 +280,7 @@ works equally well for <code>stardog-admin</code>.</p>
 <p>The result of all these changes is a better user experience:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span> <span class="comment">reasoning</span> <span class="comment">consistency</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">myUsername</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">myPassword</span> <span class="literal">-</span><span class="comment">r</span> <span class="comment">QL</span> <span class="comment">myDB</span>
 
-<span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">db</span> <span class="comment">migrate</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">myUsername</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">myPassword</span> <span class="comment">myDb</code></pre>
+<span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">db</span> <span class="comment">migrate</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">myUsername</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">myPassword</span> <span class="comment">myDb</span></code></pre>
 <h3>Autocomplete</h3>
 <p>Stardog 1.2 also includes support for CLI autocomplete via the bash
 autocomplete feature. To install autocomplete for bash shell, you'll
@@ -288,20 +290,20 @@ first want to make sure bash completion is installed:</p>
 <p>Then enable it in .bash_profile:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">if</span> <span class="title">[</span> <span class="literal">-</span><span class="comment">f</span> <span class="comment">`brew</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix`/etc/bash_completion</span> <span class="title">]</span><span class="comment">;</span> <span class="comment">then</span>
 <span class="string">.</span> <span class="comment">`brew</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix`/etc/bash_completion</span>
-<span class="comment">fi</code></pre>
+<span class="comment">fi</span></code></pre>
 <h4>MacPorts</h4>
 <p>First, you really should be using Homebrew; you feel me?</p>
 <p>If not, then:</p>
-<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> port install bash-completion</code></pre>
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> port install bash-completion</span></code></pre>
 <p>Enable it in .bash_profile:</p>
 <pre class="highlighted"><code class="ruby"><span class="keyword">if</span> [ -f /opt/local/etc/bash_completion ]; <span class="keyword">then</span>
     . <span class="regexp">/opt/local</span><span class="regexp">/etc/bash</span>_completion
 fi</code></pre>
 <p>Finally, an example for our Linux friends:</p>
 <h4>Ubuntu</h4>
-<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install bash-completion</code></pre>
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> apt-<span class="keyword">get</span> install bash-completion</span></code></pre>
 <h4>Fedora</h4>
-<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> yum install bash-completion</code></pre>
+<pre class="highlighted"><code class="sql">$ su<span class="operator"><span class="keyword">do</span> yum install bash-completion</span></code></pre>
 <h4>All Platforms</h4>
 <p>Now put the Stardog autocomplete script—<code>stardog-completion.sh</code>—into yr
 bash_completion.d directory, typically one of
@@ -432,9 +434,9 @@ as Stardog Server will run on.</p>
 <p>The simplest way to start the server—running on the default ports,
 detaching to run as a daemon, and writing <code>stardog.pid</code> and
 <code>stardog.log</code> to the current working directory— is</p>
-<pre class="highlighted"><code class="sql">$ stardog-admin server <span class="operator"><span class="keyword">start</span></code></pre>
+<pre class="highlighted"><code class="sql">$ stardog-admin server <span class="operator"><span class="keyword">start</span></span></code></pre>
 <p>To specify parameters:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">server</span> <span class="comment">start</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logfile=stardog</span>.<span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">docs</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">http=8080</code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="comment">server</span> <span class="comment">start</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">logfile=stardog</span>.<span class="comment">log</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">no</span>-<span class="comment">docs</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">http=8080</span></code></pre>
 <p><code>--no-docs</code> will tell Stardog not to serve its documentation over HTTP
 at <code>http://SERVER/docs</code>, which it will otherwise do by default.</p>
 <p>Note: ports can be specified using the properties <code>--snarl</code> and
@@ -719,16 +721,16 @@ bindings, which works in the following way:</p>
 contains namespace prefixes, then those are persisted for the life
 of the database. Any subsequent queries to the database may simply
 omit the <code>PREFIX</code> declarations:</p>
-<pre class="highlighted"><code class="sql">$ stardog query myDB "<span class="operator"><span class="keyword">select</span> * {?s rdf:type owl:Class}<span class="string">"</code></pre>
+<pre class="highlighted"><code class="sql">$ stardog query myDB "<span class="operator"><span class="keyword">select</span> * {?s rdf:type owl:Class}<span class="string">"</span></span></code></pre>
 </li>
 <li><p>To add new bindings, use the <code>namespace</code> subcommand in the CLI:</p>
-<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">add</span> <span class="title">myDb</span> --<span class="title">prefix</span> <span class="title">ex</span> --<span class="title">uri</span> '<span class="title">http</span>://<span class="title">example</span>.<span class="title">org</span>/<span class="title">test</span>#'</code></pre>
+<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">add</span> <span class="title">myDb</span> --<span class="title">prefix</span> <span class="title">ex</span> --<span class="title">uri</span> '<span class="title">http</span>://<span class="title">example</span>.<span class="title">org</span>/<span class="title">test</span>#'</span></code></pre>
 </li>
 <li><p>To modify an existing binding, delete the existing one and then add
 a new one:</p>
 </li>
 <li><p>Finally, to see all of the existing namespace prefix bindings:</p>
-<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> <span class="title">myDB</span></code></pre>
+<pre class="highlighted"><code class="vala">$ stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> <span class="title">myDB</span></span></code></pre>
 </li>
 </ol>
 <p>If no files are used during database creation, or if the files do not
@@ -751,7 +753,7 @@ name and a set of initial datasets to load:</p>
 <p>Datasets can be loaded later as well, though bulk loading at creation
 time is the fastest way to load data.</p>
 <p>To create (in this case, an empty) database from a template file:</p>
-<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">create</span> -c database.properties</code></pre>
+<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">create</span> -c database.properties</span></code></pre>
 <p>At a minimum, the configuration file must have a value for
 <code>database.name</code> option.</p>
 <p>Finally, if you only want to change only a few configuration options you
@@ -885,7 +887,7 @@ This means all files on disk pertaining to the database will be deleted,
 so only use <code>drop</code> when you're certain! Databases must be offline in
 order to be dropped.</p>
 <p>It takes as its only argument a valid database name. For example,</p>
-<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">drop</span> my_db</code></pre>
+<pre class="highlighted"><code class="sql">$ stardog-admin db <span class="operator"><span class="keyword">drop</span> my_db</span></code></pre>
 <h3>Using Integrity Constraint Validation</h3>
 <p>Stardog supports integrity constraint validation as a data quality
 mechanism via closed world reasoning. Constraints can be specified in
@@ -958,7 +960,7 @@ inherits the server-wide value. To disable query timeout, set
 <span class="comment">|</span> <span class="comment">4</span>  <span class="comment">|</span> <span class="comment">test</span>     <span class="comment">|</span> <span class="comment">admin</span> <span class="comment">|</span> <span class="comment">00:00:08</span>.<span class="comment">769</span> <span class="comment">|</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 
-<span class="comment">3</span> <span class="comment">queries</span> <span class="comment">running</code></pre>
+<span class="comment">3</span> <span class="comment">queries</span> <span class="comment">running</span></code></pre>
 <p>You can see the user who owns the query (superuser's can see all running
 queries), as well as the elapsed time and the database against which the
 query is running. The ID column is the key to deleting queries.</p>
@@ -1205,7 +1207,9 @@ the service, as well as to configure most of the service parameters.</p>
 <h4>Uninstalling the Stardog Service</h4>
 <p>The service can be uninstalled by running <code>uninstall-service.bat</code>
 script.</p>
-</div>
+
+        </div>
+        </div>
     </div>
   </div>
 

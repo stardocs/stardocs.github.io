@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<!-- <div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -43,27 +43,22 @@
           </div>
         </li>
         <li><a href="#">Java API</a></li>
-        <!-- <li class="field"><input class="search input" type="search" placeholder="Search"></li> -->
       </ul>
     </div>
   </div>
 
 <div id="the-header">
   <div class="row valign">
-    <div class="four columns">
-      <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
+    <div class="three columns">
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="eight columns" id="header-quote">
-      <p><strong>If you can imagine a society in which the computer-robot is the only menial, you can imagine anything.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-      <h1 class=""><span id="title-subhead">Network Programming</span></h1>
-      <p><em>This chapter describes how to interact with Stardog over a network using SPARQL, HTTP, and SNARL protocols.</em></p>
+    <div class="nine columns" id="header-quote">
+      
     </div>
   </div>
- <!-- <div class="row">
+ <div class="row">
     <div class="three columns"></div>
     <div class="nine columns">
 
@@ -74,9 +69,10 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="four columns">
-        
-          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
+        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
+          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
+          
+            <nav id="sidebar-nav-holder" class="vertical-nav">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -84,7 +80,7 @@
 <ul class="toc">
     
     <!-- [data-target='-->
-        <li><a href="#sd-SPARQL-Protocol" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-SPARQL-Protocol">SPARQL Protocol</a>
+        <li><a href="#sd-SPARQL-Protocol" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-SPARQL-Protocol">SPARQL Protocol</a>
         <!-- <li><a href="#sd-SPARQL-Protocol" class="skiplink">SPARQL Protocol</a> -->
             
                 
@@ -96,7 +92,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Extended-HTTP" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Extended-HTTP">Extended HTTP</a>
+        <li><a href="#sd-Extended-HTTP" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Extended-HTTP">Extended HTTP</a>
         <!-- <li><a href="#sd-Extended-HTTP" class="skiplink">Extended HTTP</a> -->
             
                 
@@ -108,7 +104,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Response-Codes" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Response-Codes">Response Codes</a>
+        <li><a href="#sd-Response-Codes" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Response-Codes">Response Codes</a>
         <!-- <li><a href="#sd-Response-Codes" class="skiplink">Response Codes</a> -->
             
                 
@@ -120,7 +116,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Stardog-Resources" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Stardog-Resources">Stardog Resources</a>
+        <li><a href="#sd-Stardog-Resources" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Stardog-Resources">Stardog Resources</a>
         <!-- <li><a href="#sd-Stardog-Resources" class="skiplink">Stardog Resources</a> -->
             
                 
@@ -132,7 +128,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Admin-Resources" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Admin-Resources">Admin Resources</a>
+        <li><a href="#sd-Admin-Resources" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Admin-Resources">Admin Resources</a>
         <!-- <li><a href="#sd-Admin-Resources" class="skiplink">Admin Resources</a> -->
             
                 
@@ -192,9 +188,15 @@
           </nav>
 -->
 
-        
+          
         </div>
-        <div class="eight columns"><p>In the <a href="../java/">Programming with Java</a> chapter, we consider
+        <div class="nine columns">
+          <p><em>If you can imagine a society in which the computer-robot is the only menial, you can imagine anything.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
+          <h1 class=""><span id="title-subhead">Network Programming</span></h1>
+          <p><em>This chapter describes how to interact with Stardog over a network using SPARQL, HTTP, and SNARL protocols.</em></p>
+        <div id="mdblock">
+          <p>In the <a href="../java/">Programming with Java</a> chapter, we consider
 interacting with Stardog programatically from a Java program. In this
 chapter we consider interacting with Stardog over a network. In some use
 cases or deployment scenarios, it may be necessary to interact with or
@@ -641,7 +643,9 @@ input JSON Object in the following format:</p>
 <p>Shuts down the Stardog Server. If successful, returns a <code>202</code> to
 indicate that the request was recieved and that the server will be shut
 down shortly.</p>
-</div>
+
+        </div>
+        </div>
     </div>
   </div>
 

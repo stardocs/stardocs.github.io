@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<!-- <div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -43,27 +43,22 @@
           </div>
         </li>
         <li><a href="#">Java API</a></li>
-        <!-- <li class="field"><input class="search input" type="search" placeholder="Search"></li> -->
       </ul>
     </div>
   </div>
 
 <div id="the-header">
   <div class="row valign">
-    <div class="four columns">
-      <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
+    <div class="three columns">
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="eight columns" id="header-quote">
-      <p><strong>Every program has (at least) two purposes: the one for which it was written, and another for which it wasn't.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-      <h1 class=""><span id="title-subhead">Security</span></h1>
-      <p><em></em></p>
+    <div class="nine columns" id="header-quote">
+      
     </div>
   </div>
- <!-- <div class="row">
+ <div class="row">
     <div class="three columns"></div>
     <div class="nine columns">
 
@@ -74,9 +69,10 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="four columns">
-        
-          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
+        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
+          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
+          
+            <nav id="sidebar-nav-holder" class="vertical-nav">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -84,7 +80,7 @@
 <ul class="toc">
     
     <!-- [data-target='-->
-        <li><a href="#sd-The-Stardog-Security-Model" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-The-Stardog-Security-Model">The Stardog Security Model</a>
+        <li><a href="#sd-The-Stardog-Security-Model" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-The-Stardog-Security-Model">The Stardog Security Model</a>
         <!-- <li><a href="#sd-The-Stardog-Security-Model" class="skiplink">The Stardog Security Model</a> -->
             
                 
@@ -96,7 +92,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Managing-Stardog-Securely" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Managing-Stardog-Securely">Managing Stardog Securely</a>
+        <li><a href="#sd-Managing-Stardog-Securely" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Managing-Stardog-Securely">Managing Stardog Securely</a>
         <!-- <li><a href="#sd-Managing-Stardog-Securely" class="skiplink">Managing Stardog Securely</a> -->
             
                 
@@ -108,7 +104,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Deploying-Stardog-Securely" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Deploying-Stardog-Securely">Deploying Stardog Securely</a>
+        <li><a href="#sd-Deploying-Stardog-Securely" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Deploying-Stardog-Securely">Deploying Stardog Securely</a>
         <!-- <li><a href="#sd-Deploying-Stardog-Securely" class="skiplink">Deploying Stardog Securely</a> -->
             
                 
@@ -120,7 +116,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Securing-Stardog-on-Linux" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Securing-Stardog-on-Linux">Securing Stardog on Linux</a>
+        <li><a href="#sd-Securing-Stardog-on-Linux" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Securing-Stardog-on-Linux">Securing Stardog on Linux</a>
         <!-- <li><a href="#sd-Securing-Stardog-on-Linux" class="skiplink">Securing Stardog on Linux</a> -->
             
                 
@@ -180,9 +176,15 @@
           </nav>
 -->
 
-        
+          
         </div>
-        <div class="eight columns"><h2 id="sd-The-Stardog-Security-Model">The Stardog Security Model</h2>
+        <div class="nine columns">
+          <p><em>Every program has (at least) two purposes: the one for which it was written, and another for which it wasn't.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
+          <h1 class=""><span id="title-subhead">Security</span></h1>
+          <p><em></em></p>
+        <div id="mdblock">
+          <h2 id="sd-The-Stardog-Security-Model">The Stardog Security Model</h2>
 <p>Stardog's security model is based on standard role-based access control: users have <em>permissions</em> over <em>resources</em>; permissions can be grouped into roles; and roles can be assigned to users. Stardog uses <a href="http://shiro.apache.org/">Apache Shiro</a> for authentication, authorization, and session management and <a href="http://www.mindrot.org/projects/jBCrypt/">jBCrypt</a> for password hashing. </p>
 <h3>Resources</h3>
 <p>A resource is some Stardog entity or service to which access is to be
@@ -416,7 +418,7 @@ port 12345 of the lighttpd host.</p>
 <span class="title">server</span>.<span class="module">modules = <span class="container">( "<span class="title">mod_proxy</span>" )</span>
 proxy.server = <span class="container">( "" =&gt; ( ( "<span class="title">host</span>" =&gt; "127.0.0.1" , "<span class="title">port</span>" =&gt; "12345" )</span> )
               )
-server.document-root = "/dev/null"</code></pre>
+server.document-root = "/dev/null"</span></code></pre>
 <p>This configuration directs lighttpd to use the certificate and private
 key in server.pem for SSL connections. [^5]</p>
 <p>[^5]: lighttpd can be configured to
@@ -489,7 +491,7 @@ will prompt for a passphrase to associate with the trust store. This is
 not used to encrypt its contents, but can be used to ensure its
 integrity. [^9]</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">keytool</span> <span class="literal">-</span><span class="comment">importcert</span>  <span class="literal">-</span><span class="comment">keystore</span> <span class="comment">my</span>-<span class="comment">truststore</span>.<span class="comment">jks</span> <span class="comment">\</span>
-        <span class="literal">-</span><span class="comment">alias</span> <span class="comment">stardog</span>-<span class="comment">server</span> <span class="literal">-</span><span class="comment">file</span> <span class="comment">my</span>-<span class="comment">trusted</span>-<span class="comment">server</span>.<span class="comment">crt</code></pre>
+        <span class="literal">-</span><span class="comment">alias</span> <span class="comment">stardog</span>-<span class="comment">server</span> <span class="literal">-</span><span class="comment">file</span> <span class="comment">my</span>-<span class="comment">trusted</span>-<span class="comment">server</span>.<span class="comment">crt</span></code></pre>
 <p>[^9]: See the <code>javax.net.ssl.trustStorePassword</code> system property
 <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">documentation</a>.</p>
 <p>The following Stardog command line invocation uses the newly created
@@ -549,12 +551,12 @@ directory into a location that places them into most users’ execution
 <code>PATH</code>. Execution permissions to the tools are <em>not</em> limited because
 access to the data directory will be <strong>strictly limited</strong>.</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">c</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">a=rx</span> <span class="string">.</span><span class="comment">/stardog</span> <span class="comment">/usr/bin/stardog</span>
-<span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">c</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">a=rx</span> <span class="string">.</span><span class="comment">/stardog</span>-<span class="comment">admin</span> <span class="comment">/usr/sbin/stardog</span>-<span class="comment">admin</code></pre>
+<span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">c</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">a=rx</span> <span class="string">.</span><span class="comment">/stardog</span>-<span class="comment">admin</span> <span class="comment">/usr/sbin/stardog</span>-<span class="comment">admin</span></code></pre>
 <p>The Stardog data directory stores both user data and system
 configuration data, <strong>including access control information</strong>. The location
 selected for the data directory should be reliable, large enough to meet
 data requirements, and secured from unauthorized access.</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>export <span class="constant">STARDOG_HOME</span>=<span class="regexp">/var/db</span><span class="regexp">/stardog</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>export <span class="constant">STARDOG_HOME</span>=<span class="regexp">/var/db</span><span class="regexp">/stardog</span></code></pre>
 <p>Access to the data directory is limited to the <code>stardog</code> group and the
 only member of that group is the <code>stardog</code> user.Granting access
 permissions to members of the <code>stardog</code> group is more flexible than
@@ -566,10 +568,10 @@ snippet below creates that user and group.</p>
 <span class="comment">$</span> <span class="comment">useradd</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">${STARDOG_HOME}</span> <span class="comment">\</span>
           <span class="literal">-</span><span class="comment">g</span> <span class="comment">stardog</span> <span class="comment">\</span>
           <span class="literal">-</span><span class="comment">s</span> <span class="comment">/sbin/nologin</span> <span class="comment">\</span>
-<span class="comment">stardog</code></pre>
+<span class="comment">stardog</span></code></pre>
 <p>This snippet creates the data directory and limits its access to the
 newly created group.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">d</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">ug=rwx</span>,<span class="comment">o=${STARDOG_HOME}</code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">d</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">ug=rwx</span>,<span class="comment">o=${STARDOG_HOME}</span></code></pre>
 <p>Note that if a Stardog server is used to allow network access to remote
 Stardog clients, then the approach described here requires the server to
 run as a user in the <code>stardog</code> group.</p>
@@ -578,12 +580,14 @@ run as a user in the <code>stardog</code> group.</p>
 For example, the following snippet adding the <code>tomcat</code> user to the
 <code>stardog</code> group may be needed in an environment where a Stardog HTTP
 server is run as an application within Tomcat.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">usermod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span>-<span class="comment">to</span>-<span class="comment">group</span> <span class="comment">stardog</span> <span class="comment">tomcat</code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">usermod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span>-<span class="comment">to</span>-<span class="comment">group</span> <span class="comment">stardog</span> <span class="comment">tomcat</span></code></pre>
 <p>Of course the ideal deployment of the Stardog server depends on the
 particulars of the deployment environment, the preferences of the
 administrator, and the anticipated user load. The group-based permission
 approach provides flexibility to satisfy many alternatives.</p>
-</div>
+
+        </div>
+        </div>
     </div>
   </div>
 

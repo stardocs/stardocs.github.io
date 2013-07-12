@@ -9,7 +9,7 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<div class="navbar" id="nav1">
+<!-- <div class="navbar" id="nav1">
 <div class="row">
       <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
       <h3 class="five columns logo">
@@ -43,27 +43,22 @@
           </div>
         </li>
         <li><a href="#">Java API</a></li>
-        <!-- <li class="field"><input class="search input" type="search" placeholder="Search"></li> -->
       </ul>
     </div>
   </div>
 
 <div id="the-header">
   <div class="row valign">
-    <div class="four columns">
-      <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/></span></h1>
+    <div class="three columns">
       <div>
       <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      <!-- <p><a href="http://twitter.com/stardog_db"><img src="http://clarkparsia.com/images/twitter.png"/></a></p> -->
       </div>
     </div>
-    <div class="eight columns" id="header-quote">
-      <p><strong>The proof of a system's value is its existence.</strong>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-      <h1 class=""><span id="title-subhead">OWL & Rule Reasoning</span></h1>
-      <p><em></em></p>
+    <div class="nine columns" id="header-quote">
+      
     </div>
   </div>
- <!-- <div class="row">
+ <div class="row">
     <div class="three columns"></div>
     <div class="nine columns">
 
@@ -74,9 +69,10 @@
 
   <div id="the-content">
     <div class="row">
-        <div class="four columns">
-        
-          <nav id="sidebar-nav-holder" class="vertical-nav" gumby-pin="" gumby-constrain="false" gumby-fixed="top">
+        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
+          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
+          
+            <nav id="sidebar-nav-holder" class="vertical-nav">
 <h3 id="tochead">Contents</h3>
 <div class="sidebar-nav">
 
@@ -84,7 +80,7 @@
 <ul class="toc">
     
     <!-- [data-target='-->
-        <li><a href="#sd-Introduction" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Introduction">Introduction</a>
+        <li><a href="#sd-Introduction" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introduction">Introduction</a>
         <!-- <li><a href="#sd-Introduction" class="skiplink">Introduction</a> -->
             
                 
@@ -96,7 +92,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Using-Reasoning" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Using-Reasoning">Using Reasoning</a>
+        <li><a href="#sd-Using-Reasoning" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Using-Reasoning">Using Reasoning</a>
         <!-- <li><a href="#sd-Using-Reasoning" class="skiplink">Using Reasoning</a> -->
             
                 
@@ -108,7 +104,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Explaining-Reasoning-Results" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Explaining-Reasoning-Results">Explaining Reasoning Results</a>
+        <li><a href="#sd-Explaining-Reasoning-Results" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Explaining-Reasoning-Results">Explaining Reasoning Results</a>
         <!-- <li><a href="#sd-Explaining-Reasoning-Results" class="skiplink">Explaining Reasoning Results</a> -->
             
                 
@@ -120,7 +116,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Not-Getting-Expected-Answers-" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Not-Getting-Expected-Answers-">Not Getting Expected Answers?</a>
+        <li><a href="#sd-Not-Getting-Expected-Answers-" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Not-Getting-Expected-Answers-">Not Getting Expected Answers?</a>
         <!-- <li><a href="#sd-Not-Getting-Expected-Answers-" class="skiplink">Not Getting Expected Answers?</a> -->
             
                 
@@ -132,7 +128,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Known-Issues" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Known-Issues">Known Issues</a>
+        <li><a href="#sd-Known-Issues" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Known-Issues">Known Issues</a>
         <!-- <li><a href="#sd-Known-Issues" class="skiplink">Known Issues</a> -->
             
                 
@@ -144,7 +140,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-User-defined-Rule-Reasoning" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</a>
+        <li><a href="#sd-User-defined-Rule-Reasoning" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</a>
         <!-- <li><a href="#sd-User-defined-Rule-Reasoning" class="skiplink">User-defined Rule Reasoning</a> -->
             
                 
@@ -156,7 +152,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Special-Predicates" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Special-Predicates">Special Predicates</a>
+        <li><a href="#sd-Special-Predicates" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Special-Predicates">Special Predicates</a>
         <!-- <li><a href="#sd-Special-Predicates" class="skiplink">Special Predicates</a> -->
             
                 
@@ -168,7 +164,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Query-Rewriting" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Query-Rewriting">Query Rewriting</a>
+        <li><a href="#sd-Query-Rewriting" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Query-Rewriting">Query Rewriting</a>
         <!-- <li><a href="#sd-Query-Rewriting" class="skiplink">Query Rewriting</a> -->
             
                 
@@ -180,7 +176,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Performance-Hints" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Performance-Hints">Performance Hints</a>
+        <li><a href="#sd-Performance-Hints" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Performance-Hints">Performance Hints</a>
         <!-- <li><a href="#sd-Performance-Hints" class="skiplink">Performance Hints</a> -->
             
                 
@@ -192,7 +188,7 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Terminology" class="skip" gumby-easing="easeOutQuad" gumby-duration="600" gumby-goto="#sd-Terminology">Terminology</a>
+        <li><a href="#sd-Terminology" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Terminology">Terminology</a>
         <!-- <li><a href="#sd-Terminology" class="skiplink">Terminology</a> -->
             
                 
@@ -252,9 +248,15 @@
           </nav>
 -->
 
-        
+          
         </div>
-        <div class="eight columns"><h2 id="sd-Introduction">Introduction</h2>
+        <div class="nine columns">
+          <p><em>The proof of a system's value is its existence.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
+          <h1 class=""><span id="title-subhead">OWL & Rule Reasoning</span></h1>
+          <p><em></em></p>
+        <div id="mdblock">
+          <h2 id="sd-Introduction">Introduction</h2>
 <p>In this chapter we describe <a href="#reasoning">how to use Stardog's reasoning
 capabilities</a>; we also address some <a href="#trouble">common
 problems</a> and <a href="#issues">known issues</a>. We also describe
@@ -308,12 +310,12 @@ property is to use the default graph only.</p>
 <p>In order to evaluate queries in Stardog using reasoning via the command
 line, a specific reasoning level must be specified in the <a href="../admin/">connection
 string</a>:</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"</span></code></pre>
 <h3>HTTP</h3>
 <p>For HTTP, the reasoning level is specified with the other connection
 parameters in the request header <code>SD-Connection-String</code>:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">curl</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin:admin</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">GET</span> <span class="literal">-</span><span class="comment">H</span> <span class="comment">"SD</span>-<span class="comment">Connection</span>-<span class="comment">String:</span> <span class="comment">reasoning=QL"</span> <span class="comment">\</span>
-  <span class="comment">"http://localhost:5822/myDB/query?query=</span>.<span class="string">.</span><span class="string">.</span><span class="comment">"</code></pre>
+  <span class="comment">"http://localhost:5822/myDB/query?query=</span>.<span class="string">.</span><span class="string">.</span><span class="comment">"</span></code></pre>
 <h3><code>ReasoningConnection</code> API</h3>
 <p>In order to use the ReasoningConnection API one needs to specify a
 reasoning level. See the <a href="../java/">Java Programming</a> chapter for
@@ -458,7 +460,7 @@ niece(s) and nephew(s):</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:isUncleOf</span>(<span class="number">?x</span>, <span class="number">?z</span>) &lt;- <span class="symbol">:isSiblingOf</span>(<span class="number">?x</span>, <span class="number">?y</span>), <span class="symbol">:isParentOf</span>(<span class="number">?y</span>, <span class="number">?z</span>), <span class="symbol">:Male</span>(<span class="number">?x</span>)</code></pre>
 <p>A super user can read all of the things!</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:Role</span>(<span class="number">?z</span>), <span class="symbol">:hasRole</span>(<span class="number">?x</span>, <span class="number">?z</span>), <span class="symbol">:readPermission</span>(<span class="number">?z</span>, <span class="number">?y</span>) &lt;- <span class="symbol">:SuperUser</span>(<span class="number">?x</span>)
-                   <span class="symbol">:Resource</span>(<span class="number">?y</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?z)</code></pre>
+                   <span class="symbol">:Resource</span>(<span class="number">?y</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?z)</span></code></pre>
 <h2 id="sd-Special-Predicates">Special Predicates</h2>
 <p>something something…</p>
 <h3>Direct/Strict Subclasses, Subproperties, &amp; Direct Types</h3>
@@ -509,7 +511,7 @@ warnings. <strong>Note that this support is effectively a gun with which users
 may shoot themselves in the foot if they do not use it carefully.</strong></p>
 <p>We can create new individuals with a rule by using the (non-standard)
 built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
 <p>This rule will be used to create a <em>random</em> bnode for each instance of
 the class <code>:Person</code> and also to assert that each new instance is also an
 instance of <code>:Parent</code>.</p>
@@ -520,7 +522,7 @@ meaningless in the sense that they should not be used in further
 queries; that is to say, these bnodes are not guaranteed by Stardog to
 be stable. Due to normalization, rules with more than one atom in the
 head are broken up into several rules. Thus,</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?y</span>), <span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?y</span>), <span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
 <p>will be normalized into:</p>
 <pre class="highlighted"><code class="avrasm">:Male(?<span class="built_in">y</span>) &lt;- :Person(?<span class="built_in">x</span>), http://www<span class="preprocessor">.w</span>3<span class="preprocessor">.org</span>/ns/sparql<span class="preprocessor">#UUID(?y).</span>
 
@@ -534,7 +536,7 @@ example, we can introduce a new class (<code>:Father</code>) and add the followi
 rule to our schema:</p>
 <pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?x</span>), <span class="symbol">:Parent</span>(<span class="number">?x</span>) &lt;- <span class="symbol">:Father</span>(<span class="number">?x</span>).</code></pre>
 <p>And then modify the original rule accordingly:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Father</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="symbol">:Father</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
 <h2 id="sd-Query-Rewriting">Query Rewriting</h2>
 <p>Query answering with reasoning in Stardog is based on the <em>query rewriting</em>
 technique: Stardog rewrites the user's query with respect to the schema, and then
@@ -791,7 +793,9 @@ constructs.</p>
 and Pellet. Notably, since TBox BGPs are handled completely by Pellet,
 Stardog supports reasoning for the whole of OWL 2 for queries containing
 TBox BGPs only.</p>
-</div>
+
+        </div>
+        </div>
     </div>
   </div>
 
