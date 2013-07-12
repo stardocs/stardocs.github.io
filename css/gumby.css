@@ -1855,13 +1855,11 @@ dd { margin-left: 13px; }
 
 dl { margin-bottom: 26px; }
 
-#title-masthead { color: #083959; font-weight: 700; }
-
-#title-subhead { color: #1978a1; font-weight: 700; }
+#title-subhead { color: #c0d732; font-size: 68px; font-weight: 400; }
 
 #tochead { font-weight: 300; color: #1978a1; }
 
-#subfoot-subhead { color: #1978a1; font-weight: 700; }
+#footer-subhead { color: #1978a1; font-weight: 300; }
 
 #social { padding-top: 0.273em; line-height: 1.15538em; padding-bottom: 0.273em; }
 
@@ -1920,3 +1918,5 @@ p#social a { decoration: none; }
 #inner-doc #sidebar-nav a { color: #555555; display: block; padding: 8px 14px; }
 
 #inner-doc #sidebar-nav a:hover { background: #E9E9E9; }
+
+cite { font-style: italic; }

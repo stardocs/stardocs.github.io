@@ -23,14 +23,14 @@ dl {
 }
 
 #title-masthead {
-  color: #083959;
-  font-weight: $font-weight-bold;
-
+  //color: #083959;
+  //font-weight: $font-weight-bold;
 }
 
 #title-subhead {
-  color: $sd-med-blue;
-  font-weight: $font-weight-bold;
+  color: $sd-lime;
+  font-size: $xxxlarge;
+  font-weight: $font-weight-medium;
 }
 
  #tochead {
@@ -38,10 +38,9 @@ dl {
   color: $sd-med-blue;
  }
 
-#subfoot-subhead {
+#footer-subhead {
   color: $sd-med-blue;
-  font-weight: $font-weight-bold;
-
+  font-weight: $font-weight-thin;
 }
 
 #social {
@@ -184,3 +183,5 @@ p#social a {
 #inner-doc #sidebar-nav a:hover {
   background: #E9E9E9;
 }
+
+cite {font-style: italic;}

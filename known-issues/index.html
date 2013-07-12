@@ -9,75 +9,21 @@
 <!--     //a block for ipad, etc... might should go in meta -->
 <body id="inner-doc" class="docs grid">
 
-<!-- <div class="navbar" id="nav1">
-<div class="row">
-      <a class="toggle" gumby-trigger="#nav1 &gt; .row &gt; ul" href="#"><i class="icon-menu"></i></a>
-      <h3 class="five columns logo">
-        <a href="http://stardog.com/">
-          <img style="max-width: 40%;" src="/img/logotype.png" gumby-retina="">
-        </a>
-      </h3>
-      <ul class="seven columns">
-        <li><a href="#">Chapters</a></li>
-        <li>
-          <a href="#">Related</a>
-          <div class="dropdown">
-            <ul>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li>
-                <a href="#">I HAVE STUFF NESTED UNDER ME</a>
-                <div class="dropdown">
-                  <ul>
-                    <li><a href="">nested</a></li>
-                    <li><a href="">nested</a></li>
-                    <li><a href="">nested</a></li>
-                  </ul>
-                </div>
-              </li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-              <li><a href="#">Item</a></li>
-            </ul>
-          </div>
-        </li>
-        <li><a href="#">Java API</a></li>
-      </ul>
-    </div>
-  </div>
-
-<div id="the-header">
-  <div class="row valign">
-    <div class="three columns">
-      <div>
-      <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-      </div>
-    </div>
-    <div class="nine columns" id="header-quote">
-      
-    </div>
-  </div>
- <div class="row">
-    <div class="three columns"></div>
-    <div class="nine columns">
-
-    </div>
-  </div>
-  -->
-</div>
-
-  <div id="the-content">
+  <div class="wrapper nopad" id="the-content">
     <div class="row">
-        <div id="sidebar" class="three columns" gumby-constrain="true" gumby-pin="top" gumby-fixed="top">
-          <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div>
-          
-        </div>
+        <section id="sidebar" class="three columns">
+          <!-- <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div> -->
+          <nav id="sidebar-nav-holder" class="vertical-nav fixed" gumby-fixed="top" gumby-pin="something">
+            
+        </section>
         <div class="nine columns">
-          <p><em>We kid ourselves if we think that the ratio of procedure to data in an active data-base system can be made arbitrarily small or even kept small.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-          <h1><span id="title-masthead"><img src="/img/stardog-FLAT.png" style="max-width: 75%"/> Docs</span></h1>
-          <h1 class=""><span id="title-subhead">Known Issues</span></h1>
-          <p><em></em></p>
+          <p id="quote"><em>We kid ourselves if we think that the ratio of procedure to data in an active data-base system can be made arbitrarily small or even kept small.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+          <!-- woof! -->
+            <div><span id="title-masthead"><img src="http://docs.stardog.com/img/stardog-FLAT-gray.png" style="max-width: 33%"/></span></div>
+          <!-- doc title -->
+            <div><h1 id="title-subhead">Known Issues</h1></div>
+          <!-- summary -->
+          
         <div id="mdblock">
           <p>As of 1.2.3, the known issues include:</p>
 <ol>
@@ -133,7 +79,7 @@ raise an exception.</li>
       </div>
       <div class="nine columns">
         
-          <h4>This is <span id="title-masthead">Known Issues</span>, a chapter in Stardog Docs 1.2.3.</h4>
+          <h4>This is <span id="footer-subhead">Known Issues</span>, a chapter in Stardog Docs 1.2.3.</h4>
         
       <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
       <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
