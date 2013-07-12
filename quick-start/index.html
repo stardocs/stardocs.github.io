@@ -1,22 +1,30 @@
 <!doctype html>
 <html lang="en">
-<head>
-<title>Stardog 1.2.3 Docs: Quick Start Guide</title>
-<script src="/js/libs/modernizr-2.6.2.min.js"></script>
-<meta charset='utf-8'>
-<meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
-<link  rel="stylesheet" href="/css/gumby.css" />
-<!--     //a block for ipad, etc... might should go in meta -->
-<body id="inner-doc" class="docs grid">
+  <head>
+  <title>Stardog 1.2.3 Docs: Quick Start Guide</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
+  <link  rel="stylesheet" href="/css/gumby.css" />
 
-  <div class="wrapper nopad" id="the-content">
+<!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+
+  <div class="nopad wrapper" id="the-content">
+   
     <div class="row">
-        <section id="sidebar" class="three columns">
+
+        <div class="three columns">
           <!-- <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div> -->
-          <nav id="sidebar-nav-holder" class="vertical-nav fixed" gumby-fixed="top" gumby-pin="something">
+          <nav id="sidebar-nav-holder" class="vertical-nav fixed" gumby-fixed="top">
             
-        </section>
+          </nav>
+        </div>
+
         <div class="nine columns">
+          <!-- <p><a class="toggle" href="#" gumby-trigger="#sidebar-nav-holder">Drawer</a><br><br></p> -->
           <p id="quote"><em>A good system can't have a weak command language.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
           <!-- woof! -->
             <div><span id="title-masthead"><img src="http://docs.stardog.com/img/stardog-FLAT-gray.png" style="max-width: 33%"/></span></div>
@@ -26,8 +34,8 @@
           
             <p id="summary"><em>This guide explains the basic steps to get you started quickly with Stardog on a Unix machine. We test every Stardog release extensively with various flavors of Linux and OS X. Please report a bug if you find issues on other platforms.</em></p>
           
-        <div id="mdblock">
-          <p>First, tell Stardog where its home directory (where databases and other
+          <div id="mdblock">
+            <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ export STARDOG_HOME=/data/stardog</code></pre>
 <p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
@@ -48,31 +56,32 @@ parameter to specify which server:</p>
 <pre class="highlighted"><code class="bash">$ ./stardog query myDB <span class="string">"SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"</span></code></pre>
 <p>Seventh, go have a beer: you&#39;ve earned it!</p>
 
+          </div>
         </div>
-        </div>
-    </div>
-  </div>
 
-  <div id="thefooter" class="container shaded">
-    <div class="row">
-      <div class="three columns">
-        <p id="social">
-        <a href="/"><i class="icon-home"></i></a>&nbsp;
-        <a href="#" id="upaway" class="skip" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">&uarr;</a>
-        <!-- &nbsp;
-        <a href="http://twitter.com/stardog_db"><i class="icon-twitter"></i></a>
-        &nbsp;
-        <a href=""><i class="icon-google-circles"></i></a> -->
-        </p>
-      </div>
-      <div class="nine columns">
-        
-          <h4>This is <span id="footer-subhead">Quick Start Guide</span>, a chapter in Stardog Docs 1.2.3.</h4>
-        
-      <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-      <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
-      </div>
     </div>
+
+    <div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="three columns">
+              <h4><a class="iconlinks" href="/"><i class="icon-home"></i></a>&nbsp;&nbsp;<a href="#" id="upaway" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000"><i class="icon-publish"></i></a></h4>
+            </div>
+            <div class="nine columns">
+              
+                <h4>This is <span id="footer-subhead">Quick Start Guide</span>, part of Stardog Docs 1.2.3.</h4>
+              
+              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </div>
+        </div>
+      </section>
+    </div>
+
   </div>
 
 <script defer="defer"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer"  src="/js/libs/gumby.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer"  src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer"  src="/js/libs/ui/gumby.retina.js"></script><script defer="defer"  src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer"  src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer"  src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer"  src="/js/libs/gumby.init.js"></script><script defer="defer"  src="/js/plugins.js"></script><script defer="defer"  src="/js/main.js"></script>
+
+</body>
+
+</html>

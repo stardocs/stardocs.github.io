@@ -1,19 +1,24 @@
 <!doctype html>
 <html lang="en">
-<head>
-<title>Stardog 1.2.3 Docs: OWL & Rule Reasoning</title>
-<script src="/js/libs/modernizr-2.6.2.min.js"></script>
-<meta charset='utf-8'>
-<meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
-<link  rel="stylesheet" href="/css/gumby.css" />
-<!--     //a block for ipad, etc... might should go in meta -->
-<body id="inner-doc" class="docs grid">
+  <head>
+  <title>Stardog 1.2.3 Docs: OWL & Rule Reasoning</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
+  <link  rel="stylesheet" href="/css/gumby.css" />
 
-  <div class="wrapper nopad" id="the-content">
+<!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+
+  <div class="nopad wrapper" id="the-content">
+   
     <div class="row">
-        <section id="sidebar" class="three columns">
+
+        <div class="three columns">
           <!-- <div class="medium rounded btn default pretty"><a href="http://stardog.com/dl">Download</a></div> -->
-          <nav id="sidebar-nav-holder" class="vertical-nav fixed" gumby-fixed="top" gumby-pin="something">
+          <nav id="sidebar-nav-holder" class="vertical-nav fixed" gumby-fixed="top">
             
               <h3 id="tochead">Contents</h3>
 
@@ -143,8 +148,11 @@
 </ul>
 
             
-        </section>
+          </nav>
+        </div>
+
         <div class="nine columns">
+          <!-- <p><a class="toggle" href="#" gumby-trigger="#sidebar-nav-holder">Drawer</a><br><br></p> -->
           <p id="quote"><em>The proof of a system's value is its existence.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
           <!-- woof! -->
             <div><span id="title-masthead"><img src="http://docs.stardog.com/img/stardog-FLAT-gray.png" style="max-width: 33%"/></span></div>
@@ -152,8 +160,8 @@
             <div><h1 id="title-subhead">OWL & Rule Reasoning</h1></div>
           <!-- summary -->
           
-        <div id="mdblock">
-          <h2 id="sd-Introduction">Introduction</h2>
+          <div id="mdblock">
+            <h2 id="sd-Introduction">Introduction</h2>
 <p>In this chapter we describe <a href="#reasoning">how to use Stardog's reasoning
 capabilities</a>; we also address some <a href="#trouble">common
 problems</a> and <a href="#issues">known issues</a>. We also describe
@@ -691,31 +699,32 @@ and Pellet. Notably, since TBox BGPs are handled completely by Pellet,
 Stardog supports reasoning for the whole of OWL 2 for queries containing
 TBox BGPs only.</p>
 
+          </div>
         </div>
-        </div>
-    </div>
-  </div>
 
-  <div id="thefooter" class="container shaded">
-    <div class="row">
-      <div class="three columns">
-        <p id="social">
-        <a href="/"><i class="icon-home"></i></a>&nbsp;
-        <a href="#" id="upaway" class="skip" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">&uarr;</a>
-        <!-- &nbsp;
-        <a href="http://twitter.com/stardog_db"><i class="icon-twitter"></i></a>
-        &nbsp;
-        <a href=""><i class="icon-google-circles"></i></a> -->
-        </p>
-      </div>
-      <div class="nine columns">
-        
-          <h4>This is <span id="footer-subhead">OWL & Rule Reasoning</span>, a chapter in Stardog Docs 1.2.3.</h4>
-        
-      <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-      <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
-      </div>
     </div>
+
+    <div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="three columns">
+              <h4><a class="iconlinks" href="/"><i class="icon-home"></i></a>&nbsp;&nbsp;<a href="#" id="upaway" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000"><i class="icon-publish"></i></a></h4>
+            </div>
+            <div class="nine columns">
+              
+                <h4>This is <span id="footer-subhead">OWL & Rule Reasoning</span>, part of Stardog Docs 1.2.3.</h4>
+              
+              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </div>
+        </div>
+      </section>
+    </div>
+
   </div>
 
 <script defer="defer"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer"  src="/js/libs/gumby.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer"  src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer"  src="/js/libs/ui/gumby.retina.js"></script><script defer="defer"  src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer"  src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer"  src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer"  src="/js/libs/gumby.init.js"></script><script defer="defer"  src="/js/plugins.js"></script><script defer="defer"  src="/js/main.js"></script>
+
+</body>
+
+</html>
