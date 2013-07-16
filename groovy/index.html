@@ -1,13 +1,134 @@
-<p><a href="/"><img src="/_/img/sdog-bare.png" alt=""></a></p>
-<blockquote>
-<p><strong>Making something variable is easy. Controlling duration of constancy
-is the trick.</strong>—Alan Perlis, Epigrams in Programming</p>
-</blockquote>
-<h1>Stardog Groovy {#title}</h1>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 1.2.3 Docs: Programming with Groovy</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <script>
+  (function(d, t) {
+    var r = d.createElement(t),
+    s = d.getElementsByTagName(t)[0];
+    r.src = '//use.resrc.it';
+    s.parentNode.insertBefore(r, s)
+    }(document, 'script'));
+  </script>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
+  <link  rel="stylesheet" href="/css/gumby.css" />
+  <script defer="defer"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer"  src="/js/libs/gumby.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer"  src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer"  src="/js/libs/ui/gumby.retina.js"></script><script defer="defer"  src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer"  src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer"  src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer"  src="/js/libs/gumby.init.js"></script><script defer="defer"  src="/js/plugins.js"></script><script defer="defer"  src="/js/main.js"></script>
+
+<!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav" gumby-fixed="top">
+            <img class="resrc" data-src="http://app.resrc.it/s=H150/http://docs.stardog.com/img/stardog-FLAT-gray.png"/>
+            
+              <!-- FIXME: this needs to check where we're being called from to work... -->
+
+	<h3 id="tochead">Groovy Contents</h3>
+
+
+
+
+<ul class="sidebar-nav">
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Create-a-Connection" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Create-a-Connection">Create a Connection</a>
+        <!-- <li><a href="#sd-Create-a-Connection" class="skiplink">Create a Connection</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-SPARQL-Vars-projected-into-Groovy-Closures" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-SPARQL-Vars-projected-into-Groovy-Closures">SPARQL Vars projected into Groovy Closures</a>
+        <!-- <li><a href="#sd-SPARQL-Vars-projected-into-Groovy-Closures" class="skiplink">SPARQL Vars projected into Groovy Closures</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Add-and-remove-triples" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Add-and-remove-triples">Add and remove triples</a>
+        <!-- <li><a href="#sd-Add-and-remove-triples" class="skiplink">Add and remove triples</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-withConnection-closure-example" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-withConnection-closure-example">withConnection closure example</a>
+        <!-- <li><a href="#sd-withConnection-closure-example" class="skiplink">withConnection closure example</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+              <p id="tocnav">
+              
+                <a  class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish"></i>
+              </a>
+              </p>
+            
+          </nav>
+        <!-- <h4><a class="iconlinks" href="/"><i class="icon-home"></i></a><a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000"><i class="icon-publish"></i></a></h4> -->
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em>Making something variable is easy. Controlling duration of constancy is the trick.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Programming with Groovy</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <h1>Stardog Groovy {#title}</h1>
 <h1>Introduction {#chapter}</h1>
 <p><a href="http://http://groovy.codehaus.org//">Groovy</a> is an agile and dynamic
 programming language for the JVM, making popular programming features
-such as closures available to Java developers. Stardog&#39;s Groovy support
+such as closures available to Java developers. Stardog's Groovy support
 makes life easier for developers who need to work with RDF, SPARQL, and
 OWL by way of Stardog.</p>
 <p>The Groovy for Stardog <a href="http://github.com/clarkparsia/stardog-groovy">source
@@ -30,7 +151,7 @@ POM in local Maven repo; alternately,</li>
       <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">1</span>.<span class="comment">1</span>
       <span class="literal">-</span><span class="comment">Dfile=stardog</span>-<span class="comment">groovy</span>.<span class="comment">jar</span>
       <span class="literal">-</span><span class="comment">Dpackaging=jar</span>
-      <span class="literal">-</span><span class="comment">DpomFile=pom</span>.<span class="comment">xml</code></pre>
+      <span class="literal">-</span><span class="comment">DpomFile=pom</span>.<span class="comment">xml</span></code></pre>
 </li>
 </ul>
 <h1>Overview {#chapter}</h1>
@@ -44,10 +165,10 @@ transaction safe closures can be executed over a connection.</p>
 <code>com.clarkparsia.stardog.ext.groovy.Stardog</code> with the following methods:</p>
 <ol>
 <li><code>Stardog(map)</code> constructor for managing Stardog connection pools</li>
-<li><code>each(String, Closure)</code> for executing a closure over a query&#39;s
+<li><code>each(String, Closure)</code> for executing a closure over a query's
 results, including projecting SPARQL result variables into the
 closure.</li>
-<li><code>query(String, Closure)</code> for executing a closure over a query&#39;s
+<li><code>query(String, Closure)</code> for executing a closure over a query's
 results, passing the BindingSet to the closure</li>
 <li><code>insert(List)</code> for inserting a list of vars as a triple, or a list
 of list of triples for insertion</li>
@@ -61,12 +182,41 @@ with the Spring bindings and can use a <code>DataSource</code> to initialize the
 constructor. Combining both together creates an easy to use solution for
 other Groovy environments, such as <a href="http://www.grails.org">Grails</a>.</p>
 <h1>Examples {#chapter}</h1>
-<h2>Create a Connection</h2>
-<h2>SPARQL Vars projected into Groovy Closures</h2>
-<h2>Add and remove triples</h2>
-<h2>withConnection closure example</h2>
+<h2 id="sd-Create-a-Connection">Create a Connection</h2>
+<h2 id="sd-SPARQL-Vars-projected-into-Groovy-Closures">SPARQL Vars projected into Groovy Closures</h2>
+<h2 id="sd-Add-and-remove-triples">Add and remove triples</h2>
+<h2 id="sd-withConnection-closure-example">withConnection closure example</h2>
 <h1>Notes {.fn}</h1>
 <p><a href="#" title="Back to top">⌂</a></p>
 <p>For comments, questions, or to report problems with this page, please
 email the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support
 Forum</a>.</p>
+
+          </div>
+        </div>
+
+    </div>
+
+    <div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Programming with Groovy</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 1.2.3.</h4>
+              
+              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>
