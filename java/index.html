@@ -31,9 +31,9 @@
   </div>
 
     <div class="row">
-        <div class="four columns" id="sidebar1">
-          <nav id="sidebar-nav-holder" class="fixed vertical-nav" gumby-fixed="top">
-            <img src="http://docs.stardog.com/img/sd.png"/>
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
             
               <!-- FIXME: this needs to check where we're being called from to work... -->
 
@@ -516,18 +516,21 @@ that depends on functions with this annotation.</p>
 
     </div>
 
+      <div id="root"><div id="root_footer"></div></div>
+
     <div class="wrapper shaded" id="subfoot">
       <section class="row">
         <div class="twelve columns">
             <div class="four columns">
-              
+              <!-- follow us on Twitter -->
+              <!-- docpad services plugin thingie -->
             </div>
             <div class="eight columns">
               
                 <h4>This is <span id="footer-subhead">Programming with Java</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 1.2.3.</h4>
               
-              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </div>
         </div>
       </section>

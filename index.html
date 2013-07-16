@@ -31,9 +31,9 @@
   </div>
 
     <div class="row">
-        <div class="four columns" id="sidebar1">
-          <nav id="sidebar-nav-holder" class="fixed vertical-nav" gumby-fixed="top">
-            <img src="http://docs.stardog.com/img/sd.png"/>
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
             
               <!-- FIXME: this needs to check where we're being called from to work... -->
 
@@ -103,7 +103,7 @@
           
           <div id="mdblock">
             <h2 id="sd-Introduction">Introduction</h2>
-<p>Stardog is a <a href="/performance">fast</a>, lightweight, commercial RDF
+<p>Stardog is a fast, lightweight, commercial RDF
 database for mission-critical apps: it supports <a href="http://www.w3.org/TR/2012/WD-sparql11-query-20120105/">SPARQL
 1.1</a>; HTTP
 and the SNARL protocol for remote access and control;
@@ -200,6 +200,12 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 </ol>
 <h3><a href="http://clarkparsia.github.io/stardog.js/">Programming with Javascript</a></h3>
 <p>The documentation for <a href="http://clarkparsia.github.io/stardog.js">stardog.js</a>, which is available on <a href="https://github.com/clarkparsia/stardog.js">Github</a> and <a href="">npm</a>.</p>
+<h3><a href="/performance">Stardog Performance: Benchmarks, Tuning, Tips</a></h3>
+<ol>
+<li>RDF Loading</li>
+<li>Something</li>
+<li>Something Else</li>
+</ol>
 <h3><a href="/faq">Frequently Asked Questions</a></h3>
 <p>Questions that people have asked for which we have answers.</p>
 <h3><a href="/terms/">Terminology</a></h3>
@@ -241,16 +247,19 @@ Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley.</p>
 
     </div>
 
+      <div id="root"><div id="root_footer"></div></div>
+
     <div class="wrapper shaded" id="subfoot">
       <section class="row">
         <div class="twelve columns">
             <div class="four columns">
-              
+              <!-- follow us on Twitter -->
+              <!-- docpad services plugin thingie -->
             </div>
             <div class="eight columns">
               
-              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </div>
         </div>
       </section>

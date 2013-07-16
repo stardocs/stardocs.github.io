@@ -31,9 +31,9 @@
   </div>
 
     <div class="row">
-        <div class="four columns" id="sidebar1">
-          <nav id="sidebar-nav-holder" class="fixed vertical-nav" gumby-fixed="top">
-            <img src="http://docs.stardog.com/img/sd.png"/>
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
             
               <!-- FIXME: this needs to check where we're being called from to work... -->
 
@@ -45,8 +45,8 @@
 <ul class="sidebar-nav">
     
     <!-- [data-target='-->
-        <li><a href="#sd-Create-a-Connection" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Create-a-Connection">Create a Connection</a>
-        <!-- <li><a href="#sd-Create-a-Connection" class="skiplink">Create a Connection</a> -->
+        <li><a href="#sd-Overview" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Overview">Overview</a>
+        <!-- <li><a href="#sd-Overview" class="skiplink">Overview</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -57,8 +57,8 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-SPARQL-Vars-projected-into-Groovy-Closures" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-SPARQL-Vars-projected-into-Groovy-Closures">SPARQL Vars projected into Groovy Closures</a>
-        <!-- <li><a href="#sd-SPARQL-Vars-projected-into-Groovy-Closures" class="skiplink">SPARQL Vars projected into Groovy Closures</a> -->
+        <li><a href="#sd-Building-Groovy-for-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Building-Groovy-for-Stardog">Building Groovy for Stardog</a>
+        <!-- <li><a href="#sd-Building-Groovy-for-Stardog" class="skiplink">Building Groovy for Stardog</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -69,20 +69,8 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Add-and-remove-triples" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Add-and-remove-triples">Add and remove triples</a>
-        <!-- <li><a href="#sd-Add-and-remove-triples" class="skiplink">Add and remove triples</a> -->
-            
-                
-<ul class="sidebar-nav">
-    
-</ul>
-
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li><a href="#sd-withConnection-closure-example" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-withConnection-closure-example">withConnection closure example</a>
-        <!-- <li><a href="#sd-withConnection-closure-example" class="skiplink">withConnection closure example</a> -->
+        <li><a href="#sd-Examples" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Examples">Examples</a>
+        <!-- <li><a href="#sd-Examples" class="skiplink">Examples</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -116,9 +104,7 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <h1>Stardog Groovy {#title}</h1>
-<h1>Introduction {#chapter}</h1>
-<p><a href="http://http://groovy.codehaus.org//">Groovy</a> is an agile and dynamic
+            <p><a href="http://http://groovy.codehaus.org//">Groovy</a> is an agile and dynamic
 programming language for the JVM, making popular programming features
 such as closures available to Java developers. Stardog's Groovy support
 makes life easier for developers who need to work with RDF, SPARQL, and
@@ -126,28 +112,8 @@ OWL by way of Stardog.</p>
 <p>The Groovy for Stardog <a href="http://github.com/clarkparsia/stardog-groovy">source
 code</a> is available on
 Github.</p>
-<h1>Building Groovy for Stardog {#chapter}</h1>
-<p>To build Groovy for Stardog, you need a release of Stardog; we use
-<a href="http://www.gradle.org/">Gradle</a> to build Stardog for Groovy. Then,</p>
-<ul>
-<li>edit <code>build.gradle</code> to point <code>stardogLocation</code> at a Stardog release
-directory;</li>
-<li>run <code>gradlew build</code>, which eventually results in a
-<code>stardog-groovy.jar</code> in <code>build/libs</code>; finally,</li>
-<li><code>gradlew install</code> does a build, generates a POM, and installs the
-POM in local Maven repo; alternately,</li>
-<li><p><code>mvn install</code> will work, too:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">mvn</span> <span class="comment">install:install</span>-<span class="comment">file</span>
-      <span class="literal">-</span><span class="comment">DgroupId=com</span>.<span class="comment">clarkparsia</span>.<span class="comment">stardog</span>
-      <span class="literal">-</span><span class="comment">DartifactId=stardog</span>-<span class="comment">groovy</span>
-      <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">1</span>.<span class="comment">1</span>
-      <span class="literal">-</span><span class="comment">Dfile=stardog</span>-<span class="comment">groovy</span>.<span class="comment">jar</span>
-      <span class="literal">-</span><span class="comment">Dpackaging=jar</span>
-      <span class="literal">-</span><span class="comment">DpomFile=pom</span>.<span class="comment">xml</span></code></pre>
-</li>
-</ul>
-<h1>Overview {#chapter}</h1>
-<p>Groovy for Stardog <strong>@@SPRING_VERSION@@</strong> provides a set of Groovy API
+<h2 id="sd-Overview">Overview</h2>
+<p>Groovy for Stardog 1.2.3 provides a set of Groovy API
 wrappers for developers to build applications with Stardog and take
 advantage of native Groovy features. For example, you can create a
 Stardog connection pool in a single line, much like Groovy SQL support.
@@ -173,34 +139,59 @@ instance of
 with the Spring bindings and can use a <code>DataSource</code> to initialize the
 constructor. Combining both together creates an easy to use solution for
 other Groovy environments, such as <a href="http://www.grails.org">Grails</a>.</p>
-<h1>Examples {#chapter}</h1>
-<h2 id="sd-Create-a-Connection">Create a Connection</h2>
-<h2 id="sd-SPARQL-Vars-projected-into-Groovy-Closures">SPARQL Vars projected into Groovy Closures</h2>
-<h2 id="sd-Add-and-remove-triples">Add and remove triples</h2>
-<h2 id="sd-withConnection-closure-example">withConnection closure example</h2>
-<h1>Notes {.fn}</h1>
-<p><a href="#" title="Back to top">⌂</a></p>
-<p>For comments, questions, or to report problems with this page, please
-email the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support
-Forum</a>.</p>
+<h2 id="sd-Building-Groovy-for-Stardog">Building Groovy for Stardog</h2>
+<p>To build Groovy for Stardog, you need a release of Stardog; we use
+<a href="http://www.gradle.org/">Gradle</a> to build Stardog for Groovy. Then,</p>
+<ol>
+<li>edit <code>build.gradle</code> to point <code>stardogLocation</code> at a Stardog release
+directory;</li>
+<li>run <code>gradlew build</code>, which eventually results in a
+<code>stardog-groovy.jar</code> in <code>build/libs</code>; finally,</li>
+<li><code>gradlew install</code> does a build, generates a POM, and installs the
+POM in local Maven repo; alternately,</li>
+</ol>
+<p><code>mvn install</code> will work, too:</p>
+<pre class="highlighted"><code class="java">mvn install:install-file
+    -DgroupId=com.clarkparsia.stardog
+    -DartifactId=stardog-groovy
+    -Dversion=<span class="number">1.1</span><span class="number">.1</span>
+    -Dfile=stardog-groovy.jar
+    -Dpackaging=jar
+    -DpomFile=pom.xml</code></pre>
+<h2 id="sd-Examples">Examples</h2>
+<p>Here are some examples of the more interesting parts of Stardog Groovy.</p>
+<h3>Create a Connection</h3>
+<script src="https://gist.github.com/4652565.js?file=StardogConnection.groovy"></script>
+
+<h3>SPARQL Vars Projected into Groovy Closures</h3>
+<script src="https://gist.github.com/4652590.js?file=Projection.groovy"></script>
+
+<h3>Add &amp; Remove Triples</h3>
+<script src="https://gist.github.com/4652608.js?file=StardogAddRemove.groovy"></script>
+
+<h3><code>withConnection</code> Closure</h3>
+<p><script src='https://gist.github.com/4652621.js?file=StardogWithConnection.groovy'></script></p>
 
           </div>
         </div>
 
     </div>
 
+      <div id="root"><div id="root_footer"></div></div>
+
     <div class="wrapper shaded" id="subfoot">
       <section class="row">
         <div class="twelve columns">
             <div class="four columns">
-              
+              <!-- follow us on Twitter -->
+              <!-- docpad services plugin thingie -->
             </div>
             <div class="eight columns">
               
                 <h4>This is <span id="footer-subhead">Programming with Groovy</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 1.2.3.</h4>
               
-              <p>For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p id="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </div>
         </div>
       </section>
