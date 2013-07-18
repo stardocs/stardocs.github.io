@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 1.2.3 Docs: Administration</title>
+  <title>Stardog 2.0.0 Docs: Administration</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset='utf-8'>
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
@@ -35,10 +35,9 @@
           <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
             <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
             
-              <!-- FIXME: this needs to check where we're being called from to work... -->
-
+              <!-- 
 	<h3 id="tochead">Administration Contents</h3>
-
+ -->
 
 
 
@@ -116,7 +115,6 @@
               </p>
             
           </nav>
-        <!-- <h4><a class="iconlinks" href="/"><i class="icon-home"></i></a><a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000"><i class="icon-publish"></i></a></h4> -->
         </div>
 
         <div class="eight columns">
@@ -167,7 +165,7 @@ production environments, to have considerably tighter access
 restrictions than <code>stardog</code>.</p>
 <div class="metro danger large label">Security Notice</div>
 
-<p>For usability, Stardog 1.2.3 provides a
+<p>For usability, Stardog 2.0.0 provides a
 default user “admin” and password “admin” in <code>stardog-admin</code> commands
 if no user or password are given. This is obviously <strong>not secure</strong>;
 before any serious use of Stardog is contemplated, read the
@@ -381,8 +379,8 @@ down a remote server, you can simply use the <code>--server</code> option to
 specify the location of the server you wish to shut down</p>
 <h3>Serving Stardog Documentation</h3>
 <p>By default, if you start Stardog Server with HTTP enabled, then Stardog
-will serve the system documentation at <code>http://SERVER/docs</code> (which is
-why “docs” is an invalid database name).</p>
+will serve the system documentation at <code>http://${server}/docs</code> (which is
+why “docs” is a reserved database name).</p>
 <p>In a production deployment, you might want to disable documentation
 serving, which you can do by passing <code>--no-docs</code> on server startup or by
 disabling HTTP altogether.</p>
@@ -393,8 +391,9 @@ Stardog Server with the same <code>STARDOG_HOME</code>. If you need to run more
 than one Stardog Server instance, choose a different <code>STARDOG_HOME</code> or
 pass a different value to <code>--home</code>.</p>
 <h3>Access &amp; Audit Logging</h3>
-<p>See <code>stardog.properties</code> for a complete discussion of how access and
-audit logging work in Stardog Server. Basically, audit logging is a
+<p>See the <code>stardog.properties</code> file (in the distribution) for a complete 
+discussion of how access and audit logging work in Stardog Server. 
+Basically, audit logging is a
 superset of the events in access logging. Access logging covers the most
 commonly required logging events; you should consider enabling audit
 logging if you really need to log <em>every</em> every server event. Logging
@@ -406,9 +405,9 @@ plain text (both based on ProtocolBuffer message formats); the type of
 logging (audit or access); the logging location (which may be “off disk”
 or even “off machine”) Logging to a centralized logging facility
 requires a Java plugin that implements the Stardog Server logging
-interface; see the <a href="../java/">Java Chapter</a> for more information; and
+interface; see the <a href="/java/">Java Chapter</a> for more information; and
 the log rotation policy (file size or time).</p>
-<p>Slow query logging is also available. See the “Managing Queries” section
+<p>Slow query logging is also available. See the <a href="">Managing Queries</a> section
 below.</p>
 <h2 id="sd-Database-Admin">Database Admin</h2>
 <p>Stardog is a multi-tenancacy system and will happily provide access to
@@ -643,6 +642,12 @@ parameters and options depending on anticipated workloads, data
 modeling, and other factors.</p>
 <p>See <code>stardog-admin help db create</code> for all the details including
 examples.</p>
+<h3>Database Archetypes</h3>
+<div class='metro medium label primary'>New in 2.0</div>
+
+<h4>Stardog Web Archetype</h4>
+<h4>SKOS Archetype</h4>
+<h4>PROV Archetype</h4>
 <h3>Namespace Prefix Bindings</h3>
 <p>SPARQL queries can become verbose because of the (often redundant)
 <code>PREFIX</code> declarations in the prologue of each query. Stardog allows
@@ -1156,7 +1161,7 @@ script.</p>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Administration</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 1.2.3.</h4>
+                <h4>This is <span id="footer-subhead">Administration</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.0.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.

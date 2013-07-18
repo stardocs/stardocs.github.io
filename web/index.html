@@ -1,0 +1,734 @@
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.0.0 Docs: Stardog Web</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset='utf-8'>
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
+  <link  rel="stylesheet" href="/css/gumby.css" />
+  <script defer="defer"  src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer"  src="/js/libs/gumby.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer"  src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer"  src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer"  src="/js/libs/ui/gumby.retina.js"></script><script defer="defer"  src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer"  src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer"  src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer"  src="/js/libs/gumby.init.js"></script><script defer="defer"  src="/js/plugins.js"></script><script defer="defer"  src="/js/main.js"></script>
+
+<!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
+            
+              <!-- 
+	<h3 id="tochead">Web Contents</h3>
+ -->
+
+
+
+<ul class="sidebar-nav">
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Introducing-Stardog-Web" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introducing-Stardog-Web">Introducing Stardog Web</a>
+        <!-- <li><a href="#sd-Introducing-Stardog-Web" class="skiplink">Introducing Stardog Web</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Building-an-App" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Building-an-App">Building an App</a>
+        <!-- <li><a href="#sd-Building-an-App" class="skiplink">Building an App</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Updating-the-EGAD-App" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Updating-the-EGAD-App">Updating the EGAD App</a>
+        <!-- <li><a href="#sd-Updating-the-EGAD-App" class="skiplink">Updating the EGAD App</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Cleaning-the-application-directory" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Cleaning-the-application-directory">Cleaning the application directory</a>
+        <!-- <li><a href="#sd-Cleaning-the-application-directory" class="skiplink">Cleaning the application directory</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Adding-your-own-module-code" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Adding-your-own-module-code">Adding your own module code</a>
+        <!-- <li><a href="#sd-Adding-your-own-module-code" class="skiplink">Adding your own module code</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Generator-Structure" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Generator-Structure">Generator Structure</a>
+        <!-- <li><a href="#sd-Generator-Structure" class="skiplink">Generator Structure</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Sections" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Sections">Sections</a>
+        <!-- <li><a href="#sd-Sections" class="skiplink">Sections</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Change-Log" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Change-Log">Change Log</a>
+        <!-- <li><a href="#sd-Change-Log" class="skiplink">Change Log</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+</ul>
+
+              <p id="tocnav">
+              
+                <a  class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish"></i>
+              </a>
+              </p>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em>A programming language is low level when its programs require attention to the irrelevant.</em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Stardog Web</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <h2 id="sd-Introducing-Stardog-Web">Introducing Stardog Web</h2>
+<p>Stardog Web is a framework for rapidly building RDF-based responsive web apps. Stardog Web combines Stardog RDF database with some Java middleware, node, and client-side JavaScript libraries for a featureful, configuration-first development experience.</p>
+<p>Stardog Web automagically generates Web apps for browsing and managing RDF. These apps can be built via configuration and can be customized or extended in several ways, including new HTML templates and JavaScript modules. </p>
+<p>Out of the box functionality includes:</p>
+<ol>
+<li>Visualize classes and their instances</li>
+<li>Visualize instances and their property assertions</li>
+<li>Visualize class/property hierarchies</li>
+<li>Visualize axioms and rules</li>
+<li>Visualize subgraphs graphically</li>
+<li>Execute arbitrary SPARQL queries against RDF</li>
+<li>Manage queries (create, delete, update)</li>
+<li>Visualize query results</li>
+<li>Save query results</li>
+<li>Faceted browse <a href="">Pelorus</a></li>
+<li>full text search</li>
+<li>Enforce access control</li>
+<li>Manage provenance data</li>
+</ol>
+<h3>Oodles of Open Source Goodness</h3>
+<p>Stardog Web is built on top Stardog and Annex, our Linked Data middleware, and also uses—</p>
+<ul>
+<li><a href="http://yeoman.io">Yeoman</a> (build tool for the generated web apps)</li>
+<li><a href="http://backbonejs.org/">Backbone.js</a> (Routing and MV*)</li>
+<li><a href="https://github.com/tbranyen/backbone.layoutmanager">Backbone.LayoutManager</a> (handling nested Views efficiently)</li>
+<li><a href="http://lodash.com/">Lodash</a> (Backbone.js dependency; more efficient than underscore.js)</li>
+<li><a href="http://requirejs.org/">Require.js</a> </li>
+<li><a href="http://handlebarsjs.com/">Handlebars.js</a> </li>
+<li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> </li>
+<li><a href="http://jquery.com/">jQuery</a></li>
+<li><a href="http://www.w3.org/TR/2001/WD-css3-roadmap-20010523/">CSS3</a> &amp; <a href="http://lesscss.org/">Less</a></li>
+</ul>
+<h2 id="sd-Building-an-App">Building an App</h2>
+<p>So the basic workflow for building Stardog-based apps was always the same and we got tired of doing it manually every time. Stardog Web automates the boring parts, which lets us all concentrate on the fun stuff.</p>
+<p>Stardog Web project lifecycle looks a bit like this:</p>
+<ul>
+<li>beg, borrow, steal, or integrate some RDF data</li>
+<li>install Stardog Web</li>
+<li>generate a Stardog Web app</li>
+<li>configure the app</li>
+<li>run, test, customize, and extend the app</li>
+<li>lather, rinse, repeat…</li>
+<li>deploy the app</li>
+</ul>
+<h3>Installing Stardog Web</h3>
+<p>Stardog Web consists of two node.js packages, a generator and a CLI, which are provided in the installation distribution as <code>tar.gz</code> files. </p>
+<p>First, install <a href="http://nodejs.org/">Node.js</a>. We'll wait.</p>
+<p>Then, verify that you have Web access (to be able to access the NPM registry &amp; repositories) and check that the <code>npm</code> prefix is pointing to <code>/usr/local</code>. You can verify the value of the prefix as follows:</p>
+<pre class="highlighted"><code class="bash">$ npm config get prefix</code></pre>
+<p>If the prefix is not <code>/usr/local</code>, you can change it using one of the methods described <a href="https://npmjs.org/doc/config.html">here</a>.</p>
+<p>Next, run this:</p>
+<pre class="highlighted"><code class="bash"> $ npm install -g &lt;package_dir&gt;/egad-cli-0.x.tar.gz &lt;package_dir&gt;/generator-egad-0.x.tar.gz</code></pre>
+<p>Finally, …test the setup?</p>
+<p>EGAD depends on the following components:</p>
+<ul>
+<li><a href="http://nodejs.org/">Node.js</a> = v0.8.x (Not tested in v0.10.x yet, but it should work)</li>
+<li><a href="https://npmjs.org/">NPM</a> (Included in Nodejs)</li>
+<li><a href="http://yeoman.io/">Yeoman v1.0 BETA</a> (latest version)</li>
+<li>Annex Middleware Services (<code>annex.war</code> provided in the installation package)</li>
+<li><a href="http://stardog.com">Stardog 1.2.3</a></li>
+<li>Servlet container (<a href="http://www.caucho.com/">Caucho Resin</a> recommended)</li>
+</ul>
+<h3>Installing Stardog</h3>
+<p>Stardog Web works with…Stardog. If you already have Stardog installed, you should be good to go. If you don‘t, install it. Now make sure that you know how to create a database, add data to it, etc. There’s a <a href="/quick-start">Quick Start Guide</a>.</p>
+<h3>Provisioning Stardog</h3>
+<p>Create a Stardog database containing the data for your EGAD app and expose it in an SPARQL endpoint. Please see <a href="http://stardog.com/docs/">Stardog docs</a> for details about database creation. Once a database has been created, we can expose it in an SPARQL endpoint by simply starting the corresponding Stardog server:</p>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">disable</span>-<span class="comment">security</span> <span class="comment">server</span> <span class="comment">start</span></code></pre>
+<p><div class="metro danger large label">Security Notice</div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled.</p>
+<h4>Custom Namespaces</h4>
+<p>Add all the required prefixes that will be used in the EGAD app. You can list prefixes defined in the Stardog DB using the following command:</p>
+<pre class="highlighted"><code class="vala">stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> -<span class="title">c</span> <span class="title">snarl</span>://<span class="title">localhost</span>/&lt;<span class="title">DB</span>&gt;</span></code></pre>
+<p>By default, Stardog defines a set of common namespaces:</p>
+<pre class="highlighted"><code class="brainfuck"><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">Prefix</span> <span class="comment">|</span>                  <span class="comment">Namespace</span>                  <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
+<span class="comment">|</span> <span class="comment">rdf</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/1999/02/22</span>-<span class="comment">rdf</span>-<span class="comment">syntax</span>-<span class="comment">ns#</span> <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">rdfs</span>   <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2000/01/rdf</span>-<span class="comment">schema#</span>       <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">xsd</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2001/XMLSchema#</span>           <span class="comment">|</span>
+<span class="comment">|</span> <span class="comment">owl</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2002/07/owl#</span>              <span class="comment">|</span>
+<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
+<p>To add your prefixes, you can execute the <code>stardog namespace add</code> command, e.g:</p>
+<pre class="highlighted"><code class="vala">stardog <span class="class"><span class="keyword">namespace</span> <span class="title">add</span> --<span class="title">prefix</span> <span class="title">test</span> --<span class="title">uri</span> \
+  '<span class="title">http</span>://<span class="title">example</span>.<span class="title">org</span>/<span class="title">test</span>#' -<span class="title">c</span> <span class="title">snarl</span>://<span class="title">localhost</span>/<span class="title">myDB</span> -<span class="title">u</span> <span class="title">admin</span> -<span class="title">p</span> <span class="title">admin</span></span></code></pre>
+<h3>Installing Annex Middleware</h3>
+<p>Annex is the Linked Data middleware service that connects Stardog Web to Stardog. It must be installed and configured to run on a J2EE container (we recommend Caucho Resin) on the same machine (?) as Stardog (for now).</p>
+<p>Annex is distributed as a single WAR file (<code>annex.war</code>). Simply deploy the WAR file in a servlet container. Typically, this can be accomplished by copying the WAR file into the container's <code>webapps</code> folder and starting the container. Currently, each EGAD application uses its own instance of Annex; therefore, we recommend changing the name of the WAR file in the <code>webapps</code> accordingly:</p>
+<pre class="highlighted"><code class="xml">$ cp <span class="tag">&lt;<span class="title">package_dir</span>&gt;</span>/annex.war <span class="tag">&lt;<span class="title">container_dir</span>&gt;</span>/webapps/annex-<span class="tag">&lt;<span class="title">appname</span>&gt;</span>.war</code></pre>
+<p>In order to be used by an EGAD application, one needs to specify where the data resides as well as provide valid credentials. This information can be specified in the <code>web.xml</code>, by modifying the following properties: </p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.host<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+  <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>localhost:5820<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span></code></pre>
+<p>  <init-param>
+      <param-name>annex.db.repository</param-name>    <!-- name of the Stardog DB -->
+      <param-value>myDB</param-value>
+  </init-param></p>
+<p>  <init-param>
+      <param-name>annex.db.user</param-name>
+      <param-value>admin</param-value>
+  </init-param></p>
+<p>  <init-param>
+      <param-name>annex.db.password</param-name>
+      <param-value>admin</param-value>
+  </init-param></p>
+<h4>Apache Tomcat Notes</h4>
+<ul>
+<li><p>You need to add the following configuration option to the <code>catalina.properties</code> file in <code>&lt;tomcat_dir&gt;/conf/catalina.properties</code></p>
+<pre class="highlighted"><code class="objectivec">  org<span class="variable">.apache</span><span class="variable">.tomcat</span><span class="variable">.util</span><span class="variable">.buf</span><span class="variable">.UDecoder</span><span class="variable">.ALLOW_ENCODED_SLASH</span>=<span class="literal">true</span></code></pre>
+</li>
+<li><p>There is a known tomcat bug in versions <code>&lt; 7.0.30</code>, that happens when tomcat starts and initializes the applications, by which Annex is affected. For more details on the issue, please refer to the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=53535">bug report</a>. In order for annex to work properly with tomcat, please update to the latest version of the container.</p>
+</li>
+</ul>
+<h3>Generating a Stardog Web App</h3>
+<p>Other services provided are: search, schema inspector and query. For more information on the available resources and interfaces in the Annex Platform, please refer to the <a href="http://docs.annex.apiary.io/">API documentation</a>.</p>
+<h3>Configuring Stardog Web</h3>
+<p>Stardog Web's builtin functionality is configured, customized, and (partially) extended by editing the configuration file (usually <code>config.ttl</code> or <code>config.json</code>) in JSON or Turtle.</p>
+<p>The EGAD toolkit receives a configuration file with JSON format, which specifies all the properties and modules to include in the application that it will generate.</p>
+<p>Note that the references to <code>rdf:type</code> URIs in the configuration file can be done according to the <code>namespaces</code> map defined in the same file. These namespaces should be the same (prefix and namespace) as the ones defined in the database in previous steps.</p>
+<p>An example of the configuration file is:</p>
+<pre class="highlighted"><code class="json">{
+    "<span class="attribute">name</span>": <span class="value"><span class="string">"Data.gov EGAD Application"</span></span>,
+    "<span class="attribute">label</span>": <span class="value"><span class="string">"Data.gov"</span></span>,
+    "<span class="attribute">sparqlEndpoint</span>": <span class="value"><span class="string">"http://192.168.69.111:5822/gov/query"</span></span>,
+    "<span class="attribute">apiEndpoint</span>": <span class="value"><span class="string">"http://192.168.69.111:8080/annex-gov/api"</span></span>,
+    "<span class="attribute">editData</span>": <span class="value"><span class="literal">false</span></span>,
+    "<span class="attribute">namespaces</span>": <span class="value">{
+        "<span class="attribute">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span>":<span class="value"><span class="string">"rdf"</span></span>,
+        "<span class="attribute">http://www.w3.org/2000/01/rdf-schema#</span>": <span class="value"><span class="string">"rdfs"</span></span>,
+        "<span class="attribute">http://www.w3.org/2001/XMLSchema#</span>": <span class="value"><span class="string">"xsd"</span></span>,
+        "<span class="attribute">http://www.w3.org/2002/07/owl#</span>": <span class="value"><span class="string">"owl"</span></span>,
+        "<span class="attribute">http://purl.org/dc/elements/1.1/</span>": <span class="value"><span class="string">"dc"</span>
+    }</span></span>,
+    "<span class="attribute">modules</span>": <span class="value">{
+        "<span class="attribute">home</span>": <span class="value">{
+            "<span class="attribute">content</span>": <span class="value"><span class="string">"mycontent/myhome.html"</span>
+        }</span></span>,
+        "<span class="attribute">browse</span>": <span class="value"><span class="literal">true</span></span>,
+        "<span class="attribute">query</span>": <span class="value">{
+            "<span class="attribute">label</span>": <span class="value"><span class="string">"Query Panel"</span></span>,
+            "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/query"</span>
+        }</span></span>,
+        "<span class="attribute">search</span>": <span class="value">{
+            "<span class="attribute">label</span>": <span class="value"><span class="string">"Search"</span></span>,
+            "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/search"</span>
+        }</span></span>,
+        "<span class="attribute">navbar</span>": <span class="value">{
+            "<span class="attribute">items</span>": <span class="value">[ { "<span class="attribute">htmlId</span>":<span class="value"><span class="string">"lientry"</span></span>, "<span class="attribute">label</span>": <span class="value"><span class="string">"Data Entry"</span></span>, "<span class="attribute">type</span>":<span class="value"><span class="string">"browse"</span></span>,"<span class="attribute">using</span>": <span class="value"><span class="string">"dgtwc:DataEntry"</span></span>, "<span class="attribute">icon</span>": <span class="value"><span class="string">"icon-tasks"</span> }</span>
+            ]
+        }</span></span>,
+        "<span class="attribute">footer</span>": <span class="value"><span class="literal">true</span>
+    }</span></span>,
+    "<span class="attribute">collections</span>": <span class="value">{
+        "<span class="attribute">default</span>": <span class="value">{
+            "<span class="attribute">limit</span>": <span class="value"><span class="number">20</span>
+        }</span></span>,
+        "<span class="attribute">dgtwc:DataEntry</span>": <span class="value">{
+            "<span class="attribute">using</span>":<span class="value"><span class="string">"dgtwc:DataEntry"</span></span>,
+            "<span class="attribute">usingLabel</span>":<span class="value"><span class="string">":title"</span>
+        }</span>
+    }</span>
+}</span></code></pre>
+<p>Top level configuration settings should always be present, even if the values are empty objects. The following settings are used for EGAD:</p>
+<p><code>name</code> :: <code>String</code>
+: This is the application name, displayed at the footer of the web application.</p>
+<p><code>label</code> :: <code>String</code>
+: App short label to be displayed at the top left side in the navigation bar.</p>
+<p><code>sparqlEndpoint</code> :: <code>String</code>
+: This is the SPARQL endpoint that will be used to explore the schema and generate the EGAD Web application. This endpoint is also used in the Query Panel (if enabled).</p>
+<p><code>apiEndpoint</code> :: <code>String</code>
+: This is the endpoint used by the client application generated, which is an annex API endpoint, abstracting all data in the RDF repository as a RESTful service using /{collection}/{ind} routes. If deploying to a remote server, make sure <strong>not</strong> to use <code>localhost</code>, since this is sent to the client and the client webapp will try to find all references (to the API) as localhost, instead use the API or server reference.</p>
+<p><code>editData</code> :: <code>Boolean</code>
+: Enables/disables data mutations in the application using add/edit/delete actions.</p>
+<p><code>namespaces</code> :: <code>Object</code>
+: This is a list of namespace : prefix to use, they represent the namespaces used in the data set.</p>
+<p><code>collections</code> :: <code>Object</code>
+: Configurations for collection display.</p>
+<p><code>collections &gt; default</code> :: <code>Object</code>
+: Defines the default configuration for the collection listings.</p>
+<p><code>collections &gt; default &gt; limit</code> :: <code>Number</code>
+: Sets the limit of elements to show in the collection view.</p>
+<p><code>modules</code> :: <code>Object</code>
+: Sets the modules to use in the application, either system modules or custom user modules. Modules can receive a configuration object or just activate them using <code>true</code> value. To deactivate a module just set the value to <code>false</code>.</p>
+<p>Some of the System Modules inclused in EGAD are:</p>
+<ul>
+<li><p>home - Enables content in the homepage of the application. Receives an object with the content attribute refering to a html template to include as home content relative to the app directory, e.g.:</p>
+<pre class="highlighted"><code class="undefined">  "home": {
+      "content": "mycontent/myhome.html"
+  }</code></pre>
+</li>
+<li><p>navbar - Enables top navigation bar in the application. Receives a configuration object specifying the link items which are objects including an <code>htmlId</code> to reference the element, a <code>label</code> to show in the navbar, an <code>using</code> to make the link to the proper collection view and an <code>icon</code> name, based on the icon names included in <a href="http://twitter.github.com/bootstrap/base-css.html#icons">bootstrap</a>; or dropdowns to include, e.g.:</p>
+<pre class="highlighted"><code class="brainfuck">  <span class="comment">"navbar":</span> <span class="comment">{</span>
+      <span class="comment">"items":</span> <span class="title">[</span> <span class="comment">{</span> <span class="comment">"htmlId":"lientry"</span>, <span class="comment">"label":</span> <span class="comment">"Data</span> <span class="comment">Entry"</span>, <span class="comment">"type":"browse"</span>, <span class="comment">"using":</span> <span class="comment">"dgtwc:DataEntry"</span>, <span class="comment">"icon":</span> <span class="comment">"icon</span>-<span class="comment">tasks"</span> <span class="comment">}</span>
+      <span class="title">]</span><span class="string">,</span>
+      <span class="comment">"dropdowns":</span> <span class="title">[</span>
+          <span class="comment">{</span>
+              <span class="comment">"name":</span> <span class="comment">"Queries"</span>,
+              <span class="comment">"icon":</span> <span class="comment">"icon</span>-<span class="comment">filter"</span>,
+              <span class="comment">"items":</span> <span class="title">[</span> <span class="comment">…</span> <span class="title">]</span>
+          <span class="comment">}</span>,
+          <span class="comment">…</span>
+      <span class="title">]</span>
+  <span class="comment">}</span></code></pre>
+<p>  <code>type</code> - refers to a function of a module, in this case, the module browse (the url handler), will be activated by this link with the <code>using</code> attribute as a parameter, so the rendered link in the navbar will be: <code>#!/browse/dgtwc:DataEntry</code></p>
+<p>  The <code>items</code> attribute in the <code>dropdown</code> object takes the same objects as the top level <code>items</code> in navbar.</p>
+</li>
+<li><p>footer - <code>true</code>/<code>false</code> enables or disables the default footer respectively, it can receive a content object same as the home page module.</p>
+</li>
+<li>browse - <code>true</code>/<code>false</code> enables or disables the browsing feature of collections and individuals.</li>
+<li><p>search - <code>true</code>/<code>false</code> enables or disables the text search module, it can receive a configuration object to add a link to the navbar &amp; footer:</p>
+<pre class="highlighted"><code class="json">  {
+      "<span class="attribute">label</span>": <span class="value"><span class="string">"Search"</span></span>,
+      "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/search"</span>
+  }</span></code></pre>
+</li>
+</ul>
+<ul>
+<li><p>query - <code>true</code>/<code>false</code> enables or disables the treebrowser module, it can receive a configuration object to add a link to the navbar &amp; footer:</p>
+<pre class="highlighted"><code class="undefined">  "query": {
+      "label": "Query Panel",
+      "mainUrl": "#!/query"
+  }</code></pre>
+</li>
+</ul>
+<p>You can customize the EGAD application homepage by creating your own content using <a href="http://handlebarsjs.com">Handlebars</a> templating, <a href="http://twitter.github.io/bootstrap/">Bootstrap</a> UI components an a little bit of configuration in your EGAD app configuration file.</p>
+<p>Once you have your homepage content in an *.html file, you can reference it in the configuration file of your application using the content property of the home module, having something like the following section in the configuration file:</p>
+<pre class="highlighted"><code class="r"><span class="keyword">...</span>
+<span class="string">"modules"</span>: {                                        <span class="comment"># the modules section of the configuration file</span>
+    <span class="string">"home"</span>: {                                       <span class="comment"># home module descriptor</span>
+        <span class="string">"content"</span>: <span class="string">"mycontent/somepage.html"</span>        <span class="comment"># reference to the homepage template content, </span>
+    },                                              <span class="comment">#   relative to the configuration file        </span>
+    <span class="keyword">...</span>
+}</code></pre>
+<p>Remember that after any change in the configuration file you need to re-generate your application to make your changes effective, you can use the update command of the EGAD CLI to do this:</p>
+<pre class="highlighted"><code class="sql">$ egad <span class="operator"><span class="keyword">update</span> -j config.js</span></code></pre>
+<p><strong>Note:</strong> the widgets below this section can not be modified unless you dive into the JS code, but that should be configurable in the next EGAD versions.Before starting to create EGAD apps, make sure you have Yeoman 1.0 listed in the <a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a> installed. Once the requirements are installed, you can proceed to create an EGAD app with the following steps:</p>
+<p>Assuming you already have installed the egad distribution as mentioned in <a href="https://github.com/clarkparsia/generator-egad/wiki/Installing-EGAD">Installing EGAD</a>, you can create an EGAD Application using the EGAD CLI:</p>
+<p>Create a new directory <code>&lt;myApp&gt;</code> for your EGAD application.</p>
+<p>  $ mkdir <myapp>
+  $ cd <myapp></myapp></myapp></p>
+<p>Create a configuration file <code>&lt;myApp&gt;/config.js</code> for your EGAD application. An example can be found in <code>&lt;package_dir&gt;/config.js.example</code>. Please refer to the <strong>Configuration</strong> document provided in this package for details.</p>
+<p>Once a configuration file has been created, generate your EGAD app using the EGAD CLI:</p>
+<ul>
+<li><p>Using the Turtle configuration file</p>
+<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad create config.ttl</code></pre>
+</li>
+</ul>
+<p>or</p>
+<ul>
+<li><p>Using the JS configuration file</p>
+<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad create -j config.js</code></pre>
+</li>
+</ul>
+<h1>Testing</h1>
+<p>Once an EGAD application has been created, it can be tested using the <code>run</code> command of the EGAD CLI (make sure Annex &amp; Stardog are up and running):</p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad run</code></pre>
+<h2 id="sd-Updating-the-EGAD-App">Updating the EGAD App</h2>
+<p>If you have made changes to the EGAD app configuration file, to update the application source use the following command: </p>
+<ul>
+<li><p>Using the Turtle configuration file</p>
+<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad update config.ttl</code></pre>
+</li>
+</ul>
+<p>or</p>
+<ul>
+<li><p>Using the JS configuration file</p>
+<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad update -j config.js</code></pre>
+</li>
+</ul>
+<h3>Known Issues</h3>
+<p>Some of the known issues in the current release are:</p>
+<ul>
+<li>Instance edit views have issues when rendering properties with too many values.</li>
+<li>Pelorus is not integrated completely, there's no way to generate a pelorus model from the EGAD toolkit.</li>
+<li>There may be some errors in the web service with data containing bnodes.Annex Platform Services is a RESTful web service that provides a series of abstractions for semantic services. Provides a graph browsing interfaces with common RESTful resources and operations, using JSON-LD as the serialization format, which makes it perfect for MV* JS applications.</li>
+</ul>
+<h2 id="sd-Cleaning-the-application-directory">Cleaning the application directory</h2>
+<p>To clean the application directory, one can use the command:</p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad clean</code></pre>
+<p>Which will delete all EGAD generated files (excluding all configuration &amp; files added by the user).</p>
+<h1>Deploying</h1>
+<p>An optimized version of the appication (CSS &amp; JS minified/optimized) can be obtained by running</p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myAppp</span>&gt;</span>$ egad build</code></pre>
+<p>Once a <code>dist</code> directory is created, it can be deployed in any web server since it contains only static files - HTML, JavaScript, CSS and images.
+Before creating EGAD modules, make sure you have Yeoman 1.0 listed in the <a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a> installed. Once the requirements are installed, you can proceed to create an EGAD module with the following steps:</p>
+<p>Assuming you already have installed the egad distribution as mentioned in <a href="https://github.com/clarkparsia/generator-egad/wiki/Installing-EGAD">Installing EGAD</a>, you can create an EGAD module using the EGAD CLI. Usually modules are created once you already have created an application using an EGAD configuration file, this provides the testing environment for you module, if you haven't created an application yet, please refer to the <em>Creating an EGAD App</em> document.</p>
+<p>In the application directory, execute the command:</p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myapp</span>&gt;</span>$ egad module <span class="tag">&lt;<span class="title">mymodule</span>&gt;</span></code></pre>
+<p>Where <mymodule> is the name of your module within the EGAD application. This will create the basic stubs for an EGAD module, providing the structure for your module code. It also creates a set of configurations for you to include in the main EGAD application configuration file.
+If your configuration file is named <code>egad.json</code>, the tool will automatically append the configuration settings of the new module to the configuration file, like the following:</mymodule></p>
+<pre class="highlighted"><code class="undefined">"mymodule": {
+    "code": "modules/mymodule/code",
+    "templates": "modules/mymodule/template"
+}</code></pre>
+<p>If your configuration file is named different, the configuration settings of the module will be stored in a module configuration file named <code>mymodule.json</code>. Note that for now, the content of this configuration file MUST be added manually to the <code>modules</code> section in the main app configuration file. In the future we‘ll provide support for module specific configuration files and you’ll be able to reference them from the main app configuration file.</p>
+<p>Modules files are created under the <code>modules</code> directory that, if not present, will be created in the root of your EGAD application directory, for example, the directory tree will be similar to:</p>
+<pre class="highlighted"><code class="objectivec">modules/
+└── mymodule
+    ├── code
+    │   ├── main-view<span class="variable">.js</span>
+    │   └── main<span class="variable">.js</span>
+    ├── mymodule<span class="variable">.json</span>
+    └── template
+        └── main<span class="variable">.html</span></code></pre>
+<h3>Generated module files</h3>
+<p>The module scafolding tool generates the following files as showed in the previous directory tree:</p>
+<ul>
+<li><p><code>modules/mymodule/code/main.js</code>: this file is the main module descriptor, it defines the module object in terms of the EGAD Framework, which lets the EGAD app detect and register the module for its use.</p>
+<pre class="highlighted"><code class="coffeescript">  define([
+    <span class="string">"jquery"</span>,
+    <span class="string">"underscore"</span>,
+    <span class="string">"egad"</span>,
+    <span class="string">"api"</span>,
+
+    <span class="string">"mymodule/main-view"</span>
+  ], 
+
+  <span class="reserved">function</span>($, _, egad, api, MainView) {
+
+    <span class="reserved">var</span> mymoduleModule = egad.api.Module.extend({
+      name: <span class="string">"mymodule"</span>,
+
+      routes: {
+        <span class="string">"!/mymodule"</span>: <span class="string">"routeHandler"</span>
+      },
+
+      <span class="regexp">//</span> Module initialization <span class="reserved">function</span>.
+      <span class="regexp">//</span> Executed <span class="keyword">when</span> the module <span class="keyword">is</span> loaded <span class="keyword">in</span> the application.
+      initialize: <span class="reserved">function</span> () {
+        console.log(<span class="string">"mymodule initialized!"</span>);
+      },
+
+      <span class="regexp">//</span> Module route handler <span class="reserved">function</span>.
+      routeHandler: <span class="reserved">function</span> () {
+        console.log(<span class="string">'mymodule runs!'</span>);
+
+        <span class="regexp">//</span> render a main view
+        <span class="reserved">var</span> mainView = <span class="keyword">new</span> MainView();
+        $(<span class="string">'.pageContainer'</span>).html(mainView.$el);
+        mainView.render();
+      }
+
+    });
+
+    <span class="keyword">return</span> <span class="keyword">new</span> mymoduleModule();
+  });</code></pre>
+</li>
+<li><p><code>modules/mymodule/code/main-view.js</code>: defines a sample of a Backbone view that is used in the module, just as an example of how you can load views when using the application routes defined by the module.</p>
+<pre class="highlighted"><code class="javascript">  define([
+    <span class="string">"jquery"</span>,
+    <span class="string">"underscore"</span>,
+    <span class="comment">// Application</span>
+    <span class="string">"egad"</span>,
+    <span class="string">"egad.config"</span>,
+    <span class="string">"api"</span>,
+
+    <span class="comment">// Other module deps</span>
+    <span class="string">"alerts"</span>,
+
+    <span class="string">"bootstrap"</span>,
+    <span class="string">"handlebars.helpers"</span>
+  ], 
+
+  <span class="keyword">function</span>($, _, egad, egadConfig, api, Alerts) {
+
+    <span class="keyword">var</span> MainView = Backbone.View.extend({
+      template: <span class="string">"mymodule/main"</span>,
+      tagName: <span class="string">"div"</span>,
+      id: <span class="string">"mymodule"</span>,
+
+      initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        _.bindAll(<span class="keyword">this</span>);
+      },
+
+      serialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
+        <span class="keyword">if</span> (<span class="keyword">this</span>.model) {
+          <span class="keyword">return</span> <span class="keyword">this</span>.model.toJSON();
+        } <span class="keyword">else</span> {
+          <span class="keyword">return</span> {};
+        }
+      }
+    });
+
+    <span class="keyword">return</span> MainView;
+
+  });</code></pre>
+</li>
+<li><p><code>modules/mymodule/template/main.html</code>: handlebars HTML template used by the Backbone view in main-view.js.</p>
+<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span12 module"</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>mymodule content - html Handlebars template!<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
+  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+</li>
+<li><p><code>modules/mymodule/mymodule.json</code>: module configuration settings to be added in the main EGAD application configuration file.</p>
+<pre class="highlighted"><code class="json">  {
+    "<span class="attribute">code</span>": <span class="value"><span class="string">"modules/mymodule/code"</span></span>,
+    "<span class="attribute">templates</span>": <span class="value"><span class="string">"modules/mymodule/template"</span>
+  }</span></code></pre>
+</li>
+</ul>
+<h2 id="sd-Adding-your-own-module-code">Adding your own module code</h2>
+<p>The only EGAD specific bits of code are in <code>main.js</code>, defining the EGAD module, and the structure is pretty much the same as a <a href="http://backbonejs.org/#Router">Backbone.js Router</a>. An EGAD module follows the structure of a <a href="http://requirejs.org/docs/api.html#packages">Require.js</a> package.</p>
+<p>The require.js configuration of the EGAD appplication can be found in the application tree in the file: <code>app/scripts/config.js</code>. You can see there how all the libraries and tools are defined to be loaded in the application.</p>
+<h3>EGAD API</h3>
+<p>You can find the EGAD api in the file <code>app/scripts/egad.js</code> of your application directory. This API defines the Module API and some other bits of application registry and module coordination via a asynch mediator.</p>
+<h3>Annex API</h3>
+<p>In order to retrive information from the Annex platform, you need to use the <code>api.js</code> code. Which defines tools to query the Annex endpoints based on the Annex RESTful internface. For more details on the Annex API, please refer to the <em>Middleware</em> document.</p>
+<p>We use the <code>bootstrap</code>-based color-scheme <a href="https://github.com/rriepe/1pxdeep">framework</a> for customizing the look and feel of the EGAD apps. In order to build and apply a customized version of <code>bootstrap.css</code>, use the attached <code>LESS</code> project and follow these steps:</p>
+<ol>
+<li><p>Download <code>recess</code> via npm:</p>
+<pre class="highlighted"><code class="nginx"> <span class="title">npm</span> install recess</code></pre>
+</li>
+<li><p>Compile <code>styles.less</code> with <code>recess</code>:</p>
+<pre class="highlighted"><code class="brainfuck"> <span class="string">.</span><span class="comment">/node_modules/</span>.<span class="comment">bin/recess</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="comment">styles</span>.<span class="comment">less</span> &gt; <span class="comment">bootstrap</span>.<span class="comment">css</span></code></pre>
+</li>
+<li><p>Replace <code>app/styles/bootstrap.css</code> with your newly compiled version of <code>bootstrap.css</code>.This page describes the required steps to start contributing to the project, how to develop new features and create/run test cases.</p>
+</li>
+</ol>
+<p>In order to start development on EGAD, such as adding new build targets or adding files on the templates to create a base web application, you need the following:</p>
+<ol>
+<li>Install the <a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a></li>
+<li>Git clone the <a href="https://github.com/clarkparsia/generator-egad">EGAD Repository</a> <code>git clone https://github.com/clarkparsia/generator-egad.git</code></li>
+<li>Once you have the EGAD Repository locally, <code>cd</code> to it and execute <code>npm install</code> to download all the development dependencies.</li>
+<li>Run the test cases with the command: <code>npm test</code></li>
+</ol>
+<h2 id="sd-Generator-Structure">Generator Structure</h2>
+<p>The EGAD Generator follows the structure of a Yeoman Generator API v2.0, in which targets are defined for scafolding a web application. Usually there's an <code>app</code> target, which could take a set of arguments (defined by the generator) and generate the required files for the web application using a <a href="https://github.com/clarkparsia/generator-egad/wiki/Web-Stack">Web Stack</a>.</p>
+<p>The structure of the EGAD Generator is the following:</p>
+<pre class="highlighted"><code class="brainfuck"><span class="literal">-</span> <span class="comment">app/</span>                        &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">generator</span> <span class="comment">'all'</span> <span class="comment">target</span> <span class="comment">(generates</span> <span class="comment">all</span> <span class="comment">the</span> <span class="comment">webapp)</span>
+    <span class="literal">-</span> <span class="comment">index</span>.<span class="comment">js</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">main</span> <span class="comment">executor</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">all</span> <span class="comment">target</span>, <span class="comment">defines</span> <span class="comment">operations</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">all</span> <span class="comment">task</span> <span class="comment">generator</span>
+    <span class="literal">-</span> <span class="comment">USAGE</span>                    &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">descriptive</span> <span class="comment">information</span> <span class="comment">on</span> <span class="comment">how</span> <span class="comment">to</span> <span class="comment">use</span> <span class="comment">the</span> <span class="comment">all</span> <span class="comment">task</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">generator</span>
+    <span class="literal">+</span> <span class="comment">templates</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">contents</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">web</span> <span class="comment">application</span>, <span class="comment">usually</span> <span class="comment">template</span> <span class="comment">to</span> <span class="comment">be</span> <span class="comment">filed</span> <span class="comment">by</span> <span class="comment">the</span> <span class="comment">generator</span>
+<span class="literal">-</span> <span class="comment">sparql</span>                    &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">utility</span> <span class="comment">module</span> <span class="comment">to</span> <span class="comment">query</span> <span class="comment">SPARQL</span> <span class="comment">endpoints</span>
+    <span class="literal">-</span> <span class="comment">sparqlClient</span>.<span class="comment">js</span>        &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">main</span> <span class="comment">JS</span> <span class="comment">file</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">SPARQL</span> <span class="comment">Client</span> <span class="comment">module</span>
+<span class="literal">-</span> <span class="comment">test</span>                        
+    <span class="literal">-</span> <span class="comment">test</span>-<span class="comment">egad</span>.<span class="comment">js</span>            &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">EGAD</span> <span class="comment">generator</span> <span class="comment">test</span> <span class="comment">cases</span>
+    <span class="literal">-</span> <span class="comment">test</span>-<span class="comment">sparql</span>.<span class="comment">js</span>        &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">SPARQL</span> <span class="comment">module</span> <span class="comment">test</span> <span class="comment">cases</span>
+<span class="literal">-</span> <span class="comment">type</span>
+    <span class="literal">-</span> <span class="comment">index</span>.<span class="comment">js</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">generator</span> <span class="comment">'type'</span> <span class="comment">target</span> <span class="comment">(scafolding</span> <span class="comment">a</span> <span class="comment">rdf:type</span> <span class="comment">in</span> <span class="comment">a</span> <span class="comment">already</span> <span class="comment">existing</span> <span class="comment">web</span> <span class="comment">app)</span>
+<span class="literal">-</span> <span class="string">.</span><span class="comment">gitignore</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">gitignore</span> <span class="comment">file</span>
+<span class="literal">-</span> <span class="comment">README</span>.<span class="comment">md</span>                    &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">README</span>
+<span class="literal">-</span> <span class="comment">config</span>.<span class="comment">js</span>.<span class="comment">example</span>            &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">example</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">configuration</span> <span class="comment">file</span> <span class="comment">to</span> <span class="comment">use</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">'all'</span> <span class="comment">target</span> <span class="comment">generator</span>
+<span class="literal">-</span> <span class="comment">package</span>.<span class="comment">json</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">NPM</span> <span class="comment">package</span> <span class="comment">description</span> <span class="comment">file</span></code></pre>
+<h2 id="sd-Sections">Sections</h2>
+<h3>Project docs</h3>
+<ul>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Roadmap">Roadmap</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Changelog">Changelog</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Known-Issues">Known Issues</a></li>
+</ul>
+<h3>Using EGAD</h3>
+<ul>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Installation-Package">Installation Package</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Configuration">Configuration</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Creating-an-EGAD-App">Creating an EGAD App</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Creating-an-EGAD-Module">Creating an EGAD Module</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Configure-Homepage">Configure Homepage</a></li>
+</ul>
+<h3>Development on EGAD</h3>
+<ul>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Web-Stack">Web Stack</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Development">Development</a></li>
+<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Middleware">Middleware</a></li>
+</ul>
+<p>[1] <a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html">http://yeoman.io/generators.html</a></a>In the following, we assume the <code>egad-0.x.x.zip</code> distribution file has been decompressed into the <code>&lt;package_dir&gt;</code> directory.</p>
+<h3>“Basic Features”</h3>
+<p><em>Generator</em>
+<em> Use a configuration file (JSON)
+</em> Generation of Web app by SPARQL endpoint</p>
+<p><em>Client App</em>
+<em> Browsing data read only (collections and individuals)
+</em> App Modules/Services: pelorus, search (not typed yet), Query Panel
+* Home page/Main panel (some basic widgets to define)</p>
+<p><em>Middleware</em>
+<em> Search interface with paging (/search/{term}/p/{page})
+</em> Browsing interface (/rdf:type, /rdf:type/:ind, /resource/:ind)
+* SPARQL Proxy (/evaluate?query={query})</p>
+<h3>“Improvements &amp; Service Generalization”</h3>
+<p><em>Client App</em>
+<em> Generation of Web app based on data in an RDF file
+</em> Editions (add, edit, remove) on individuals
+<em> Typed search
+</em> More complex homepage / Main panel
+* Customizable views of individuals per rdf:type (setting it in the config file). By default show everything</p>
+<p><em>Middleware</em>
+<em> Ability to set a RDF file as the data source (using stardog embedded or other technique)
+</em> Generalize middleware (this will bring the ability to generate web apps all in a common service)</p>
+<h3>“Security”</h3>
+<p><em>Client App</em>
+* Security based on middleware service Authentication / Authorization</p>
+<p><em>Middleware</em>
+* Authentication / Authorization using a compatible source (using OpenAZ)</p>
+<h3>“Cloud Service” ??</h3>
+<p><em>— TBD —</em></p>
+<p>Features will include all necessary changes to run EGAD gen as a Cloud based services, to generate webapps/repositories on demand.This page describes all the technologies used for the web development included in EGAD generated apps. EGAD web apps are based in a MV* HTML5 web stack, following the single page pattern, in which all the application is state aware in the client side, using JavaScript all over the place.</p>
+<h2 id="sd-Change-Log">Change Log</h2>
+<h3>v0.4.5</h3>
+<ul>
+<li>Added - Beta support of custom CSS themes using less</li>
+<li>Fixed - Paging in property values on instance views</li>
+<li>Fixed - Support for *.ttl configuration files (RDF Turtle)</li>
+<li>Fixed - egad-build cli task to build the minified and optimized application code</li>
+</ul>
+<h3>v0.4</h3>
+<ul>
+<li>Added - Extensibility API for EGAD</li>
+<li>Added - Modular refactor of all functionality</li>
+<li>Modified - Improved search results in search module</li>
+<li>Added - Better validation on instance views for browse module when editing information</li>
+<li>Fixed - Displaying collections based on used properties by individuals</li>
+<li>Added - Better handling of ObjectProperties with references to URIs without triples in the store</li>
+<li>Added - Showing localname of URIs in the UI when no label has been found</li>
+<li>Added - Properties with no label can now be added in the edit individual view</li>
+<li>Added - Reasoning (on-test)</li>
+</ul>
+<h3>v0.3</h3>
+<ul>
+<li>Added - SchemaBrowser widget</li>
+<li>Added - TreeBrowser module for navigating instance data as a tree</li>
+<li>Added - support for Turtle configuration files &amp; EGAD configuration vocabulary in addition to already supported JS configuration files</li>
+<li>Modified - Improved performance in middleware services</li>
+<li>Added - Data mutation operations (add/edit/delete)</li>
+<li>Added - Better handling of URIs &amp; data without namespaces</li>
+</ul>
+<h3>v0.2</h3>
+<ul>
+<li>Data mutation operations (add/edit/delete)</li>
+<li>Bug fixing &amp; stabilization</li>
+<li>Removing some unnecessary dependencies</li>
+<li>Added class on instance view</li>
+</ul>
+<h3>v0.1</h3>
+<ul>
+<li>First read only version</li>
+<li>Browsing through Collections &amp; Instances</li>
+<li>Configuration file in JS</li>
+<li>SPARQL Query panel</li>
+<li>Text search</li>
+</ul>
+
+          </div>
+        </div>
+
+    </div>
+
+      <div id="root"><div id="root_footer"></div></div>
+
+    <div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <!-- follow us on Twitter -->
+              <!-- docpad services plugin thingie -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Stardog Web</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.0.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </div>
+        </div>
+      </section>
+    </div>
+
+  </div>
+
+
+</body>
+
+</html>

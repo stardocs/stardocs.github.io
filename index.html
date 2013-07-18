@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 1.2.3 Docs: Stardog Docs</title>
+  <title>Stardog 2.0.0 Docs: Stardog Docs</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset='utf-8'>
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0"/>
@@ -35,18 +35,17 @@
           <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
             <img id="thelogo" src="http://docs.stardog.com/img/sd.png"/>
             
-              <!-- FIXME: this needs to check where we're being called from to work... -->
-
+              <!-- 
 	<h3 id="tochead">Contents</h3>
-
+ -->
 
 
 
 <ul class="sidebar-nav">
     
     <!-- [data-target='-->
-        <li><a href="#sd-Introduction" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introduction">Introduction</a>
-        <!-- <li><a href="#sd-Introduction" class="skiplink">Introduction</a> -->
+        <li><a href="#sd-Introducing-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introducing-Stardog">Introducing Stardog</a>
+        <!-- <li><a href="#sd-Introducing-Stardog" class="skiplink">Introducing Stardog</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -57,8 +56,8 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-The-Essential-Documentation" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-The-Essential-Documentation">The Essential Documentation</a>
-        <!-- <li><a href="#sd-The-Essential-Documentation" class="skiplink">The Essential Documentation</a> -->
+        <li><a href="#sd-Using-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Using-Stardog">Using Stardog</a>
+        <!-- <li><a href="#sd-Using-Stardog" class="skiplink">Using Stardog</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -69,8 +68,44 @@
         </li>
     
     <!-- [data-target='-->
-        <li><a href="#sd-Acknowledgments" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Acknowledgments">Acknowledgments</a>
-        <!-- <li><a href="#sd-Acknowledgments" class="skiplink">Acknowledgments</a> -->
+        <li><a href="#sd-Administering-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Administering-Stardog">Administering Stardog</a>
+        <!-- <li><a href="#sd-Administering-Stardog" class="skiplink">Administering Stardog</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Programming-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Programming-Stardog">Programming Stardog</a>
+        <!-- <li><a href="#sd-Programming-Stardog" class="skiplink">Programming Stardog</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-Understanding-Stardog" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Understanding-Stardog">Understanding Stardog</a>
+        <!-- <li><a href="#sd-Understanding-Stardog" class="skiplink">Understanding Stardog</a> -->
+            
+                
+<ul class="sidebar-nav">
+    
+</ul>
+
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li><a href="#sd-The-Man-Pages" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-The-Man-Pages">The Man Pages</a>
+        <!-- <li><a href="#sd-The-Man-Pages" class="skiplink">The Man Pages</a> -->
             
                 
 <ul class="sidebar-nav">
@@ -90,7 +125,6 @@
               </p>
             
           </nav>
-        <!-- <h4><a class="iconlinks" href="/"><i class="icon-home"></i></a><a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000"><i class="icon-publish"></i></a></h4> -->
         </div>
 
         <div class="eight columns">
@@ -102,7 +136,9 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <h2 id="sd-Introduction">Introduction</h2>
+            <p>This is documentation for Stardog 2.0.0 (31 August 2013). Check
+out the <a href="/RELEASE_NOTES.txt">release notes</a>.</p>
+<h2 id="sd-Introducing-Stardog">Introducing Stardog</h2>
 <p>Stardog is a fast, lightweight, commercial RDF
 database for mission-critical apps: it supports <a href="http://www.w3.org/TR/2012/WD-sparql11-query-20120105/">SPARQL
 1.1</a>; HTTP
@@ -118,11 +154,33 @@ Overflow</a> using the tag <em>stardog</em>.</p>
 <h3>Contributing</h3>
 <p>There are several open source components of Stardog; feel free to submit
 pull requests: <a href="https://github.com/clarkparsia/stardog-docs">stardog-docs</a>, <a href="https://github.com/clarkparsia/stardog.js">stardog.js</a>, <a href="https://github.com/clarkparsia/stardog-groovy">stardog-groovy</a>, <a href="https://github.com/clarkparsia/stardog-spring">stardog-spring</a>, and <a href="https://github.com/antoniogarrote/stardog-rb">stardog.rb</a>.</p>
-<h2 id="sd-The-Essential-Documentation">The Essential Documentation</h2>
-<p>This is documentation for Stardog 1.2.3 (11 June 2013). Check
-out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">FAQ</a>.</p>
-<h3><a href="/quick-start">Quick Start Guide</a></h3>
-<p>Instructions to get up-and-running very quickly with Stardog.</p>
+<h3>Acknowledgments</h3>
+<p>Thanks to all Stardog users, contributors, testers, etc., especially Robert Butler, Al Baker, Marko A. Rodriguez, Brian Sletten, Alin Dreghiciu, Rob Vesse, Stephane
+Fallah, John “New Model Army” Goodwin, José Devezas, Chris
+Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
+Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
+Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley.</p>
+<h2 id="sd-Using-Stardog">Using Stardog</h2>
+<p>Stardog basics include SPARQL query, search, reading, writing, etc.</p>
+<h3><a href="/quick-start/">Quick Start Guide</a></h3>
+<p>Covers basic installation and starting a Stardog Server in five easy steps.</p>
+<h3><a href="/using/">Query, Search, Add, Remove</a></h3>
+<ol>
+<li><a href="/using/#query">Querying a Database</a></li>
+<li><a href="/using/#add-remove">Adding and Removing</a></li>
+<li><a href="/using/#export">Exporting a Database</a></li>
+<li><a href="/using/#search">Searching</a></li>
+</ol>
+<h3><a href="/console/">Using the Stardog Console</a></h3>
+<ol>
+<li>Accessing Stardog Console</li>
+<li>Managing Stardog with the Console</li>
+<li>SPARQL Query</li>
+<li>Data Management</li>
+<li>HTTP Services</li>
+</ol>
+<h2 id="sd-Administering-Stardog">Administering Stardog</h2>
+<p>Administering Stardog Server, databases, including configuration and deployment information.</p>
 <h3><a href="/admin/">Administration</a></h3>
 <ol>
 <li><a href="/admin/#cli">CLI Overview</a></li>
@@ -134,21 +192,15 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 <li><a href="/admin/#resource-requirements">Resource Requirements for Stardog</a></li>
 <li><a href="/admin/#using-windows">Using Stardog on Windows</a></li>
 </ol>
-<h3><a href="/using/">Using Stardog</a></h3>
-<ol>
-<li><a href="/using/#using-stardog">Using Stardog</a></li>
-<li><a href="/using/#query">Querying a Database</a></li>
-<li><a href="/using/#add-remove">Adding and Removing</a></li>
-<li><a href="/using/#export">Exporting a Database</a></li>
-<li><a href="/using/#search">Searching</a></li>
-</ol>
-<h3><a href="/security">Security</a></h3>
+<h4><a href="/security">Security</a></h4>
 <ol>
 <li><a href="/security/#model">The User &amp; Security Model</a></li>
 <li><a href="/security/#cli">Command-line Interface</a></li>
 <li><a href="/security/#api">Programmatic Access</a></li>
 <li><a href="/security/#deployment">Deploying Stardog Securely</a></li>
 </ol>
+<h2 id="sd-Programming-Stardog">Programming Stardog</h2>
+<p>Everything from reasoning, data validation, and SPARQL to programming Stardog with Java, JavaScript, and many other languages. Includes the documentation for Stardog Web.</p>
 <h3><a href="/icv">Integrity Constraint Validation</a></h3>
 <ol>
 <li><a href="/sdp/#intro">Background &amp; Terminology</a></li>
@@ -162,6 +214,7 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 <li><a href="/owl2/#guidelines">Guidelines</a></li>
 <li><a href="/owl2/#query">Technical Background</a></li>
 </ol>
+<h3><a href="/web/">Building Stardog Web Apps</a></h3>
 <h3><a href="/java/">Programming with Java</a></h3>
 <ol>
 <li><a href="/java/#intro">Introduction</a></li>
@@ -176,13 +229,13 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 <li><a href="/java/#pool">Connection Pooling</a></li>
 <li><a href="/java/#deprecation">Deprecation &amp; Backward Compatibility</a></li>
 </ol>
-<h3><a href="/network/">Network Programming</a></h3>
+<h4><a href="/http/">HTTP Programming</a></h4>
 <ol>
 <li><a href="/network/#http">SPARQL Protocol: HTTP</a></li>
 <li><a href="/network/#extended-http">Extended HTTP Protocol</a></li>
 <li><a href="/network/#snarl">SNARL: The Native Stardog Remote API</a></li>
 </ol>
-<h3><a href="/spring">Programming with Spring</a></h3>
+<h4><a href="/spring">Programming with Spring</a></h4>
 <ol>
 <li><a href="/spring/#intro">Introduction</a></li>
 <li><a href="/spring/#building">Building Spring for Stardog</a></li>
@@ -191,15 +244,17 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 <li><a href="/spring/#batch">Spring Batch</a></li>
 <li><a href="/spring/#examples">Examples</a></li>
 </ol>
-<h3><a href="/groovy/">Programming with Groovy</a></h3>
+<h4><a href="/groovy/">Programming with Groovy</a></h4>
 <ol>
 <li><a href="/groovy/#intro">Introduction</a></li>
 <li><a href="/groovy/#building">Building Groovy for Stardog</a></li>
 <li><a href="/groovy/#overview">Overview</a></li>
 <li><a href="/groovy/#examples">Examples</a></li>
 </ol>
-<h3><a href="http://clarkparsia.github.io/stardog.js/">Programming with Javascript</a></h3>
+<h4><a href="http://clarkparsia.github.io/stardog.js/">Programming with Javascript</a></h4>
 <p>The documentation for <a href="http://clarkparsia.github.io/stardog.js">stardog.js</a>, which is available on <a href="https://github.com/clarkparsia/stardog.js">Github</a> and <a href="">npm</a>.</p>
+<h2 id="sd-Understanding-Stardog">Understanding Stardog</h2>
+<p>Background information on tuning, known issues, compatibility policies, etc.</p>
 <h3><a href="/performance">Stardog Performance: Benchmarks, Tuning, Tips</a></h3>
 <ol>
 <li>RDF Loading</li>
@@ -215,32 +270,25 @@ out the <a href="/RELEASE_NOTES.txt">release notes</a> and the <a href="/faq/">F
 the 1.0 release.</p>
 <h3><a href="/known-issues">Known Issues</a></h3>
 <p>Everything we know about that sucks.</p>
-<h3>Man Pages</h3>
-<h4><code>stardog-admin</code></h4>
-<ul>
-<li><code>db copy</code>, <code>db create</code>, <code>db drop</code>, <code>db list</code>, <code>db migrate</code>, <code>db offline</code>, <code>db online</code>, <code>db optimize</code>, <code>db status</code></li>
-<li><code>icv add</code>, <code>icv drop</code>, <code>icv remove</code></li>
-<li><code>metadata get</code>, <code>metadata set</code></li>
-<li><code>query kill</code>, <code>query list</code>, <code>query status</code></li>
-<li><code>role add</code>, <code>role grant</code>, <code>role list</code>, <code>role permission</code>, <code>role remove</code>, <code>role revoke</code></li>
-<li><code>server start</code>, <code>server stop</code></li>
-<li><code>user add</code>, <code>user disable</code>, <code>user enable</code>, <code>user addrole</code>, <code>user removerole</code>, <code>user grant</code>, <code>user list</code>, <code>user passwd</code>, <code>user permission</code>, <code>user remove</code>, <code>user revoke</code></li>
-</ul>
-<h3><code>stardog</code></h3>
-<ul>
+<h2 id="sd-The-Man-Pages">The Man Pages</h2>
+<h3><code>stardog</code> CLI</h3>
+<ol>
 <li><code>data add, data export, data remove, data size.</code></li>
 <li><code>icv convert, icv validate.</code></li>
 <li><code>namespace add, namespace list, namespace remove.</code></li>
 <li><code>query execute, query explain, query search.</code></li>
 <li><code>reasoning consistency, reasoning explain.</code></li>
-</ul>
-<h2 id="sd-Acknowledgments">Acknowledgments</h2>
-<p>Thanks to all the Stardog testers, especially Robert Butler, Al Baker,
-Marko A. Rodriguez, Brian Sletten, Alin Dreghiciu, Rob Vesse, Stephane
-Fallah, John “New Model Army” Goodwin, José Devezas, Chris
-Halaschek-Wiener, Gavin Carothers, Brian Panulla, Ryan Kohl, Morton
-Swimmer, Quentin Reul, Paul Dlug, James Leigh, Alex Tucker, Ron
-Zettlemoyer, Jim Rhyne, Andrea Westerinen, Huy Phan, Zach Whitley.</p>
+</ol>
+<h3><code>stardog-admin</code> CLI</h3>
+<ol>
+<li><code>db copy</code>, <code>db create</code>, <code>db drop</code>, <code>db list</code>, <code>db migrate</code>, <code>db offline</code>, <code>db online</code>, <code>db optimize</code>, <code>db status</code>
+1.<code>icv add</code>, <code>icv drop</code>, <code>icv remove</code></li>
+<li><code>metadata get</code>, <code>metadata set</code></li>
+<li><code>query kill</code>, <code>query list</code>, <code>query status</code></li>
+<li><code>role add</code>, <code>role grant</code>, <code>role list</code>, <code>role permission</code>, <code>role remove</code>, <code>role revoke</code></li>
+<li><code>server start</code>, <code>server stop</code></li>
+<li><code>user add</code>, <code>user disable</code>, <code>user enable</code>, <code>user addrole</code>, <code>user removerole</code>, <code>user grant</code>, <code>user list</code>, <code>user passwd</code>, <code>user permission</code>, <code>user remove</code>, <code>user revoke</code></li>
+</ol>
 
           </div>
         </div>
