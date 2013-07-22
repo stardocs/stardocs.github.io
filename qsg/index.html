@@ -19,13 +19,13 @@ evaluation copy of Stardog or with a licensed copy. into place:</p>
 process.</p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces—on ports 5820 and 5822, respectively.</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog-admin server start</code></pre>
+<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog-admin server start</span></code></pre>
 <p>Fourth, create a database with an input file; use the <code>--server</code>
 parameter to specify which server:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="string">.</span><span class="comment">/stardog</span>-<span class="comment">admin</span> <span class="comment">db</span> <span class="comment">create</span> <span class="literal">-</span><span class="comment">n</span> <span class="comment">myDB</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">D</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">admin</span> <span class="comment">examples/data/University0_0</span>.<span class="comment">owl</code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="string">.</span><span class="comment">/stardog</span>-<span class="comment">admin</span> <span class="comment">db</span> <span class="comment">create</span> <span class="literal">-</span><span class="comment">n</span> <span class="comment">myDB</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">D</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">admin</span> <span class="comment">examples/data/University0_0</span>.<span class="comment">owl</span></code></pre>
 <p>Fifth, optionally, admire the pure RDF bulk loading power…woof!</p>
 <p>Sixth, query the database:</p>
-<pre class="highlighted"><code class="sql">$ ./stardog query myDB "<span class="operator"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> ?s <span class="keyword">WHERE</span> { ?s ?p ?o } LIMIT <span class="number">10</span><span class="string">"</code></pre>
+<pre class="highlighted"><code class="sql">$ ./stardog query myDB "<span class="operator"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> ?s <span class="keyword">WHERE</span> { ?s ?p ?o } LIMIT <span class="number">10</span><span class="string">"</span></span></code></pre>
 <h1>Notes {.fn}</h1>
 <p><a href="#" title="Back to top">⌂</a></p>
 <p>For comments, questions, or to report problems with this page, please
