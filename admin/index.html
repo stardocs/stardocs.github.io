@@ -144,9 +144,8 @@
           
           <div id="mdblock">
             <p>In this chapter we describe the administration of Stardog Server and
-Stardog databases, including how to use the various
-Stardog command-line programs and how to configure a Stardog Server and
-its databases. Security is an important part of Stardog administration; it's
+Stardog databases, including the various
+Stardog command-line programs, configuration options, etc. Security is an important part of Stardog administration; it's
 discussed in a separate <a href="../security">chapter</a>.</p>
 <h2 id="sd-Command-Line-Interface">Command Line Interface</h2>
 <p>Stardog's command-line interface (CLI) comes in two parts:</p>
@@ -659,12 +658,15 @@ parameters and options depending on anticipated workloads, data
 modeling, and other factors.</p>
 <p>See <code>stardog-admin help db create</code> for all the details including
 examples.</p>
-<h3>Database Archetypes</h3>
-<div class="metro label primary">New in 2.0</div>
-
-<p><div class="metro large btn warning"><a href="#">@FIXME</a></div>: these sections (and the underlying functionality) should be merged for Stardog 2.0</p>
+<h3>Database Archetypes <div class="metro label primary">New in 2.0</div></h3>
+<p>Stardog database archetypes are a new feature in 2.0. A database archetype is a named, vendor-defined or user-defined bundle of data and functionality to be applied at database-creation time. Archetypes are primarily for supporting various data standards or toolchain configurations in a simple way.</p>
+<p>For example, the <a href="">SKOS</a> standard from W3C defines an OWL vocabulary for building taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints, some kinds of reasoning, and (typically) some SPARQL queries. If you are developing an app that uses SKOS and Stardog, without the archetype feature, you are responsible for assembling all that SKOS stuff yourself. Which is tedious, error-prone, and not very rewarding even when it's done right.</p>
+<p>Rather than putting that burden on Stardog users, we've created database archetypes as a mechanism to collect these “bundles of stuff” which, as a developer, you can then simply attach to a particular database.</p>
+<p>The last point to make is that archetypes are composable: you can mix-and-match them at database creation time as needed.</p>
+<p>In the 2.0 release, we're supporting three database archetypes: <a href="">PROV</a>, <a href="">SKOS</a>, and <a href="">Stardog Web</a>.</p>
 <h4>Stardog Web Archetype</h4>
 <h4>SKOS Archetype</h4>
+<p>The SKOS archetype is for databases that will contain SKOS data, …</p>
 <h4>PROV Archetype</h4>
 <h3>Database Creation Templates</h3>
 <p>As a boon to the overworked admin or devops peeps, Stardog Server
@@ -1060,7 +1062,39 @@ prudent as it will tend to increase Garbage Collection (GC) time in the
 JVM.</p>
 <p>The following table shows minimum recommended JVM memory and system
 memory requirements for Stardog:</p>
-<p><div class="metro large btn warning"><a href="#">@FIXME</a></div> — missing a table</p>
+<table dir="ltr" border="1" cellspacing="0" cellpadding="2" summary="Stardog memory usage">
+      <thead>
+        <tr>
+          <th># triples</th>
+          <th>JVM memory</th>
+          <th>System memory</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10 million</td>
+          <td>2GB</td>
+          <td>4GB</td>
+        </tr>
+        <tr>
+          <td>100 million</td>
+          <td>3GB</td>
+          <td>8GB</td>
+        </tr>
+        <tr>
+          <td>1 billion</td>
+          <td>4GB</td>
+          <td>16GB</td>
+        </tr>
+        <tr>
+          <td>10 billion</td>
+          <td>8GB</td>
+          <td>64GB</td>
+        </tr>
+      </tbody>
+      <caption>Recommended memory resources</caption>
+    </table>
+
 <p>By default, Stardog CLI sets the maximum JVM memory to 2GB. This setting
 works fine for most small to medium database sizes (up to 100 million
 triples). As the database size increases, we recommend increasing JVM
@@ -1076,7 +1110,34 @@ triples, including the number of unique resources and literals in the
 data, average length of resource identifiers and literals, and how much
 the data is compressed. The following table shows average disk space
 used by a Stardog database:</p>
-<p><div class="metro large btn warning"><a href="#">@FIXME</a></div> — missing a table</p>
+<table dir="ltr" border="1" cellspacing="0" cellpadding="2" summary="Stardog disk usage">
+      <thead>
+        <tr>
+          <th># triples</th>
+          <th>Disk space used</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>10 million</td>
+          <td>700MB - 1GB</td>
+        </tr>
+        <tr>
+          <td>100 million</td>
+          <td>7GB - 10GB</td>
+        </tr>
+        <tr>
+          <td>1 billion</td>
+          <td>70GB - 100GB</td>
+        </tr>
+        <tr>
+          <td>10 billion</td>
+          <td>700GB - 1TB</td>
+        </tr>
+      </tbody>
+      <caption>Average disk space used</caption>
+    </table>
+
 <p>These numbers are given for information purposes and the actual disk
 usage for a database may be significantly different in practice. Also it
 is important to note that the amount of disk space needed at creation

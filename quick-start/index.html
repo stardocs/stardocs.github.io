@@ -53,12 +53,12 @@
 files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ export STARDOG_HOME=/data/stardog</code></pre>
 <p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
-<p><div class="metro warning large btn"><a href="#">NOTE</a></div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
+<p><div class="metro warning large btn">NOTE</div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
 <p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
 <pre class="highlighted"><code class="bash">$ cp stardog-license-key.bin <span class="variable">$STARDOG_HOME</span></code></pre>
 <p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
 process. </p>
-<p><div class="metro warning large btn"><a href="#">NOTE</a></div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
+<p><div class="metro warning large btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces—on ports 5820 and 5822, respectively.</p>
 <pre class="highlighted"><code class="bash">$ ./stardog-admin server start</code></pre>

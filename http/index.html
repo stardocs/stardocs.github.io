@@ -59,10 +59,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Extended-HTTP" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Extended-HTTP">
-            <strong>Extended HTTP</strong>
+            <a href="#sd-Stardog-HTTP-Protocol" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Stardog-HTTP-Protocol">
+            <strong>Stardog HTTP Protocol</strong>
         </a>
-        <!-- <li><a href="#sd-Extended-HTTP" class="skiplink">Extended HTTP</a> -->
+        <!-- <li><a href="#sd-Stardog-HTTP-Protocol" class="skiplink">Stardog HTTP Protocol</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -147,22 +147,20 @@
           <div id="mdblock">
             <p>In the <a href="../java/">Programming with Java</a> chapter, we consider
 interacting with Stardog programatically from a Java program. In this
-chapter we consider interacting with Stardog over a network. In some use
+chapter we consider interacting with Stardog over HTTP. In some use
 cases or deployment scenarios, it may be necessary to interact with or
 control Stardog remotely over an IP-based network. For those purposes,
-Stardog supports <a href="http://www.w3.org/TR/rdf-sparql-protocol/">SPARQL 1.0 HTTP Protocol</a>; the <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a>; the Stardog-native Extended HTTP Protocol; and SNARL, an RPC-style protocol
+Stardog supports <a href="http://www.w3.org/TR/rdf-sparql-protocol/">SPARQL 1.0 HTTP Protocol</a>; the <a href="http://www.w3.org/TR/sparql11-http-rdf-update/">SPARQL 1.1 Graph Store HTTP Protocol</a>; the Stardog HTTP Protocol; and SNARL, an RPC-style protocol
 based on <a href="http://code.google.com/apis/protocolbuffers/">Google Protocol Buffers</a>.</p>
 <h2 id="sd-SPARQL-Protocol">SPARQL Protocol</h2>
 <p>Stardog supports the standard SPARQL Protocol HTTP bindings in a very
-obvious way. Since the Extended HTTP Protocol is a superset of SPARQL
+obvious way. Since the Stardog HTTP Protocol is a superset of SPARQL
 Protocol, the latter is documented below alongside the former.</p>
 <p>Stardog supports SPARQL 1.1's Service Description format. See the
 <a href="http://www.w3.org/TR/2013/REC-sparql11-service-description-20130321/">spec</a>
 if you want details.</p>
-<h2 id="sd-Extended-HTTP">Extended HTTP</h2>
-<p>In addition to SPARQL Protocol for RDF support, Stardog supports an
-Extended HTTP Protocol with additional resource representations and
-capabilities.</p>
+<h2 id="sd-Stardog-HTTP-Protocol">Stardog HTTP Protocol</h2>
+<p>The Stardog HTTP Protocol supports SPARQL Protocol 1.1 and additional resource representations and capabilities.</p>
 <p>The Stardog HTTP API v3 is also available on Apiary:
 <a href="http://docs.stardog.apiary.io/"><a href="http://docs.stardog.apiary.io/">http://docs.stardog.apiary.io/</a></a>.</p>
 <h3>Generating URLs</h3>
@@ -266,7 +264,7 @@ the only MIME type for the Query Plan resource is <code>text/plain</code>.</p>
 <p>Returns a transaction identifier resource as <code>text/plain</code>, which is
 likely to be deprecated in a future release in favor of a hypertext
 format. <code>POST</code> to begin a transaction accepts neither body nor arguments.</p>
-<h4>Transaction Security Considerations <div class="metro danger label"><a href="#">Security Notice</a></div></h4>
+<h4>Transaction Security Considerations <div class="metro danger label">Security Notice</div></h4>
 <p>Stardog‘s implementation of transactions with HTTP is
 vulnerable to man-in-the-middle attacks, which could be used to violate
 Stardog’s isolation guarantee (among other nasty side effects). Stardog's transaction identifiers are 64-bit GUIDs and, thus, pretty hard to <em>guess</em>; but if you can grab a response in-flight, you can steal the transaction identifier if basic access auth or RFC 2069 digest auth is in use. <strong>You've been warned.</strong></p>

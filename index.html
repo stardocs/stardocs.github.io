@@ -158,32 +158,39 @@
           <div id="mdblock">
             <p>This is <strong>Stardog 2.0.0</strong> (31 August 2013—<a href="/RELEASE_NOTES.txt">release notes</a>) documentation. Check out the <a href="/quick-start/">Quick Start Guide</a> to get Stardog installed and running in <em>five easy steps</em>.</p>
 <h2 id="sd-Introducing-Stardog">Introducing Stardog</h2>
-<p>Stardog is a fast, lightweight, commercial RDF
-database for mission-critical apps: it supports <a href="http://www.w3.org/TR/2012/WD-sparql11-query-20120105/">SPARQL
-1.1</a>; HTTP
-and the SNARL protocol for remote access and control;
-<a href="http://www.w3.org/RDF/">RDF</a> as a data model; <a href="http://www.w3.org/TR/owl2-overview/">OWL
-2</a> and rules for inference and data
-analytics.</p>
+<p>Stardog is a graph database—fast, lightweight, pure Java storage for mission-critical apps—that supports:</p>
+<ul>
+<li>the <a href="http://www.w3.org/RDF/">RDF</a> data model</li>
+<li><a href="http://www.w3.org/TR/2012/WD-sparql11-query-20120105/">SPARQL 1.1</a> query language</li>
+<li>HTTP and SNARL protocols for remote access and control </li>
+<li><a href="http://www.w3.org/TR/owl2-overview/">OWL 2</a> and rules for inference and data
+analytics</li>
+<li>Java, JavaScript, Ruby, Python, .Net, Groovy, Spring, etc.</li>
+</ul>
 <h3>Acquiring Stardog &amp; Support</h3>
 <p><a href="http://stardog.com/dl/">Download</a> Stardog to get started. The <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog support forum</a>,
 <a href="mailto:stardog@clarkparsia.com">stardog@clarkparsia.com</a>, is the place
 to report bugs, ask questions, etc. You can also ask questions on <a href="http://stackoverflow.com/">Stack
-Overflow</a> using the tag <em>stardog</em>. <strong>For information about <a href="http://stardog.com/dotcom">Stardog commercial licensing</a>, you can <a href="mailto:sales@clarkparsia.com">drop us a line</a> to start a conversation.</strong></p>
+Overflow</a> using the tag <em>stardog</em>. </p>
+<h3>Commercial Licensing &amp; Support</h3>
+<p><strong>For information about <a href="http://stardog.com/dotcom">Stardog commercial licensing</a>, please <a href="mailto:sales@clarkparsia.com">email</a> for more details.</strong></p>
 <h3>Contributing</h3>
 <p>There are several open source components of Stardog; feel free to submit
-pull requests: <a href="https://github.com/clarkparsia/stardog-docs">stardog-docs</a>, <a href="https://github.com/clarkparsia/stardog.js">stardog.js</a>, <a href="https://github.com/clarkparsia/stardog-groovy">stardog-groovy</a>, <a href="https://github.com/clarkparsia/stardog-spring">stardog-spring</a>, and <a href="https://github.com/antoniogarrote/stardog-rb">stardog.rb</a>. Many thanks to everyone who's contributed<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> so far.</p>
+pull requests: <a href="https://github.com/clarkparsia/stardog-docs">stardog-docs</a>, <a href="https://github.com/clarkparsia/stardog.js">stardog.js</a>, 
+<a href="https://github.com/clarkparsia/stardog-groovy">stardog-groovy</a>, <a href="https://github.com/clarkparsia/stardog-spring">stardog-spring</a>, and 
+<a href="https://github.com/antoniogarrote/stardog-rb">stardog.rb</a>. Many thanks to everyone who's 
+contributed<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> so far.</p>
 <h2 id="sd-Using-Stardog">Using Stardog</h2>
 <p>Covers basic installation and starting a Stardog Server in five easy steps.</p>
 <h3><a href="/using/">The Basics: Query, Write, Search</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/using/#sd-Querying-a-Database">Querying a Database</a></li><li><a href="/using/#sd-Adding-amp--Removing-Data">Adding &amp; Removing Data</a></li><li><a href="/using/#sd-Exporting-a-Database">Exporting a Database</a></li><li><a href="/using/#sd-Searching">Searching</a></li></ol></p>
 <h3><a href="/console/">Stardog (Web) Console</a></h3>
-<p><ol id="" class="chapter-toc"></ol></p>
+<p><ol id="" class="chapter-toc"><li><a href="/console/#sd-Introduction">Introduction</a></li><li><a href="/console/#sd-Linked-Data-Management">Linked Data Management</a></li><li><a href="/console/#sd-SPARQL-Query-Panel">SPARQL Query Panel</a></li><li><a href="/console/#sd-Schema-Browsing">Schema Browsing</a></li><li><a href="/console/#sd-Semantic-Search">Semantic Search</a></li><li><a href="/console/#sd-Pelorus-Faceted-Navigation">Pelorus: Faceted Navigation</a></li><li><a href="/console/#sd-Monitoring">Monitoring</a></li></ol></p>
 <h2 id="sd-Administering-Stardog">Administering Stardog</h2>
 <p>Administering Stardog Server, databases, including configuration and deployment information.</p>
 <h3><a href="/admin/">Administration</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/admin/#sd-Command-Line-Interface">Command Line Interface</a></li><li><a href="/admin/#sd-Server-Admin">Server Admin</a></li><li><a href="/admin/#sd-Database-Admin">Database Admin</a></li><li><a href="/admin/#sd-Capacity-Planning">Capacity Planning</a></li><li><a href="/admin/#sd-Using-Stardog-on-Windows">Using Stardog on Windows</a></li></ol></p>
-<h4><a href="/security">Security</a></h4>
+<h3><a href="/security">Security</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/security/#sd-The-Stardog-Security-Model">The Stardog Security Model</a></li><li><a href="/security/#sd-Managing-Stardog-Securely">Managing Stardog Securely</a></li><li><a href="/security/#sd-Deploying-Stardog-Securely">Deploying Stardog Securely</a></li><li><a href="/security/#sd-Securing-Stardog-on-Linux">Securing Stardog on Linux</a></li></ol></p>
 <h2 id="sd-Programming-Stardog">Programming Stardog</h2>
 <p>Everything from reasoning, data validation, and SPARQL to programming Stardog with Java, JavaScript, and many other languages. Includes the documentation for Stardog Web.</p>
@@ -192,11 +199,11 @@ pull requests: <a href="https://github.com/clarkparsia/stardog-docs">stardog-doc
 <h3><a href="/owl2">OWL 2 Reasoning</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/owl2/#sd-Introduction">Introduction</a></li><li><a href="/owl2/#sd-Using-Reasoning">Using Reasoning</a></li><li><a href="/owl2/#sd-Explaining-Reasoning-Results">Explaining Reasoning Results</a></li><li><a href="/owl2/#sd-Not-Getting-Expected-Answers-">Not Getting Expected Answers?</a></li><li><a href="/owl2/#sd-Known-Issues">Known Issues</a></li><li><a href="/owl2/#sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</a></li><li><a href="/owl2/#sd-Special-Predicates">Special Predicates</a></li><li><a href="/owl2/#sd-Query-Rewriting">Query Rewriting</a></li><li><a href="/owl2/#sd-Performance-Hints">Performance Hints</a></li><li><a href="/owl2/#sd-Terminology">Terminology</a></li></ol></p>
 <h3><a href="/web/">Building Stardog Web Apps</a></h3>
-<p><ol id="" class="chapter-toc"><li><a href="/web/#sd-Introducing-Stardog-Web">Introducing Stardog Web</a></li><li><a href="/web/#sd-Building-an-App">Building an App</a></li><li><a href="/web/#sd-Updating-the-EGAD-App">Updating the EGAD App</a></li><li><a href="/web/#sd-Cleaning-the-application-directory">Cleaning the application directory</a></li><li><a href="/web/#sd-Adding-your-own-module-code">Adding your own module code</a></li><li><a href="/web/#sd-Generator-Structure">Generator Structure</a></li><li><a href="/web/#sd-Sections">Sections</a></li><li><a href="/web/#sd-Change-Log">Change Log</a></li></ol></p>
+<p><ol id="" class="chapter-toc"><li><a href="/web/#sd-Introducing-Stardog-Web">Introducing Stardog Web</a></li><li><a href="/web/#sd-Building-an-App">Building an App</a></li><li><a href="/web/#sd-Updating-the-EGAD-App">Updating the EGAD App</a></li><li><a href="/web/#sd-Extending-Stardog-Web">Extending Stardog Web</a></li></ol></p>
 <h3><a href="/java/">Programming with Java</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/java/#sd-Introduction">Introduction</a></li><li><a href="/java/#sd-Using-Sesame">Using Sesame</a></li><li><a href="/java/#sd-Using-Jena">Using Jena</a></li><li><a href="/java/#sd-Client-Server-Stardog">Client-Server Stardog</a></li><li><a href="/java/#sd-Embedded-Stardog">Embedded Stardog</a></li><li><a href="/java/#sd-Connection-Pooling">Connection Pooling</a></li><li><a href="/java/#sd-API-Deprecation">API Deprecation</a></li></ol></p>
 <h3><a href="/http/">HTTP Programming</a></h3>
-<p><ol id="" class="chapter-toc"><li><a href="/http/#sd-SPARQL-Protocol">SPARQL Protocol</a></li><li><a href="/http/#sd-Extended-HTTP">Extended HTTP</a></li><li><a href="/http/#sd-Response-Codes">Response Codes</a></li><li><a href="/http/#sd-Stardog-Resources">Stardog Resources</a></li><li><a href="/http/#sd-Admin-Resources">Admin Resources</a></li></ol></p>
+<p><ol id="" class="chapter-toc"><li><a href="/http/#sd-SPARQL-Protocol">SPARQL Protocol</a></li><li><a href="/http/#sd-Stardog-HTTP-Protocol">Stardog HTTP Protocol</a></li><li><a href="/http/#sd-Response-Codes">Response Codes</a></li><li><a href="/http/#sd-Stardog-Resources">Stardog Resources</a></li><li><a href="/http/#sd-Admin-Resources">Admin Resources</a></li></ol></p>
 <h3><a href="/spring">Programming with Spring</a></h3>
 <p><ol id="" class="chapter-toc"><li><a href="/spring/#sd-Overview">Overview</a></li><li><a href="/spring/#sd-Building-Spring-for-Stardog">Building Spring for Stardog</a></li><li><a href="/spring/#sd-Basic-Spring">Basic Spring</a></li><li><a href="/spring/#sd-Spring-Batch">Spring Batch</a></li><li><a href="/spring/#sd-Examples">Examples</a></li></ol></p>
 <h3><a href="/groovy/">Programming with Groovy</a></h3>

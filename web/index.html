@@ -89,70 +89,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Cleaning-the-application-directory" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Cleaning-the-application-directory">
-            <strong>Cleaning the application directory</strong>
+            <a href="#sd-Extending-Stardog-Web" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Extending-Stardog-Web">
+            <strong>Extending Stardog Web</strong>
         </a>
-        <!-- <li><a href="#sd-Cleaning-the-application-directory" class="skiplink">Cleaning the application directory</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Adding-your-own-module-code" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Adding-your-own-module-code">
-            <strong>Adding your own module code</strong>
-        </a>
-        <!-- <li><a href="#sd-Adding-your-own-module-code" class="skiplink">Adding your own module code</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Generator-Structure" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Generator-Structure">
-            <strong>Generator Structure</strong>
-        </a>
-        <!-- <li><a href="#sd-Generator-Structure" class="skiplink">Generator Structure</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Sections" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Sections">
-            <strong>Sections</strong>
-        </a>
-        <!-- <li><a href="#sd-Sections" class="skiplink">Sections</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Change-Log" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Change-Log">
-            <strong>Change Log</strong>
-        </a>
-        <!-- <li><a href="#sd-Change-Log" class="skiplink">Change Log</a> -->
+        <!-- <li><a href="#sd-Extending-Stardog-Web" class="skiplink">Extending Stardog Web</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -195,16 +135,16 @@
 
 <p>Out of the box functionality includes:</p>
 <ul class="two_up tiles">
+    <li><strong>·</strong> Execute arbitrary SPARQL queries against RDF</li>
+    <li><strong>·</strong> Manage queries (create, delete, update)</li>
     <li><strong>·</strong> Visualize—<ol>
         <li>classes and their instances,</li>
         <li>their property assertions,</li>
         <li>class/property hierarchies,</li>
         <li>axioms and rules,</li>
+        <li>query results,</li>
         <li> subgraphs</li>
     </ol></li>
-    <li><strong>·</strong> Execute arbitrary SPARQL queries against RDF</li>
-    <li><strong>·</strong> Manage queries (create, delete, update)</li>
-    <li><strong>·</strong> Visualize query results</li>
     <li><strong>·</strong> Save query results</li>
     <li><strong>·</strong> Faceted browsing via <a href="http://pelorus.clarkparsia.com/">Pelorus</a></li>
     <li><strong>·</strong> full text search</li>
@@ -241,7 +181,7 @@
 <p>First, install <a href="http://nodejs.org/">Node.js</a>. We'll wait.</p>
 <p>Then, verify that you have Web access (to be able to access the NPM registry &amp; repositories) and check that the <code>npm</code> prefix is pointing to <code>/usr/local</code>. You can verify the value of the prefix as follows:</p>
 <pre class="highlighted"><code class="bash">$ npm config get prefix</code></pre>
-<p>If the prefix is not <code>/usr/local</code>, you can change it using one of the methods described <a href="https://npmjs.org/doc/config.html">here</a>.</p>
+<p>If the prefix is not <code>/usr/local</code>, you can change it using one of the methods described <a href="https://npmjs.org/doc/config.html">here</a>.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></p>
 <p>Next, run this:</p>
 <pre class="highlighted"><code class="bash"> $ npm install -g &lt;package_dir&gt;/egad-cli-0.x.tar.gz &lt;package_dir&gt;/generator-egad-0.x.tar.gz</code></pre>
 <p>Finally, …test the setup?</p>
@@ -259,7 +199,7 @@
 <h3>Provisioning Stardog</h3>
 <p>Create a Stardog database containing the data for your EGAD app and expose it in an SPARQL endpoint. Please see <a href="http://stardog.com/docs/">Stardog docs</a> for details about database creation. Once a database has been created, we can expose it in an SPARQL endpoint by simply starting the corresponding Stardog server:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">disable</span>-<span class="comment">security</span> <span class="comment">server</span> <span class="comment">start</span></code></pre>
-<p><div class="metro danger label"><a href="#">Security Notice</a></div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled.</p>
+<p><div class="metro danger label">Security Notice</div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled.</p>
 <h4>Custom Namespaces</h4>
 <p>Add all the required prefixes that will be used in the EGAD app. You can list prefixes defined in the Stardog DB using the following command:</p>
 <pre class="highlighted"><code class="vala">stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> -<span class="title">c</span> <span class="title">snarl</span>://<span class="title">localhost</span>/&lt;<span class="title">DB</span>&gt;</span></code></pre>
@@ -467,11 +407,11 @@
 <li>Pelorus is not integrated completely, there's no way to generate a pelorus model from the EGAD toolkit.</li>
 <li>There may be some errors in the web service with data containing bnodes.Annex Platform Services is a RESTful web service that provides a series of abstractions for semantic services. Provides a graph browsing interfaces with common RESTful resources and operations, using JSON-LD as the serialization format, which makes it perfect for MV* JS applications.</li>
 </ul>
-<h2 id="sd-Cleaning-the-application-directory">Cleaning the application directory</h2>
+<h3>Cleaning the application directory</h3>
 <p>To clean the application directory, one can use the command:</p>
 <pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad clean</code></pre>
 <p>Which will delete all EGAD generated files (excluding all configuration &amp; files added by the user).</p>
-<h1>Deploying</h1>
+<h3>Deploying</h3>
 <p>An optimized version of the appication (CSS &amp; JS minified/optimized) can be obtained by running</p>
 <pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myAppp</span>&gt;</span>$ egad build</code></pre>
 <p>Once a <code>dist</code> directory is created, it can be deployed in any web server since it contains only static files - HTML, JavaScript, CSS and images.
@@ -590,13 +530,13 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
   }</span></code></pre>
 </li>
 </ul>
-<h2 id="sd-Adding-your-own-module-code">Adding your own module code</h2>
+<h2 id="sd-Extending-Stardog-Web">Extending Stardog Web</h2>
 <p>The only EGAD specific bits of code are in <code>main.js</code>, defining the EGAD module, and the structure is pretty much the same as a <a href="http://backbonejs.org/#Router">Backbone.js Router</a>. An EGAD module follows the structure of a <a href="http://requirejs.org/docs/api.html#packages">Require.js</a> package.</p>
 <p>The require.js configuration of the EGAD appplication can be found in the application tree in the file: <code>app/scripts/config.js</code>. You can see there how all the libraries and tools are defined to be loaded in the application.</p>
 <h3>EGAD API</h3>
 <p>You can find the EGAD api in the file <code>app/scripts/egad.js</code> of your application directory. This API defines the Module API and some other bits of application registry and module coordination via a asynch mediator.</p>
 <h3>Annex API</h3>
-<p>In order to retrive information from the Annex platform, you need to use the <code>api.js</code> code. Which defines tools to query the Annex endpoints based on the Annex RESTful internface. For more details on the Annex API, please refer to the <em>Middleware</em> document.</p>
+<p>In order to retrive information from the Annex platform, you need to use the <code>api.js</code> code. Which defines tools to query the Annex endpoints based on the Annex RESTful interface. For more details on the Annex API, please refer to the <em>Middleware</em> document.</p>
 <p>We use the <code>bootstrap</code>-based color-scheme <a href="https://github.com/rriepe/1pxdeep">framework</a> for customizing the look and feel of the EGAD apps. In order to build and apply a customized version of <code>bootstrap.css</code>, use the attached <code>LESS</code> project and follow these steps:</p>
 <ol>
 <li><p>Download <code>recess</code> via npm:</p>
@@ -615,7 +555,7 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 <li>Once you have the EGAD Repository locally, <code>cd</code> to it and execute <code>npm install</code> to download all the development dependencies.</li>
 <li>Run the test cases with the command: <code>npm test</code></li>
 </ol>
-<h2 id="sd-Generator-Structure">Generator Structure</h2>
+<h3>Generator Structure</h3>
 <p>The EGAD Generator follows the structure of a Yeoman Generator API v2.0, in which targets are defined for scafolding a web application. Usually there's an <code>app</code> target, which could take a set of arguments (defined by the generator) and generate the required files for the web application using a <a href="https://github.com/clarkparsia/generator-egad/wiki/Web-Stack">Web Stack</a>.</p>
 <p>The structure of the EGAD Generator is the following:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="literal">-</span> <span class="comment">app/</span>                        &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">generator</span> <span class="comment">'all'</span> <span class="comment">target</span> <span class="comment">(generates</span> <span class="comment">all</span> <span class="comment">the</span> <span class="comment">webapp)</span>
@@ -633,29 +573,6 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 <span class="literal">-</span> <span class="comment">README</span>.<span class="comment">md</span>                    &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">README</span>
 <span class="literal">-</span> <span class="comment">config</span>.<span class="comment">js</span>.<span class="comment">example</span>            &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">example</span> <span class="comment">of</span> <span class="comment">the</span> <span class="comment">configuration</span> <span class="comment">file</span> <span class="comment">to</span> <span class="comment">use</span> <span class="comment">in</span> <span class="comment">the</span> <span class="comment">'all'</span> <span class="comment">target</span> <span class="comment">generator</span>
 <span class="literal">-</span> <span class="comment">package</span>.<span class="comment">json</span>                &lt;<span class="literal">-</span><span class="literal">-</span> <span class="comment">NPM</span> <span class="comment">package</span> <span class="comment">description</span> <span class="comment">file</span></code></pre>
-<h2 id="sd-Sections">Sections</h2>
-<h3>Project docs</h3>
-<ul>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Roadmap">Roadmap</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Changelog">Changelog</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Known-Issues">Known Issues</a></li>
-</ul>
-<h3>Using EGAD</h3>
-<ul>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Installation-Package">Installation Package</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Configuration">Configuration</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Creating-an-EGAD-App">Creating an EGAD App</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Creating-an-EGAD-Module">Creating an EGAD Module</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Configure-Homepage">Configure Homepage</a></li>
-</ul>
-<h3>Development on EGAD</h3>
-<ul>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Web-Stack">Web Stack</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Development">Development</a></li>
-<li><a href="https://github.com/clarkparsia/generator-egad/wiki/Middleware">Middleware</a></li>
-</ul>
-<p>[1] <a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html">http://yeoman.io/generators.html</a></a>In the following, we assume the <code>egad-0.x.x.zip</code> distribution file has been decompressed into the <code>&lt;package_dir&gt;</code> directory.</p>
 <h3>“Basic Features”</h3>
 <p><em>Generator</em>
 <em> Use a configuration file (JSON)
@@ -686,7 +603,7 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 <h3>“Cloud Service” ??</h3>
 <p><em>— TBD —</em></p>
 <p>Features will include all necessary changes to run EGAD gen as a Cloud based services, to generate webapps/repositories on demand.This page describes all the technologies used for the web development included in EGAD generated apps. EGAD web apps are based in a MV* HTML5 web stack, following the single page pattern, in which all the application is state aware in the client side, using JavaScript all over the place.</p>
-<h2 id="sd-Change-Log">Change Log</h2>
+<h3>Change Log</h3>
 <h3>v0.4.5</h3>
 <ul>
 <li>Added - Beta support of custom CSS themes using less</li>
@@ -732,9 +649,9 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 </ul>
 
           </div>
-          <div class="hidden" id="footnote-container">
+          <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          </div>
+          <div class="footnote" id="footnote-1"><p>1. <a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html">http://yeoman.io/generators.html</a></a></a>In the following, we assume the <code>egad-0.x.x.zip</code> distribution file has been decompressed into the <code>&lt;package_dir&gt;</code> directory.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>
