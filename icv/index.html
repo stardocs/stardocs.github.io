@@ -44,6 +44,21 @@
     
     <!-- [data-target='-->
         <li>
+            <a href="#sd-Introduction" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introduction">
+            <strong>Introduction</strong>
+        </a>
+        <!-- <li><a href="#sd-Introduction" class="skiplink">Introduction</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
             <a href="#sd-ICV-Quick-Start" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-ICV-Quick-Start">
             <strong>ICV Quick Start</strong>
         </a>
@@ -127,19 +142,12 @@
             </div>
           <!-- summary -->
           
-            <p id="summary"><em>ICV validates RDF data stored in a Stardog database according to data rules (i.e., "constraints") described by users and that make sense for their domain, application, and data. These constraints are written in SPARQL, OWL, or SWRL. This chapter explains how to use ICV and how it works.</em></p>
-          
           <div id="mdblock">
-            <!-- 
-## Introduction
-
-Stardog Integrity Constraint Validation ("ICV") validates RDF data stored in a Stardog database according to data rules (i.e., "constraints") described by users and that make sense for their domain, application, and data. These constraints are written in PARQL, OWL, or SWRL. This chapter explains how to use ICV and how it works.
-
--->
-
+            <h2 id="sd-Introduction">Introduction</h2>
+<p>Stardog Integrity Constraint Validation (“ICV”) validates RDF data stored in a Stardog database according to data rules (i.e., “constraints”) described by users and that make sense for their domain, application, and data. These constraints are written in SPARQL, OWL, or SWRL. This chapter explains how to use ICV and how it works.</p>
 <h2 id="sd-ICV-Quick-Start">ICV Quick Start</h2>
 <p>To use ICV in Stardog, you need some data and some constraints. To get you started very quickly, we've included a sample database and constraints in the Stardog distribution. This section explains how to use ICV in Stardog using that sample info.</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog icv</span></code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="string">.</span><span class="comment">/stardog</span> <span class="comment">icv</span></code></pre>
 <p>@TODO write me</p>
 <h2 id="sd-Validating-Linked-Data">Validating Linked Data</h2>
 <p>The use of high-level languages (OWL 2, SWRL, and SPARQL) to validate
@@ -657,10 +665,10 @@ etc.</p>
 one employee that works on at least one project, or manages at least one
 department.</p>
 <p>Constraint</p>
-<pre class="highlighted"><code class="applescript">Class: Employee
-    SubClassOf: works_on <span class="keyword">some</span> Project <span class="keyword">or</span>
-        supervises <span class="keyword">some</span> (Employee <span class="keyword">and</span> works_on <span class="keyword">some</span> Project) <span class="keyword">or</span>
-        manages <span class="keyword">some</span> Department</code></pre>
+<pre class="highlighted"><code class="manchester"><span class="keyword">Class</span>: Employee
+    <span class="keyword">SubClassOf</span>: works_on <span class="built_in">some</span> Project <span class="built_in">or</span>
+        supervises <span class="built_in">some</span> (Employee <span class="built_in">and</span> works_on <span class="built_in">some</span> Project) <span class="built_in">or</span>
+        manages <span class="built_in">some</span> Department</code></pre>
 <p>A</p>
 <pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
     <span class="attribute">Types</span>: <span class="string">Employee</span></code></pre>
@@ -723,8 +731,8 @@ instance of <em>Project</em>, namely <em>MyProject</em>, via the property <em>wo
 <p>Only employees who are American citizens can work on a project that
 receives funds from a US government agency.</p>
 <p>Constraint</p>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Project and receives_funds_from some US_Government_Agency</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">inverse(works_on) only (Employee and nationality value "US")</span></code></pre>
+<pre class="highlighted"><code class="manchester"><span class="keyword">Class</span>: Project <span class="built_in">and</span> receives_funds_from <span class="built_in">some</span> US_Government_Agency
+    <span class="keyword">SubClassOf</span>: <span class="built_in">inverse</span>(works_on) <span class="built_in">only</span> (Employee <span class="built_in">and</span> nationality <span class="built_in">value</span> <span class="string">"US"</span>)</code></pre>
 <p>A</p>
 <pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
     <span class="attribute">Types</span>: <span class="string">Project</span>

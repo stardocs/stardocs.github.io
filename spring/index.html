@@ -179,13 +179,13 @@ environment;</li>
 <li><code>gradlew install</code> does a build, generates a POM, and installs the
 POM in local Maven repo; alternately,</li>
 <li><p><code>mvn install</code> will work, too:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">mvn</span> <span class="comment">install:install</span>-<span class="comment">file</span>
-      <span class="literal">-</span><span class="comment">DgroupId=com</span>.<span class="comment">clarkparsia</span>.<span class="comment">stardog</span>
-      <span class="literal">-</span><span class="comment">DartifactId=stardog</span>-<span class="comment">spring</span>
-      <span class="literal">-</span><span class="comment">Dversion=1</span>.<span class="comment">1</span>.<span class="comment">1</span>
-      <span class="literal">-</span><span class="comment">Dfile=stardog</span>-<span class="comment">spring</span>.<span class="comment">jar</span>
-      <span class="literal">-</span><span class="comment">Dpackaging=jar</span>
-      <span class="literal">-</span><span class="comment">DpomFile=pom</span>.<span class="comment">xml</span></code></pre>
+<pre class="highlighted"><code class="lasso">mvn install:install<span class="attribute">-file</span>
+      <span class="attribute">-DgroupId</span>=com.clarkparsia.stardog
+      <span class="attribute">-DartifactId</span>=stardog<span class="attribute">-spring</span>
+      <span class="attribute">-Dversion</span>=<span class="number">1.1</span><span class="number">.1</span>
+      <span class="attribute">-Dfile</span>=stardog<span class="attribute">-spring</span>.jar
+      <span class="attribute">-Dpackaging</span>=jar
+      <span class="attribute">-DpomFile</span>=pom.xml</code></pre>
 </li>
 </ul>
 <h2 id="sd-Basic-Spring">Basic Spring</h2>
@@ -219,7 +219,7 @@ parameter for a single result set.</p>
 invokes the mapper for result rows.</p>
 <pre class="highlighted"><code class="erlang"><span class="function"><span class="title">doWithAdder</span><span class="params">(<span class="variable">AdderCallback</span>)</span></span></code></pre>
 <p><code>doWithAdder()</code> is a transaction- and connection-pool safe adder call.</p>
-<pre class="highlighted"><code class="erlang"><span class="function"><span class="title">doWithGetter</span><span class="params">(<span class="variable">String</span> subject, <span class="variable">String</span> predicate, <span class="variable">GetterCallback</span>)</span></span></code></pre>
+<pre class="highlighted"><code class="cmake">doWithGetter(<span class="keyword">String</span> subject, <span class="keyword">String</span> predicate, GetterCallback)</code></pre>
 <p><code>doWithGetter()</code> is the connection pool boilerplate method for the
 <code>Getter</code> interface, including the programmatic filters.</p>
 <pre class="highlighted"><code class="erlang"><span class="function"><span class="title">doWithRemover</span><span class="params">(<span class="variable">RemoverCallback</span>)</span></span></code></pre>

@@ -167,9 +167,9 @@ tools' output is correct.</p>
 <h3>Help</h3>
 <p>To use the Stardog CLI tools, you can start by asking them to display
 help:</p>
-<pre class="highlighted"><code class="bash">stardog help</code></pre>
+<pre class="highlighted"><code class="bash">stardog <span class="built_in">help</span></code></pre>
 <p>Or:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin help</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin <span class="built_in">help</span></code></pre>
 <p>And for the very laziest among us, these work too:</p>
 <pre class="highlighted"><code class="bash">$ stardog
 
@@ -192,7 +192,7 @@ haven't published on the interwebs!</p>
 <p>The CLI tools both contain a lot of functionality; we've introduced
 “command groups” to make CLI subcommands easier to find. To print help
 for a particular command group, just ask for help:</p>
-<pre class="highlighted"><code class="bash">$ stardog help [command_group_name]</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog <span class="built_in">help</span> [command_group_name]</code></pre>
 <p>The command groups and their subcommands include</p>
 <ul>
 <li>data: add, remove, export;</li>
@@ -210,7 +210,7 @@ command groups:</p>
 
 The most commonly used stardog commands are:
     data        Commands which can modify or dump the contents of a database
-    help        Display help information
+    <span class="built_in">help</span>        Display <span class="built_in">help</span> information
     icv         Commands <span class="keyword">for</span> working with Stardog Integrity Constraint support
     namespace   Commands which work with the namespaces defined <span class="keyword">for</span> a database
     query       Commands which query a Stardog database
@@ -220,7 +220,7 @@ The most commonly used stardog commands are:
 See <span class="string">'stardog help '</span> <span class="keyword">for</span> more information on a specific command.</code></pre>
 <p>To get more information about a particular command, simply issue the
 help command for it including its command group:</p>
-<pre class="highlighted"><code class="bash">$ stardog help query execute</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog <span class="built_in">help</span> query execute</code></pre>
 <p>Finally, everything here about command groups, commands, and online help
 works equally well for <code>stardog-admin</code>.</p>
 <p>The result of all these changes is a better user experience:</p>
@@ -234,29 +234,29 @@ first want to make sure bash completion is installed:</p>
 <h4>Homebrew</h4>
 <pre class="highlighted"><code class="bash">$ brew install bash-completion</code></pre>
 <p>Then enable it in .bash_profile:</p>
-<pre class="highlighted"><code class="bash"><span class="keyword">if</span> <span class="test_condition">[ -f `brew --prefix`/etc/bash_completion ]</span>; <span class="keyword">then</span>
+<pre class="highlighted"><code class="bash"><span class="keyword">if</span> [ <span class="operator">-f</span> `brew --prefix`/etc/bash_completion ]; <span class="keyword">then</span>
   . `brew --prefix`/etc/bash_completion
 <span class="keyword">fi</span></code></pre>
 <h4>MacPorts</h4>
 <p>First, you really should be using Homebrew; you feel me?</p>
 <p>If not, then:</p>
-<pre class="highlighted"><code class="bash">$ sudo port install bash-completion</code></pre>
+<pre class="highlighted"><code class="bash">$ <span class="built_in">sudo</span> port install bash-completion</code></pre>
 <p>Enable it in .bash_profile:</p>
-<pre class="highlighted"><code class="bash"><span class="keyword">if</span> <span class="test_condition">[ -f /opt/local/etc/bash_completion ]</span>; <span class="keyword">then</span>
+<pre class="highlighted"><code class="bash"><span class="keyword">if</span> [ <span class="operator">-f</span> /opt/local/etc/bash_completion ]; <span class="keyword">then</span>
    . /opt/local/etc/bash_completion
 <span class="keyword">fi</span></code></pre>
 <p>Finally, an example for our Linux friends:</p>
 <h4>Ubuntu</h4>
-<pre class="highlighted"><code class="bash">$ sudo apt-get install bash-completion</code></pre>
+<pre class="highlighted"><code class="bash">$ <span class="built_in">sudo</span> apt-get install bash-completion</code></pre>
 <h4>Fedora</h4>
-<pre class="highlighted"><code class="bash">$ sudo yum install bash-completion</code></pre>
+<pre class="highlighted"><code class="bash">$ <span class="built_in">sudo</span> yum install bash-completion</code></pre>
 <h4>All Platforms</h4>
 <p>Now put the Stardog autocomplete script—<code>stardog-completion.sh</code>—into yr
 bash_completion.d directory, typically one of
 <code>/etc/bash_completion.d, /usr/local/etc/bash_completion.d or ~/bash_completion.d.</code></p>
 <p>Alternately you can put it anywhere you want, but tell <code>.bash_profile</code>
 about it:</p>
-<pre class="highlighted"><code class="bash">source ~/.stardog-completion.sh</code></pre>
+<pre class="highlighted"><code class="bash"><span class="built_in">source</span> ~/.stardog-completion.sh</code></pre>
 <h3>How to Make a Connection String</h3>
 <p>We've simplified connection strings in Stardog 1.2 to improve usability.
 A connection string may consist solely of the database name in cases
@@ -382,7 +382,7 @@ detaching to run as a daemon, and writing <code>stardog.pid</code> and
 <code>stardog.log</code> to the current working directory— is</p>
 <pre class="highlighted"><code class="bash">$ stardog-admin server start</code></pre>
 <p>To specify parameters:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile=stardog.log --no-docs --http=8080</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile=stardog.log --no-docs --http=<span class="number">8080</span></code></pre>
 <p><code>--no-docs</code> will tell Stardog not to serve its documentation over HTTP
 at <code>http://SERVER/docs</code>, which it will otherwise do by default.</p>
 <p>Note: ports can be specified using the properties <code>--snarl</code> and
@@ -687,7 +687,7 @@ time is the fastest way to load data.</p>
 <p>Finally, if you only want to change only a few configuration options you
 can directly provide the values for these options in the CLI args as
 follows:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin db create -n db -o icv.enabled=<span class="literal">true</span> icv.reasoning.type=QL -- input.ttl</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin db create -n db -o icv.enabled=<span class="literal">true</span> icv.reasoning.<span class="built_in">type</span>=QL -- input.ttl</code></pre>
 <p>Note that ‘—’ is used in this case when -o is the last option to
 delimit the value for -o from the files to be bulk loaded.</p>
 <p>Please refer to the CLI help for more details of the <code>db create</code>
@@ -912,21 +912,21 @@ inherits the server-wide value. To disable query timeout, set
 <pre class="highlighted"><code class="bash">+----+----------+-------+--------------+
 | ID | Database | User  | Elapsed time |
 +----+----------+-------+--------------+
-| 2  | test     | admin | 00:00:20.165 |
-| 3  | test     | admin | 00:00:16.223 |
-| 4  | test     | admin | 00:00:08.769 |
+| <span class="number">2</span>  | test     | admin | <span class="number">00</span>:<span class="number">00</span>:<span class="number">20.165</span> |
+| <span class="number">3</span>  | test     | admin | <span class="number">00</span>:<span class="number">00</span>:<span class="number">16.223</span> |
+| <span class="number">4</span>  | test     | admin | <span class="number">00</span>:<span class="number">00</span>:<span class="number">08.769</span> |
 +----+----------+-------+--------------+
 
-3 queries running</code></pre>
+<span class="number">3</span> queries running</code></pre>
 <p>You can see the user who owns the query (superuser's can see all running
 queries), as well as the elapsed time and the database against which the
 query is running. The ID column is the key to deleting queries.</p>
 <h4>Deleting Queries</h4>
 <p>To delete a running query, simply pass its ID to the <code>query kill</code>
 subcommand:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin query kill 3</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin query kill <span class="number">3</span></code></pre>
 <p>The output confirms the query kill completing successfully:</p>
-<pre class="highlighted"><code class="bash">Query 3 killed successfully</code></pre>
+<pre class="highlighted"><code class="bash">Query <span class="number">3</span> killed successfully</code></pre>
 <h4>Automatically Killing Queries</h4>
 <p>For production use, especially when a Stardog database is exposed to
 arbitrary query input, some of which may not execute in an acceptable
@@ -946,13 +946,13 @@ example, ‘1h’ for 1 hour, ‘5m’ for 5 minutes, ‘90s’ for 90 seconds, 
 <h4>Query Status</h4>
 <p>To see more detail about one running query, use the <code>query status</code>
 subcommand:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin query status 1</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin query status <span class="number">1</span></code></pre>
 <p>The resulting output includes query metadata, including the query
 itself:</p>
 <pre class="highlighted"><code class="bash">Username: admin
 Database: test
-Started : 2013-02-06 09:10:45 AM
-Elapsed : 00:01:19.187
+Started : <span class="number">2013</span>-<span class="number">02</span>-<span class="number">06</span> <span class="number">09</span>:<span class="number">10</span>:<span class="number">45</span> AM
+Elapsed : <span class="number">00</span>:<span class="number">01</span>:<span class="number">19.187</span>
 Query   :
 select ?x ?p ?o1 ?y ?o2
    where {
@@ -961,7 +961,7 @@ select ?x ?p ?o1 ?y ?o2
      filter (?o1 &gt; ?o2).
     }
 order by ?o1
-limit 5</code></pre>
+limit <span class="number">5</span></code></pre>
 <h4>Slow Query Logging</h4>
 <p>Stardog does not log slow queries in the default configuration,
 primarily because there isn't a sensible default meaning of “slow
@@ -1181,7 +1181,7 @@ configuration. Please, note, that the following assumes commands are
 executed from a Command Prompt with administrative privileges:</p>
 <h4>Installing the Service</h4>
 <p>Change the directory to the Stardog installation directory:</p>
-<pre class="highlighted"><code class="nginx"><span class="title">cd</span> c:\stardog-<span class="variable">$VERSION</span></code></pre>
+<pre class="highlighted"><code class="bash"><span class="built_in">cd</span> c:\stardog-<span class="variable">$VERSION</span></code></pre>
 <h4>Configuring the Service</h4>
 <p>The default settings with which the service will be installed are</p>
 <ul>

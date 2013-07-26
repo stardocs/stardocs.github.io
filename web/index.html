@@ -183,7 +183,7 @@
 <pre class="highlighted"><code class="bash">$ npm config get prefix</code></pre>
 <p>If the prefix is not <code>/usr/local</code>, you can change it using one of the methods described <a href="https://npmjs.org/doc/config.html">here</a>.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></p>
 <p>Next, run this:</p>
-<pre class="highlighted"><code class="bash"> $ npm install -g &lt;package_dir&gt;/egad-cli-0.x.tar.gz &lt;package_dir&gt;/generator-egad-0.x.tar.gz</code></pre>
+<pre class="highlighted"><code class="bash"> $ npm install -g &lt;package_dir&gt;/egad-cli-<span class="number">0</span>.x.tar.gz &lt;package_dir&gt;/generator-egad-<span class="number">0</span>.x.tar.gz</code></pre>
 <p>Finally, …test the setup?</p>
 <p>EGAD depends on the following components:</p>
 <ul>
@@ -198,11 +198,11 @@
 <p>Stardog Web works with…Stardog. If you already have Stardog installed, you should be good to go. If you don‘t, install it. Now make sure that you know how to create a database, add data to it, etc. There’s a <a href="/quick-start">Quick Start Guide</a>.</p>
 <h3>Provisioning Stardog</h3>
 <p>Create a Stardog database containing the data for your EGAD app and expose it in an SPARQL endpoint. Please see <a href="http://stardog.com/docs/">Stardog docs</a> for details about database creation. Once a database has been created, we can expose it in an SPARQL endpoint by simply starting the corresponding Stardog server:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">stardog</span>-<span class="comment">admin</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">disable</span>-<span class="comment">security</span> <span class="comment">server</span> <span class="comment">start</span></code></pre>
+<pre class="highlighted"><code class="lasso">$ stardog<span class="attribute">-admin</span> -<span class="attribute">-disable</span><span class="attribute">-security</span> server start</code></pre>
 <p><div class="metro danger label">Security Notice</div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled.</p>
 <h4>Custom Namespaces</h4>
 <p>Add all the required prefixes that will be used in the EGAD app. You can list prefixes defined in the Stardog DB using the following command:</p>
-<pre class="highlighted"><code class="vala">stardog <span class="class"><span class="keyword">namespace</span> <span class="title">list</span> -<span class="title">c</span> <span class="title">snarl</span>://<span class="title">localhost</span>/&lt;<span class="title">DB</span>&gt;</span></code></pre>
+<pre class="highlighted"><code class="cpp">stardog <span class="keyword">namespace</span> <span class="built_in">list</span> -c snarl:<span class="comment">//localhost/&lt;DB&gt;</span></code></pre>
 <p>By default, Stardog defines a set of common namespaces:</p>
 <pre class="highlighted"><code class="brainfuck"><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
 <span class="comment">|</span> <span class="comment">Prefix</span> <span class="comment">|</span>                  <span class="comment">Namespace</span>                  <span class="comment">|</span>
@@ -213,17 +213,17 @@
 <span class="comment">|</span> <span class="comment">owl</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2002/07/owl#</span>              <span class="comment">|</span>
 <span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
 <p>To add your prefixes, you can execute the <code>stardog namespace add</code> command, e.g:</p>
-<pre class="highlighted"><code class="vala">stardog <span class="class"><span class="keyword">namespace</span> <span class="title">add</span> --<span class="title">prefix</span> <span class="title">test</span> --<span class="title">uri</span> \
-  '<span class="title">http</span>://<span class="title">example</span>.<span class="title">org</span>/<span class="title">test</span>#' -<span class="title">c</span> <span class="title">snarl</span>://<span class="title">localhost</span>/<span class="title">myDB</span> -<span class="title">u</span> <span class="title">admin</span> -<span class="title">p</span> <span class="title">admin</span></span></code></pre>
+<pre class="highlighted"><code class="brainfuck"><span class="comment">stardog</span> <span class="comment">namespace</span> <span class="comment">add</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix</span> <span class="comment">test</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">uri</span> <span class="comment">\</span>
+  <span class="comment">'http://example</span>.<span class="comment">org/test#'</span> <span class="literal">-</span><span class="comment">c</span> <span class="comment">snarl://localhost/myDB</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">admin</span></code></pre>
 <h3>Installing Annex Middleware</h3>
 <p>Annex is the Linked Data middleware service that connects Stardog Web to Stardog. It must be installed and configured to run on a J2EE container (we recommend Caucho Resin) on the same machine (?) as Stardog (for now).</p>
 <p>Annex is distributed as a single WAR file (<code>annex.war</code>). Simply deploy the WAR file in a servlet container. Typically, this can be accomplished by copying the WAR file into the container's <code>webapps</code> folder and starting the container. Currently, each EGAD application uses its own instance of Annex; therefore, we recommend changing the name of the WAR file in the <code>webapps</code> accordingly:</p>
-<pre class="highlighted"><code class="xml">$ cp <span class="tag">&lt;<span class="title">package_dir</span>&gt;</span>/annex.war <span class="tag">&lt;<span class="title">container_dir</span>&gt;</span>/webapps/annex-<span class="tag">&lt;<span class="title">appname</span>&gt;</span>.war</code></pre>
+<pre class="highlighted"><code class="apache">$ cp <span class="tag">&lt;package_dir&gt;</span>/annex.war <span class="tag">&lt;container_dir&gt;</span>/webapps/annex-<span class="tag">&lt;appname&gt;</span>.war</code></pre>
 <p>In order to be used by an EGAD application, one needs to specify where the data resides as well as provide valid credentials. This information can be specified in the <code>web.xml</code>, by modifying the following properties: </p>
-<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.host<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
-  <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>localhost:5820<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
-<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span></code></pre>
+<pre class="highlighted"><code class="manchester"><span class="uri">&lt;init-param&gt;</span>
+  <span class="uri">&lt;param-name&gt;</span>annex.db.host<span class="uri">&lt;/param-name&gt;</span>
+  <span class="uri">&lt;param-value&gt;</span><span class="uri">localhost:5820</span><span class="uri">&lt;/param-value&gt;</span>
+<span class="uri">&lt;/init-param&gt;</span></code></pre>
 <p>  <init-param>
       <param-name>annex.db.repository</param-name>    <!-- name of the Stardog DB -->
       <param-value>myDB</param-value>
@@ -239,7 +239,7 @@
 <h4>Apache Tomcat Notes</h4>
 <ul>
 <li><p>You need to add the following configuration option to the <code>catalina.properties</code> file in <code>&lt;tomcat_dir&gt;/conf/catalina.properties</code></p>
-<pre class="highlighted"><code class="objectivec">  org<span class="variable">.apache</span><span class="variable">.tomcat</span><span class="variable">.util</span><span class="variable">.buf</span><span class="variable">.UDecoder</span><span class="variable">.ALLOW_ENCODED_SLASH</span>=<span class="literal">true</span></code></pre>
+<pre class="highlighted"><code class="avrasm">  org<span class="preprocessor">.apache</span><span class="preprocessor">.tomcat</span><span class="preprocessor">.util</span><span class="preprocessor">.buf</span><span class="preprocessor">.UDecoder</span><span class="preprocessor">.ALLOW</span>_ENCODED_SLASH=true</code></pre>
 </li>
 <li><p>There is a known tomcat bug in versions <code>&lt; 7.0.30</code>, that happens when tomcat starts and initializes the applications, by which Annex is affected. For more details on the issue, please refer to the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=53535">bug report</a>. In order for annex to work properly with tomcat, please update to the latest version of the container.</p>
 </li>
@@ -263,36 +263,36 @@
         "<span class="attribute">http://www.w3.org/2001/XMLSchema#</span>": <span class="value"><span class="string">"xsd"</span></span>,
         "<span class="attribute">http://www.w3.org/2002/07/owl#</span>": <span class="value"><span class="string">"owl"</span></span>,
         "<span class="attribute">http://purl.org/dc/elements/1.1/</span>": <span class="value"><span class="string">"dc"</span>
-    }</span></span>,
+    </span>}</span>,
     "<span class="attribute">modules</span>": <span class="value">{
         "<span class="attribute">home</span>": <span class="value">{
             "<span class="attribute">content</span>": <span class="value"><span class="string">"mycontent/myhome.html"</span>
-        }</span></span>,
+        </span>}</span>,
         "<span class="attribute">browse</span>": <span class="value"><span class="literal">true</span></span>,
         "<span class="attribute">query</span>": <span class="value">{
             "<span class="attribute">label</span>": <span class="value"><span class="string">"Query Panel"</span></span>,
             "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/query"</span>
-        }</span></span>,
+        </span>}</span>,
         "<span class="attribute">search</span>": <span class="value">{
             "<span class="attribute">label</span>": <span class="value"><span class="string">"Search"</span></span>,
             "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/search"</span>
-        }</span></span>,
+        </span>}</span>,
         "<span class="attribute">navbar</span>": <span class="value">{
-            "<span class="attribute">items</span>": <span class="value">[ { "<span class="attribute">htmlId</span>":<span class="value"><span class="string">"lientry"</span></span>, "<span class="attribute">label</span>": <span class="value"><span class="string">"Data Entry"</span></span>, "<span class="attribute">type</span>":<span class="value"><span class="string">"browse"</span></span>,"<span class="attribute">using</span>": <span class="value"><span class="string">"dgtwc:DataEntry"</span></span>, "<span class="attribute">icon</span>": <span class="value"><span class="string">"icon-tasks"</span> }</span>
+            "<span class="attribute">items</span>": <span class="value">[ { "<span class="attribute">htmlId</span>":<span class="value"><span class="string">"lientry"</span></span>, "<span class="attribute">label</span>": <span class="value"><span class="string">"Data Entry"</span></span>, "<span class="attribute">type</span>":<span class="value"><span class="string">"browse"</span></span>,"<span class="attribute">using</span>": <span class="value"><span class="string">"dgtwc:DataEntry"</span></span>, "<span class="attribute">icon</span>": <span class="value"><span class="string">"icon-tasks"</span> </span>}
             ]
-        }</span></span>,
+        </span>}</span>,
         "<span class="attribute">footer</span>": <span class="value"><span class="literal">true</span>
-    }</span></span>,
+    </span>}</span>,
     "<span class="attribute">collections</span>": <span class="value">{
         "<span class="attribute">default</span>": <span class="value">{
             "<span class="attribute">limit</span>": <span class="value"><span class="number">20</span>
-        }</span></span>,
+        </span>}</span>,
         "<span class="attribute">dgtwc:DataEntry</span>": <span class="value">{
             "<span class="attribute">using</span>":<span class="value"><span class="string">"dgtwc:DataEntry"</span></span>,
             "<span class="attribute">usingLabel</span>":<span class="value"><span class="string">":title"</span>
-        }</span>
-    }</span>
-}</span></code></pre>
+        </span>}
+    </span>}
+</span>}</code></pre>
 <p>Top level configuration settings should always be present, even if the values are empty objects. The following settings are used for EGAD:</p>
 <p><code>name</code> :: <code>String</code>
 : This is the application name, displayed at the footer of the web application.</p>
@@ -317,23 +317,23 @@
 <p>Some of the System Modules inclused in EGAD are:</p>
 <ul>
 <li><p>home - Enables content in the homepage of the application. Receives an object with the content attribute refering to a html template to include as home content relative to the app directory, e.g.:</p>
-<pre class="highlighted"><code class="undefined">  "home": {
+<pre class="highlighted"><code class="httpstardog">  "home": <span class="variable">{
       "content": "mycontent/myhome.html"
-  }</code></pre>
+  }</span></code></pre>
 </li>
 <li><p>navbar - Enables top navigation bar in the application. Receives a configuration object specifying the link items which are objects including an <code>htmlId</code> to reference the element, a <code>label</code> to show in the navbar, an <code>using</code> to make the link to the proper collection view and an <code>icon</code> name, based on the icon names included in <a href="http://twitter.github.com/bootstrap/base-css.html#icons">bootstrap</a>; or dropdowns to include, e.g.:</p>
-<pre class="highlighted"><code class="brainfuck">  <span class="comment">"navbar":</span> <span class="comment">{</span>
-      <span class="comment">"items":</span> <span class="title">[</span> <span class="comment">{</span> <span class="comment">"htmlId":"lientry"</span>, <span class="comment">"label":</span> <span class="comment">"Data</span> <span class="comment">Entry"</span>, <span class="comment">"type":"browse"</span>, <span class="comment">"using":</span> <span class="comment">"dgtwc:DataEntry"</span>, <span class="comment">"icon":</span> <span class="comment">"icon</span>-<span class="comment">tasks"</span> <span class="comment">}</span>
-      <span class="title">]</span><span class="string">,</span>
-      <span class="comment">"dropdowns":</span> <span class="title">[</span>
-          <span class="comment">{</span>
-              <span class="comment">"name":</span> <span class="comment">"Queries"</span>,
-              <span class="comment">"icon":</span> <span class="comment">"icon</span>-<span class="comment">filter"</span>,
-              <span class="comment">"items":</span> <span class="title">[</span> <span class="comment">…</span> <span class="title">]</span>
-          <span class="comment">}</span>,
-          <span class="comment">…</span>
-      <span class="title">]</span>
-  <span class="comment">}</span></code></pre>
+<pre class="highlighted"><code class="httpstardog">  "navbar": <span class="variable">{
+      "items": [ { "htmlId":"lientry", "label": "Data Entry", "type":"browse", "using": "dgtwc:DataEntry", "icon": "icon-tasks" }</span>
+      ],
+      "dropdowns": [
+          <span class="variable">{
+              "name": "Queries",
+              "icon": "icon-filter",
+              "items": [ … ]
+          }</span>,
+          …
+      ]
+  }</code></pre>
 <p>  <code>type</code> - refers to a function of a module, in this case, the module browse (the url handler), will be activated by this link with the <code>using</code> attribute as a parameter, so the rendered link in the navbar will be: <code>#!/browse/dgtwc:DataEntry</code></p>
 <p>  The <code>items</code> attribute in the <code>dropdown</code> object takes the same objects as the top level <code>items</code> in navbar.</p>
 </li>
@@ -344,15 +344,15 @@
 <pre class="highlighted"><code class="json">  {
       "<span class="attribute">label</span>": <span class="value"><span class="string">"Search"</span></span>,
       "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/search"</span>
-  }</span></code></pre>
+  </span>}</code></pre>
 </li>
 </ul>
 <ul>
 <li><p>query - <code>true</code>/<code>false</code> enables or disables the treebrowser module, it can receive a configuration object to add a link to the navbar &amp; footer:</p>
-<pre class="highlighted"><code class="undefined">  "query": {
+<pre class="highlighted"><code class="httpstardog">  "query": <span class="variable">{
       "label": "Query Panel",
       "mainUrl": "#!/query"
-  }</code></pre>
+  }</span></code></pre>
 </li>
 </ul>
 <p>You can customize the EGAD application homepage by creating your own content using <a href="http://handlebarsjs.com">Handlebars</a> templating, <a href="http://twitter.github.io/bootstrap/">Bootstrap</a> UI components an a little bit of configuration in your EGAD app configuration file.</p>
@@ -365,7 +365,7 @@
     <span class="keyword">...</span>
 }</code></pre>
 <p>Remember that after any change in the configuration file you need to re-generate your application to make your changes effective, you can use the update command of the EGAD CLI to do this:</p>
-<pre class="highlighted"><code class="sql">$ egad <span class="operator"><span class="keyword">update</span> -j config.js</span></code></pre>
+<pre class="highlighted"><code class="matlab">$ egad update -<span class="built_in">j</span> <span class="transposed_variable">config.</span>js</code></pre>
 <p><strong>Note:</strong> the widgets below this section can not be modified unless you dive into the JS code, but that should be configurable in the next EGAD versions.Before starting to create EGAD apps, make sure you have Yeoman 1.0 listed in the <a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a> installed. Once the requirements are installed, you can proceed to create an EGAD app with the following steps:</p>
 <p>Assuming you already have installed the egad distribution as mentioned in <a href="https://github.com/clarkparsia/generator-egad/wiki/Installing-EGAD">Installing EGAD</a>, you can create an EGAD Application using the EGAD CLI:</p>
 <p>Create a new directory <code>&lt;myApp&gt;</code> for your EGAD application.</p>
@@ -375,29 +375,29 @@
 <p>Once a configuration file has been created, generate your EGAD app using the EGAD CLI:</p>
 <ul>
 <li><p>Using the Turtle configuration file</p>
-<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad create config.ttl</code></pre>
+<pre class="highlighted"><code class="sparql">  <span class="uri">&lt;myApp&gt;</span>$ egad <span class="keyword">create</span> config.ttl</code></pre>
 </li>
 </ul>
 <p>or</p>
 <ul>
 <li><p>Using the JS configuration file</p>
-<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad create -j config.js</code></pre>
+<pre class="highlighted"><code class="matlab">  &lt;myApp&gt;$ egad create -<span class="built_in">j</span> <span class="transposed_variable">config.</span>js</code></pre>
 </li>
 </ul>
 <h1>Testing</h1>
 <p>Once an EGAD application has been created, it can be tested using the <code>run</code> command of the EGAD CLI (make sure Annex &amp; Stardog are up and running):</p>
-<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad run</code></pre>
+<pre class="highlighted"><code class="apache"><span class="tag">&lt;myApp&gt;</span>$ egad run</code></pre>
 <h2 id="sd-Updating-the-EGAD-App">Updating the EGAD App</h2>
 <p>If you have made changes to the EGAD app configuration file, to update the application source use the following command: </p>
 <ul>
 <li><p>Using the Turtle configuration file</p>
-<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad update config.ttl</code></pre>
+<pre class="highlighted"><code class="apache">  <span class="tag">&lt;myApp&gt;</span>$ egad update config.ttl</code></pre>
 </li>
 </ul>
 <p>or</p>
 <ul>
 <li><p>Using the JS configuration file</p>
-<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad update -j config.js</code></pre>
+<pre class="highlighted"><code class="matlab">  &lt;myApp&gt;$ egad update -<span class="built_in">j</span> <span class="transposed_variable">config.</span>js</code></pre>
 </li>
 </ul>
 <h3>Known Issues</h3>
@@ -409,37 +409,37 @@
 </ul>
 <h3>Cleaning the application directory</h3>
 <p>To clean the application directory, one can use the command:</p>
-<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myApp</span>&gt;</span>$ egad clean</code></pre>
+<pre class="highlighted"><code class="apache"><span class="tag">&lt;myApp&gt;</span>$ egad clean</code></pre>
 <p>Which will delete all EGAD generated files (excluding all configuration &amp; files added by the user).</p>
 <h3>Deploying</h3>
 <p>An optimized version of the appication (CSS &amp; JS minified/optimized) can be obtained by running</p>
-<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myAppp</span>&gt;</span>$ egad build</code></pre>
+<pre class="highlighted"><code class="apache"><span class="tag">&lt;myAppp&gt;</span>$ egad build</code></pre>
 <p>Once a <code>dist</code> directory is created, it can be deployed in any web server since it contains only static files - HTML, JavaScript, CSS and images.
 Before creating EGAD modules, make sure you have Yeoman 1.0 listed in the <a href="https://github.com/clarkparsia/generator-egad/wiki/Requirements">Requirements</a> installed. Once the requirements are installed, you can proceed to create an EGAD module with the following steps:</p>
 <p>Assuming you already have installed the egad distribution as mentioned in <a href="https://github.com/clarkparsia/generator-egad/wiki/Installing-EGAD">Installing EGAD</a>, you can create an EGAD module using the EGAD CLI. Usually modules are created once you already have created an application using an EGAD configuration file, this provides the testing environment for you module, if you haven't created an application yet, please refer to the <em>Creating an EGAD App</em> document.</p>
 <p>In the application directory, execute the command:</p>
-<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">myapp</span>&gt;</span>$ egad module <span class="tag">&lt;<span class="title">mymodule</span>&gt;</span></code></pre>
+<pre class="highlighted"><code class="ruby">&lt;myapp&gt;<span class="variable">$ </span>egad <span class="class"><span class="keyword">module</span> <span class="inheritance">&lt;<span class="parent">mymodule</span></span>&gt;</span></code></pre>
 <p>Where <mymodule> is the name of your module within the EGAD application. This will create the basic stubs for an EGAD module, providing the structure for your module code. It also creates a set of configurations for you to include in the main EGAD application configuration file.
 If your configuration file is named <code>egad.json</code>, the tool will automatically append the configuration settings of the new module to the configuration file, like the following:</mymodule></p>
-<pre class="highlighted"><code class="undefined">"mymodule": {
+<pre class="highlighted"><code class="httpstardog">"mymodule": <span class="variable">{
     "code": "modules/mymodule/code",
     "templates": "modules/mymodule/template"
-}</code></pre>
+}</span></code></pre>
 <p>If your configuration file is named different, the configuration settings of the module will be stored in a module configuration file named <code>mymodule.json</code>. Note that for now, the content of this configuration file MUST be added manually to the <code>modules</code> section in the main app configuration file. In the future we‘ll provide support for module specific configuration files and you’ll be able to reference them from the main app configuration file.</p>
 <p>Modules files are created under the <code>modules</code> directory that, if not present, will be created in the root of your EGAD application directory, for example, the directory tree will be similar to:</p>
-<pre class="highlighted"><code class="objectivec">modules/
+<pre class="highlighted"><code class="avrasm">modules/
 └── mymodule
     ├── code
-    │   ├── main-view<span class="variable">.js</span>
-    │   └── main<span class="variable">.js</span>
-    ├── mymodule<span class="variable">.json</span>
+    │   ├── main-view<span class="preprocessor">.js</span>
+    │   └── main<span class="preprocessor">.js</span>
+    ├── mymodule<span class="preprocessor">.json</span>
     └── template
-        └── main<span class="variable">.html</span></code></pre>
+        └── main<span class="preprocessor">.html</span></code></pre>
 <h3>Generated module files</h3>
 <p>The module scafolding tool generates the following files as showed in the previous directory tree:</p>
 <ul>
 <li><p><code>modules/mymodule/code/main.js</code>: this file is the main module descriptor, it defines the module object in terms of the EGAD Framework, which lets the EGAD app detect and register the module for its use.</p>
-<pre class="highlighted"><code class="coffeescript">  define([
+<pre class="highlighted"><code class="php">  define([
     <span class="string">"jquery"</span>,
     <span class="string">"underscore"</span>,
     <span class="string">"egad"</span>,
@@ -448,28 +448,28 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
     <span class="string">"mymodule/main-view"</span>
   ], 
 
-  <span class="reserved">function</span>($, _, egad, api, MainView) {
+  <span class="function"><span class="keyword">function</span><span class="params">($, _, egad, api, MainView)</span> {</span>
 
-    <span class="reserved">var</span> mymoduleModule = egad.api.Module.extend({
+    <span class="keyword">var</span> mymoduleModule = egad.api.Module.extend({
       name: <span class="string">"mymodule"</span>,
 
       routes: {
         <span class="string">"!/mymodule"</span>: <span class="string">"routeHandler"</span>
       },
 
-      <span class="regexp">//</span> Module initialization <span class="reserved">function</span>.
-      <span class="regexp">//</span> Executed <span class="keyword">when</span> the module <span class="keyword">is</span> loaded <span class="keyword">in</span> the application.
-      initialize: <span class="reserved">function</span> () {
+      <span class="comment">// Module initialization function.</span>
+      <span class="comment">// Executed when the module is loaded in the application.</span>
+      initialize: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
         console.log(<span class="string">"mymodule initialized!"</span>);
       },
 
-      <span class="regexp">//</span> Module route handler <span class="reserved">function</span>.
-      routeHandler: <span class="reserved">function</span> () {
+      <span class="comment">// Module route handler function.</span>
+      routeHandler: <span class="function"><span class="keyword">function</span> <span class="params">()</span> {</span>
         console.log(<span class="string">'mymodule runs!'</span>);
 
-        <span class="regexp">//</span> render a main view
-        <span class="reserved">var</span> mainView = <span class="keyword">new</span> MainView();
-        $(<span class="string">'.pageContainer'</span>).html(mainView.$el);
+        <span class="comment">// render a main view</span>
+        <span class="keyword">var</span> mainView = <span class="keyword">new</span> MainView();
+        $(<span class="string">'.pageContainer'</span>).html(mainView.<span class="variable">$el</span>);
         mainView.render();
       }
 
@@ -494,7 +494,7 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
     <span class="string">"handlebars.helpers"</span>
   ], 
 
-  <span class="keyword">function</span>($, _, egad, egadConfig, api, Alerts) {
+  <span class="function"><span class="keyword">function</span><span class="params">($, _, egad, egadConfig, api, Alerts)</span> {</span>
 
     <span class="keyword">var</span> MainView = Backbone.View.extend({
       template: <span class="string">"mymodule/main"</span>,
@@ -519,15 +519,15 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
   });</code></pre>
 </li>
 <li><p><code>modules/mymodule/template/main.html</code>: handlebars HTML template used by the Backbone view in main-view.js.</p>
-<pre class="highlighted"><code class="xml">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"span12 module"</span>&gt;</span>
-    <span class="tag">&lt;<span class="title">h2</span>&gt;</span>mymodule content - html Handlebars template!<span class="tag">&lt;/<span class="title">h2</span>&gt;</span>
-  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></code></pre>
+<pre class="highlighted"><code class="axapta">  &lt;<span class="keyword">div</span> <span class="class"><span class="keyword">class</span>="<span class="title">span12</span> <span class="title">module</span>"&gt;
+    &lt;<span class="title">h2</span>&gt;<span class="title">mymodule</span> <span class="title">content</span> - <span class="title">html</span> <span class="title">Handlebars</span> <span class="title">template</span>!&lt;/<span class="title">h2</span>&gt;
+  &lt;/<span class="title">div</span>&gt;</span></code></pre>
 </li>
 <li><p><code>modules/mymodule/mymodule.json</code>: module configuration settings to be added in the main EGAD application configuration file.</p>
 <pre class="highlighted"><code class="json">  {
     "<span class="attribute">code</span>": <span class="value"><span class="string">"modules/mymodule/code"</span></span>,
     "<span class="attribute">templates</span>": <span class="value"><span class="string">"modules/mymodule/template"</span>
-  }</span></code></pre>
+  </span>}</code></pre>
 </li>
 </ul>
 <h2 id="sd-Extending-Stardog-Web">Extending Stardog Web</h2>
@@ -540,10 +540,10 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 <p>We use the <code>bootstrap</code>-based color-scheme <a href="https://github.com/rriepe/1pxdeep">framework</a> for customizing the look and feel of the EGAD apps. In order to build and apply a customized version of <code>bootstrap.css</code>, use the attached <code>LESS</code> project and follow these steps:</p>
 <ol>
 <li><p>Download <code>recess</code> via npm:</p>
-<pre class="highlighted"><code class="nginx"> <span class="title">npm</span> install recess</code></pre>
+<pre class="highlighted"><code class="cmake"> npm <span class="keyword">install</span> recess</code></pre>
 </li>
 <li><p>Compile <code>styles.less</code> with <code>recess</code>:</p>
-<pre class="highlighted"><code class="brainfuck"> <span class="string">.</span><span class="comment">/node_modules/</span>.<span class="comment">bin/recess</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">compile</span> <span class="comment">styles</span>.<span class="comment">less</span> &gt; <span class="comment">bootstrap</span>.<span class="comment">css</span></code></pre>
+<pre class="highlighted"><code class="avrasm"> ./node_modules/<span class="preprocessor">.bin</span>/recess --compile styles<span class="preprocessor">.less</span> &gt; bootstrap<span class="preprocessor">.css</span></code></pre>
 </li>
 <li><p>Replace <code>app/styles/bootstrap.css</code> with your newly compiled version of <code>bootstrap.css</code>.This page describes the required steps to start contributing to the project, how to develop new features and create/run test cases.</p>
 </li>

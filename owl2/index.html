@@ -232,8 +232,7 @@ Stardog performs reasoning in a lazy and late-binding fashion: it
 does not materialize inferences; but, rather, reasoning is performed at
 query time according to a given reasoning level. This allows for maximum
 flexibility while maintaining excellent performance and scalability.</p>
-<div><a id="reasoning-levels"></a></div>
-
+<h3>Reasoning Levels</h3>
 <p>Stardog supports several reasoning levels; the reasoning level determines the kinds of inference rules or axioms that are to be considered during query evaluation:</p>
 <ul>
 <li><strong>NONE</strong>. No axioms are considered.</li>
@@ -266,27 +265,26 @@ schema, then you can use the special built-in URI
 you can use <code>tag:stardog:api:context:all</code>. The default value for this
 property is to use the default graph only.</p>
 <h3>Query Answering</h3>
-<p>All of Stardog's interfaces (API, network, and command-line as of
-@@VERSION@@) support reasoning during query evaluation.</p>
+<p>All of Stardog's interfaces (API, network, and CLI) support reasoning during query evaluation.</p>
 <h3>Command Line</h3>
 <p>In order to evaluate queries in Stardog using reasoning via the command
 line, a specific reasoning level must be specified in the <a href="../admin/">connection
 string</a>:</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>.<span class="regexp">/stardog query "myDB;reasoning=QL" "SELECT ?s { ?s a :C } LIMIT 10"</span></code></pre>
+<pre class="highlighted"><code class="bash">$ ./stardog query <span class="string">"myDB;reasoning=QL"</span> <span class="string">"SELECT ?s { ?s a :C } LIMIT 10"</span></code></pre>
 <h3>HTTP</h3>
 <p>For HTTP, the reasoning level is specified with the other connection
 parameters in the request header <code>SD-Connection-String</code>:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">curl</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin:admin</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">GET</span> <span class="literal">-</span><span class="comment">H</span> <span class="comment">"SD</span>-<span class="comment">Connection</span>-<span class="comment">String:</span> <span class="comment">reasoning=QL"</span> <span class="comment">\</span>
-  <span class="comment">"http://localhost:5822/myDB/query?query=</span>.<span class="string">.</span><span class="string">.</span><span class="comment">"</span></code></pre>
+<pre class="highlighted"><code class="bash">$ curl -u admin:admin -X GET -H <span class="string">"SD-Connection-String: reasoning=QL"</span> \
+      <span class="string">"http://localhost:5822/myDB/query?query=..."</span></code></pre>
 <h3><code>ReasoningConnection</code> API</h3>
 <p>In order to use the ReasoningConnection API one needs to specify a
 reasoning level. See the <a href="../java/">Java Programming</a> chapter for
 details on specifying the reasoning level programmatically.</p>
 <p>Currently, the API has two methods:</p>
 <ul>
-<li>isConsistent(), which can be used to check if the current KB is
+<li><code>isConsistent()</code>, which can be used to check if the current KB is
 consistent with respect to the reasoning level.</li>
-<li>isSatisfiable(URI theURIClass), which can be used to check if the
+<li><code>isSatisfiable(URI theURIClass)</code>, which can be used to check if the
 given class if satisfiable with respect to the current KB and
 reasoning level.</li>
 </ul>
@@ -300,7 +298,7 @@ large number of statements interact with each other to infer new
 statements.</p>
 <p>Explanations can be retrieved using the CLI command <code>explain inference</code>
 by providing an input file that contains the inferences to be explained:</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog reasoning explain <span class="string">"myDB;reasoning=EL"</span> inference_to_explain.ttl</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog reasoning explain <span class="string">"myDB;reasoning=EL"</span> inference_to_explain.ttl</code></pre>
 <p>The output is displayed in a concise syntax designed to be legible; but
 it can be rendered in any one of the supported RDF syntaxes if desired.
 Explanations are also accessible through the <a href="../network/#extended-http">extended HTTP
@@ -319,13 +317,14 @@ start.</li>
 <li><strong>Is the schema where you think it is?</strong> Stardog might be extracting
 the wrong schema. You have to tell Stardog where to find the schema.
 See <a href="#tbox_extraction">Schema Extraction</a> for details.</li>
-<li><p><strong>Are you using the right reasoning level?</strong> Perhaps some of the
+<li><strong>Are you using the right reasoning level?</strong> Perhaps some of the
 modeling constructs (a.k.a. axioms) in your database are being
 ignored. You can find out which axioms are being ignored due to the
 reasoning level used by simply including the following line in the
-logging.properties file in <code>STARDOG_HOME</code>:</p>
-<pre class="highlighted"><code class="avrasm"><span class="keyword">com</span><span class="preprocessor">.clarkparsia</span><span class="preprocessor">.blackout</span><span class="preprocessor">.level</span> = ALL</code></pre>
-</li>
+logging.properties file in <code>STARDOG_HOME</code>:</li>
+</ul>
+<pre class="highlighted"><code class="java">        com.clarkparsia.blackout.level = ALL</code></pre>
+<ul>
 <li><p><strong>Are you using DL?</strong> Stardog supports schema-only reasoning for OWL
 2 DL, which effectively means that only TBox queries—queries that
 contain <a href="#query_types">TBox BGPs</a> only—will return complete query
@@ -381,12 +380,10 @@ so you can re-use what you already know about SPARQL to write rules. This…</p>
 <ul>
 <li><a href="http://www.w3.org/Submission/SWRL/#8.1">Built-ins for comparisons</a>.</li>
 <li><a href="http://www.w3.org/Submission/SWRL/#8.2">Math built-ins</a>.</li>
-<li><a href="http://www.w3.org/Submission/SWRL/#8.3">Built-ins for boolean
-values</a>.</li>
+<li><a href="http://www.w3.org/Submission/SWRL/#8.3">Built-ins for boolean values</a>.</li>
 <li><a href="http://www.w3.org/Submission/SWRL/#8.4">Built-ins for strings</a>,
 with the exception of <code>swrlb:tokenize</code>.</li>
-<li><a href="http://www.w3.org/Submission/SWRL/#8.4">Built-ins for date, time, and
-duration</a>.</li>
+<li><a href="http://www.w3.org/Submission/SWRL/#8.4">Built-ins for date, time, and duration</a>.</li>
 <li>Stardog built-in function library:<ul>
 <li><code>tag:stardog:api:functions:ln</code></li>
 <li><code>tag:stardog:api:functions:log</code></li>
@@ -401,28 +398,66 @@ duration</a>.</li>
 </ul>
 </li>
 </ul>
-<h3>SWRL Examples</h3>
+<h3>Stardog Rules Syntax <div class="metro label primary">New in 2.0</div></h3>
+fixme
+
+<h3>Rule Examples</h3>
 <p>User-defined rules in SWRL provide a different sort of “user interface”
 with respect to OWL 2 reasoning in Stardog. Some problems (and some
 people) are simply a better fit for a rules-based approach to modeling
 and reasoning than to an axioms-based approach. What follows are a few
 (trivial and contrived) examples of user-defined rules in SWRL (using
-Datalog syntax; Stardog requires the canonical RDF serialization of
-SWRL, however).</p>
+Stardog Rules syntax).</p>
 <h4>Basic Rules</h4>
 <p>A person between 13 and 19 (inclusive) years of age is a teenager:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Teenager</span>(<span class="number">?x</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">swrlb:</span>greaterThanOrEqual(<span class="number">?a</span>ge, <span class="number">13</span>),
-                 <span class="symbol">swrlb:</span>lessThanOrEqual(<span class="number">?a</span>ge, <span class="number">19</span>),
-                 <span class="symbol">:hasAge</span>(<span class="number">?x</span>, <span class="number">?a</span>ge)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> swrlb: <span class="uri">&lt;http://www.w3.org/2003/11/swrlb#&gt;</span>
+<span class="keyword">PREFIX</span> xsd: <span class="uri">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Person</span>; hasAge <span class="variable">?age</span>.
+      <span class="variable">?age</span> <span class="uri">swrlb:greaterThanOrEqual</span> <span class="number">13</span>^<span class="uri">xsd:int</span>;
+           <span class="uri">swrlb:lessThanOrEqual</span> <span class="number">19</span>^<span class="uri">xsd:int</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Teenager</span>.
+}</code></pre>
 <p>A person who's an uncle of a niece:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:UncleOfNiece</span>(<span class="number">?x</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">:Male</span>(<span class="number">?x</span>), <span class="symbol">:hasSibling</span>(<span class="number">?x</span>, <span class="number">?y</span>),
-                  <span class="symbol">:isParentOf</span>(<span class="number">?y</span>, <span class="number">?z</span>), <span class="symbol">:Female</span>(<span class="number">?z</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> Person; <span class="uri">a</span> <span class="uri">:Male</span>; <span class="uri">:hasSibling</span> <span class="variable">$y</span>;
+      <span class="variable">$y</span> <span class="uri">:isParentOf</span> <span class="variable">$z</span>;
+      <span class="variable">$z</span> <span class="uri">a</span> <span class="uri">:Female</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
+}</code></pre>
+<p>You can use SPARQL 1.1 property paths (and bnodes for unnecessary variables (that is, ones that aren't used in the <code>THEN</code>)) to render this rule even more concisely:</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:Person</span>, <span class="uri">:Male</span>; <span class="uri">:hasSibling</span>/<span class="uri">:isParentOf</span> [<span class="uri">a</span> <span class="uri">:Female</span>]
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
+}</code></pre>
 <p>A person who's male and has a niece or nephew is an uncle of his
 niece(s) and nephew(s):</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:isUncleOf</span>(<span class="number">?x</span>, <span class="number">?z</span>) &lt;- <span class="symbol">:isSiblingOf</span>(<span class="number">?x</span>, <span class="number">?y</span>), <span class="symbol">:isParentOf</span>(<span class="number">?y</span>, <span class="number">?z</span>), <span class="symbol">:Male</span>(<span class="number">?x</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">?x</span> <span class="uri">:isSiblingOf</span> <span class="variable">?y</span>; <span class="uri">a</span> <span class="uri">:Male</span>.
+      <span class="variable">?y</span> <span class="uri">:isParentOf</span> <span class="variable">?z</span>.
+      <span class="comment">#or with property paths this can be:
+</span>      <span class="comment">#?x a :Male; :isSiblingOf/:isParentOf ?z
+</span>}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?x</span> <span class="uri">:isUncleOf</span> <span class="variable">?z</span>.
+}</code></pre>
 <p>A super user can read all of the things!</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Role</span>(<span class="number">?z</span>), <span class="symbol">:hasRole</span>(<span class="number">?x</span>, <span class="number">?z</span>), <span class="symbol">:readPermission</span>(<span class="number">?z</span>, <span class="number">?y</span>) &lt;- <span class="symbol">:SuperUser</span>(<span class="number">?x</span>)
-                   <span class="symbol">:Resource</span>(<span class="number">?y</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?z)</span></code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:SuperUser</span>.
+      <span class="variable">?y</span> <span class="uri">a</span> <span class="uri">:Resource</span>.
+      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">&lt;http://www.w3.org/ns/sparql#UUID&gt;</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">:Role</span>.
+      <span class="variable">?x</span> <span class="uri">:hasRole</span> <span class="variable">?z</span>; <span class="uri">:readPermission</span> <span class="variable">?y</span>.
+}</code></pre>
 <h2 id="sd-Special-Predicates">Special Predicates</h2>
 <p>something something…</p>
 <h3>Direct/Strict Subclasses, Subproperties, &amp; Direct Types</h3>
@@ -440,27 +475,27 @@ predicates:</p>
 <p>We define the meaning of these predicates by relating each of them to an
 analogous triple pattern.The predicates <code>sdle:directSubPropertyOf</code> and
 <code>sdle:strictSubPropertyOf</code> are defined analogously.</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:ind</span> <span class="symbol">sdle:</span>directType <span class="symbol">:c1</span> -&gt;
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:ind sdle:directType</span> :c1 -&gt;
 
-<span class="symbol">:ind</span> <span class="symbol">rdf:</span>type <span class="symbol">:c1</span> .
-<span class="constant">FILTER</span> <span class="constant">NOT</span> <span class="constant">EXISTS</span> {
-  <span class="symbol">:ind</span> <span class="symbol">rdf:</span>type <span class="symbol">:c2</span> .
-  <span class="symbol">:c2</span> <span class="symbol">sdle:</span>strictSubClassOf <span class="symbol">:c1</span> .
+<span class="attribute">:ind rdf:type</span> :c1 .
+FILTER NOT EXISTS {
+<span class="code">  :ind rdf:type :c2 .</span>
+<span class="code">  :c2 sdle:strictSubClassOf :c1 .</span>
 }
 
-<span class="symbol">:c1</span> <span class="symbol">sdle:</span>strictSubClassOf <span class="symbol">:c2</span> -&gt;
+<span class="attribute">:c1 sdle:strictSubClassOf</span> :c2 -&gt;
 
-<span class="symbol">:c1</span> <span class="symbol">rdfs:</span>subClassOf <span class="symbol">:c2</span> .
-<span class="constant">FILTER</span> <span class="constant">NOT</span> <span class="constant">EXISTS</span> {
-  <span class="symbol">:c1</span> <span class="symbol">owl:</span>equivalentClass <span class="symbol">:c2</span> .
+<span class="attribute">:c1 rdfs:subClassOf</span> :c2 .
+FILTER NOT EXISTS {
+<span class="code">  :c1 owl:equivalentClass :c2 .</span>
 }
 
-<span class="symbol">:c1</span> <span class="symbol">sdle:</span>directSubClassOf <span class="symbol">:c2</span> -&gt;
+<span class="attribute">:c1 sdle:directSubClassOf</span> :c2 -&gt;
 
-<span class="symbol">:c1</span> <span class="symbol">sdle:</span>strictSubClassOf <span class="symbol">:c2</span> .
-<span class="constant">FILTER</span> <span class="constant">NOT</span> <span class="constant">EXISTS</span> {
-  <span class="symbol">:c1</span> <span class="symbol">sdle:</span>strictSubClassOf <span class="symbol">:c3</span> .
-  <span class="symbol">:c3</span> <span class="symbol">sdle:</span>strictSubClassOf <span class="symbol">:c2</span> .
+<span class="attribute">:c1 sdle:strictSubClassOf</span> :c2 .
+FILTER NOT EXISTS {
+<span class="code">  :c1 sdle:strictSubClassOf :c3 .</span>
+<span class="code">  :c3 sdle:strictSubClassOf :c2 .</span>
 }</code></pre>
 <p>These triple patterns can be used instead of the triple containing our
 built-in predicate in SELECT, CONSTRUCT, or ASK queries.</p>
@@ -473,7 +508,7 @@ warnings. <strong>Note that this support is effectively a gun with which users
 may shoot themselves in the foot if they do not use it carefully.</strong></p>
 <p>We can create new individuals with a rule by using the (non-standard)
 built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Parent(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
 <p>This rule will be used to create a <em>random</em> bnode for each instance of
 the class <code>:Person</code> and also to assert that each new instance is also an
 instance of <code>:Parent</code>.</p>
@@ -484,11 +519,11 @@ meaningless in the sense that they should not be used in further
 queries; that is to say, these bnodes are not guaranteed by Stardog to
 be stable. Due to normalization, rules with more than one atom in the
 head are broken up into several rules. Thus,</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?y</span>), <span class="symbol">:Parent</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?y), :Parent(?y)</span> &lt;- :Person(?x), http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
 <p>will be normalized into:</p>
-<pre class="highlighted"><code class="avrasm">:Male(?<span class="built_in">y</span>) &lt;- :Person(?<span class="built_in">x</span>), http://www<span class="preprocessor">.w</span>3<span class="preprocessor">.org</span>/ns/sparql<span class="preprocessor">#UUID(?y).</span>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).
 
-:Parent(?<span class="built_in">y</span>) &lt;- :Person(?<span class="built_in">x</span>), http://www<span class="preprocessor">.w</span>3<span class="preprocessor">.org</span>/ns/sparql<span class="preprocessor">#UUID(?y).</span></code></pre>
+<span class="attribute">:Parent(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
 <p>As a consequence, in this case, instead of stating that the new
 individual is both an instance of <code>:Male</code> and <code>:Parent</code>, we would create
 two <em>different</em> new individuals, and assert that one is male and the
@@ -496,43 +531,43 @@ other is a parent. If you need to assert various things about the new
 individual, we recommend the use of extra rules. In the previous
 example, we can introduce a new class (<code>:Father</code>) and add the following
 rule to our schema:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Male</span>(<span class="number">?x</span>), <span class="symbol">:Parent</span>(<span class="number">?x</span>) &lt;- <span class="symbol">:Father</span>(<span class="number">?x</span>).</code></pre>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?x), :Parent(?x)</span> &lt;- :Father(?x).</code></pre>
 <p>And then modify the original rule accordingly:</p>
-<pre class="highlighted"><code class="ruby"><span class="symbol">:Father</span>(<span class="number">?y</span>) &lt;- <span class="symbol">:Person</span>(<span class="number">?x</span>), <span class="symbol">http:</span>/<span class="regexp">/www.w3.org/ns</span><span class="regexp">/sparql#UUID(?y).</span></code></pre>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Father(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
 <h2 id="sd-Query-Rewriting">Query Rewriting</h2>
 <p>Query answering with reasoning in Stardog is based on the <em>query rewriting</em>
 technique: Stardog rewrites the user's query with respect to the schema, and then
 executes the resulting expanded query (EQ) against the data. As can be
 seen in Figure 2, the rewriting process involves five different phases.</p>
-<p><img src="/docs/owl2/blackout.png" alt=""></p>
+<p><img src="/img/blackout.png" alt=""></p>
 <p>Figure 1. Query Answering</p>
-<p><img src="/docs/owl2/blackout-internals.png" alt=""></p>
+<p><img src="/img/blackout-internals.png" alt=""></p>
 <p>Figure 2. Query Rewriting</p>
 <p>We illustrate the query answering process by means of an example.
-Consider a Stardog database, MyDB~1~, containing the following schema
+Consider a Stardog database, MyDB<sub>1</sub>, containing the following schema
 axioms:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:SeniorManager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:manages</span> <span class="tag">some</span> <span class="pseudo">:Manager</span>
-  <span class="pseudo">:manages</span> <span class="tag">some</span> <span class="pseudo">:Employee</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Manager</span>
-  <span class="pseudo">:Manager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester"> <span class="uri">:SeniorManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:manages</span> <span class="built_in">some</span> <span class="uri">:Manager</span>
+ <span class="uri">:manages</span> <span class="built_in">some</span> <span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+ <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span></code></pre>
 <p>Which says that a senior manager manages at least one manager, that
 every person that manages an employee is a manager, and that every
-manager is also an employee. Moreover, let us assume MyDB~1~ also
+manager is also an employee. Moreover, let us assume MyDB<sub>1</sub> also
 contains the following data assertions:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:Bill</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:SeniorManager</span>
-  <span class="pseudo">:Robert</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Manager</span>
-  <span class="pseudo">:Ana</span> <span class="pseudo">:manages</span> <span class="pseudo">:Lucy</span>
-  <span class="pseudo">:Lucy</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester"><span class="uri">:Bill</span> <span class="uri">rdf:type</span> <span class="uri">:SeniorManager</span>
+<span class="uri">:Robert</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span>
+<span class="uri">:Ana</span> <span class="uri">:manages</span> <span class="uri">:Lucy</span>
+<span class="uri">:Lucy</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span></code></pre>
 <p>Finally, let us assume that we want to retrieve the set of all
 employees. We do this by posing the following query:</p>
-<pre class="highlighted"><code class="ruby"><span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:Employee</span> }</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }</code></pre>
 <p>Given the knowledge captured in the schema, we expect all individuals
 occurring in the data to be part of the answer. In order to answer this
 query, Stardog first <strong>rewrites</strong> it using the schema. In this case, the
 original query is rewritten into four queries:</p>
-<pre class="highlighted"><code class="ruby">  <span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:Employee</span> }
-  <span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:Manager</span> }
-  <span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:SeniorManager</span> }
-  <span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">:manages</span> <span class="number">?x</span>. <span class="number">?x</span> <span class="symbol">rdf:</span>type <span class="symbol">:Employee</span> }</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }
+<span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span> }
+<span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:SeniorManager</span> }
+<span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">:manages</span> <span class="variable">?x</span>. <span class="variable">?x</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }</code></pre>
 <p>The final step consists of executing these four queries over the data.</p>
 <p>The form of the EQ depends on the reasoning level. For OWL 2 QL, every
 EQ produced by Stardog <em>is guaranteed to be expanded into a set of
@@ -574,20 +609,20 @@ the maximal size of the EQs produced by Stardog. The larger the EQ, the
 more difficult is to evaluate it over the data.</p>
 <p>For example, suppose our schema contains a very thorough and detailed
 set of subclasses of the class <code>:Employee</code>:</p>
-<pre class="highlighted"><code class="r">  :Manager rdfs:subClassOf :Employee
-  :SeniorManager rdfs:subClassOf :Manager
-  <span class="keyword">...</span>
+<pre class="highlighted"><code class="manchester"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:SeniorManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+...
 
-  :Supervisor rdfs:subClassOf :Employee
-  :DepartmentSupervisor rdfs:subClassOf :Supervisor
-  <span class="keyword">...</span>
+<span class="uri">:Supervisor</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:DepartmentSupervisor</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Supervisor</span>
+...
 
-  :Secretary rdfs:subClassOf :Employee
-  <span class="keyword">...</span></code></pre>
+<span class="uri">:Secretary</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+...</code></pre>
 <p>If we wanted to retrieve the set of all employees, Blackout would
 produce an EQ containing a query of the following form for every
 subclass <code>:Ci</code> of <code>:Employee</code>:</p>
-<pre class="highlighted"><code class="ruby">  <span class="constant">SELECT</span> <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:Ci</span> }</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Ci</span> }</code></pre>
 <p>At this point, it is easy to see that <strong>the more specific the query, the
 better</strong> as general queries—that is, queries that contain concepts high
 up in the class hierarchy defined by the schema—as the one above, will
@@ -598,13 +633,15 @@ types of axiom can help reduce the size of the EQs significantly due to
 an optimization technique implemented in Blackout called <em>query
 subsumption</em>. In order to grasp the intuition behind it, let us consider
 the following query asking for people and the employees they manage:</p>
-<pre class="highlighted"><code class="ruby">  <span class="constant">SELECT</span> <span class="number">?m</span>anager <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?m</span>anager <span class="symbol">:manages</span> <span class="number">?e</span>mployee. <span class="number">?e</span>mployee <span class="symbol">rdf:</span>type <span class="symbol">:Employee</span> }</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?manager</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> 
+  { <span class="variable">?manager</span> <span class="uri">:manages</span> <span class="variable">?employee</span>. 
+    <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span>. }</code></pre>
 <p>We know that this query would cause a large EQ given the deep hierarchy
-of <code>:Employee</code> in MyDB~1~. However, if we added the following single
+of <code>:Employee</code> in MyDB<sub>1</sub>. However, if we added the following single
 range axiom:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:manages</span> <span class="tag">rdfs</span><span class="pseudo">:range</span> <span class="pseudo">:Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester">      <span class="uri">:manages</span> <span class="uri">rdfs:range</span> <span class="uri">:Employee</span></code></pre>
 <p>then the EQ would collapse to:</p>
-<pre class="highlighted"><code class="ruby">  <span class="constant">SELECT</span> <span class="number">?m</span>anager <span class="number">?e</span>mployee <span class="constant">WHERE</span> { <span class="number">?m</span>anager <span class="symbol">:manages</span> <span class="number">?e</span>mployee }</code></pre>
+<pre class="highlighted"><code class="sparql"> <span class="keyword">SELECT</span> <span class="variable">?manager</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?manager</span> <span class="uri">:manages</span> <span class="variable">?employee</span> }</code></pre>
 <p>which is considerably less difficult to evaluate.</p>
 <h2 id="sd-Terminology">Terminology</h2>
 <p>The preceeding discussion employs the following terms of art with the following
@@ -624,18 +661,18 @@ the data modeling needs of your application.</p>
 assertions are used to state that a particular individual is an instance
 of a given class. Property assertions are used to state that two
 particular individuals (or an individual and a literal) are related via
-a given property. For example, suppose we have a DB MyDB~2~ that
+a given property. For example, suppose we have a DB MyDB<sub>2</sub> that
 contains the following data assertions:We use the usual standard
 prefixes for RDF(S) and OWL.</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:clark_and_parsia</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Company</span>
-  <span class="pseudo">:clark_and_parsia</span> <span class="pseudo">:maintains</span> <span class="pseudo">:Stardog</span></code></pre>
+<pre class="highlighted"><code class="manchester"><span class="uri">:clark_and_parsia</span> <span class="uri">rdf:type</span> <span class="uri">:Company</span>
+<span class="uri">:clark_and_parsia</span> <span class="uri">:maintains</span> <span class="uri">:Stardog</span></code></pre>
 <p>stating that <code>:clark_and_parsia</code> is a company, and that
 <code>:clark_and_parsia</code> maintains <code>:Stardog</code>.</p>
 <p>The most common schema axioms are subclass axioms. Subclass axioms are
 used to state that every instance of a particular class is also an
-instance of another class. For example, suppose that MyDB~2~ contains
+instance of another class. For example, suppose that MyDB<sub>2</sub> contains
 the following TBox axiom:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:Company</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Organization</span></code></pre>
+<pre class="highlighted"><code class="manchester"><span class="uri">:Company</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Organization</span></code></pre>
 <p>stating that companies are a type of organization.</p>
 <h3>Queries</h3>
 <p>When reasoning is enabled, Stardog executes SPARQL queries (simply
@@ -643,27 +680,27 @@ queries from now on) depending on the type of Basic Graph Patterns they
 contain.</p>
 <p>A BGP is said to be an ABox BGP if it is of one of the following forms:</p>
 <ul>
-<li><strong>term~1~</strong> rdf:type <strong>uri</strong></li>
-<li><strong>term~1~</strong> <strong>uri</strong> <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:differentFrom <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:sameAs <strong>term~2~</strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdf:type</code> <strong>uri</strong></li>
+<li><strong>term<sub>1</sub></strong> <strong>uri</strong> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:differentFrom</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:sameAs</code> <strong>term<sub>2</sub></strong></li>
 </ul>
 <p>A BGP is said to be a TBox BGP if it is of one of the following forms:</p>
 <ul>
-<li><strong>term~1~</strong> rdfs:subClassOf <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:disjointWith <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:equivalentClass <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> rdfs:subPropertyOf <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:equivalentProperty <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:inverseOf <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> owl:propertyDisjointWith <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> rdfs:domain <strong>term~2~</strong></li>
-<li><strong>term~1~</strong> rdfs:range <strong>term~2~</strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdfs:subClassOf</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:disjointWith</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:equivalentClass</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdfs:subPropertyOf</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:equivalentProperty</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:inverseOf</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>owl:propertyDisjointWith</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdfs:domain</code> <strong>term<sub>2</sub></strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdfs:range</code> <strong>term<sub>2</sub></strong></li>
 </ul>
 <p>A BGP is said to be a Hybrid BGP if it is of one of the following forms:</p>
 <ul>
-<li><strong>term~1~</strong> rdf:type <strong>?var</strong></li>
-<li><strong>term~1~</strong> <strong>?var</strong> <strong>term~2~</strong></li>
+<li><strong>term<sub>1</sub></strong> <code>rdf:type</code> <strong>?var</strong></li>
+<li><strong>term<sub>1</sub></strong> <strong>?var</strong> <strong>term<sub>2</sub></strong></li>
 </ul>
 <p>where <strong>term</strong> (possibly with subscripts) is either an URI or variable;
 <strong>uri</strong> is a URI; and <strong>?var</strong> is a variable.</p>
@@ -673,49 +710,50 @@ executed by Pellet, and Hybrid BGPs by a combination of both.</p>
 <p>Intuitively, reasoning with a DB means to make implicit knowledge
 explicit. There are two main use cases for reasoning: infer implicit
 knowledge and discover modeling errors.</p>
-<p>With respect to the first use case, recall that MyDB~2~ contains the
+<p>With respect to the first use case, recall that MyDB<sub>2</sub> contains the
 following assertion and axiom:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:clark_and_parsia</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Company</span>
-  <span class="pseudo">:Company</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Organization</span></code></pre>
+<pre class="highlighted"><code class="manchester"> <span class="uri">:clark_and_parsia</span> <span class="uri">rdf:type</span> <span class="uri">:Company</span>
+ <span class="uri">:Company</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Organization</span></code></pre>
 <p>From this DB, we can use Stardog in order to <em>infer</em> that
 <code>:clark_and_parsia</code> is an organization:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:clark_and_parsia</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Organization</span></code></pre>
+<pre class="highlighted"><code class="asciidoc"><span class="attribute">:clark_and_parsia rdf:type</span> :Organization</code></pre>
 <p>Using reasoning in order to infer implicit knowledge in the context of
 an enterprise application can lead to simpler queries. Let us suppose,
-for example, that MyDB~2~ contains a complex class hierarchy including
+for example, that MyDB<sub>2</sub> contains a complex class hierarchy including
 several types of organization (including company). Let us further
 suppose that our application requires to use Stardog in order to get the
 list of all considered organizations. If Stardog were used <strong>with
 reasoning</strong>, then we would need only issue the following simple query:</p>
-<pre class="highlighted"><code class="ruby">  <span class="constant">SELECT</span> <span class="number">?o</span>rg <span class="constant">WHERE</span> { <span class="number">?o</span>rg <span class="symbol">rdf:</span>type <span class="symbol">:Organization</span>}</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?org</span> <span class="keyword">WHERE</span> { <span class="variable">?org</span> <span class="uri">rdf:type</span> <span class="uri">:Organization</span>}</code></pre>
 <p>In contrast, if we were using Stardog <strong>with no reasoning</strong>, then we
 would have to issue the following considerably more complex query that
 considers all possible types of organization:</p>
-<pre class="highlighted"><code class="r">  SELECT ?org WHERE { { ?org rdf:type :Organization } UNION
-                      { ?org rdf:type :Company } UNION
-                      <span class="keyword">...</span>
-                    }</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?org</span> <span class="keyword">WHERE</span> 
+              { { <span class="variable">?org</span> <span class="uri">rdf:type</span> <span class="uri">:Organization</span> } UNION
+              { <span class="variable">?org</span> <span class="uri">rdf:type</span> <span class="uri">:Company</span> } UNION
+...
+}</code></pre>
 <p>Stardog can also be used in order to discover modeling errors in a DB.
 The most common modeling errors are <em>unsatisfiable</em> classes and
 <em>inconsistent</em> DBs.</p>
 <p>An unsatisfiable class is simply a class that cannot have any instances.
-Say, for example, that we added the following axioms to MyDB~2~:</p>
-<pre class="highlighted"><code class="css">  <span class="pseudo">:Company</span> <span class="tag">owl</span><span class="pseudo">:disjointWith</span> <span class="pseudo">:Organization</span>
-  <span class="pseudo">:LLC</span> <span class="tag">owl</span><span class="pseudo">:equivalentClass</span> <span class="pseudo">:Company</span> <span class="tag">and</span> <span class="pseudo">:Organization</span></code></pre>
+Say, for example, that we added the following axioms to MyDB<sub>2</sub>:</p>
+<pre class="highlighted"><code class="manchester"> <span class="uri">:Company</span> <span class="uri">owl:disjointWith</span> <span class="uri">:Organization</span>
+ <span class="uri">:LLC</span> <span class="uri">owl:equivalentClass</span> <span class="uri">:Company</span> <span class="built_in">and</span> <span class="uri">:Organization</span></code></pre>
 <p>stating that companies cannot be organizations and vice versa, and that
 an LLC is a company and an organization. The disjointness axiom causes
 the class <code>:LLC</code> to be unsatisfiable because, for the DB to be
-contradiction-free, there can be no instances of <code>:LLC</code>.</p>
+free of any logical contradiction, there can be no instances of <code>:LLC</code>.</p>
 <p>Asserting (or inferring) that an unsatisfiable class has an instance,
-causes the DB to be <em>inconsistent</em>. In the particular case of MyDB~2~,
+causes the DB to be <em>inconsistent</em>. In the particular case of MyDB<sub>2</sub>,
 we know that <code>:clark_and_parsia</code> is a company AND an organization (see
 above); therefore, we also know that it is an instance of <code>:LLC</code>, and as
-<code>:LLC</code> is known to be unsatisfiable, we have that MyDB~2~ is
+<code>:LLC</code> is known to be unsatisfiable, we have that MyDB<sub>2</sub> is
 inconsistent.</p>
 <p>Using reasoning in order to discover modeling errors in the context of
 an enterprise application is useful in order to maintain a correct
 contradiction-free model of the domain. In our example, we discovered
-that <code>:LLC</code> is unsatisfiable and MyDB~2~ is inconsistent, which leads us
+that <code>:LLC</code> is unsatisfiable and MyDB<sub>2</sub> is inconsistent, which leads us
 to believe that there is a modeling error in our DB. In this case, it is
 easy to see that the problem is the disjointness axiom between
 <code>:Company</code> and <code>:Organization</code>.</p>

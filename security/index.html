@@ -356,13 +356,13 @@ layer for remote connections. The following lighttpd configuration file
 is a complete example that lets clients use HTTPS connections with the
 lighttpd proxy to communicate with a Stardog HTTP server listening on
 port 12345 of the lighttpd host.</p>
-<pre class="highlighted"><code class="haskell"><span class="title">server</span>.port = <span class="number">443</span>
-<span class="title">ssl</span>.engine = <span class="string">"enable"</span>
-<span class="title">ssl</span>.pemfile = <span class="string">"server.pem"</span>
-<span class="title">server</span>.<span class="module">modules = <span class="container">( "<span class="title">mod_proxy</span>" )</span>
-proxy.server = <span class="container">( "" =&gt; ( ( "<span class="title">host</span>" =&gt; "127.0.0.1" , "<span class="title">port</span>" =&gt; "12345" )</span> )
+<pre class="highlighted"><code class="avrasm">server<span class="preprocessor">.port</span> = <span class="number">443</span>
+ssl<span class="preprocessor">.engine</span> = <span class="string">"enable"</span>
+ssl<span class="preprocessor">.pemfile</span> = <span class="string">"server.pem"</span>
+server<span class="preprocessor">.modules</span> = ( <span class="string">"mod_proxy"</span> )
+proxy<span class="preprocessor">.server</span> = ( <span class="string">""</span> =&gt; ( ( <span class="string">"host"</span> =&gt; <span class="string">"127.0.0.1"</span> , <span class="string">"port"</span> =&gt; <span class="string">"12345"</span> ) )
               )
-server.document-root = "/dev/null"</span></code></pre>
+server<span class="preprocessor">.document</span>-root = <span class="string">"/dev/null"</span></code></pre>
 <p>This configuration directs lighttpd to use the certificate and private
 key in server.pem for SSL connections. [^5]</p>
 <p>[^5]: lighttpd can be configured to
@@ -414,10 +414,10 @@ documentation.</p>
 scheme is used in the database connection string. For example, the
 following invocation of the Stardog command line utility will initiate
 an SSL connection to a remote database:</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>stardog status -c <span class="symbol">https:</span>/<span class="regexp">/stardog.example.org/sp</span>2b_10k</code></pre>
+<pre class="highlighted"><code class="avrasm">$ stardog status -c https://stardog<span class="preprocessor">.example</span><span class="preprocessor">.org</span>/sp2b_10k</code></pre>
 <p>If the client is unable to authenticate to the server, then the connection
 will fail and an error message like the following will be generated.</p>
-<pre class="highlighted"><code class="perl">Error during <span class="keyword">connect</span>.  Cause was SSLPeerUnverifiedException: peer <span class="keyword">not</span> authenticated</code></pre>
+<pre class="highlighted"><code class="coffeescript">Error during connect.  Cause was <span class="attribute">SSLPeerUnverifiedException</span>: peer <span class="keyword">not</span> authenticated</code></pre>
 <p>The most common cause of this error is that the server presented a
 certificate that was not issued by an authority that the client trusts.
 The Stardog HTTP client driver uses standard Java security components to
@@ -434,8 +434,8 @@ initializes it with the certificate in <code>my-trusted-server.crt</code>. The t
 will prompt for a passphrase to associate with the trust store. This is
 not used to encrypt its contents, but can be used to ensure its
 integrity. [^9]</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">keytool</span> <span class="literal">-</span><span class="comment">importcert</span>  <span class="literal">-</span><span class="comment">keystore</span> <span class="comment">my</span>-<span class="comment">truststore</span>.<span class="comment">jks</span> <span class="comment">\</span>
-        <span class="literal">-</span><span class="comment">alias</span> <span class="comment">stardog</span>-<span class="comment">server</span> <span class="literal">-</span><span class="comment">file</span> <span class="comment">my</span>-<span class="comment">trusted</span>-<span class="comment">server</span>.<span class="comment">crt</span></code></pre>
+<pre class="highlighted"><code class="lasso">$ keytool <span class="attribute">-importcert</span>  <span class="attribute">-keystore</span> my<span class="attribute">-truststore</span>.jks \
+        <span class="attribute">-alias</span> stardog<span class="attribute">-server</span> <span class="attribute">-file</span> my<span class="attribute">-trusted</span><span class="attribute">-server</span>.crt</code></pre>
 <p>[^9]: See the <code>javax.net.ssl.trustStorePassword</code> system property
 <a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">documentation</a>.</p>
 <p>The following Stardog command line invocation uses the newly created
@@ -457,7 +457,7 @@ the server certificate. [^10] </p>
 <p>[^10]: The matching algorithm used is <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">described</a>
 in the Apache docs about <code>BrowserCompatHostnameVerifier</code>.</p>
 <p>This will cause an error message like the following</p>
-<pre class="highlighted"><code class="vbscript"><span class="keyword">Error</span> during connect.  Cause was SSLException: hostname <span class="keyword">in</span> certificate didn<span class="comment">'t match</span></code></pre>
+<pre class="highlighted"><code class="vbnet"><span class="keyword">Error</span> during connect.  Cause was SSLException: hostname <span class="keyword">in</span> certificate didn<span class="comment">'t match</span></code></pre>
 <p>The client driver does not support connecting when there's a mismatch;
 therefore, the only workarounds are to replace the server’s certificate or
 modify the connection string to use an alias for the same server that
@@ -494,13 +494,13 @@ administrator may choose any location.</p>
 directory into a location that places them into most users’ execution
 <code>PATH</code>. Execution permissions to the tools are <em>not</em> limited because
 access to the data directory will be <strong>strictly limited</strong>.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">c</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">a=rx</span> <span class="string">.</span><span class="comment">/stardog</span> <span class="comment">/usr/bin/stardog</span>
-<span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">c</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">a=rx</span> <span class="string">.</span><span class="comment">/stardog</span>-<span class="comment">admin</span> <span class="comment">/usr/sbin/stardog</span>-<span class="comment">admin</span></code></pre>
+<pre class="highlighted"><code class="lasso">$ install <span class="attribute">-c</span> <span class="attribute">-m</span> a=<span class="literal">rx</span> ./stardog /usr/bin/stardog
+$ install <span class="attribute">-c</span> <span class="attribute">-m</span> a=<span class="literal">rx</span> ./stardog<span class="attribute">-admin</span> /usr/sbin/stardog<span class="attribute">-admin</span></code></pre>
 <p>The Stardog data directory stores both user data and system
 configuration data, <strong>including access control information</strong>. The location
 selected for the data directory should be reliable, large enough to meet
 data requirements, and secured from unauthorized access.</p>
-<pre class="highlighted"><code class="ruby"><span class="variable">$ </span>export <span class="constant">STARDOG_HOME</span>=<span class="regexp">/var/db</span><span class="regexp">/stardog</span></code></pre>
+<pre class="highlighted"><code class="coffeescript">$ <span class="reserved">export</span> STARDOG_HOME=/<span class="reserved">var</span>/db/stardog</code></pre>
 <p>Access to the data directory is limited to the <code>stardog</code> group and the
 only member of that group is the <code>stardog</code> user.Granting access
 permissions to members of the <code>stardog</code> group is more flexible than
@@ -508,11 +508,11 @@ limiting access to a single user. For example, it may allow a Stardog
 network server to run as a user other than <code>stardog</code>; or it may
 facilitate other processes other than Stardog, i.e., data backup. The
 snippet below creates that user and group.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">groupadd</span> <span class="comment">stardog</span>
-<span class="comment">$</span> <span class="comment">useradd</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">${STARDOG_HOME}</span> <span class="comment">\</span>
-          <span class="literal">-</span><span class="comment">g</span> <span class="comment">stardog</span> <span class="comment">\</span>
-          <span class="literal">-</span><span class="comment">s</span> <span class="comment">/sbin/nologin</span> <span class="comment">\</span>
-<span class="comment">stardog</span></code></pre>
+<pre class="highlighted"><code class="bash">$ groupadd stardog
+$ useradd <span class="operator">-d</span> <span class="variable">${STARDOG_HOME}</span> \
+          -g stardog \
+          <span class="operator">-s</span> /sbin/nologin \
+stardog</code></pre>
 <p>This snippet creates the data directory and limits its access to the
 newly created group.</p>
 <pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">install</span> <span class="literal">-</span><span class="comment">d</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">g</span> <span class="comment">stardog</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">ug=rwx</span>,<span class="comment">o=${STARDOG_HOME}</span></code></pre>
@@ -524,7 +524,7 @@ run as a user in the <code>stardog</code> group.</p>
 For example, the following snippet adding the <code>tomcat</code> user to the
 <code>stardog</code> group may be needed in an environment where a Stardog HTTP
 server is run as an application within Tomcat.</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">$</span> <span class="comment">usermod</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">add</span>-<span class="comment">to</span>-<span class="comment">group</span> <span class="comment">stardog</span> <span class="comment">tomcat</span></code></pre>
+<pre class="highlighted"><code class="lasso">$ usermod -<span class="attribute">-add</span><span class="attribute">-to</span><span class="attribute">-group</span> stardog tomcat</code></pre>
 <p>Of course the ideal deployment of the Stardog server depends on the
 particulars of the deployment environment, the preferences of the
 administrator, and the anticipated user load. The group-based permission
