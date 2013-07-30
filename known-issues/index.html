@@ -52,6 +52,7 @@
 <li>Stardog doesn&#39;t support SPARQ 1.1 UPDATE query
  language, federation, UPDATE protocol (but the HTTP protocol support is a superset of SPARQL 1.1 UPDATE protocol anyway), or any entailment regimes other than
  OWL 2 Direct Semantics. <strong>WILLFIX</strong></li>
+<li>Our <code>CONSTRUCT</code> slightly deviates from <a href="http://www.w3.org/TR/sparql11-query/#construct">SPARQL 1.1 specification</a> in that it does not implicitly <code>DISTINCT</code> query results; rather, it implicitly applies <code>REDUCED</code> semantics to <code>CONSTRUCT</code> query results.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></li>
 <li>Asking for all individuals with reasoning via the query
 <code>{?s a owl:Thing}</code> might also retrieve some classes and properties.
 <strong>WILLFIX</strong></li>
@@ -83,9 +84,9 @@ raise an exception.</li>
 </ol>
 
           </div>
-          <div class="hidden" id="footnote-container">
+          <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          </div>
+          <div class="footnote" id="footnote-1"><p>1. Strictly speaking, this is a Sesame parser deviation from the SPARQL 1.1 spec with which we happen to agree.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>
