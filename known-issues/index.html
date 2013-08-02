@@ -47,7 +47,7 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <p>As of 2.0.0, the known issues include:</p>
+            <p>The known issues in Stardog 2.0.0—</p>
 <ol>
 <li>Stardog doesn&#39;t support SPARQ 1.1 UPDATE query
  language, federation, UPDATE protocol (but the HTTP protocol support is a superset of SPARQL 1.1 UPDATE protocol anyway), or any entailment regimes other than
@@ -57,9 +57,9 @@
 <code>{?s a owl:Thing}</code> might also retrieve some classes and properties.
 <strong>WILLFIX</strong></li>
 <li>Schema queries do not bind graph variables.</li>
-<li>Dropping a database with the CLI will also delete all the data files
-on your Stardog home directory associated with that database. If you
-want to keep the data files but only remove the database from the
+<li>Dropping a database with the CLI deletes all of the data files
+in Stardog Home associated with that database. If you
+want to keep the data files and remove the database from the
 system catalog, then you need to manually copy these files to
 another location before deleting the database.</li>
 <li>If relative URIs exist in the data files passed to create, add, or
@@ -68,7 +68,7 @@ URI <code>http://api.stardog.com/</code> iff the format of the file allows base
 URIs. Turtle and RDF/XML formats allows base URIs but N-Triples
 format doesn&#39;t allow base URIs and relative URIs in N-Triples data
 will cause errors.</li>
-<li>queries with <code>FROM NAMED</code> with a named graph that is <em>not</em> in
+<li>Queries with <code>FROM NAMED</code> with a named graph that is <em>not</em> in
 Stardog will <strong>not</strong> cause Stardog to believe that it is, in fact,
 Maven, i.e., to automagically download the data from an arbitrary
 HTTP URL and include it in the query. Stardog will <em>only</em> evaluate
@@ -113,7 +113,6 @@ raise an exception.</li>
 </div>
 
 <script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
-
 
 </body>
 

@@ -131,42 +131,31 @@
             <h2 id="sd-Introducing-Stardog-Web">Introducing Stardog Web</h2>
 <p>Stardog Web is a web framework for rapidly building Stardog-based apps. Stardog Web combines Stardog RDF database with some Java middleware, node, and client-side JavaScript libraries for a featureful, configuration-first development experience.</p>
 <p>Stardog Web automagically generates Web apps for browsing and managing RDF. These apps can be built via configuration and can be customized or extended in several ways, including new HTML templates and JavaScript modules. </p>
-<!-- this needs a 2 col list badly! -->
-
 <p>Out of the box functionality includes:</p>
 <ul class="two_up tiles">
     <li><strong>·</strong> Execute arbitrary SPARQL queries against RDF</li>
     <li><strong>·</strong> Manage queries (create, delete, update)</li>
-    <li><strong>·</strong> Visualize—<ol>
+    <li><strong>·</strong> Visualize
+        <ul>
         <li>classes and their instances,</li>
         <li>their property assertions,</li>
         <li>class/property hierarchies,</li>
         <li>axioms and rules,</li>
         <li>query results,</li>
         <li> subgraphs</li>
-    </ol></li>
+    </ul>
+    </li>
     <li><strong>·</strong> Save query results</li>
     <li><strong>·</strong> Faceted browsing via <a href="http://pelorus.clarkparsia.com/">Pelorus</a></li>
     <li><strong>·</strong> full text search</li>
     <li><strong>·</strong> Enforce access control</li>
 </ul>
 
-<h3>Oodles of Open Source Goodness</h3>
-<p>Stardog Web is built on top Stardog and Annex, our Linked Data middleware, and also uses—</p>
-<ul>
-<li><a href="http://yeoman.io">Yeoman</a> (build tool for the generated web apps)</li>
-<li><a href="http://backbonejs.org/">Backbone.js</a> (Routing and MV*)</li>
-<li><a href="https://github.com/tbranyen/backbone.layoutmanager">Backbone.LayoutManager</a> (handling nested Views efficiently)</li>
-<li><a href="http://lodash.com/">Lodash</a> (Backbone.js dependency; more efficient than underscore.js)</li>
-<li><a href="http://requirejs.org/">Require.js</a> </li>
-<li><a href="http://handlebarsjs.com/">Handlebars.js</a> </li>
-<li><a href="http://twitter.github.com/bootstrap/">Bootstrap</a> </li>
-<li><a href="http://jquery.com/">jQuery</a></li>
-<li><a href="http://www.w3.org/TR/2001/WD-css3-roadmap-20010523/">CSS3</a> &amp; <a href="http://lesscss.org/">Less</a></li>
-</ul>
+<h3>Gobs of Open Source Goodness</h3>
+<p>Stardog Web is built on top Stardog and Annex, our Linked Data middleware, and also uses <a href="http://yeoman.io">Yeoman</a>, <a href="http://backbonejs.org/">Backbone</a>, <a href="https://github.com/tbranyen/backbone.layoutmanager">Backbone.LayoutManager</a>, <a href="http://lodash.com/">Lodash</a>, <a href="http://requirejs.org/">Require</a>, <a href="http://handlebarsjs.com/">Handlebars</a>, <a href="http://twitter.github.com/bootstrap/">Bootstrap</a>, <a href="http://jquery.com/">jQuery</a>, <a href="http://www.w3.org/TR/2001/WD-css3-roadmap-20010523/">CSS3</a>, and <a href="http://lesscss.org/">Less</a></p>
 <h2 id="sd-Building-an-App">Building an App</h2>
-<p>So the basic workflow for building Stardog-based apps was always the same and we got tired of doing it manually every time. Stardog Web automates the boring parts, which lets us all concentrate on the fun stuff.</p>
-<p>Stardog Web project lifecycle looks a bit like this:</p>
+<p>The typical workflow for building Stardog-based apps was always the same and we got tired of doing it manually every time. Stardog Web automates the boring parts, which lets us all concentrate on the fun stuff.</p>
+<p>A Stardog Web project lifecycle looks a bit like this:</p>
 <ol>
 <li>beg, borrow, steal, or integrate some RDF data</li>
 <li>install Stardog Web</li>
@@ -177,144 +166,215 @@
 <li>deploy the app</li>
 </ol>
 <h3>Installing Stardog Web</h3>
-<p>Stardog Web consists of two node.js packages, a generator and a CLI, which are provided in the installation distribution as <code>tar.gz</code> files. </p>
-<p>First, install <a href="http://nodejs.org/">Node.js</a>. We'll wait.</p>
-<p>Then, verify that you have Web access (to be able to access the NPM registry &amp; repositories) and check that the <code>npm</code> prefix is pointing to <code>/usr/local</code>. You can verify the value of the prefix as follows:</p>
+<p>Stardog Web consists of two Node packages, a generator and a CLI, which are provided in the installation distribution as <code>tar.gz</code> files. </p>
+<p>First, install <a href="http://nodejs.org/">Node</a>. We'll wait.</p>
+<p>Next, verify that you have Web access (to be able to access the NPM registry &amp; repositories) and check that the <code>npm</code> prefix is pointing to <code>/usr/local</code>. You can verify the value of the prefix as follows:</p>
 <pre class="highlighted"><code class="bash">$ npm config get prefix</code></pre>
 <p>If the prefix is not <code>/usr/local</code>, you can change it using one of the methods described <a href="https://npmjs.org/doc/config.html">here</a>.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></p>
-<p>Next, run this:</p>
-<pre class="highlighted"><code class="bash"> $ npm install -g &lt;package_dir&gt;/egad-cli-<span class="number">0</span>.x.tar.gz &lt;package_dir&gt;/generator-egad-<span class="number">0</span>.x.tar.gz</code></pre>
-<p>Finally, …test the setup?</p>
-<p>EGAD depends on the following components:</p>
+<p>Then run this:</p>
+<pre class="highlighted"><code class="bash">$ npm install -g &lt;package_dir&gt;/egad-cli-<span class="number">0</span>.x.tar.gz &lt;package_dir&gt;/generator-egad-<span class="number">0</span>.x.tar.gz</code></pre>
+<p>Finally, …test the setup? @fixme</p>
+<p>Stardog Web depends on </p>
 <ul>
 <li><a href="http://nodejs.org/">Node.js</a> = v0.8.x (Not tested in v0.10.x yet, but it should work)</li>
 <li><a href="https://npmjs.org/">NPM</a> (Included in Nodejs)</li>
 <li><a href="http://yeoman.io/">Yeoman v1.0 BETA</a> (latest version)</li>
 <li>Annex Middleware Services (<code>annex.war</code> provided in the installation package)</li>
-<li><a href="http://stardog.com">Stardog 1.2.3</a></li>
+<li><a href="http://stardog.com">Stardog &gt;= 1.2.3</a></li>
 <li>Servlet container (<a href="http://www.caucho.com/">Caucho Resin</a> recommended)</li>
 </ul>
 <h3>Installing Stardog</h3>
 <p>Stardog Web works with…Stardog. If you already have Stardog installed, you should be good to go. If you don‘t, install it. Now make sure that you know how to create a database, add data to it, etc. There’s a <a href="/quick-start">Quick Start Guide</a>.</p>
 <h3>Provisioning Stardog</h3>
-<p>Create a Stardog database containing the data for your EGAD app and expose it in an SPARQL endpoint. Please see <a href="http://stardog.com/docs/">Stardog docs</a> for details about database creation. Once a database has been created, we can expose it in an SPARQL endpoint by simply starting the corresponding Stardog server:</p>
-<pre class="highlighted"><code class="lasso">$ stardog<span class="attribute">-admin</span> -<span class="attribute">-disable</span><span class="attribute">-security</span> server start</code></pre>
-<p><div class="metro danger label">Security Notice</div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled.</p>
+<p>Create a Stardog database containing the data for your Stardog Web app and expose it in an SPARQL endpoint. Please see <a href="http://stardog.com/docs/">Stardog docs</a> for details about database creation. Once a database has been created, we can expose it in an SPARQL endpoint by simply starting the corresponding Stardog server:</p>
+<pre class="highlighted"><code class="bash">$ stardog-admin --disable-security server start</code></pre>
+<p><div class="metro danger label">Security Notice</div> Stardog Web v0.4.5 (and earlier) requires Stardog Server to run with security disabled. We'll fix this bug in a future release.</p>
 <h4>Custom Namespaces</h4>
-<p>Add all the required prefixes that will be used in the EGAD app. You can list prefixes defined in the Stardog DB using the following command:</p>
-<pre class="highlighted"><code class="cpp">stardog <span class="keyword">namespace</span> <span class="built_in">list</span> -c snarl:<span class="comment">//localhost/&lt;DB&gt;</span></code></pre>
+<p>Add the required prefixes that will be used in the app. You can list prefixes defined in the Stardog database using the following command:</p>
+<pre class="highlighted"><code class="bash">stardog namespace list -c snarl://localhost/&lt;DB&gt;</code></pre>
 <p>By default, Stardog defines a set of common namespaces:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
-<span class="comment">|</span> <span class="comment">Prefix</span> <span class="comment">|</span>                  <span class="comment">Namespace</span>                  <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span>
-<span class="comment">|</span> <span class="comment">rdf</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/1999/02/22</span>-<span class="comment">rdf</span>-<span class="comment">syntax</span>-<span class="comment">ns#</span> <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">rdfs</span>   <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2000/01/rdf</span>-<span class="comment">schema#</span>       <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">xsd</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2001/XMLSchema#</span>           <span class="comment">|</span>
-<span class="comment">|</span> <span class="comment">owl</span>    <span class="comment">|</span> <span class="comment">http://www</span>.<span class="comment">w3</span>.<span class="comment">org/2002/07/owl#</span>              <span class="comment">|</span>
-<span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">-</span><span class="literal">+</span></code></pre>
-<p>To add your prefixes, you can execute the <code>stardog namespace add</code> command, e.g:</p>
-<pre class="highlighted"><code class="brainfuck"><span class="comment">stardog</span> <span class="comment">namespace</span> <span class="comment">add</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix</span> <span class="comment">test</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">uri</span> <span class="comment">\</span>
-  <span class="comment">'http://example</span>.<span class="comment">org/test#'</span> <span class="literal">-</span><span class="comment">c</span> <span class="comment">snarl://localhost/myDB</span> <span class="literal">-</span><span class="comment">u</span> <span class="comment">admin</span> <span class="literal">-</span><span class="comment">p</span> <span class="comment">admin</span></code></pre>
+<pre class="highlighted"><code class="bash">+--------+---------------------------------------------+
+| Prefix |                  Namespace                  |
++--------+---------------------------------------------+
+| rdf    | http://www.w3.org/<span class="number">1999</span>/<span class="number">02</span>/<span class="number">22</span>-rdf-syntax-ns<span class="comment"># |</span>
+| rdfs   | http://www.w3.org/<span class="number">2000</span>/<span class="number">01</span>/rdf-schema<span class="comment">#       |</span>
+| xsd    | http://www.w3.org/<span class="number">2001</span>/XMLSchema<span class="comment">#           |</span>
+| owl    | http://www.w3.org/<span class="number">2002</span>/<span class="number">07</span>/owl<span class="comment">#              |</span>
++--------+---------------------------------------------+</code></pre>
+<p>To add your prefixes, you can execute the <code>stardog namespace add</code> command:</p>
+<pre class="highlighted"><code class="bash">stardog namespace add --prefix test --uri \
+   <span class="string">'http://example.org/test#'</span> -c snarl://localhost/myDB -u admin -p admin</code></pre>
 <h3>Installing Annex Middleware</h3>
-<p>Annex is the Linked Data middleware service that connects Stardog Web to Stardog. It must be installed and configured to run on a J2EE container (we recommend Caucho Resin) on the same machine (?) as Stardog (for now).</p>
-<p>Annex is distributed as a single WAR file (<code>annex.war</code>). Simply deploy the WAR file in a servlet container. Typically, this can be accomplished by copying the WAR file into the container's <code>webapps</code> folder and starting the container. Currently, each EGAD application uses its own instance of Annex; therefore, we recommend changing the name of the WAR file in the <code>webapps</code> accordingly:</p>
-<pre class="highlighted"><code class="apache">$ cp <span class="tag">&lt;package_dir&gt;</span>/annex.war <span class="tag">&lt;container_dir&gt;</span>/webapps/annex-<span class="tag">&lt;appname&gt;</span>.war</code></pre>
-<p>In order to be used by an EGAD application, one needs to specify where the data resides as well as provide valid credentials. This information can be specified in the <code>web.xml</code>, by modifying the following properties: </p>
-<pre class="highlighted"><code class="manchester"><span class="uri">&lt;init-param&gt;</span>
-  <span class="uri">&lt;param-name&gt;</span>annex.db.host<span class="uri">&lt;/param-name&gt;</span>
-  <span class="uri">&lt;param-value&gt;</span><span class="uri">localhost:5820</span><span class="uri">&lt;/param-value&gt;</span>
-<span class="uri">&lt;/init-param&gt;</span></code></pre>
-<p>  <init-param>
-      <param-name>annex.db.repository</param-name>    <!-- name of the Stardog DB -->
-      <param-value>myDB</param-value>
-  </init-param></p>
-<p>  <init-param>
-      <param-name>annex.db.user</param-name>
-      <param-value>admin</param-value>
-  </init-param></p>
-<p>  <init-param>
-      <param-name>annex.db.password</param-name>
-      <param-value>admin</param-value>
-  </init-param></p>
+<p>Annex is the middleware service that connects Stardog Web to Stardog. It must be installed<a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a> and configured to run on a J2EE container—we recommend Caucho Resin—on the same machine as Stardog (for now).</p>
+<p>Annex is distributed as a single WAR file (<code>annex.war</code>). Simply deploy the WAR file in a servlet container. Typically this can be accomplished by copying the WAR file into the container's <code>webapps</code> folder and (re)starting the container. Currently, each Stardog Web application uses its own instance of Annex; therefore, we recommend changing the name of the WAR file in the <code>webapps</code> accordingly:</p>
+<pre class="highlighted"><code class="bash">$ cp &lt;package_dir&gt;/annex.war &lt;container_dir&gt;/webapps/annex-&lt;appname&gt;.war</code></pre>
+<p>In order to be used by a Stardog Web application, one needs to specify where the data resides as well as provide valid credentials. This information can be specified in the <code>web.xml</code>, by modifying the following properties: </p>
+<pre class="highlighted"><code class="xml"><span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.host<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>localhost:5820<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.repository<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+    <span class="comment">&lt;!-- name of the Stardog DB --&gt;</span>
+    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>myDB<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.user<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>admin<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span>
+
+<span class="tag">&lt;<span class="title">init-param</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-name</span>&gt;</span>annex.db.password<span class="tag">&lt;/<span class="title">param-name</span>&gt;</span>
+    <span class="tag">&lt;<span class="title">param-value</span>&gt;</span>admin<span class="tag">&lt;/<span class="title">param-value</span>&gt;</span>
+<span class="tag">&lt;/<span class="title">init-param</span>&gt;</span></code></pre>
 <h4>Apache Tomcat Notes</h4>
+<p>There are a few wrinkles if you want to use Tomcat:</p>
 <ul>
-<li><p>You need to add the following configuration option to the <code>catalina.properties</code> file in <code>&lt;tomcat_dir&gt;/conf/catalina.properties</code></p>
-<pre class="highlighted"><code class="avrasm">  org<span class="preprocessor">.apache</span><span class="preprocessor">.tomcat</span><span class="preprocessor">.util</span><span class="preprocessor">.buf</span><span class="preprocessor">.UDecoder</span><span class="preprocessor">.ALLOW</span>_ENCODED_SLASH=true</code></pre>
+<li>You need to add the following configuration option to the <code>catalina.properties</code> file in <code>&lt;tomcat_dir&gt;/conf/catalina.properties</code></li>
+</ul>
+<pre class="highlighted"><code class="java">org.apache.tomcat.util.buf.UDecoder.ALLOW_ENCODED_SLASH=<span class="keyword">true</span></code></pre>
+<ul>
+<li>There is a known tomcat bug in versions earlier than 7.0.30. For more details on the issue, please refer to the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=53535">bug report</a>. In order for Annex to work properly with Tomcat, please update to a later version.</li>
+</ul>
+<h3>Configuring Stardog Web</h3>
+<p>Stardog Web's functionality is configured, customized, and (partially) extended by editing a configuration file (usually <code>config.ttl</code> or <code>config.json</code>) in JSON or Turtle. Your Stardog Web app may also be customized and extended by writing new templates, new JavaScript components, or new middleware. More about that <a href="">here</a>. @fixme</p>
+<p>Note that the references to <code>rdf:type</code> URIs in the configuration file can be done according to the <code>namespaces</code> map defined in the same file. These namespaces should be the same (prefix and namespace) as the ones defined in the Stardog database previously.<a id="fn-ref-3" href="#footnote-3" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-3"><sup>3</sup></a></p>
+<p>Here's an example configuration file which we comment on next…</p>
+<!--
+```javascript
+{ 
+   "name": "My Application",
+   "label": "App",
+   "sparqlEndpoint": "http://192.168.69.111:5822/gov/query",
+   "apiEndpoint": "http://192.168.69.111:8080/annex-gov/api",
+   "editData": false,
+   "namespaces": {
+       "http://www.w3.org/1999/02/22-rdf-syntax-ns#":"rdf",
+       "http://www.w3.org/2000/01/rdf-schema#": "rdfs",
+       "http://www.w3.org/2001/XMLSchema#": "xsd",
+       "http://www.w3.org/2002/07/owl#": "owl",
+       "http://purl.org/dc/elements/1.1/": "dc"
+   },
+   "modules": {
+       "home": {
+           "content": "mycontent/myhome.html"
+       },
+       "browse": true,
+       "query": {
+           "label": "Query Panel",
+           "mainUrl": "#!/query"
+       },
+       "search": {
+           "label": "Search",
+           "mainUrl": "#!/search"
+       },
+       "navbar": {
+           "items": [ 
+               { "htmlId":"lientry", 
+                 "label": "Data Entry", 
+                 "type":"browse",
+                 "using": "dgtwc:DataEntry",
+                 "icon": "icon-tasks"
+               }
+           ]
+       },
+       "footer": true
+   },
+   "collections": {
+       "default": {
+           "limit": 20
+       },
+       "dgtwc:DataEntry": {
+           "using":"dgtwc:DataEntry",
+           "usingLabel":":title"
+       }
+   }
+}```
+-->
+
+<p>Or:</p>
+<pre class="highlighted"><code class="sparql">@<span class="keyword">prefix</span>      :  <span class="uri">&lt;tag:clarkparsia:egad:configuration#&gt;</span> .
+@<span class="keyword">prefix</span>   rdf:  <span class="uri">&lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#&gt;</span> .
+@<span class="keyword">prefix</span>  rdfs:  <span class="uri">&lt;http://www.w3.org/2000/01/rdf-schema#&gt;</span> .
+@<span class="keyword">prefix</span>   xsd:  <span class="uri">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span> .
+@<span class="keyword">prefix</span>   owl:  <span class="uri">&lt;http://www.w3.org/2002/07/owl#&gt;</span> .
+@<span class="keyword">prefix</span>    dc:  <span class="uri">&lt;http://purl.org/dc/elements/1.1/&gt;</span> .
+@<span class="keyword">prefix</span> dgtwc:  <span class="uri">&lt;http://data-gov.tw.rpi.edu/2009/data-gov-twc.rdf#&gt;</span> .
+
+<span class="uri">:DataGov</span> <span class="uri">a</span> <span class="uri">:App</span>;
+  <span class="uri">:name</span> <span class="string">"Data.gov EGAD Application"</span>^^<span class="uri">xsd:string</span> ;
+  <span class="uri">:label</span> <span class="string">"Data.gov"</span>^^<span class="uri">xsd:string</span> ;
+  <span class="uri">:sparqlEndpoint</span> <span class="uri">&lt;http://192.168.69.111:5822/gov/query&gt;</span> ;
+  <span class="uri">:apiEndpoint</span> <span class="uri">&lt;http://192.168.69.111:8080/annex-gov/api&gt;</span> ;
+  <span class="uri">:editData</span> <span class="string">"true"</span>^^<span class="uri">xsd:boolean</span> ;
+  <span class="uri">:modules</span> <span class="uri">:home</span>, <span class="uri">:browse</span>, <span class="uri">:query</span>, <span class="uri">:search</span>, <span class="uri">:treebrowser</span>, <span class="uri">:navbar</span>, <span class="uri">:footer</span>;
+  <span class="uri">:collections</span> <span class="uri">:defaultCollection</span>, <span class="uri">:entryCollection</span>.
+
+<span class="uri">:defaultCollection</span> <span class="uri">a</span> <span class="uri">:CollectionDefaultSetting</span> ;
+  <span class="uri">:limit</span> <span class="string">"20"</span>^^<span class="uri">xsd:int</span> .
+
+<span class="uri">:entryCollection</span> <span class="uri">a</span> <span class="uri">:CollectionSetting</span> ;
+  <span class="uri">:using</span> <span class="uri">dgtwc:DataEntry</span> ;
+  <span class="uri">:usingLabel</span> <span class="uri">dc:title</span> .
+
+<span class="uri">:someCollection</span> <span class="uri">a</span> <span class="uri">:CollectionSetting</span>
+  <span class="uri">:using</span> <span class="uri">dgtwc:DataEntry</span> ;
+  <span class="uri">:limit</span> <span class="string">"20"</span>^^<span class="uri">xsd:int</span> ;
+  <span class="uri">:usingLabel</span> <span class="uri">rdfs:label</span> ;
+  <span class="uri">:fields</span> ( <span class="uri">dc:title</span> <span class="uri">dc:created</span> ) .
+
+<span class="uri">:home</span> <span class="uri">a</span> <span class="uri">:Module</span> ;
+  <span class="uri">:content</span> <span class="string">"mycontent/myhome.html"</span>^^<span class="uri">xsd:string</span> .
+
+<span class="uri">:browse</span> <span class="uri">a</span> <span class="uri">:Module</span> .
+
+<span class="uri">:query</span> <span class="uri">a</span> <span class="uri">:Module</span> ;
+  <span class="uri">:linkLabel</span> <span class="string">"Query Panel"</span> ;
+  <span class="uri">:linkUrl</span> <span class="string">"#!/query"</span> .
+
+<span class="uri">:search</span> <span class="uri">a</span> <span class="uri">:Module</span> ;
+  <span class="uri">:linkLabel</span> <span class="string">"Search"</span> ;
+  <span class="uri">:linkUrl</span> <span class="string">"#!/search"</span> .
+
+<span class="uri">:treebrowser</span> <span class="uri">a</span> <span class="uri">:Module</span> .
+
+<span class="comment"># the navbar items
+</span><span class="uri">:navbar</span> <span class="uri">a</span> <span class="uri">:Module</span> ;
+  <span class="uri">:items</span> ( <span class="uri">:navItemEntry</span> ) .
+
+<span class="uri">:navItemEntry</span> <span class="uri">:htmlId</span> <span class="string">"lientry"</span> ;
+  <span class="uri">:label</span> <span class="string">"Data Entry"</span> ;
+  <span class="uri">:type</span> <span class="string">"browse"</span> ;
+  <span class="uri">:using</span> <span class="uri">dgtwc:DataEntry</span> ;
+  <span class="uri">:icon</span> <span class="string">"icon-tasks"</span> .
+
+<span class="uri">:footer</span> <span class="uri">a</span> <span class="uri">:Module</span> .</code></pre>
+<p>The top-level configuration settings should always be present, even if the values are empty objects.</p>
+<ul>
+<li><p><code>:name</code>: This is the application name, displayed at the footer of the web application.</p>
 </li>
-<li><p>There is a known tomcat bug in versions <code>&lt; 7.0.30</code>, that happens when tomcat starts and initializes the applications, by which Annex is affected. For more details on the issue, please refer to the <a href="https://issues.apache.org/bugzilla/show_bug.cgi?id=53535">bug report</a>. In order for annex to work properly with tomcat, please update to the latest version of the container.</p>
+<li><p><code>:label</code>: App short label to be displayed at the top left side in the navigation bar.</p>
+</li>
+<li><p><code>:sparqlEndpoint</code>: This is the SPARQL endpoint that will be used to explore the schema and generate the EGAD Web application. This endpoint is also used in the Query Panel (if enabled).</p>
+</li>
+<li><p><code>apiEndpoint</code>: This is the endpoint used by the client application generated, which is an annex API endpoint, abstracting all data in the RDF repository as a RESTful service using /{collection}/{ind} routes. If deploying to a remote server, make sure <strong>not</strong> to use <code>localhost</code>, since this is sent to the client and the client webapp will try to find all references (to the API) as localhost, instead use the API or server reference.</p>
+</li>
+<li><p><code>editData</code>: Enables/disables data mutations in the application using add/edit/delete actions.</p>
+</li>
+<li><p><code>namespaces</code>: This is a list of namespace : prefix to use, they represent the namespaces used in the data set.</p>
+</li>
+<li><p><code>collections</code>: Configurations for collection display.</p>
+</li>
+<li><p><code>collections &gt; default</code> :: <code>Object</code>: Defines the default configuration for the collection listings.</p>
+</li>
+<li><p><code>collections &gt; default &gt; limit</code> :: <code>Number</code>: Sets the limit of elements to show in the collection view.</p>
+</li>
+<li><p><code>modules</code> :: <code>Object</code>: Sets the modules to use in the application, either system modules or custom user modules. Modules can receive a configuration object or just activate them using <code>true</code> value. To deactivate a module just set the value to <code>false</code>.</p>
 </li>
 </ul>
-<h3>Generating a Stardog Web App</h3>
-<p>Other services provided are: search, schema inspector and query. For more information on the available resources and interfaces in the Annex Platform, please refer to the <a href="http://docs.annex.apiary.io/">API documentation</a>.</p>
-<h3>Configuring Stardog Web</h3>
-<p>Stardog Web's builtin functionality is configured, customized, and (partially) extended by editing the configuration file (usually <code>config.ttl</code> or <code>config.json</code>) in JSON or Turtle.</p>
-<p>The EGAD toolkit receives a configuration file with JSON format, which specifies all the properties and modules to include in the application that it will generate.</p>
-<p>Note that the references to <code>rdf:type</code> URIs in the configuration file can be done according to the <code>namespaces</code> map defined in the same file. These namespaces should be the same (prefix and namespace) as the ones defined in the database in previous steps.</p>
-<p>An example of the configuration file is:</p>
-<pre class="highlighted"><code class="json">{
-    "<span class="attribute">name</span>": <span class="value"><span class="string">"Data.gov EGAD Application"</span></span>,
-    "<span class="attribute">label</span>": <span class="value"><span class="string">"Data.gov"</span></span>,
-    "<span class="attribute">sparqlEndpoint</span>": <span class="value"><span class="string">"http://192.168.69.111:5822/gov/query"</span></span>,
-    "<span class="attribute">apiEndpoint</span>": <span class="value"><span class="string">"http://192.168.69.111:8080/annex-gov/api"</span></span>,
-    "<span class="attribute">editData</span>": <span class="value"><span class="literal">false</span></span>,
-    "<span class="attribute">namespaces</span>": <span class="value">{
-        "<span class="attribute">http://www.w3.org/1999/02/22-rdf-syntax-ns#</span>":<span class="value"><span class="string">"rdf"</span></span>,
-        "<span class="attribute">http://www.w3.org/2000/01/rdf-schema#</span>": <span class="value"><span class="string">"rdfs"</span></span>,
-        "<span class="attribute">http://www.w3.org/2001/XMLSchema#</span>": <span class="value"><span class="string">"xsd"</span></span>,
-        "<span class="attribute">http://www.w3.org/2002/07/owl#</span>": <span class="value"><span class="string">"owl"</span></span>,
-        "<span class="attribute">http://purl.org/dc/elements/1.1/</span>": <span class="value"><span class="string">"dc"</span>
-    </span>}</span>,
-    "<span class="attribute">modules</span>": <span class="value">{
-        "<span class="attribute">home</span>": <span class="value">{
-            "<span class="attribute">content</span>": <span class="value"><span class="string">"mycontent/myhome.html"</span>
-        </span>}</span>,
-        "<span class="attribute">browse</span>": <span class="value"><span class="literal">true</span></span>,
-        "<span class="attribute">query</span>": <span class="value">{
-            "<span class="attribute">label</span>": <span class="value"><span class="string">"Query Panel"</span></span>,
-            "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/query"</span>
-        </span>}</span>,
-        "<span class="attribute">search</span>": <span class="value">{
-            "<span class="attribute">label</span>": <span class="value"><span class="string">"Search"</span></span>,
-            "<span class="attribute">mainUrl</span>": <span class="value"><span class="string">"#!/search"</span>
-        </span>}</span>,
-        "<span class="attribute">navbar</span>": <span class="value">{
-            "<span class="attribute">items</span>": <span class="value">[ { "<span class="attribute">htmlId</span>":<span class="value"><span class="string">"lientry"</span></span>, "<span class="attribute">label</span>": <span class="value"><span class="string">"Data Entry"</span></span>, "<span class="attribute">type</span>":<span class="value"><span class="string">"browse"</span></span>,"<span class="attribute">using</span>": <span class="value"><span class="string">"dgtwc:DataEntry"</span></span>, "<span class="attribute">icon</span>": <span class="value"><span class="string">"icon-tasks"</span> </span>}
-            ]
-        </span>}</span>,
-        "<span class="attribute">footer</span>": <span class="value"><span class="literal">true</span>
-    </span>}</span>,
-    "<span class="attribute">collections</span>": <span class="value">{
-        "<span class="attribute">default</span>": <span class="value">{
-            "<span class="attribute">limit</span>": <span class="value"><span class="number">20</span>
-        </span>}</span>,
-        "<span class="attribute">dgtwc:DataEntry</span>": <span class="value">{
-            "<span class="attribute">using</span>":<span class="value"><span class="string">"dgtwc:DataEntry"</span></span>,
-            "<span class="attribute">usingLabel</span>":<span class="value"><span class="string">":title"</span>
-        </span>}
-    </span>}
-</span>}</code></pre>
-<p>Top level configuration settings should always be present, even if the values are empty objects. The following settings are used for EGAD:</p>
-<p><code>name</code> :: <code>String</code>
-: This is the application name, displayed at the footer of the web application.</p>
-<p><code>label</code> :: <code>String</code>
-: App short label to be displayed at the top left side in the navigation bar.</p>
-<p><code>sparqlEndpoint</code> :: <code>String</code>
-: This is the SPARQL endpoint that will be used to explore the schema and generate the EGAD Web application. This endpoint is also used in the Query Panel (if enabled).</p>
-<p><code>apiEndpoint</code> :: <code>String</code>
-: This is the endpoint used by the client application generated, which is an annex API endpoint, abstracting all data in the RDF repository as a RESTful service using /{collection}/{ind} routes. If deploying to a remote server, make sure <strong>not</strong> to use <code>localhost</code>, since this is sent to the client and the client webapp will try to find all references (to the API) as localhost, instead use the API or server reference.</p>
-<p><code>editData</code> :: <code>Boolean</code>
-: Enables/disables data mutations in the application using add/edit/delete actions.</p>
-<p><code>namespaces</code> :: <code>Object</code>
-: This is a list of namespace : prefix to use, they represent the namespaces used in the data set.</p>
-<p><code>collections</code> :: <code>Object</code>
-: Configurations for collection display.</p>
-<p><code>collections &gt; default</code> :: <code>Object</code>
-: Defines the default configuration for the collection listings.</p>
-<p><code>collections &gt; default &gt; limit</code> :: <code>Number</code>
-: Sets the limit of elements to show in the collection view.</p>
-<p><code>modules</code> :: <code>Object</code>
-: Sets the modules to use in the application, either system modules or custom user modules. Modules can receive a configuration object or just activate them using <code>true</code> value. To deactivate a module just set the value to <code>false</code>.</p>
-<p>Some of the System Modules inclused in EGAD are:</p>
+<p>Some of the Stardog Web builtin modules include the following.</p>
 <ul>
 <li><p>home - Enables content in the homepage of the application. Receives an object with the content attribute refering to a html template to include as home content relative to the app directory, e.g.:</p>
 <pre class="highlighted"><code class="httpstardog">  "home": <span class="variable">{
@@ -384,6 +444,8 @@
 <pre class="highlighted"><code class="matlab">  &lt;myApp&gt;$ egad create -<span class="built_in">j</span> <span class="transposed_variable">config.</span>js</code></pre>
 </li>
 </ul>
+<h3>Generating a Stardog Web App</h3>
+<p>Other services provided are: search, schema inspector and query. For more information on the available resources and interfaces in the Annex Platform, please refer to the <a href="http://docs.annex.apiary.io/">API documentation</a>.</p>
 <h1>Testing</h1>
 <p>Once an EGAD application has been created, it can be tested using the <code>run</code> command of the EGAD CLI (make sure Annex &amp; Stardog are up and running):</p>
 <pre class="highlighted"><code class="apache"><span class="tag">&lt;myApp&gt;</span>$ egad run</code></pre>
@@ -651,7 +713,7 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
           </div>
           <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          <div class="footnote" id="footnote-1"><p>1. <a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html">http://yeoman.io/generators.html</a></a></a>In the following, we assume the <code>egad-0.x.x.zip</code> distribution file has been decompressed into the <code>&lt;package_dir&gt;</code> directory.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div></div>
+          <div class="footnote" id="footnote-1"><p>1. <a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html"><a href="http://yeoman.io/generators.html">http://yeoman.io/generators.html</a></a></a>In the following, we assume the <code>egad-0.x.x.zip</code> distribution file has been decompressed into the <code>&lt;package_dir&gt;</code> directory.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. <strong>Note:</strong> We will distribute Annex in Stardog in the 2.x release cycle and it won&#39;t have to be separately installed.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-2">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-3"><p>3. Stardog Web will actively maintain these in a future release. Till then: hold fast!<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-3">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>
@@ -678,7 +740,6 @@ If your configuration file is named <code>egad.json</code>, the tool will automa
 </div>
 
 <script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
-
 
 </body>
 

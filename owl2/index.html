@@ -89,10 +89,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Not-Getting-Expected-Answers-" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Not-Getting-Expected-Answers-">
-            <strong>Not Getting Expected Answers?</strong>
+            <a href="#sd-Not-Seeing-Expected-Answers-" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Not-Seeing-Expected-Answers-">
+            <strong>Not Seeing Expected Answers?</strong>
         </a>
-        <!-- <li><a href="#sd-Not-Getting-Expected-Answers-" class="skiplink">Not Getting Expected Answers?</a> -->
+        <!-- <li><a href="#sd-Not-Seeing-Expected-Answers-" class="skiplink">Not Seeing Expected Answers?</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -308,7 +308,7 @@ explanations programmatically.</p>
 <p>Note that there is probably more than one explanation for an inference,
 but Stardog returns only a single explanation. We plan to compute
 multiple explanations in a future version.</p>
-<h2 id="sd-Not-Getting-Expected-Answers-">Not Getting Expected Answers?</h2>
+<h2 id="sd-Not-Seeing-Expected-Answers-">Not Seeing Expected Answers?</h2>
 <p>Here's a few things that you might want to try:</p>
 <ul>
 <li><strong>Do you know what to expect?</strong> The <a href="http://www.w3.org/TR/owl2-primer/">OWL 2
@@ -347,7 +347,7 @@ returned) with respect to the requested reasoning type.</li>
 <li>Perform equality reasoning. Only <em>explicit</em> <code>owl:sameAs</code> and
 <code>owl:differentFrom</code> data assertions will be taken into account for
 query answering.</li>
-<li>Perform datatype reasoning and user-defined datatypes.</li>
+<li>Perform datatype reasoning or respect user-defined datatypes.</li>
 </ul>
 <h2 id="sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</h2>
 <p>Many reasoning problems may be solved with OWL‘s axiom-based approach;
@@ -356,7 +356,10 @@ approach. A user-defined rules approach complements the OWL axiom-based
 approach nicely and increases the expressive power of a reasoning system
 from the user’s point of view. Many RDF databases support user-defined
 rules only. Stardog is one of the only RDF databases that
-comprehensively supports both axioms and rules.</p>
+comprehensively supports both axioms and rules. Some problems (and some
+people) are simply a better fit for a rules-based approach to modeling
+and reasoning than to an axioms-based approach. </p>
+<p><strong>Remember</strong>: there isn‘t a one-size-fits-all answer to the question “rules or axioms or both?” Use the thing that makes the most sense to you and to the people you’re working with, etc.</p>
 <p>Stardog supports user-defined rule reasoning together with a rich set of
 built-in functions using the <a href="http://www.w3.org/Submission/SWRL/">SWRL</a>
 syntax and builtin-ins library. In order to apply SWRL user-defined
@@ -366,17 +369,63 @@ is, put your rules where your axioms are, i.e., in the schema. See
 are part of the schema, they will be used for reasoning automatically
 when using the <strong>SL</strong> reasoning level.</p>
 <p>Assertions implied by the rules <em>will not</em> be materialized. Instead,
-rules are used to expand queries just as regular axioms (see <a href="#approach">Stardog's
-approach to query answering</a>).</p>
-<h3>Syntax</h3>
-<p>Stardog supports two different syntaxes for defining rules. The first,
-which you shouldn‘t use, is the standard RDF/XML syntax for SWRL. It
-has the advantage of being supported in many toosl; but it’s painfully
-awful to read or write. Seriously, don't use it.</p>
-<p>The second is native Stardog Rules syntax and is based on SPARQL syntax,
-so you can re-use what you already know about SPARQL to write rules. This…</p>
+rules are used to expand queries just as regular axioms are in Stardog. <strong>Note</strong>: to trigger rules to “fire”, execute a query. It's that simple.</p>
+<h3>Stardog Rules Syntax <div class="metro label primary">New in 2.0</div></h3>
+<p>Stardog supports two different syntaxes for defining rules. The first is native Stardog Rules syntax and is based on SPARQL syntax, so you can re-use what you already know about SPARQL to write rules. <strong>Unless you have specific requirements otherwise, you should use this syntax for user-defined rules in Stardog.</strong> The second, the <em>de facto</em> standard RDF/XML syntax for SWRL. It has the advantage of being supported in many tools; but it‘s not fun to read or to write. You probably don’t want to use it.</p>
+<p>Stardog Rules Syntax is basically SPARQL “basic graph patterns” (BGPs) plus some very explicit new syntax (<code>IF-THEN</code>) to denote the head and the body of a rule. You define URI prefixes in the normal way (examples below) and use regular SPARQL variables for rule variables. As you can see below, some SPARQL 1.1 syntactic sugar—property paths, especially, but also bnode syntax—make comples Stardog Rules quite concise and elegant.</p>
+<h3>Rule Examples</h3>
+<p>What follows are a few examples of user-defined rules using
+Stardog Rules syntax and some of the builtins Stardog supports.</p>
+<h4>Basic Rules</h4>
+<p>This rule says that a person between 13 and 19 (inclusive) years of age is a teenager:</p>
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> swrlb: <span class="uri">&lt;http://www.w3.org/2003/11/swrlb#&gt;</span>
+<span class="keyword">PREFIX</span> xsd: <span class="uri">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
+
+<span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Person</span>; hasAge <span class="variable">?age</span>.
+      <span class="variable">?age</span> <span class="uri">swrlb:greaterThanOrEqual</span> <span class="number">13</span>^<span class="uri">xsd:int</span>;
+           <span class="uri">swrlb:lessThanOrEqual</span> <span class="number">19</span>^<span class="uri">xsd:int</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Teenager</span>.
+}</code></pre>
+<p>This rule says that a male person with a sibling who is the parent of a female is an “ uncle of a niece”:</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> Person; <span class="uri">a</span> <span class="uri">:Male</span>; <span class="uri">:hasSibling</span> <span class="variable">$y</span>;
+      <span class="variable">$y</span> <span class="uri">:isParentOf</span> <span class="variable">$z</span>;
+      <span class="variable">$z</span> <span class="uri">a</span> <span class="uri">:Female</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
+}</code></pre>
+<p>You can use SPARQL 1.1 property paths (and bnodes for unnecessary variables (that is, ones that aren't used in the <code>THEN</code>)) to render this rule even more concisely:</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:Person</span>, <span class="uri">:Male</span>; <span class="uri">:hasSibling</span>/<span class="uri">:isParentOf</span> [<span class="uri">a</span> <span class="uri">:Female</span>]
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
+}</code></pre>
+<p>Aside: that's pure awesome.</p>
+<p>And of course a person who's male and has a niece or nephew is an uncle of his
+niece(s) and nephew(s):</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+     <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Male</span>; <span class="uri">:isSiblingOf</span>/<span class="uri">:isParentOf</span> <span class="variable">?z</span>
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?x</span> <span class="uri">:isUncleOf</span> <span class="variable">?z</span>.
+}</code></pre>
+<p>A super user can read all of the things!</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:SuperUser</span>.
+      <span class="variable">?y</span> <span class="uri">a</span> <span class="uri">:Resource</span>.
+      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">&lt;http://www.w3.org/ns/sparql#UUID&gt;</span>.
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">:Role</span>.
+      <span class="variable">?x</span> <span class="uri">:hasRole</span> <span class="variable">?z</span>; <span class="uri">:readPermission</span> <span class="variable">?y</span>.
+}</code></pre>
 <h3>Supported Built-Ins</h3>
-<p>Stardog supports the following SWRL built-in functions:</p>
+<p>Stardog supports the following SWRL built-in functions (which may be used in  either syntax):</p>
 <ul>
 <li><a href="http://www.w3.org/Submission/SWRL/#8.1">Built-ins for comparisons</a>.</li>
 <li><a href="http://www.w3.org/Submission/SWRL/#8.2">Math built-ins</a>.</li>
@@ -398,68 +447,8 @@ with the exception of <code>swrlb:tokenize</code>.</li>
 </ul>
 </li>
 </ul>
-<h3>Stardog Rules Syntax <div class="metro label primary">New in 2.0</div></h3>
-fixme
-
-<h3>Rule Examples</h3>
-<p>User-defined rules in SWRL provide a different sort of “user interface”
-with respect to OWL 2 reasoning in Stardog. Some problems (and some
-people) are simply a better fit for a rules-based approach to modeling
-and reasoning than to an axioms-based approach. What follows are a few
-(trivial and contrived) examples of user-defined rules in SWRL (using
-Stardog Rules syntax).</p>
-<h4>Basic Rules</h4>
-<p>A person between 13 and 19 (inclusive) years of age is a teenager:</p>
-<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> swrlb: <span class="uri">&lt;http://www.w3.org/2003/11/swrlb#&gt;</span>
-<span class="keyword">PREFIX</span> xsd: <span class="uri">&lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-
-<span class="rule"><span class="keyword">IF</span> </span>{
-      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Person</span>; hasAge <span class="variable">?age</span>.
-      <span class="variable">?age</span> <span class="uri">swrlb:greaterThanOrEqual</span> <span class="number">13</span>^<span class="uri">xsd:int</span>;
-           <span class="uri">swrlb:lessThanOrEqual</span> <span class="number">19</span>^<span class="uri">xsd:int</span>.
-}
-<span class="rule"><span class="keyword">THEN</span> </span>{
-      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Teenager</span>.
-}</code></pre>
-<p>A person who's an uncle of a niece:</p>
-<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
-      <span class="variable">$x</span> <span class="uri">a</span> Person; <span class="uri">a</span> <span class="uri">:Male</span>; <span class="uri">:hasSibling</span> <span class="variable">$y</span>;
-      <span class="variable">$y</span> <span class="uri">:isParentOf</span> <span class="variable">$z</span>;
-      <span class="variable">$z</span> <span class="uri">a</span> <span class="uri">:Female</span>.
-}
-<span class="rule"><span class="keyword">THEN</span> </span>{
-      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
-}</code></pre>
-<p>You can use SPARQL 1.1 property paths (and bnodes for unnecessary variables (that is, ones that aren't used in the <code>THEN</code>)) to render this rule even more concisely:</p>
-<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
-      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:Person</span>, <span class="uri">:Male</span>; <span class="uri">:hasSibling</span>/<span class="uri">:isParentOf</span> [<span class="uri">a</span> <span class="uri">:Female</span>]
-}
-<span class="rule"><span class="keyword">THEN</span> </span>{
-      <span class="variable">$x</span> <span class="uri">a</span> <span class="uri">:UncleOfNiece</span>.
-}</code></pre>
-<p>A person who's male and has a niece or nephew is an uncle of his
-niece(s) and nephew(s):</p>
-<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
-      <span class="variable">?x</span> <span class="uri">:isSiblingOf</span> <span class="variable">?y</span>; <span class="uri">a</span> <span class="uri">:Male</span>.
-      <span class="variable">?y</span> <span class="uri">:isParentOf</span> <span class="variable">?z</span>.
-      <span class="comment">#or with property paths this can be:
-</span>      <span class="comment">#?x a :Male; :isSiblingOf/:isParentOf ?z
-</span>}
-<span class="rule"><span class="keyword">THEN</span> </span>{
-      <span class="variable">?x</span> <span class="uri">:isUncleOf</span> <span class="variable">?z</span>.
-}</code></pre>
-<p>A super user can read all of the things!</p>
-<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
-      <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:SuperUser</span>.
-      <span class="variable">?y</span> <span class="uri">a</span> <span class="uri">:Resource</span>.
-      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">&lt;http://www.w3.org/ns/sparql#UUID&gt;</span>.
-}
-<span class="rule"><span class="keyword">THEN</span> </span>{
-      <span class="variable">?z</span> <span class="uri">a</span> <span class="uri">:Role</span>.
-      <span class="variable">?x</span> <span class="uri">:hasRole</span> <span class="variable">?z</span>; <span class="uri">:readPermission</span> <span class="variable">?y</span>.
-}</code></pre>
 <h2 id="sd-Special-Predicates">Special Predicates</h2>
-<p>something something…</p>
+<p>Stardog supports some builtin predicates with special meaning in order to queries and rules easier to read and write. These special predicates are primarily syntactic sugar for more complex structures.</p>
 <h3>Direct/Strict Subclasses, Subproperties, &amp; Direct Types</h3>
 <p>Besides the standard RDF(S) predicates <code>rdf:type</code>, <code>rdfs:subClassOf</code> and
 <code>rdfs:subPropertyOf</code>, Stardog supports the following special built-in
@@ -471,10 +460,10 @@ predicates:</p>
 <li><code>sdle:directSubPropertyOf</code></li>
 <li><code>sdle:strictSubPropertyOf</code></li>
 </ul>
-<p>Where the <code>sdle</code> prefix stands for <code>http://pellet.owldl.com/ns/sdle#</code>.</p>
-<p>We define the meaning of these predicates by relating each of them to an
-analogous triple pattern.The predicates <code>sdle:directSubPropertyOf</code> and
-<code>sdle:strictSubPropertyOf</code> are defined analogously.</p>
+<p>Where the <code>sdle</code> prefix binds to <code>http://pellet.owldl.com/ns/sdle#</code>.</p>
+<p>We show what these each of these predicates means by relating them to an
+equivalent triple pattern; that is, you can just write the predicate rather than the (more unwieldy) triple pattern. </p>
+<p>The predicates <code>sdle:directSubPropertyOf</code> and <code>sdle:strictSubPropertyOf</code> are defined analogously.</p>
 <pre class="highlighted"><code class="asciidoc"><span class="attribute">:ind sdle:directType</span> :c1 -&gt;
 
 <span class="attribute">:ind rdf:type</span> :c1 .
@@ -497,19 +486,22 @@ FILTER NOT EXISTS {
 <span class="code">  :c1 sdle:strictSubClassOf :c3 .</span>
 <span class="code">  :c3 sdle:strictSubClassOf :c2 .</span>
 }</code></pre>
-<p>These triple patterns can be used instead of the triple containing our
-built-in predicate in SELECT, CONSTRUCT, or ASK queries.</p>
 <h3>New Individuals with SWRL</h3>
-<p>One cannot create new individuals (i.e., new instances of classes) using
-SWRL. This restriction is well-motivated as it can lead to
-non-termination issues. Stardog weakens this restriction in some crucial
+<p>Stardog also supports a special predicate that extends the expressivity of SWRL rules. According to the SWLR spec, you can't new individuals (i.e., new instances of classes) in a SWRL rule.</p>
+<p><strong>Note:</strong> Don‘t get hung up by the tech vocabulary here…“new individual” just means that you can’t have a rule that adds a new instance of some RDF or OWL class as a result of the rule firing (i.e., you can't have a “type triple” in the body of a rule).</p>
+<p>This restriction is well-motivated as it can easily cause rules to be non-terminating, that is, they never reach a fixed point, which causes big problems. Stardog's user-defined rules weakens this restriction in some crucial
 aspects, subject to the following restrictions, conditions, and
-warnings. <strong>Note that this support is effectively a gun with which users
-may shoot themselves in the foot if they do not use it carefully.</strong></p>
-<p>We can create new individuals with a rule by using the (non-standard)
-built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
-<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Parent(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
-<p>This rule will be used to create a <em>random</em> bnode for each instance of
+warnings. </p>
+<p><strong>This special predicate is basically a loaded with which users may shoot themselves in the foot if they aren't very careful.</strong></p>
+<p>So despite the general restriction in SWLR, in Stardog we actually can create new individuals with a rule by using the (non-standard) built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Parent</span>
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    ...
+}
+<span class="uri">:Parent</span>(<span class="variable">?y</span>) <span class="uri">&lt;- :Person(?x), http://www.w3.org/ns/sparql#UUID(?y).</span></code></pre>
+<p>This rule will create a <em>random</em> bnode for each instance of
 the class <code>:Person</code> and also to assert that each new instance is also an
 instance of <code>:Parent</code>.</p>
 <h4>Remarks</h4>
@@ -535,59 +527,54 @@ rule to our schema:</p>
 <p>And then modify the original rule accordingly:</p>
 <pre class="highlighted"><code class="asciidoc"><span class="attribute">:Father(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
 <h2 id="sd-Query-Rewriting">Query Rewriting</h2>
-<p>Query answering with reasoning in Stardog is based on the <em>query rewriting</em>
-technique: Stardog rewrites the user's query with respect to the schema, and then
-executes the resulting expanded query (EQ) against the data. As can be
-seen in Figure 2, the rewriting process involves five different phases.</p>
+<p>Reasoning in Stardog is based (mostly) on a <em>query rewriting</em>
+technique: Stardog rewrites the user's query with respect to any schema or rules, and then executes the resulting expanded query (EQ) against the data in the normal way. This process is completely automated and requires no intervention from the user per se. </p>
+<p>As can be seen in Figure 2, the rewriting process involves five different phases.</p>
 <p><img src="/img/blackout.png" alt=""></p>
 <p>Figure 1. Query Answering</p>
 <p><img src="/img/blackout-internals.png" alt=""></p>
 <p>Figure 2. Query Rewriting</p>
 <p>We illustrate the query answering process by means of an example.
-Consider a Stardog database, MyDB<sub>1</sub>, containing the following schema
-axioms:</p>
+Consider a Stardog database, MyDB<sub>1</sub>, containing the following schema:</p>
 <pre class="highlighted"><code class="manchester"> <span class="uri">:SeniorManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:manages</span> <span class="built_in">some</span> <span class="uri">:Manager</span>
  <span class="uri">:manages</span> <span class="built_in">some</span> <span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
  <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span></code></pre>
 <p>Which says that a senior manager manages at least one manager, that
 every person that manages an employee is a manager, and that every
-manager is also an employee. Moreover, let us assume MyDB<sub>1</sub> also
+manager is also an employee.</p>
+<p>Let's also assume that MyDB<sub>1</sub>
 contains the following data assertions:</p>
 <pre class="highlighted"><code class="manchester"><span class="uri">:Bill</span> <span class="uri">rdf:type</span> <span class="uri">:SeniorManager</span>
 <span class="uri">:Robert</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span>
 <span class="uri">:Ana</span> <span class="uri">:manages</span> <span class="uri">:Lucy</span>
 <span class="uri">:Lucy</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span></code></pre>
-<p>Finally, let us assume that we want to retrieve the set of all
+<p>Finally, let's say that we want to retrieve the set of all
 employees. We do this by posing the following query:</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }</code></pre>
-<p>Given the knowledge captured in the schema, we expect all individuals
-occurring in the data to be part of the answer. In order to answer this
-query, Stardog first <strong>rewrites</strong> it using the schema. In this case, the
-original query is rewritten into four queries:</p>
+<p>To answer this query, Stardog first <strong>rewrites</strong> it using the information in the schema. So the original query is rewritten into four queries:</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }
 <span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span> }
 <span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:SeniorManager</span> }
 <span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">:manages</span> <span class="variable">?x</span>. <span class="variable">?x</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span> }</code></pre>
-<p>The final step consists of executing these four queries over the data.</p>
+<p>Then Stardog executes these queries over the data.</p>
 <p>The form of the EQ depends on the reasoning level. For OWL 2 QL, every
-EQ produced by Stardog <em>is guaranteed to be expanded into a set of
-queries</em>. If the reasoning level is OWL 2 RL or EL, then the EQ <em>may</em>
+EQ produced by Stardog is <strong>guaranteed to be expanded into a set of
+queries</strong>. If the reasoning level is OWL 2 RL or EL, then the EQ <em>may</em>
 (but may not) include a recursive rule. If a recursive rule is included,
 Stardog's answers will be sound but incomplete with respect to the
-semantics of the requested reasoning level.</p>
+semantics of the reasoning level.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></p>
 <h3>Why Query Rewriting?</h3>
-<p>Query rewriting has several advantages over the (primary) alternative
-technique, i.e., materialization. In this approach, it is the data that
-gets expanded with respect to the schema, not the query. That is, the
-axioms in the schema are used as rules to generate new triples. However,
-materialization introduces some issues:</p>
+<p>Query rewriting has several advantages over the alternative
+technique, materialization. In materialization, the data 
+gets expanded with respect to the schema, not the query. The
+schema is used to generate new triples, typicaly when data is added or removed from the system. However, materialization introduces some issues:</p>
 <ul>
 <li><strong>data freshness</strong>. Materialization has to be performed every time
 the data or the schema change. This is particularly unsuitable for
 applications where the data changes frequently.</li>
 <li><strong>data size</strong>. Depending on the schema, materialization can
 significantly increase the size of the data. A relatively simple
-class hierarchy with a single level of subclasses can duplicate the
+class hierarchy with a single level of subclasses increases the
 size of the data.</li>
 <li><strong>OWL 2 profile reasoning</strong>. Given the fact that QL, RL, and EL, are
 not comparable with respect to expressive power, an application that
@@ -598,15 +585,14 @@ complexity of the schema, materialization can be computationally
 expensive.</li>
 </ul>
 <h2 id="sd-Performance-Hints">Performance Hints</h2>
-<p>The <a href="#approach">query rewriting approach implemented by Stardog</a> implies
-guidelines that might contribute to more efficient query answering.</p>
+<p>The query rewriting approach suggests some guidelines for more efficient query answering.</p>
 <h3>Hierarchies and Queries</h3>
 <p><strong>Avoid unnecessarily deep class/property hierarchies</strong>. If you do not
 need to model several different types of a given class or property in
-your schema, then do not. The reason shallow hierarchies are desirable
+your schema, then don't do that! The reason shallow hierarchies are desirable
 is that the maximal hierarchy depth in the ontology partly determines
 the maximal size of the EQs produced by Stardog. The larger the EQ, the
-more difficult is to evaluate it over the data.</p>
+more difficult it is to evaluate, generally.</p>
 <p>For example, suppose our schema contains a very thorough and detailed
 set of subclasses of the class <code>:Employee</code>:</p>
 <pre class="highlighted"><code class="manchester"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
@@ -619,33 +605,27 @@ set of subclasses of the class <code>:Employee</code>:</p>
 
 <span class="uri">:Secretary</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
 ...</code></pre>
-<p>If we wanted to retrieve the set of all employees, Blackout would
+<p>If we wanted to retrieve the set of all employees, Stardog would
 produce an EQ containing a query of the following form for every
 subclass <code>:Ci</code> of <code>:Employee</code>:</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Ci</span> }</code></pre>
-<p>At this point, it is easy to see that <strong>the more specific the query, the
-better</strong> as general queries—that is, queries that contain concepts high
-up in the class hierarchy defined by the schema—as the one above, will
-typically yield larger EQs.</p>
+<p>Thus, <strong>the more specific the query, the better</strong>. Why? More general queries—that is, queries that contain concepts high up in the class hierarchy defined by the schema—will typically yield larger EQs.</p>
 <h3>Domains and Ranges</h3>
 <p><strong>Specify domain and range of the properties in the schema</strong>. These
-types of axiom can help reduce the size of the EQs significantly due to
-an optimization technique implemented in Blackout called <em>query
-subsumption</em>. In order to grasp the intuition behind it, let us consider
-the following query asking for people and the employees they manage:</p>
+types of axiom can help reduce the size of the EQs significantly. Why?</p>
+<p>Consider the following query asking for people and the employees they manage:</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">SELECT</span> <span class="variable">?manager</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> 
   { <span class="variable">?manager</span> <span class="uri">:manages</span> <span class="variable">?employee</span>. 
     <span class="variable">?employee</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span>. }</code></pre>
-<p>We know that this query would cause a large EQ given the deep hierarchy
-of <code>:Employee</code> in MyDB<sub>1</sub>. However, if we added the following single
+<p>We know that this query would cause a large EQ given a deep hierarchy
+of <code>:Employee</code> subclasses. However, if we added the following single
 range axiom:</p>
 <pre class="highlighted"><code class="manchester">      <span class="uri">:manages</span> <span class="uri">rdfs:range</span> <span class="uri">:Employee</span></code></pre>
 <p>then the EQ would collapse to:</p>
 <pre class="highlighted"><code class="sparql"> <span class="keyword">SELECT</span> <span class="variable">?manager</span> <span class="variable">?employee</span> <span class="keyword">WHERE</span> { <span class="variable">?manager</span> <span class="uri">:manages</span> <span class="variable">?employee</span> }</code></pre>
-<p>which is considerably less difficult to evaluate.</p>
+<p>which is considerably cheaper to evaluate.</p>
 <h2 id="sd-Terminology">Terminology</h2>
-<p>The preceeding discussion employs the following terms of art with the following
-definitions.</p>
+<p>This chapter uses the following terms of art.</p>
 <h3>Databases</h3>
 <p>A <em>database</em> (DB), a.k.a. ontology, is composed of two different parts:
 the schema or <em>Terminological Box</em> (TBox) and the data or <em>Assertional
@@ -704,12 +684,12 @@ contain.</p>
 </ul>
 <p>where <strong>term</strong> (possibly with subscripts) is either an URI or variable;
 <strong>uri</strong> is a URI; and <strong>?var</strong> is a variable.</p>
-<p>When executing a query, ABox BGPs are handled by Blackout, TBox BGPs are
-executed by Pellet, and Hybrid BGPs by a combination of both.</p>
+<p>When executing a query, ABox BGPs are handled by Stardog. TBox BGPs are
+executed by Pellet embedded in Stardog. Hybrid BGPs by a combination of both.</p>
 <h3>Reasoning</h3>
 <p>Intuitively, reasoning with a DB means to make implicit knowledge
 explicit. There are two main use cases for reasoning: infer implicit
-knowledge and discover modeling errors.</p>
+knowledge and to discover modeling errors.</p>
 <p>With respect to the first use case, recall that MyDB<sub>2</sub> contains the
 following assertion and axiom:</p>
 <pre class="highlighted"><code class="manchester"> <span class="uri">:clark_and_parsia</span> <span class="uri">rdf:type</span> <span class="uri">:Company</span>
@@ -746,7 +726,7 @@ the class <code>:LLC</code> to be unsatisfiable because, for the DB to be
 free of any logical contradiction, there can be no instances of <code>:LLC</code>.</p>
 <p>Asserting (or inferring) that an unsatisfiable class has an instance,
 causes the DB to be <em>inconsistent</em>. In the particular case of MyDB<sub>2</sub>,
-we know that <code>:clark_and_parsia</code> is a company AND an organization (see
+we know that <code>:clark_and_parsia</code> is a company <em>and</em> an organization (see
 above); therefore, we also know that it is an instance of <code>:LLC</code>, and as
 <code>:LLC</code> is known to be unsatisfiable, we have that MyDB<sub>2</sub> is
 inconsistent.</p>
@@ -789,15 +769,12 @@ in a DB. Intuitively, QL is the least expressive of the profiles,
 followed by RL and EL; however, strictly speaking, no profile is more
 expressive than any other as they provide incomparable sets of
 constructs.</p>
-<p>Stardog supports the three profiles of OWL 2 by making use of Blackout
-and Pellet. Notably, since TBox BGPs are handled completely by Pellet,
-Stardog supports reasoning for the whole of OWL 2 for queries containing
-TBox BGPs only.</p>
+<p>Stardog supports the three profiles of OWL 2. Notably, since TBox BGPs are handled completely by Pellet, Stardog supports reasoning for the whole of OWL 2 for queries containing TBox BGPs only.</p>
 
           </div>
-          <div class="hidden" id="footnote-container">
+          <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          </div>
+          <div class="footnote" id="footnote-1"><p>1. We‘re working on changes to Stardog’s reasoner so that it&#39;s complete in the case where recursive rules exist; these changes will be available in the 2.x release cycle.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>
@@ -824,7 +801,6 @@ TBox BGPs only.</p>
 </div>
 
 <script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
-
 
 </body>
 
