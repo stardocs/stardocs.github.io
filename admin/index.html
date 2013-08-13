@@ -305,6 +305,8 @@ may consist of the “databaseName” only.</p>
 protocols. The default port for SNARL is <strong>5820</strong>; the default port for
 HTTP is <strong>5822</strong>. <strong>All administrative functions work over SNARL or HTTP
 protocols.</strong></p>
+<p><div id="sd-HTTP-SNARL-Unification"></div></p>
+<h3>HTTP &amp; SNARL Server Unification <div class="metro label warning">New in 2.0</div></h3>
 <p>To use any of these commands against a remote server, pass a global
 <code>--server</code> argument with an HTTP or SNARL URL.</p>
 <p><strong>Note</strong>: If you are running <code>stardog-admin</code> on the same machine where
@@ -393,6 +395,9 @@ at <code>http://SERVER/docs</code>, which it will otherwise do by default.</p>
 <p>If you started stardog on a port other than the default, or want to shut
 down a remote server, you can simply use the <code>--server</code> option to
 specify the location of the server you wish to shut down</p>
+<p><div id="sd-JMX"></div></p>
+<h3>Monitoring the Server with JMX <div class="metro label warning">New in 2.0</div></h3>
+<p>Blah blah blah watchdog blah blah blah.</p>
 <h3>Serving Stardog Documentation</h3>
 <p>By default, if you start Stardog Server with HTTP enabled, then Stardog
 will serve the system documentation at <code>http://${server}/docs</code> (which is
@@ -658,7 +663,8 @@ parameters and options depending on anticipated workloads, data
 modeling, and other factors.</p>
 <p>See <code>stardog-admin help db create</code> for all the details including
 examples.</p>
-<h3>Database Archetypes <div class="metro label primary">New in 2.0</div></h3>
+<p><div id="sd-Archetypes"></div></p>
+<h3>Database Archetypes <div class="metro label warning">New in 2.0</div></h3>
 <p>Stardog database archetypes are a new feature in 2.0. A database archetype is a named, vendor-defined or user-defined bundle of data and functionality to be applied at database-creation time. Archetypes are primarily for supporting various data standards or toolchain configurations in a simple way.</p>
 <p>For example, the <a href="">SKOS</a> standard from W3C defines an OWL vocabulary for building taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints, some kinds of reasoning, and (typically) some SPARQL queries. If you are developing an app that uses SKOS and Stardog, without the archetype feature, you are responsible for assembling all that SKOS stuff yourself. Which is tedious, error-prone, and not very rewarding even when it's done right.</p>
 <p>Rather than putting that burden on Stardog users, we've created database archetypes as a mechanism to collect these “bundles of stuff” which, as a developer, you can then simply attach to a particular database.</p>

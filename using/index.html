@@ -44,10 +44,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Querying-a-Database" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Querying-a-Database">
-            <strong>Querying a Database</strong>
+            <a href="#sd-Querying" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Querying">
+            <strong>Querying</strong>
         </a>
-        <!-- <li><a href="#sd-Querying-a-Database" class="skiplink">Querying a Database</a> -->
+        <!-- <li><a href="#sd-Querying" class="skiplink">Querying</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -59,10 +59,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Updating-a-Database" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Updating-a-Database">
-            <strong>Updating a Database</strong>
+            <a href="#sd-Updating" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Updating">
+            <strong>Updating</strong>
         </a>
-        <!-- <li><a href="#sd-Updating-a-Database" class="skiplink">Updating a Database</a> -->
+        <!-- <li><a href="#sd-Updating" class="skiplink">Updating</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -74,10 +74,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Exporting-a-Database" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Exporting-a-Database">
-            <strong>Exporting a Database</strong>
+            <a href="#sd-Exporting" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Exporting">
+            <strong>Exporting</strong>
         </a>
-        <!-- <li><a href="#sd-Exporting-a-Database" class="skiplink">Exporting a Database</a> -->
+        <!-- <li><a href="#sd-Exporting" class="skiplink">Exporting</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -131,20 +131,20 @@
             <p>While Stardog is a full-featured RDF database, its primary purpose is to
 execute queries against RDF data which it has under direct
 management.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> Stardog supports the <a href="http://www.cambridgesemantics.com/2008/09/sparql-by-example">SPARQL</a> query language, a W3C standard.</p>
-<h2 id="sd-Querying-a-Database">Querying a Database</h2>
+<h2 id="sd-Querying">Querying</h2>
 <p>Stardog currently supports all of the <a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1 Query
-language</a>. Support is planned for
-<a href="http://www.w3.org/TR/2012/PR-sparql11-update-20121108">SPARQL 1.1 Update</a> in a
-future release. Stardog does not support SPARQL 1.1 federation (the
-<code>SERVICE</code> keyword). Stardog also supports the <a href="http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/">OWL 2 Direct Semantics
+language</a>. <a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a> Stardog also supports the <a href="http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/">OWL 2 Direct Semantics
 entailment regime</a>.</p>
 <p>To execute a SPARQL query against a Stardog database, use the <code>query</code>
 subcommand:</p>
 <pre class="highlighted"><code class="bash">$ stardog query myDb <span class="string">"select * where { ?s ?p ?o }"</span></code></pre>
+<!-- show a few more examples? -->
+
 <p>Detailed information on using the query command in Stardog can be found
-on its <a href="/docs/man/query-execute.html">manpage</a></p>
-<h2 id="sd-Updating-a-Database">Updating a Database</h2>
-<h3>SPARQL Update <div class="metro label primary">New in 2.0</div></h3>
+on its <a href="/docs/man/query-execute.html">manpage</a>.</p>
+<h2 id="sd-Updating">Updating</h2>
+<p>There are many ways to update the data in a Stardog database; the most commonly used methods are the CLI and SPARQL Update queries, both of which we discuss below.</p>
+<h3>SPARQL Update <div class="metro label warning">New in 2.0</div></h3>
 <p>SPARQL 1.1 Update can be used to insert RDF into or delete RDF from a Stardog database using SPARQL query forms <code>INSERT</code> and <code>DELETE</code>, respectively.</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> dc: <span class="uri">&lt;http://purl.org/dc/elements/1.1/&gt;</span>
 <span class="keyword">PREFIX</span> ns: <span class="uri">&lt;http://example.org/ns#&gt;</span>
@@ -212,7 +212,7 @@ encounter parse errors from which it cannot recover. And loading data in
 lax mode may lead to unexpected SPARQL query results. For example,
 malformed literals (<code>"2.5"^^xsd:int</code>) used in filter evaluation may lead
 to undesired results.</p>
-<h2 id="sd-Exporting-a-Database">Exporting a Database</h2>
+<h2 id="sd-Exporting">Exporting</h2>
 <p>To export data from a Stardog database back to RDF,
 <a href="/docs/man/data-export.html">export</a> is used by specifying—</p>
 <ol>
@@ -294,7 +294,8 @@ docs</a>.</p>
 or from any other network via HTTP URLs in order to query that data. If
 you want to query data using Stardog, you must add that data to a new or
 existing Stardog database. A future version of Stardog will
-support <a href="http://weblog.clarkparsia.com/2011/03/07/sdq-information-integration-i%0An-the-real-world/">SDQ</a>, a distributed query system, that will lift this restriction.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div></div>
+support <a href="http://weblog.clarkparsia.com/2011/03/07/sdq-information-integration-i%0An-the-real-world/">SDQ</a>, a distributed query system, that will lift this restriction.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. Stardog does not support SPARQL 1.1 federation (the
+<code>SERVICE</code> keyword).<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-2">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>

@@ -305,9 +305,9 @@ Explanations are also accessible through the <a href="../network/#extended-http"
 protocol</a> and SNARL API. See the examples
 included in the distribution for more details about retrieving
 explanations programmatically.</p>
-<p>Note that there is probably more than one explanation for an inference,
-but Stardog returns only a single explanation. We plan to compute
-multiple explanations in a future version.</p>
+<p><div id="sd-Proof-Trees"></div></p>
+<h3>Proof Trees <div class="metro label warning">New in 2.0</div></h3>
+<p>Blah, blah, Evren did some awesome stuff what's new blah blah.</p>
 <h2 id="sd-Not-Seeing-Expected-Answers-">Not Seeing Expected Answers?</h2>
 <p>Here's a few things that you might want to try:</p>
 <ul>
@@ -370,7 +370,8 @@ are part of the schema, they will be used for reasoning automatically
 when using the <strong>SL</strong> reasoning level.</p>
 <p>Assertions implied by the rules <em>will not</em> be materialized. Instead,
 rules are used to expand queries just as regular axioms are in Stardog. <strong>Note</strong>: to trigger rules to “fire”, execute a query. It's that simple.</p>
-<h3>Stardog Rules Syntax <div class="metro label primary">New in 2.0</div></h3>
+<p><div id="sd-Stardog-Rules-Syntax"></div></p>
+<h3>Stardog Rules Syntax <div class="metro label warning">New in 2.0</div></h3>
 <p>Stardog supports two different syntaxes for defining rules. The first is native Stardog Rules syntax and is based on SPARQL syntax, so you can re-use what you already know about SPARQL to write rules. <strong>Unless you have specific requirements otherwise, you should use this syntax for user-defined rules in Stardog.</strong> The second, the <em>de facto</em> standard RDF/XML syntax for SWRL. It has the advantage of being supported in many tools; but it‘s not fun to read or to write. You probably don’t want to use it.</p>
 <p>Stardog Rules Syntax is basically SPARQL “basic graph patterns” (BGPs) plus some very explicit new syntax (<code>IF-THEN</code>) to denote the head and the body of a rule. You define URI prefixes in the normal way (examples below) and use regular SPARQL variables for rule variables. As you can see below, some SPARQL 1.1 syntactic sugar—property paths, especially, but also bnode syntax—make comples Stardog Rules quite concise and elegant.</p>
 <h3>Rule Examples</h3>
