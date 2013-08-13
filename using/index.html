@@ -59,10 +59,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Adding-amp--Removing-Data" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Adding-amp--Removing-Data">
-            <strong>Adding &amp; Removing Data</strong>
+            <a href="#sd-Updating-a-Database" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Updating-a-Database">
+            <strong>Updating a Database</strong>
         </a>
-        <!-- <li><a href="#sd-Adding-amp--Removing-Data" class="skiplink">Adding &amp; Removing Data</a> -->
+        <!-- <li><a href="#sd-Updating-a-Database" class="skiplink">Updating a Database</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -143,7 +143,30 @@ subcommand:</p>
 <pre class="highlighted"><code class="bash">$ stardog query myDb <span class="string">"select * where { ?s ?p ?o }"</span></code></pre>
 <p>Detailed information on using the query command in Stardog can be found
 on its <a href="/docs/man/query-execute.html">manpage</a></p>
-<h2 id="sd-Adding-amp--Removing-Data">Adding &amp; Removing Data</h2>
+<h2 id="sd-Updating-a-Database">Updating a Database</h2>
+<h3>SPARQL Update <div class="metro label primary">New in 2.0</div></h3>
+<p>SPARQL 1.1 Update can be used to insert RDF into or delete RDF from a Stardog database using SPARQL query forms <code>INSERT</code> and <code>DELETE</code>, respectively.</p>
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> dc: <span class="uri">&lt;http://purl.org/dc/elements/1.1/&gt;</span>
+<span class="keyword">PREFIX</span> ns: <span class="uri">&lt;http://example.org/ns#&gt;</span>
+<span class="keyword">INSERT</span> <span class="keyword">DATA</span>
+{ <span class="keyword">GRAPH</span> <span class="uri">&lt;http://example/bookStore&gt;</span> { <span class="uri">&lt;http://example/book1&gt;</span>  <span class="uri">ns:price</span>  <span class="number">42</span> } }</code></pre>
+<p>An example of deleting RDF:</p>
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> dc: <span class="uri">&lt;http://purl.org/dc/elements/1.1/&gt;</span>
+
+<span class="keyword">DELETE</span> <span class="keyword">DATA</span>
+{
+  <span class="uri">&lt;http://example/book2&gt;</span> <span class="uri">dc:title</span> <span class="string">"David Copperfield"</span> ;
+                         <span class="uri">dc:creator</span> <span class="string">"Edmund Wells"</span> .
+}</code></pre>
+<p>Or they can be combined with <code>WHERE</code> clauses:</p>
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> foaf:  <span class="uri">&lt;http://xmlns.com/foaf/0.1/&gt;</span>
+
+WITH <span class="uri">&lt;http://example/addresses&gt;</span>
+<span class="keyword">DELETE</span> { <span class="variable">?person</span> <span class="uri">foaf:givenName</span> <span class="string">'Bill'</span> }
+<span class="keyword">INSERT</span> { <span class="variable">?person</span> <span class="uri">foaf:givenName</span> <span class="string">'William'</span> }
+<span class="keyword">WHERE</span>
+  { <span class="variable">?person</span> <span class="uri">foaf:givenName</span> <span class="string">'Bill'</span> }</code></pre>
+<h3>Adding Data with the CLI</h3>
 <p>The most efficient way to load data into Stardog is at database creation
 time. See the <a href="../admin/#create">Creating a Database</a> section for bulk
 loading data at database creation time. To add data to an existing
@@ -158,6 +181,7 @@ syntax. If you specify a type, then all the files being loaded must of
 that same type.</p>
 <p>If you want to add data to a named graph, specify it via the
 <code>--graph-uri</code> or <code>-g</code> options.</p>
+<h3>Removing Data with the CLI</h3>
 <p>To remove data from a Stardog database,
 <a href="/docs/man/data-remove.html">remove</a> is used by specifying—</p>
 <ol>
