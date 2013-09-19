@@ -59,10 +59,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Linked-Data-Management" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Linked-Data-Management">
-            <strong>Linked Data Management</strong>
+            <a href="#sd-Database-View" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Database-View">
+            <strong>Database View</strong>
         </a>
-        <!-- <li><a href="#sd-Linked-Data-Management" class="skiplink">Linked Data Management</a> -->
+        <!-- <li><a href="#sd-Database-View" class="skiplink">Database View</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -74,10 +74,10 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-SPARQL-Query-Panel" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-SPARQL-Query-Panel">
-            <strong>SPARQL Query Panel</strong>
+            <a href="#sd-Server-Monitoring" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Server-Monitoring">
+            <strong>Server Monitoring</strong>
         </a>
-        <!-- <li><a href="#sd-SPARQL-Query-Panel" class="skiplink">SPARQL Query Panel</a> -->
+        <!-- <li><a href="#sd-Server-Monitoring" class="skiplink">Server Monitoring</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -89,10 +89,25 @@
     
     <!-- [data-target='-->
         <li>
-            <a href="#sd-Schema-Browsing" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Schema-Browsing">
-            <strong>Schema Browsing</strong>
+            <a href="#sd-Linked-Data" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Linked-Data">
+            <strong>Linked Data</strong>
         </a>
-        <!-- <li><a href="#sd-Schema-Browsing" class="skiplink">Schema Browsing</a> -->
+        <!-- <li><a href="#sd-Linked-Data" class="skiplink">Linked Data</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-SPARQL-Query" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-SPARQL-Query">
+            <strong>SPARQL Query</strong>
+        </a>
+        <!-- <li><a href="#sd-SPARQL-Query" class="skiplink">SPARQL Query</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -108,36 +123,6 @@
             <strong>Semantic Search</strong>
         </a>
         <!-- <li><a href="#sd-Semantic-Search" class="skiplink">Semantic Search</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Pelorus-Faceted-Navigation" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Pelorus-Faceted-Navigation">
-            <strong>Pelorus: Faceted Navigation</strong>
-        </a>
-        <!-- <li><a href="#sd-Pelorus-Faceted-Navigation" class="skiplink">Pelorus: Faceted Navigation</a> -->
-            
-                <ul class="sidebar-nav">
-                
-    
-
-                </ul>
-            
-        </li>
-    
-    <!-- [data-target='-->
-        <li>
-            <a href="#sd-Monitoring" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Monitoring">
-            <strong>Monitoring</strong>
-        </a>
-        <!-- <li><a href="#sd-Monitoring" class="skiplink">Monitoring</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -174,18 +159,27 @@
           
           <div id="mdblock">
             <h2 id="sd-Introduction">Introduction</h2>
-<div class="metro label warning">New in 2.0</div>
-
-<p>Blah blah blah. Lots of screen shots.</p>
-<h2 id="sd-Linked-Data-Management">Linked Data Management</h2>
-<h3>Browsing</h3>
+<p>Stardog 2.0 introduces the Web Console, a web app for every Stardog database that makes administration and interaction with data quick and easy. The Console includes a Linked Data management capability—including data editing—browsing, search, query, and JMX monitoring.</p>
+<p>The Console is a pure client-side Javascript application that uses middleware REST services that run in the same JVM container as Stardog, which means you can also use those services, together with <a href="/web">Stardog Web framework</a>, to build additional Console capabilities or to build your own Stardog-backed web apps.</p>
+<h2 id="sd-Database-View">Database View</h2>
+<p><img src="/img/console/home.png" alt="Stardog Web Console: Foo"></p>
+<h2 id="sd-Server-Monitoring">Server Monitoring</h2>
+<p><img src="/img/console/jmx.png" alt="Stardog Web Console: Foo"></p>
+<h2 id="sd-Linked-Data">Linked Data</h2>
+<p>Console includes a comprehensive Linked Data management capability.</p>
+<h3>Schema Browsing</h3>
+<p><img src="/img/console/schema.png" alt="Stardog Web Console: Foo"></p>
+<h3>Instance Browsing</h3>
+<p><img src="/img/console/browse.png" alt="Stardog Web Console: Foo"></p>
 <h3>Editing</h3>
-<h2 id="sd-SPARQL-Query-Panel">SPARQL Query Panel</h2>
+<p><img src="/img/console/edit.png" alt="Stardog Web Console: Foo"></p>
+<h2 id="sd-SPARQL-Query">SPARQL Query</h2>
+<p>Console includes SPARQL query and search widgets, including data exploration.</p>
+<p><img src="/img/console/query.png" alt="Stardog Web Console: Foo"></p>
 <h3>Exploration Queries</h3>
-<h2 id="sd-Schema-Browsing">Schema Browsing</h2>
+<p><img src="/img/console/explore.png" alt="Stardog Web Console: Foo"></p>
 <h2 id="sd-Semantic-Search">Semantic Search</h2>
-<h2 id="sd-Pelorus-Faceted-Navigation">Pelorus: Faceted Navigation</h2>
-<h2 id="sd-Monitoring">Monitoring</h2>
+<p><img src="/img/console/search.png" alt="Stardog Web Console: Foo"></p>
 
           </div>
           <div class="hidden" id="footnote-container">
