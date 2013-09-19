@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.0 Docs: Known Issues</title>
+  <title>Stardog 2.0 RC2 Docs: Known Issues</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -47,11 +47,8 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <p>The known issues in Stardog 2.0.0—</p>
+            <p>The known issues in Stardog 2.0 RC2—</p>
 <ol>
-<li>Stardog doesn&#39;t support SPARQ 1.1 UPDATE query
- language, federation, UPDATE protocol (but the HTTP protocol support is a superset of SPARQL 1.1 UPDATE protocol anyway), or any entailment regimes other than
- OWL 2 Direct Semantics. <strong>WILLFIX</strong></li>
 <li>Our <code>CONSTRUCT</code> slightly deviates from <a href="http://www.w3.org/TR/sparql11-query/#construct">SPARQL 1.1 specification</a> in that it does not implicitly <code>DISTINCT</code> query results; rather, it implicitly applies <code>REDUCED</code> semantics to <code>CONSTRUCT</code> query results.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></li>
 <li>Asking for all individuals with reasoning via the query
 <code>{?s a owl:Thing}</code> might also retrieve some classes and properties.
@@ -69,8 +66,7 @@ URIs. Turtle and RDF/XML formats allows base URIs but N-Triples
 format doesn&#39;t allow base URIs and relative URIs in N-Triples data
 will cause errors.</li>
 <li>Queries with <code>FROM NAMED</code> with a named graph that is <em>not</em> in
-Stardog will <strong>not</strong> cause Stardog to believe that it is, in fact,
-Maven, i.e., to automagically download the data from an arbitrary
+Stardog will <strong>not</strong> cause Stardog to download the data from an arbitrary
 HTTP URL and include it in the query. Stardog will <em>only</em> evaluate
 queries over data that has been loaded into it.</li>
 <li>SPARQL queries without a context or named graph are executed against
@@ -103,7 +99,7 @@ raise an exception.</li>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Known Issues</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.0.</h4>
+                <h4>This is <span id="footer-subhead">Known Issues</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0 RC2.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
