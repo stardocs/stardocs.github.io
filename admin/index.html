@@ -376,40 +376,44 @@ the database, then this configuration option should be disabled (set
 to <code>FALSE</code>).</li>
 </ol>
 <h3>Starting &amp; Stopping the Server</h3>
-<p><strong>Note</strong>: Unlike the other <code>stardog-admin</code> subcommands, starting and
-stopping the server may only be run locally, i.e., on the same machine
-as Stardog Server will run on.</p>
-<p>The simplest way to start the server—running on the default ports,
-detaching to run as a daemon, and writing <code>stardog.pid</code> and
+<p><strong>Note</strong>: Unlike the other <code>stardog-admin</code> subcommands, starting the 
+server may only be run locally, i.e., on the same machine
+the Stardog Server will run on.</p>
+<p>The simplest way to start the server—running on the default port,
+detaching to run as a daemon, and writing
 <code>stardog.log</code> to the current working directory— is</p>
 <pre class="highlighted"><code class="bash">$ stardog-admin server start</code></pre>
 <p>To specify parameters:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile=stardog.log --no-docs --http=<span class="number">8080</span></code></pre>
-<p><code>--no-docs</code> will tell Stardog not to serve its documentation over HTTP
-at <code>http://SERVER/docs</code>, which it will otherwise do by default.</p>
-<p>Note: ports can be specified using the properties <code>--snarl</code> and
-<code>--http</code>. The HTTP interface can be disabled by using the flag
-<code>--no-http</code>; the SNARL interface may not be disabled.</p>
+<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile=mystardog.log --no-docs --port=<span class="number">8080</span></code></pre>
+<p>Note: the port can be specified using the property <code>--port</code>. 
+The HTTP interface can be disabled by using the flag
+<code>--no-http</code> and the SNARL interface via <code>--no-snarl</code>.</p>
 <p>To shut down the server:</p>
 <pre class="highlighted"><code class="bash">$ stardog-admin server stop</code></pre>
 <p>If you started stardog on a port other than the default, or want to shut
 down a remote server, you can simply use the <code>--server</code> option to
-specify the location of the server you wish to shut down</p>
+specify the location of the server you wish to shut down.</p>
+<p>By default Stardog will bind it's server to <code>0.0.0.0</code>.  You can specify a different
+network interface for Stardog to bind to using the <code>--bind</code> property of <code>server start</code>.</p>
 <p><div id="sd-JMX"></div></p>
 <h3>Server Monitoring with Watchdog &amp; JMX <div class="metro label warning">New in 2.0</div></h3>
-<p>Blah blah blah watchdog blah blah blah.</p>
-<p>you can‘t configure it. we do x,y,z and that’s it.</p>
-<p>to disable it, do blah.</p>
-<p>it's avaialable over http at get /{db}/watchdog</p>
-<p>you can use visualvm or the like to monitor locally or remotely.</p>
-<p>on the roadmap for more stuff is a, b, c</p>
-<h3>Serving Stardog Documentation</h3>
-<p>By default, if you start Stardog Server with HTTP enabled, then Stardog
-will serve the system documentation at <code>http://${server}/docs</code> (which is
-why “docs” is a reserved database name).</p>
-<p>In a production deployment, you might want to disable documentation
-serving, which you can do by passing <code>--no-docs</code> on server startup or by
-disabling HTTP altogether.</p>
+<p>Stardog includes integration with JMX called Watchdog.  In addition to providing
+some basic JVM information, Watchdog also exports information about the Stardog
+DBMS configuration as well as stats for all of the databases within the system, 
+such as the total number of open connections, size, and average query time.</p>
+<h4>Accessing Watchdog</h4>
+<p>To access Watchdog, you can simply use a tool like VisualVM or JConsole 
+to attach to the process running the JVM, or connect directly to the JMX server.</p>
+<p>You can also access information from Watchdog in the web console for the database,
+or by performing a <code>GET</code> on <code>/{db}/watchdog</code> which will return a simple JSON object
+containing the information available via JMX.</p>
+<h4>Configuring Watchdog</h4>
+<p>By default, Watchdog will bind an RMI server for remote access on port 5833.  If you
+want to change which port Watchdog binds the remote server to, you can set the property
+<code>watchdog.port</code> via <code>stardog.properties</code> find in your <code>$STARDOG_HOME</code>.  If you wish
+to disable remote access to JMX altogether you can set <code>watchdog.remote.access</code> to <code>false</code> 
+in <code>stardog.properties</code>.  Finally, if you wish to disable Watchdog completely, just
+set <code>watchdog.enabled</code> to <code>false</code> in <code>stardog.properties</code>.</p>
 <h3>Locking Stardog Home</h3>
 <p>Stardog Server will lock <code>STARDOG_HOME</code> when it starts to prevent
 synchronization errors and other nasties if you start more than one
