@@ -307,7 +307,31 @@ included in the distribution for more details about retrieving
 explanations programmatically.</p>
 <p><div id="sd-Proof-Trees"></div></p>
 <h3>Proof Trees <div class="metro label warning">New in 2.0</div></h3>
-<p>Blah, blah, Evren did some awesome stuff what's new blah blah.</p>
+<p>Proof trees are a hierarchical presentation of multiple explanations (of inferences) to make data, schemas, and rules more intelligible. Proof tree<n>Triggered using the <code>--format tree</code> option of the <code>reasoning explain</code> CLI command.</n> provides an explanation for an inference or an
+inconsistency in a <em>hierarchical structure</em>. Nodes in the proof tree may
+represent an assertion in a Stardog database. Multiple assertion nodes are
+grouped under an inferred node.</p>
+<h4>Example</h4>
+<p>For example, if we are explaining the inferred triple <code>:Alice
+rdf:type :Employee</code> , the root of the proof tree will show that
+inference:</p>
+<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span></code></pre>
+<p>The children of an inferred node will provide more explanation for
+that inference:</p>
+<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span>
+    <span class="tag">ASSERTED</span> <span class="pseudo">:Manager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Employee</span>
+    <span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Manager</span></code></pre>
+<p>The fully expanded proof tree will show the asserted triples and
+axioms for every inference:</p>
+<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span>
+    <span class="tag">ASSERTED</span> <span class="pseudo">:Manager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Employee</span>
+    <span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Manager</span>
+        <span class="tag">ASSERTED</span> <span class="pseudo">:Alice</span> <span class="pseudo">:supervises</span> <span class="pseudo">:Bob</span>
+        <span class="tag">ASSERTED</span> <span class="pseudo">:supervises</span> <span class="tag">rdfs</span><span class="pseudo">:domain</span> <span class="pseudo">:Manager</span></code></pre>
+<p>The CLI explanation command prints the proof tree using indented text;
+but, using the SNARL API, it is simple to create a tree widget
+in a GUI to show the explanation tree, such that users can expand and
+collapse details in the explanation.</p>
 <h2 id="sd-Not-Seeing-Expected-Answers-">Not Seeing Expected Answers?</h2>
 <p>Here's a few things that you might want to try:</p>
 <ul>
