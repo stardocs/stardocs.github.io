@@ -46,8 +46,6 @@
             </div>
           <!-- summary -->
           
-            <p id="summary"><em>This guide explains the basic steps to get you started quickly with Stardog on a Unix machine. We test every Stardog release extensively with various flavors of Linux and OS X. Please report a bug if you find issues on other platforms.</em></p>
-          
           <div id="mdblock">
             <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
@@ -63,10 +61,10 @@ process. </p>
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
 <pre class="highlighted"><code class="bash">$ ./stardog-admin server start</code></pre>
 <p>Fourth, create a database with an input file:</p>
-<pre class="highlighted"><code class="bash">$ ./stardog-admin db create -n myDB -t D -u admin -p admin examples/data/University0_0.owl</code></pre>
+<pre class="highlighted"><code class="bash">$ ./stardog-admin db create -n myDB examples/data/University0_0.owl</code></pre>
 <p>Fifth, query the database:</p>
 <pre class="highlighted"><code class="bash">$ ./stardog query myDB <span class="string">"SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"</span></code></pre>
-<p>You can use the Web Console to search or query the new database you created by hitting <code>http://localhost:5820/myDB</code> in yr browser.</p>
+<p>You can use the Web Console to search or query the new database you created by hitting <a href="http://localhost:5820/myDB"><a href="http://localhost:5820/myDB">http://localhost:5820/myDB</a></a> in yr browser.</p>
 <p>Now, go have a drink: you&#39;ve earned it.</p>
 
           </div>

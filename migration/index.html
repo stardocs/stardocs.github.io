@@ -132,6 +132,21 @@
             
         </li>
     
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Command-line" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Command-line">
+            <strong>Command line</strong>
+        </a>
+        <!-- <li><a href="#sd-Command-line" class="skiplink">Command line</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
 
 </ul>
               <p id="tocnav">
@@ -192,7 +207,9 @@
             .start();</code></pre>
 <p>When programmatically starting a Stardog server in your application, you <em>must</em> stop the server when you're done with it, otherwise it can prevent the JVM from exiting.</p>
 <h2 id="sd-Protocols">Protocols</h2>
-<p>As of Stardog 2.0, Stardog's supported protocols, SNARL &amp; HTTP, now run on the <em>same</em> port.  There is no need to start separate servers or specify different ports.  The new unified Stardog server will automatically detect what protocol you are using and forward the traffic appropriately.  The default port for the server remains <code>5820</code>.</p>
+<p>As of Stardog 2.0, Stardog's supported protocols, SNARL &amp; HTTP, now run on the <em>same</em> port.  There is no need to start separate servers or specify different ports.  The new unified Stardog server will automatically detect what protocol you are using and forward the traffic appropriately.  The default port for the server remains <code>5820</code>. </p>
+<h2 id="sd-Command-line">Command line</h2>
+<p>The global options —home, —logfile, —disable-security for <code>server start</code> command have been turned into regular options. See the <code>stardog-admin help server start</code> for details.</p>
 
           </div>
           <div class="hidden" id="footnote-container">

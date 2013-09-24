@@ -384,7 +384,7 @@ detaching to run as a daemon, and writing
 <code>stardog.log</code> to the current working directory— is</p>
 <pre class="highlighted"><code class="bash">$ stardog-admin server start</code></pre>
 <p>To specify parameters:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile=mystardog.log --no-docs --port=<span class="number">8080</span></code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin server start --logfile mystardog.log --no-docs --port=<span class="number">8080</span></code></pre>
 <p>Note: the port can be specified using the property <code>--port</code>. 
 The HTTP interface can be disabled by using the flag
 <code>--no-http</code> and the SNARL interface via <code>--no-snarl</code>.</p>
@@ -1164,9 +1164,7 @@ up the disk space needed by each database.</p>
 <p>Stardog provides Windows batch (<code>.bat</code>) files for use on Windows; they
 provide roughly the same set of functionality provided by the Bash
 scripts which are used on *nix systems. There are however, a few small
-differences between the two. You cannot change the logfile with the
-global <code>--logfile</code> option using the .bat scripts, it will always just
-log to the console. Additionally, when you start a server with
+differences between the two. When you start a server with
 <code>server start</code>, this does not detach to the background, it will run in
 the current console.</p>
 <p>To shut down the server correctly, you should either issue a
