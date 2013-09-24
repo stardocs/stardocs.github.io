@@ -675,14 +675,15 @@ examples.</p>
 <p><div id="sd-Archetypes"></div></p>
 <h3>Database Archetypes <div class="metro label warning">New in 2.0</div></h3>
 <p>Stardog database archetypes are a new feature in 2.0. A database archetype is a named, vendor-defined or user-defined bundle of data and functionality to be applied at database-creation time. Archetypes are primarily for supporting various data standards or toolchain configurations in a simple way.</p>
-<p>For example, the <a href="">SKOS</a> standard from W3C defines an OWL vocabulary for building taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints, some kinds of reasoning, and (typically) some SPARQL queries. If you are developing an app that uses SKOS and Stardog, without the archetype feature, you are responsible for assembling all that SKOS stuff yourself. Which is tedious, error-prone, and not very rewarding even when it's done right.</p>
+<p>For example, the SKOS standard from W3C defines an OWL vocabulary for building taxonomies, thesauruses, etc. SKOS is made up by a vocabulary, some constraints, some kinds of reasoning, and (typically) some SPARQL queries. If you are developing an app that uses SKOS and Stardog, without the archetype feature, you are responsible for assembling all that SKOS stuff yourself. Which is tedious, error-prone, and not very rewarding even when it's done right.</p>
 <p>Rather than putting that burden on Stardog users, we've created database archetypes as a mechanism to collect these “bundles of stuff” which, as a developer, you can then simply attach to a particular database.</p>
 <p>The last point to make is that archetypes are composable: you can mix-and-match them at database creation time as needed.</p>
-<p>In the 2.0 release, we're supporting three database archetypes: <a href="">PROV</a>, <a href="">SKOS</a>, and <a href="">Stardog Web</a>.</p>
-<h4>Stardog Web Archetype</h4>
+<p>In the 2.0 release, we're supporting three database archetypes: <a href="http://www.w3.org/TR/prov-overview/">PROV</a> and <a href="http://www.w3.org/2004/02/skos/">SKOS</a>.</p>
 <h4>SKOS Archetype</h4>
-<p>The SKOS archetype is for databases that will contain SKOS data, …</p>
+<p>The SKOS archetype is for databases that will contain SKOS data, and includes the SKOS schema, SKOS constraints using Stardog's Integrity Constraint Validation, and some namespace-prefix bindings.</p>
 <h4>PROV Archetype</h4>
+<p>The PROV archetype is for databases that will contain PROV data, and includes the SKOS schema, SKOS constraints using Stardog's Integrity Constraint Validation, and some namespace-prefix bindings.</p>
+<p><div class="metro warning btn">NOTE</div> Archetypes are composable, so you can use more of them and they are intended to be used alongside <em>your domain data</em>, which may include as many other schemas, ontologies, etc. as are required.</p>
 <h3>Database Creation Templates</h3>
 <p>As a boon to the overworked admin or devops peeps, Stardog Server
 supports a feature we call “database creation templates”, which is to
