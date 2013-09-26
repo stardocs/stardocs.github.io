@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0 RC2 Docs: Using Stardog</title>
+  <title>Stardog 2.0.0 Docs: Using Stardog</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -332,182 +332,288 @@ docs</a>.</p>
 <h2 id="sd-Functions">Functions</h2>
 <p>Stardog supports all the functions in SPARQL language plus some additional function from XPATH  and SWRL. These functions can be used in queries or rules. Some functions appear in multiple namespaces and all the namespaces are recognized.</p>
 <p>Functions from the following namespaces are recognized:</p>
-<html>
-    <head><meta content="text/html;charset=UTF-8"></head>
-    <body>
-        <table border="1">
-            <tr>
-                <th>Prefix</th>
-                <th>Namespace</th>
-            </tr>
-            <tr>
-                <td>stardog</td>
-                <td>stardog</td>
-            </tr>
-            <tr>
-                <td>fn</td>
-                <td>fn</td>
-            </tr>
-            <tr>
-                <td>math</td>
-                <td>math</td>
-            </tr>
-            <tr>
-                <td>swrlb</td>
-                <td>swrlb</td>
-            </tr>
-            <tr>
-                <td>afn</td>
-                <td>afn</td>
-            </tr>
-        </table>
-    </body>
-</html>
-
+<table>
+<thead>
+<tr>
+<th>Prefix</th>
+<th>Namespace                               </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>stardog</td>
+<td><a href="#">tag:stardog:api:functions:</a></td>
+</tr>
+<tr>
+<td>fn</td>
+<td><a href="http://www.w3.org/2005/xpath-functions#"><a href="http://www.w3.org/2005/xpath-functions#">http://www.w3.org/2005/xpath-functions#</a></a></td>
+</tr>
+<tr>
+<td>math</td>
+<td><a href="http://www.w3.org/2005/xpath-functions/math#"><a href="http://www.w3.org/2005/xpath-functions/math#">http://www.w3.org/2005/xpath-functions/math#</a></a></td>
+</tr>
+<tr>
+<td>swrlb</td>
+<td><a href="http://www.w3.org/2003/11/swrlb#"><a href="http://www.w3.org/2003/11/swrlb#">http://www.w3.org/2003/11/swrlb#</a></a></td>
+</tr>
+<tr>
+<td>afn</td>
+<td><a href="http://jena.hpl.hp.com/ARQ/function#"><a href="http://jena.hpl.hp.com/ARQ/function#">http://jena.hpl.hp.com/ARQ/function#</a></a></td>
+</tr>
+</tbody>
+</table>
 <p>The list of function URIs recognized by Stardog are shown in the following table. Note that, some of these functions exist in SPARQL specification which means they can be used without an explicit namespace.</p>
-<html>
-    <head><meta content="text/html;charset=UTF-8"></head>
-    <body>
-        <table border="1">
-            <tr>
-                <th>Function name</th>
-                <th>Recognized URIs</th>
-            </tr>
-            <tr>
-                <td>concat</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#concat">fn:concat</a>, <a href="http://www.w3.org/2003/11/swrlb#stringConcat">swrlb:stringConcat</a></td>
-            </tr>
-            <tr>
-                <td>contains</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#contains">fn:contains</a>, <a href="http://www.w3.org/2003/11/swrlb#contains">swrlb:contains</a></td>
-            </tr>
-            <tr>
-                <td>containsIgnoreCase</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#containsIgnoreCase">swrlb:containsIgnoreCase</a></td>
-            </tr>
-            <tr>
-                <td>date</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#date">swrlb:date</a></td>
-            </tr>
-            <tr>
-                <td>dateTime</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#dateTime">swrlb:dateTime</a></td>
-            </tr>
-            <tr>
-                <td>day</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#day-from-dateTime">fn:day-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>dayTimeDuration</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#dayTimeDuration">swrlb:dayTimeDuration</a></td>
-            </tr>
-            <tr>
-                <td>encode_for_uri</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#encode-for-uri">fn:encode-for-uri</a></td>
-            </tr>
-            <tr>
-                <td>exp</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions/math#exp">math:exp</a>, <a href="http://jena.hpl.hp.com/ARQ/function#e">afn:e</a></td>
-            </tr>
-            <tr>
-                <td>hours</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#hours-from-dateTime">fn:hours-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>lcase</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#lower-case">fn:lower-case</a>, <a href="http://www.w3.org/2003/11/swrlb#lowerCase">swrlb:lowerCase</a></td>
-            </tr>
-            <tr>
-                <td>max</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#max">fn:max</a>, <a href="http://jena.hpl.hp.com/ARQ/function#max">afn:max</a></td>
-            </tr>
-            <tr>
-                <td>min</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#min">fn:min</a>, <a href="http://jena.hpl.hp.com/ARQ/function#min">afn:min</a></td>
-            </tr>
-            <tr>
-                <td>minutes</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#minutes-from-dateTime">fn:minutes-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>month</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#month-from-dateTime">fn:month-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>normalizeSpace</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#normalize-space">fn:normalize-space</a>, <a href="http://www.w3.org/2003/11/swrlb#normalizeSpace">swrlb:normalizeSpace</a></td>
-            </tr>
-            <tr>
-                <td>pi</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions/math#pi">math:pi</a>, <a href="http://jena.hpl.hp.com/ARQ/function#pi">afn:pi</a></td>
-            </tr>
-            <tr>
-                <td>replace</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#replace">fn:replace</a></td>
-            </tr>
-            <tr>
-                <td>seconds</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#seconds-from-dateTime">fn:seconds-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>sqrt</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions/math#sqrt">math:sqrt</a>, <a href="http://jena.hpl.hp.com/ARQ/function#sqrt">afn:sqrt</a></td>
-            </tr>
-            <tr>
-                <td>strafter</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#substring-after">fn:substring-after</a>, <a href="http://www.w3.org/2003/11/swrlb#substringAfter">swrlb:substringAfter</a></td>
-            </tr>
-            <tr>
-                <td>strbefore</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#substring-before">fn:substring-before</a>, <a href="http://www.w3.org/2003/11/swrlb#substringBefore">swrlb:substringBefore</a></td>
-            </tr>
-            <tr>
-                <td>strends</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#ends-with">fn:ends-with</a>, <a href="http://www.w3.org/2003/11/swrlb#endsWith">swrlb:endsWith</a></td>
-            </tr>
-            <tr>
-                <td>stringEqualIgnoreCase</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase">swrlb:stringEqualIgnoreCase</a></td>
-            </tr>
-            <tr>
-                <td>strlen</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#string-length">fn:string-length</a>, <a href="http://www.w3.org/2003/11/swrlb#stringLength">swrlb:stringLength</a></td>
-            </tr>
-            <tr>
-                <td>strstarts</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#starts-with">fn:starts-with</a>, <a href="http://www.w3.org/2003/11/swrlb#startsWith">swrlb:startsWith</a></td>
-            </tr>
-            <tr>
-                <td>substring</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#substring">fn:substring</a>, <a href="http://www.w3.org/2003/11/swrlb#substring">swrlb:substring</a></td>
-            </tr>
-            <tr>
-                <td>time</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#time">swrlb:time</a></td>
-            </tr>
-            <tr>
-                <td>timezone</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#timezone-from-dateTime">fn:timezone-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>translate</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#translate">fn:translate</a>, <a href="http://www.w3.org/2003/11/swrlb#translate">swrlb:translate</a></td>
-            </tr>
-            <tr>
-                <td>ucase</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#upper-case">fn:upper-case</a>, <a href="http://www.w3.org/2003/11/swrlb#upperCase">swrlb:upperCase</a></td>
-            </tr>
-            <tr>
-                <td>year</td>
-                <td><a href="http://www.w3.org/2005/xpath-functions#year-from-dateTime">fn:year-from-dateTime</a></td>
-            </tr>
-            <tr>
-                <td>yearMonthDuration</td>
-                <td><a href="http://www.w3.org/2003/11/swrlb#yearMonthDuration">swrlb:yearMonthDuration</a></td>
-            </tr>
-        </table>
-    </body>
-</html>
+<table>
+<thead>
+<tr>
+<th align="left">Function name</th>
+<th align="left">Recognized URIs          </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="left">abs</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-abs">fn:numeric-abs</a>, <a href="http://www.w3.org/2003/11/swrlb#abs">swrlb:abs</a></td>
+</tr>
+<tr>
+<td align="left">acos</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#acos">math:acos</a></td>
+</tr>
+<tr>
+<td align="left">add</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-add">fn:numeric-add</a></td>
+</tr>
+<tr>
+<td align="left">asin</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#asin">math:asin</a></td>
+</tr>
+<tr>
+<td align="left">atan</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#atan">math:atan</a></td>
+</tr>
+<tr>
+<td align="left">ceil</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-ceil">fn:numeric-ceil</a>, <a href="http://www.w3.org/2003/11/swrlb#ceiling">swrlb:ceiling</a></td>
+</tr>
+<tr>
+<td align="left">concat</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#concat">fn:concat</a>, <a href="http://www.w3.org/2003/11/swrlb#stringConcat">swrlb:stringConcat</a></td>
+</tr>
+<tr>
+<td align="left">contains</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#contains">fn:contains</a>, <a href="http://www.w3.org/2003/11/swrlb#contains">swrlb:contains</a></td>
+</tr>
+<tr>
+<td align="left">containsIgnoreCase</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#containsIgnoreCase">swrlb:containsIgnoreCase</a></td>
+</tr>
+<tr>
+<td align="left">cos</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#cos">math:cos</a>, <a href="http://www.w3.org/2003/11/swrlb#cos">swrlb:cos</a></td>
+</tr>
+<tr>
+<td align="left">cosh</td>
+<td align="left"><a href="tag:stardog:api:functions:cosh">stardog:cosh</a></td>
+</tr>
+<tr>
+<td align="left">date</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#date">swrlb:date</a></td>
+</tr>
+<tr>
+<td align="left">dateTime</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#dateTime">swrlb:dateTime</a></td>
+</tr>
+<tr>
+<td align="left">day</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#day-from-dateTime">fn:day-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">dayTimeDuration</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#dayTimeDuration">swrlb:dayTimeDuration</a></td>
+</tr>
+<tr>
+<td align="left">divide</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-divide">fn:numeric-divide</a>, <a href="http://www.w3.org/2003/11/swrlb#divide">swrlb:divide</a></td>
+</tr>
+<tr>
+<td align="left">encode_for_uri</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#encode-for-uri">fn:encode-for-uri</a></td>
+</tr>
+<tr>
+<td align="left">exp</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#exp">math:exp</a>, <a href="http://jena.hpl.hp.com/ARQ/function#e">afn:e</a></td>
+</tr>
+<tr>
+<td align="left">floor</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-floor">fn:numeric-floor</a>, <a href="http://www.w3.org/2003/11/swrlb#floor">swrlb:floor</a></td>
+</tr>
+<tr>
+<td align="left">hours</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#hours-from-dateTime">fn:hours-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">integerDivide</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-integer-divide">fn:numeric-integer-divide</a>, <a href="http://www.w3.org/2003/11/swrlb#integerDivide">swrlb:integerDivide</a></td>
+</tr>
+<tr>
+<td align="left">lcase</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#lower-case">fn:lower-case</a>, <a href="http://www.w3.org/2003/11/swrlb#lowerCase">swrlb:lowerCase</a></td>
+</tr>
+<tr>
+<td align="left">log</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#log">math:log</a></td>
+</tr>
+<tr>
+<td align="left">log10</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#log10">math:log10</a></td>
+</tr>
+<tr>
+<td align="left">max</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#max">fn:max</a>, <a href="http://jena.hpl.hp.com/ARQ/function#max">afn:max</a></td>
+</tr>
+<tr>
+<td align="left">min</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#min">fn:min</a>, <a href="http://jena.hpl.hp.com/ARQ/function#min">afn:min</a></td>
+</tr>
+<tr>
+<td align="left">minutes</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#minutes-from-dateTime">fn:minutes-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">mod</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#mod">swrlb:mod</a></td>
+</tr>
+<tr>
+<td align="left">month</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#month-from-dateTime">fn:month-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">multiply</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-multiply">fn:numeric-multiply</a></td>
+</tr>
+<tr>
+<td align="left">normalizeSpace</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#normalize-space">fn:normalize-space</a>, <a href="http://www.w3.org/2003/11/swrlb#normalizeSpace">swrlb:normalizeSpace</a></td>
+</tr>
+<tr>
+<td align="left">pi</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#pi">math:pi</a>, <a href="http://jena.hpl.hp.com/ARQ/function#pi">afn:pi</a></td>
+</tr>
+<tr>
+<td align="left">pow</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#pow">math:pow</a>, <a href="http://www.w3.org/2003/11/swrlb#pow">swrlb:pow</a></td>
+</tr>
+<tr>
+<td align="left">replace</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#replace">fn:replace</a></td>
+</tr>
+<tr>
+<td align="left">round</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-round">fn:numeric-round</a>, <a href="http://www.w3.org/2003/11/swrlb#round">swrlb:round</a></td>
+</tr>
+<tr>
+<td align="left">roundHalfToEven</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-round-half-to-even">fn:numeric-round-half-to-even</a>, <a href="http://www.w3.org/2003/11/swrlb#roundHalfToEven">swrlb:roundHalfToEven</a></td>
+</tr>
+<tr>
+<td align="left">seconds</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#seconds-from-dateTime">fn:seconds-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">sin</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#sin">math:sin</a>, <a href="http://www.w3.org/2003/11/swrlb#sin">swrlb:sin</a></td>
+</tr>
+<tr>
+<td align="left">sinh</td>
+<td align="left"><a href="tag:stardog:api:functions:sinh">stardog:sinh</a></td>
+</tr>
+<tr>
+<td align="left">sqrt</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#sqrt">math:sqrt</a>, <a href="http://jena.hpl.hp.com/ARQ/function#sqrt">afn:sqrt</a></td>
+</tr>
+<tr>
+<td align="left">strafter</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#substring-after">fn:substring-after</a>, <a href="http://www.w3.org/2003/11/swrlb#substringAfter">swrlb:substringAfter</a></td>
+</tr>
+<tr>
+<td align="left">strbefore</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#substring-before">fn:substring-before</a>, <a href="http://www.w3.org/2003/11/swrlb#substringBefore">swrlb:substringBefore</a></td>
+</tr>
+<tr>
+<td align="left">strends</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#ends-with">fn:ends-with</a>, <a href="http://www.w3.org/2003/11/swrlb#endsWith">swrlb:endsWith</a></td>
+</tr>
+<tr>
+<td align="left">stringEqualIgnoreCase</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#stringEqualIgnoreCase">swrlb:stringEqualIgnoreCase</a></td>
+</tr>
+<tr>
+<td align="left">strlen</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#string-length">fn:string-length</a>, <a href="http://www.w3.org/2003/11/swrlb#stringLength">swrlb:stringLength</a></td>
+</tr>
+<tr>
+<td align="left">strstarts</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#starts-with">fn:starts-with</a>, <a href="http://www.w3.org/2003/11/swrlb#startsWith">swrlb:startsWith</a></td>
+</tr>
+<tr>
+<td align="left">substring</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#substring">fn:substring</a>, <a href="http://www.w3.org/2003/11/swrlb#substring">swrlb:substring</a></td>
+</tr>
+<tr>
+<td align="left">subtract</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-subtract">fn:numeric-subtract</a>, <a href="http://www.w3.org/2003/11/swrlb#subtract">swrlb:subtract</a></td>
+</tr>
+<tr>
+<td align="left">tan</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions/math#tan">math:tan</a>, <a href="http://www.w3.org/2003/11/swrlb#tan">swrlb:tan</a></td>
+</tr>
+<tr>
+<td align="left">tanh</td>
+<td align="left"><a href="tag:stardog:api:functions:tanh">stardog:tanh</a></td>
+</tr>
+<tr>
+<td align="left">time</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#time">swrlb:time</a></td>
+</tr>
+<tr>
+<td align="left">timezone</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#timezone-from-dateTime">fn:timezone-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">toDegrees</td>
+<td align="left"><a href="tag:stardog:api:functions:toDegrees">stardog:toDegrees</a></td>
+</tr>
+<tr>
+<td align="left">toRadians</td>
+<td align="left"><a href="tag:stardog:api:functions:toRadians">stardog:toRadians</a></td>
+</tr>
+<tr>
+<td align="left">translate</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#translate">fn:translate</a>, <a href="http://www.w3.org/2003/11/swrlb#translate">swrlb:translate</a></td>
+</tr>
+<tr>
+<td align="left">ucase</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#upper-case">fn:upper-case</a>, <a href="http://www.w3.org/2003/11/swrlb#upperCase">swrlb:upperCase</a></td>
+</tr>
+<tr>
+<td align="left">unaryMinus</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-unary-minus">fn:numeric-unary-minus</a>, <a href="http://www.w3.org/2003/11/swrlb#unaryMinus">swrlb:unaryMinus</a></td>
+</tr>
+<tr>
+<td align="left">unaryPlus</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#numeric-unary-plus">fn:numeric-unary-plus</a>, <a href="http://www.w3.org/2003/11/swrlb#unaryPlus">swrlb:unaryPlus</a></td>
+</tr>
+<tr>
+<td align="left">year</td>
+<td align="left"><a href="http://www.w3.org/2005/xpath-functions#year-from-dateTime">fn:year-from-dateTime</a></td>
+</tr>
+<tr>
+<td align="left">yearMonthDuration</td>
+<td align="left"><a href="http://www.w3.org/2003/11/swrlb#yearMonthDuration">swrlb:yearMonthDuration</a></td>
+</tr>
+</tbody>
+</table>
+
           </div>
           <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
@@ -533,7 +639,7 @@ support <a href="http://weblog.clarkparsia.com/2011/03/07/sdq-information-integr
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0 RC2.</h4>
+                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.0.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
