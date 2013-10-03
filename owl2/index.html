@@ -603,45 +603,77 @@ equivalent triple pattern; that is, you can just write the predicate rather than
                                           }</code></pre>
 <p>The predicates <code>sp:directSubPropertyOf</code> and <code>sp:strictSubPropertyOf</code> are defined analogously.</p>
 <h3>New Individuals with SWRL</h3>
-<p>Stardog also supports a special predicate that extends the expressivity of SWRL rules. According to the SWLR spec, you can't new individuals (i.e., new instances of classes) in a SWRL rule.</p>
-<p><strong>Note:</strong> Don‘t get hung up by the tech vocabulary here…“new individual” just means that you can’t have a rule that adds a new instance of some RDF or OWL class as a result of the rule firing (i.e., you can't have a “type triple” in the body of a rule).</p>
-<p>This restriction is well-motivated as it can easily cause rules to be non-terminating, that is, they never reach a fixed point, which causes big problems. Stardog's user-defined rules weakens this restriction in some crucial
-aspects, subject to the following restrictions, conditions, and
-warnings.</p>
-<p><strong>This special predicate is basically a loaded gun with which you may shoot themselves in the foot if you aren't very careful.</strong></p>
-<p>So despite the general restriction in SWRL, in Stardog we actually can create new individuals with a rule by using the (non-standard) built-in predicate <code>http://www.w3.org/ns/sparql#UUID</code> as follows:</p>
+<p>Stardog also supports a special predicate that extends the expressivity of SWRL rules. According to the SWLR spec, 
+you can't create new individuals (i.e., new instances of classes) in a SWRL rule.</p>
+<p><strong>Note:</strong> Don‘t get hung up by the tech vocabulary here…“new individual” just means that you can’t have a rule 
+that adds a new instance of some RDF or OWL class as a result of the rule firing.</p>
+<p>This restriction is well-motivated as it can easily cause rules to be non-terminating, that is, they never reach 
+a fixed point, which causes big problems. Stardog's user-defined rules weakens this restriction in some crucial
+aspects, subject to the following restrictions, conditions, and warnings.</p>
+<p><strong>This special predicate is basically a loaded gun with which you may shoot yourselves in the foot if you aren't very careful.</strong></p>
+<p>So despite the general restriction in SWRL, in Stardog we actually can create new individuals with a rule by using 
+the function <code>UUID()</code> as follows:</p>
 <pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
-    <span class="variable">?x</span> <span class="uri">a</span> <span class="uri">:Parent</span>
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
+    BIND (UUID() <span class="keyword">AS</span> <span class="variable">?parent</span>) .
 }
 <span class="rule"><span class="keyword">THEN</span> </span>{
-    ...
-}
-<span class="uri">:Parent</span>(<span class="variable">?y</span>) <span class="uri">&lt;- :Person(?x), http://www.w3.org/ns/sparql#UUID(?y).</span></code></pre>
-<p>This rule will create a <em>random</em> bnode for each instance of
-the class <code>:Person</code> and also to assert that each new instance is also an
-instance of <code>:Parent</code>.</p>
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Parent</span> .
+}</code></pre>
+<p><strong>Note:</strong> Alternatively, we can use the predicate <code>&lt;http://www.w3.org/ns/sparql#UUID&gt;</code> as a unary SWRL built-in.</p>
+<p>This rule will create a <em>random</em> URI for each instance of the class <code>:Person</code> and also assert that each new instance 
+is an instance of <code>:Parent</code>.</p>
 <h4>Remarks</h4>
-<p>The new individual built-in can <strong>only be used in the body of rules and
-it cannot be the only body atom</strong>. The URIs for the generated bnodes are
-meaningless in the sense that they should not be used in further
-queries; that is to say, these bnodes are not guaranteed by Stardog to
-be stable. Due to normalization, rules with more than one atom in the
-head are broken up into several rules. Thus,</p>
-<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?y), :Parent(?y)</span> &lt;- :Person(?x), http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
-<p>will be normalized into:</p>
-<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).
-
-<span class="attribute">:Parent(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
+<ul>
+<li>The URIs for the generated individuals are meaningless in the sense that they should not be used in further
+queries; that is to say, these URIs are not guaranteed by Stardog to be stable.</li>
+<li>Due to normalization, rules with more than one atom in the head are broken up into several rules. Thus,</li>
+</ul>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
+    BIND (UUID() <span class="keyword">AS</span> <span class="variable">?parent</span>) .
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Parent</span> ;
+            <span class="uri">a</span> <span class="uri">:Male</span> .
+}</code></pre>
+<p>will be normalized into two rules:</p>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
+    BIND (UUID() <span class="keyword">AS</span> <span class="variable">?parent</span>) .
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Parent</span> .
+}</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
+    BIND (UUID() <span class="keyword">AS</span> <span class="variable">?parent</span>) .
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Male</span> .
+}</code></pre>
 <p>As a consequence, in this case, instead of stating that the new
 individual is both an instance of <code>:Male</code> and <code>:Parent</code>, we would create
 two <em>different</em> new individuals, and assert that one is male and the
 other is a parent. If you need to assert various things about the new
-individual, we recommend the use of extra rules. In the previous
+individual, we recommend the use of extra rules/axioms. In the previous
 example, we can introduce a new class (<code>:Father</code>) and add the following
 rule to our schema:</p>
-<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Male(?x), :Parent(?x)</span> &lt;- :Father(?x).</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Father</span> .
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Parent</span> ;
+            <span class="uri">a</span> <span class="uri">:Male</span> .
+}</code></pre>
 <p>And then modify the original rule accordingly:</p>
-<pre class="highlighted"><code class="asciidoc"><span class="attribute">:Father(?y) &lt;- :Person(?x),</span> http://www.w3.org/ns/sparql#UUID(?y).</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
+    <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
+    BIND (UUID() <span class="keyword">AS</span> <span class="variable">?parent</span>) .
+}
+<span class="rule"><span class="keyword">THEN</span> </span>{
+    <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Father</span> .
+}</code></pre>
 <h2 id="sd-Query-Rewriting">Query Rewriting</h2>
 <p>Reasoning in Stardog is based (mostly) on a <em>query rewriting</em>
 technique: Stardog rewrites the user's query with respect to any schema or rules, and then executes the resulting expanded query (EQ) against the data in the normal way. This process is completely automated and requires no intervention from the user per se.</p>
