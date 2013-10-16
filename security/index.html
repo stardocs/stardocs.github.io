@@ -139,19 +139,6 @@
 controlled. Resources are identified by their <em>type</em> and their <em>name</em>. A
 particular resource is denoted as <code>type_prefix:name</code>. The valid resource
 types with their prefixes are shown below.</p>
-<!-- 
-|             |          Grouping           ||
-First Header  | Second Header | Third Header |
- ------------ | :-----------: | -----------: |
-Content       |          *Long Cell*        ||
-Content       |   **Cell**    |         Cell |
-
-New section   |     More      |         Data |
-And more      |            And more          |
-[Prototype table]
-
--->
-
 <table>
 <thead>
 <tr>
@@ -301,38 +288,35 @@ and to administer the database itself.</p>
 <h2 id="sd-Deploying-Stardog-Securely">Deploying Stardog Securely</h2>
 <p>To ensure that Stardog's RBAC access control implementation will be
 effective, all non-administrator access to Stardog databases should
-occur over network (i.e., non-native) database connections. [^1]</p>
+occur over network (i.e., non-native) database connections.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a></p>
 <p>To ensure the confidentiality of user
 authentication credentials when using remote connections, the Stardog
 server should only accept connections that are secured with SSL. This
 section describes how Stardog can be configured to use SSL for data
 confidentiality and server authentication. It does not address using SSL
-for client authentication. [^2] </p>
-<p>[^1]: In other words, embedded or native Stardog access is inherently <em>insecure</em> and
-should be used accordingly.</p>
-<p>[^2]: Stardog 2.0.1 does not support client authentication using X.509 certificates instead of passphrases.</p>
+for client authentication.<a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a></p>
 <h3>Configuring Stardog to use SSL</h3>
-<p>Stardog 2.0.1's HTTP server does not include support for SSL; it must be
-deployed with other components to provide SSL support. The two primary
-ways to accomplish such a deployment are both described below: </p>
+<p>Stardog 2.0.1's HTTP server includes native support for SSL. The SNARL server (via <code>snarls://</code>) also supports SSL. Stardog may also be deployed securely using two other methods:</p>
 <ul>
 <li>HTTPS reverse proxying; and </li>
 <li>SSL-enabled application server.</li>
 </ul>
+<p>However, in many cases, it‘s just easier to use Stardog’s native SSL support.</p>
+<p>To enable Stardog to optionally support SSL connections, just pass <code>--enable-ssl</code> to the server start command.  If you want to require the server to only use SSL, that is, to reject any non-SSL connections, then use <code>--require-ssl</code>.</p>
+<p>When starting from the command line, Stardog will use the standard Java properties for specifying keystore information:</p>
+<ul>
+<li><code>javax.net.ssl.keyStorePassword</code>  (the password)</li>
+<li><code>javax.net.ssl.keyStore</code> (location of the keystore)</li>
+<li><code>javax.net.ssl.keyStoreType</code> (type of keystore, defaults to JKS)</li>
+</ul>
+<p>These properties are checked first in <code>stardog.properties</code>; then in JVM args passed in from the command line, eg <code>-Djavax.net.ssl.keyStorePassword=mypwd</code>. If you're creating a Server progammatically via <code>ServerBuilder</code>, you can specify values for these properties using the appropriate <code>ServerOptions</code> when creating the server.  These values will override anything specified in <code>stardog.properties</code> or via normal JVM args.</p>
 <h4>HTTPS Reverse Proxying</h4>
-<p>An HTTPS reverse proxy [^3] may be used to secure Stardog client-server connections if the Stardog server is run using the command-line tool or deployed as a servlet. In
+<p>An HTTPS reverse proxy<a id="fn-ref-3" href="#footnote-3" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-3"><sup>3</sup></a> may be used to secure Stardog client-server connections if the Stardog server is run using the command-line tool or deployed as a servlet. In
 the following two sections, we describe how to use <a href="">Apache</a> and
 <a href="">lighttpd</a> as HTTPS reverse proxies for Stardog. These configurations
 can be used for new reverse proxy deployments or can be modified to
 augment existing reverse proxies with SSL. Of course other solutions may
 be used; these are illustrative of the general technique and approach.</p>
-<p>[^3]: Reverse proxying may be useful beyond SSL
-layering—it may be used to distribute load across multiple Stardog
-servers. For general documentation of reverse proxying with lighttpd,
-see <a href="http://redmine.lighttpd.net/wiki/lighttpd/Docs:ModProxy">the fine documentation</a>;
-likewise for <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#forwardreverse">Apache</a>.</p>
-<div class="metro danger label">Security Notice</div>
-
 <p>In this approach, the network connection between Stardog
 clients and the proxy server is secured using SSL. But the connection
 between the proxy server and Stardog server is insecure; thus, <strong>care
@@ -347,13 +331,8 @@ prohibit connections from servers other than the proxy server.</p>
 <p>HTTPS reverse proxying depends on having a certificate and private key
 on the proxy server. A cheap and easy deployment strategy is to use a
 self-signed certificate. Creating such a certificate is documented
-elsewhere and not repeated here. [^4] Alternately, an
+elsewhere and not repeated here.<a id="fn-ref-4" href="#footnote-4" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-4"><sup>4</sup></a> Alternately, an
 SSL cert can be obtained from a commercial certificate authority.</p>
-<p>[^4]: For example, see <a href="http://docs.oracle.com/javaee/1.4/tutorial/doc/Security6.html">the
-example</a>
-creating a certificate with the Java keytool; or <a href="http://www.openssl.org/docs/apps/req.html">an
-example</a> generating a self
-signed root certificate using the openssl req tool.</p>
 <h5>Reverse Proxy with lighttpd</h5>
 <p><a href="http://lighttpd.net">lighttpd</a> can be configured to provide an SSL
 layer for remote connections. The following lighttpd configuration file
@@ -368,34 +347,23 @@ proxy<span class="preprocessor">.server</span> = ( <span class="string">""</span
               )
 server<span class="preprocessor">.document</span>-root = <span class="string">"/dev/null"</span></code></pre>
 <p>This configuration directs lighttpd to use the certificate and private
-key in server.pem for SSL connections. [^5]</p>
-<p>[^5]: lighttpd can be configured to
-present chaining certificates with the server certificate. This may be
-necessary if the server certificate is not directly signed by a trusted
-authority, but chains to a trusted authority. For details on this
-configuration see <a href="http://redmine.lighttpd.net/wiki/lighttpd/Docs:SSL">the docs</a> (the
-ssl.ca-file option).</p>
+key in server.pem for SSL connections.<a id="fn-ref-5" href="#footnote-5" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-5"><sup>5</sup></a></p>
 <h5>Reverse Proxy with Apache 2</h5>
 <p>Apache httpd can be configured to provide an SSL layer for remote
-connections. The following partial configuration file [^6] allows clients to use
+connections. The following partial configuration file<a id="fn-ref-6" href="#footnote-6" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-6"><sup>6</sup></a> allows clients to use
 HTTPS connections with the Apache proxy, which communicates with a
 Stardog HTTP server listening on port 12345 of the Apache host.</p>
 <pre class="highlighted"><code class="apache"><span class="keyword">SSLEngine</span>                 <span class="literal">On</span>
 <span class="keyword">SSLCertificateFile</span>        server.pem
 <span class="tag">&lt;Directory /&gt;</span> <span class="keyword">SSLRequireSSL</span> <span class="tag">&lt;/Directory&gt;</span>
 <span class="keyword">ProxyPass</span>        /        http://127.0.0.1:12345/</code></pre>
-<p>[^6]: A complete
-configuration file is not provided because the minimal configuration
-file required by Apache is more detailed than the configuration file
-required by lighttpd.The configuration directives shown are those
-necessary to enable SSL and reverse proxying. </p>
 <p>This configuration depends on the SSL certificate and private key being
 located in the <code>server.pem</code> file in the Apache server root. It also
 depends on <code>mod_ssl</code>, <code>mod_proxy</code>, and <code>mod_proxy_http</code> modules being
 compiled into the httpd binary or loaded via directives elsewhere in the
 configuration file.</p>
 <h4>SSL-Enabled App Server</h4>
-<p>Stardog may also be deployed as a servlet in a  container or app server that can provide SSL support. For example, if Stardog is deployed into a default Resin Server, [^7]
+<p>Stardog may also be deployed as a servlet in a container or app server that can provide SSL support. For example, if Stardog is deployed into a default Resin Server,<a id="fn-ref-7" href="#footnote-7" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-7"><sup>7</sup></a>
 then the following configuration would enable SSL on the server using
 the certificate and private key stored in the Java KeyStore at
 <code>server-keystore.jks</code>.</p>
@@ -405,17 +373,13 @@ the certificate and private key stored in the Java KeyStore at
                 <span class="tag">&lt;<span class="title">password</span>&gt;</span>********<span class="tag">&lt;/<span class="title">password</span>&gt;</span>
         <span class="tag">&lt;/<span class="title">jsse-ssl</span>&gt;</span>
 <span class="tag">&lt;/<span class="title">http</span>&gt;</span></code></pre>
-<p>[^7]: See <a href="http://caucho.com/resin/">Resin</a> for more info; it supports SSL using
-JSSE in the open source version and using OpenSSL in the professional
-version. Resin’s SSL support is <a href="http://www.caucho.com/resin-4.0/admin/security-ssl.xtp">well
-documented</a>.</p>
 <p>Other Java app servers support SSL including GlassFish, Tomcat, and
 JBoss. The configuration of SSL for each application server is
 implementation specific; consult the relevant server’s
 documentation.</p>
 <h3>Configuring Stardog Client to use SSL</h3>
 <p>Stardog HTTP client supports SSL when the <code>https:</code>
-scheme is used in the database connection string. For example, the
+scheme is used in the database connection string; likewise, it uses SSL for SNARL when the connection string uses the <code>snarls:</code> scheme. For example, the
 following invocation of the Stardog command line utility will initiate
 an SSL connection to a remote database:</p>
 <pre class="highlighted"><code class="avrasm">$ stardog status -c https://stardog<span class="preprocessor">.example</span><span class="preprocessor">.org</span>/sp2b_10k</code></pre>
@@ -427,9 +391,7 @@ certificate that was not issued by an authority that the client trusts.
 The Stardog HTTP client driver uses standard Java security components to
 access a store of trusted certificates. By default, it trusts a list of
 certificates installed with the Java runtime environment, but it can be
-configured to use a custom trust store. [^8]</p>
-<p>[^8]: The Stardog HTTP client driver uses an X509TrustManager. The details of how a trust store is selected to initialize the trust manager are
-<a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">described in the docs</a>.</p>
+configured to use a custom trust store.<a id="fn-ref-8" href="#footnote-8" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-8"><sup>8</sup></a></p>
 <p>The client driver can be directed to use a specific Java KeyStore file
 as a trust store by setting the <code>javax.net.ssl.trustStore</code> system
 property. To address the authentication error above, that trust store
@@ -437,11 +399,9 @@ should contain the issuer of the server’s certificate. Standard Java tools can
 initializes it with the certificate in <code>my-trusted-server.crt</code>. The tool
 will prompt for a passphrase to associate with the trust store. This is
 not used to encrypt its contents, but can be used to ensure its
-integrity. [^9]</p>
+integrity.<a id="fn-ref-9" href="#footnote-9" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-9"><sup>9</sup></a></p>
 <pre class="highlighted"><code class="lasso">$ keytool <span class="attribute">-importcert</span>  <span class="attribute">-keystore</span> my<span class="attribute">-truststore</span>.jks \
         <span class="attribute">-alias</span> stardog<span class="attribute">-server</span> <span class="attribute">-file</span> my<span class="attribute">-trusted</span><span class="attribute">-server</span>.crt</code></pre>
-<p>[^9]: See the <code>javax.net.ssl.trustStorePassword</code> system property
-<a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">documentation</a>.</p>
 <p>The following Stardog command line invocation uses the newly created
 truststore.</p>
 <pre class="highlighted"><code class="avrasm">$ STARDOG_JAVA_ARGS=”-Djavax<span class="preprocessor">.net</span><span class="preprocessor">.ssl</span><span class="preprocessor">.trustStore</span>=my-truststore<span class="preprocessor">.jks</span>” \
@@ -457,9 +417,7 @@ self-signed certificate should be in the <code>my-trusted-server.crt</code> file
 the keytool invocation.</p>
 <p>A client may also fail to authenticate to the server if the hostname in the
 Stardog database connection string does not match a name contained in
-the server certificate. [^10] </p>
-<p>[^10]: The matching algorithm used is <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">described</a>
-in the Apache docs about <code>BrowserCompatHostnameVerifier</code>.</p>
+the server certificate.<a id="fn-ref-10" href="#footnote-10" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-10"><sup>10</sup></a></p>
 <p>This will cause an error message like the following</p>
 <pre class="highlighted"><code class="vbnet"><span class="keyword">Error</span> during connect.  Cause was SSLException: hostname <span class="keyword">in</span> certificate didn<span class="comment">'t match</span></code></pre>
 <p>The client driver does not support connecting when there's a mismatch;
@@ -467,8 +425,8 @@ therefore, the only workarounds are to replace the server’s certificate or
 modify the connection string to use an alias for the same server that
 matches the certificate.</p>
 <h2 id="sd-Securing-Stardog-on-Linux">Securing Stardog on Linux</h2>
-<p>This section describes one approach to installing Stardog on Linux—-or
-another Unix-like operating system—-with the goal of restricting
+<p>This section describes one approach to installing Stardog on Linux—or
+another Unix-like operating system—with the goal of restricting
 unauthorized access to Stardog data. The approach detailed below is not
 the only effective way to secure a Stardog installation. Stardog
 administrators should customize their installation for the requirements
@@ -481,10 +439,10 @@ Many of the snippets will need to be run with elevated permissions.</p>
 <div class="metro danger label">Security Notice</div>
 
 <p>Make sure that you know what you're doing before you copy any of the
-snippets of shell code or configuration syntax into a real Linux system. We trust us; and you probably should trust us; that said, <em>trust but verify</em>. <em>You've been warned.</em></p>
+snippets of shell code or configuration syntax into a real Linux system. We trust us and you probably should trust us; that said, <em>trust but verify</em>. <em>You've been warned.</em></p>
 <h3>Creating A Basic Stardog Environment</h3>
 <p>The Stardog library files should be copied from the distribution
-directory into a permanent location in the host system—-we're big fans of the <code>/opt</code>—and—<code>/var</code> approach, but your needs may vary. The snippet
+directory into a permanent location in the host system—we're big fans of the <code>/opt</code>—and—<code>/var</code> approach, but your needs may vary. The snippet
 below chooses a common location and uses a versioning string to
 facilitate parallel installs of different Stardog releases. An
 administrator may choose any location.</p>
@@ -535,9 +493,32 @@ administrator, and the anticipated user load. The group-based permission
 approach provides flexibility to satisfy many alternatives.</p>
 
           </div>
-          <div class="hidden" id="footnote-container">
+          <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          </div>
+          <div class="footnote" id="footnote-1"><p>1. In other words, embedded Stardog access is inherently <em>insecure</em> and should be used accordingly.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. Stardog 2.0.1 does not support client authentication using X.509 certificates instead of passphrases.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-2">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-3"><p>3.  Reverse proxying may be useful beyond SSL
+layering—it may be used to distribute load across multiple Stardog
+servers. For general documentation of reverse proxying with lighttpd,
+see <a href="http://redmine.lighttpd.net/wiki/lighttpd/Docs:ModProxy">the fine documentation</a>;
+likewise for <a href="http://httpd.apache.org/docs/2.2/mod/mod_proxy.html#forwardreverse">Apache</a>.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-3">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-4"><p>4. For example, see <a href="http://docs.oracle.com/javaee/1.4/tutorial/doc/Security6.html">the
+example</a>
+creating a certificate with the Java keytool; or <a href="http://www.openssl.org/docs/apps/req.html">an
+example</a> generating a self
+signed root certificate using the openssl req tool.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-4">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-5"><p>5. lighttpd can be configured to
+present chaining certificates with the server certificate. This may be
+necessary if the server certificate is not directly signed by a trusted
+authority, but chains to a trusted authority. For details on this
+configuration see <a href="http://redmine.lighttpd.net/wiki/lighttpd/Docs:SSL">the docs</a> (the
+ssl.ca-file option).<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-5">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-6"><p>6. A complete
+configuration file is not provided because the minimal configuration
+file required by Apache is more detailed than the configuration file
+required by lighttpd.The configuration directives shown are those
+necessary to enable SSL and reverse proxying.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-6">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-7"><p>7. See <a href="http://caucho.com/resin/">Resin</a> for more info; it supports SSL using
+JSSE in the open source version and using OpenSSL in the professional
+version. Resin’s SSL support is <a href="http://www.caucho.com/resin-4.0/admin/security-ssl.xtp">well
+documented</a>.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-7">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-8"><p>8. The Stardog HTTP client driver uses an X509TrustManager. The details of how a trust store is selected to initialize the trust manager are
+<a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">described in the docs</a>.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-8">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-9"><p>9. See the <code>javax.net.ssl.trustStorePassword</code> system property
+<a href="http://docs.oracle.com/javase/6/docs/technotes/guides/security/jsse/JSSERefGuide.html#X509TrustManager">documentation</a>.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-9">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-10"><p>10. The matching algorithm used is <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">described</a>
+in the Apache docs about <code>BrowserCompatHostnameVerifier</code>.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-10">&nbsp;&#8618;</a></p></div></div>
         </div>
     </div>
   </div>
