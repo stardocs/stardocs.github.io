@@ -29,12 +29,9 @@ com.complexible.stardog.api.impl
 com.complexible.stardog.api.search
 com.complexible.stardog.db
 com.complexible.stardog.empire
-com.complexible.stardog.icv
-com.complexible.stardog.icv.api
 com.complexible.stardog.index
 com.complexible.stardog.jena
 com.complexible.stardog.metadata
 com.complexible.stardog.reasoning
-com.complexible.stardog.search
 com.complexible.stardog.security
 com.complexible.stardog.sesame
