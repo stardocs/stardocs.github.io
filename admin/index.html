@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.2 Docs: Administration</title>
+  <title>Stardog 2.0.3 Docs: Administration</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -185,7 +185,7 @@ production environments, to have considerably tighter access
 restrictions than <code>stardog</code>.</p>
 <div class="metro danger large label">Security Notice</div>
 
-<p>For usability, Stardog 2.0.2 provides a
+<p>For usability, Stardog 2.0.3 provides a
 default user “admin” and password “admin” in <code>stardog-admin</code> commands
 if no user or password are given. This is obviously <strong>not secure</strong>;
 before any serious use of Stardog is contemplated, read the
@@ -1022,10 +1022,18 @@ to specify when the search index should be updated.</li>
 <p>This is specified when creating a database by setting the property
 <code>search.reindex.mode</code> to “sync”, “async”, or to a valid cron expression.
 The default is “sync”.</p>
-<h3>Transactions</h3>
-<p>Stardog has had native ACID transactions from its initial release. In 1.2 we introduced a new transaction subsystem written from
-scratch. </p>
-<h3>Concurrency Control &amp; Isolation Levels</h3>
+<h3>Transactions and Database Guarantees</h3>
+<p>Stardog has had native ACID transactions from its initial release. In 1.2 we introduced a new transaction subsystem written from scratch. </p>
+<h4>Atomicity</h4>
+<blockquote>
+<p>By convention hot, by convention cold, but in reality atoms and void, 
+and also in reality we know nothing, since the truth is at bottom.—Democritus</p>
+</blockquote>
+<p>Atoms in ancient Greece were thought to be uncuttable bits of simple stuff. And it's in something like this sense that databases may provide a guarantee of atomicity—groups of database actions (i.e., mutations) are irreducible and indivisible: either all of the changes happen or none of them happens.</p>
+<p>Stardog's transacted writes are atomic.</p>
+<h4>Consistency</h4>
+<p>ICV stuff, specifically</p>
+<h4>Isolation</h4>
 <p>A Stardog connection will run in <code>READ COMMITTED</code> isolation level if it has not started an explicit transaction and will run in <code>READ COMMITTED SNAPSHOT</code> isolation level if it has started a transaction. In either mode, uncommitted changes will only be visible to the connection that made the changes: no other connection can see those values before they are committed. Thus, ‘dirty reads’ can never occur. Neither mode locks the database; if there are conflicting changes, the latest commit wins.</p>
 <p>The difference between <code>READ COMMITTED</code> and <code>READ COMMITTED SNAPSHOT</code> isolation levels is that in the former case a connection will see updates committed by another connection immediately, whereas in the latter case a connection will see a transactionally consistent snapshot of the data as it existed at the start of the transaction and will not see any updates. </p>
 <p>We illustrate the difference between these two levels with the following example where initially the database contains a single triple <code>:x :value 1</code>.</p>
@@ -1101,7 +1109,8 @@ scratch. </p>
 </tr>
 </tbody>
 </table>
-<h3>Commit Failure Autorecovery</h3>
+<h4>Durability</h4>
+<h4>Commit Failure Autorecovery</h4>
 <p>Stardog's transaction framework, which we call
 <code>erg</code>, is mostly maintenance free; but there are some rare conditions in
 which manual intervention may be needed.</p>
@@ -1324,7 +1333,7 @@ script.</p>
           </div>
           <div class="" id="footnote-container" style="display: block;">
             <h2>Notes</h2>
-          <div class="footnote" id="footnote-1"><p>1. In Stardog 2.0.2 compressed data may only be loaded at database creation time. We will support adding compressed data to an existing database in a future release.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. The probability of recovering from a catastrophic
+          <div class="footnote" id="footnote-1"><p>1. In Stardog 2.0.3 compressed data may only be loaded at database creation time. We will support adding compressed data to an existing database in a future release.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. The probability of recovering from a catastrophic
 transaction failure is inversely proportional to the number of
 subsequent write attempts; hence, Stardog offlines the database to
 prevent subsequent write attempts and to increase the
@@ -1345,7 +1354,7 @@ likelihood of recovery.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumb
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Administration</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.2.</h4>
+                <h4>This is <span id="footer-subhead">Administration</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
