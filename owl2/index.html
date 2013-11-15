@@ -319,19 +319,19 @@ grouped under an inferred node.</p>
 <p>For example, if we are explaining the inferred triple <code>:Alice
 rdf:type :Employee</code> , the root of the proof tree will show that
 inference:</p>
-<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span></code></pre>
+<pre class="highlighted"><code class="sparql">INFERRED <span class="uri">:Alice</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span></code></pre>
 <p>The children of an inferred node will provide more explanation for
 that inference:</p>
-<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span>
-    <span class="tag">ASSERTED</span> <span class="pseudo">:Manager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Employee</span>
-    <span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Manager</span></code></pre>
+<pre class="highlighted"><code class="sparql">INFERRED <span class="uri">:Alice</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span>
+    ASSERTED <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+    INFERRED <span class="uri">:Alice</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span></code></pre>
 <p>The fully expanded proof tree will show the asserted triples and
 axioms for every inference:</p>
-<pre class="highlighted"><code class="css"><span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Employee</span>
-    <span class="tag">ASSERTED</span> <span class="pseudo">:Manager</span> <span class="tag">rdfs</span><span class="pseudo">:subClassOf</span> <span class="pseudo">:Employee</span>
-    <span class="tag">INFERRED</span> <span class="pseudo">:Alice</span> <span class="tag">rdf</span><span class="pseudo">:type</span> <span class="pseudo">:Manager</span>
-        <span class="tag">ASSERTED</span> <span class="pseudo">:Alice</span> <span class="pseudo">:supervises</span> <span class="pseudo">:Bob</span>
-        <span class="tag">ASSERTED</span> <span class="pseudo">:supervises</span> <span class="tag">rdfs</span><span class="pseudo">:domain</span> <span class="pseudo">:Manager</span></code></pre>
+<pre class="highlighted"><code class="sparql">INFERRED <span class="uri">:Alice</span> <span class="uri">rdf:type</span> <span class="uri">:Employee</span>
+    ASSERTED <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+    INFERRED <span class="uri">:Alice</span> <span class="uri">rdf:type</span> <span class="uri">:Manager</span>
+        ASSERTED <span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span>
+        ASSERTED <span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span></code></pre>
 <p>The CLI explanation command prints the proof tree using indented text;
 but, using the SNARL API, it is simple to create a tree widget
 in a GUI to show the explanation tree, such that users can expand and
@@ -392,24 +392,24 @@ fine; that is, just add the rules to the database and it will all
 work out.<a id="fn-ref-3" href="#footnote-3" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-3"><sup>3</sup></a></p>
 <p>Second, you represent the rules with specially constructed RDF triples. Here's
 a kind of template example:</p>
-<pre class="highlighted"><code class="python"><span class="decorator">@prefix rule: &lt;tag:stardog:api:rule:&gt; .</span>
-[] a rule:SPARQLRule;
-   rule:content <span class="string">"""
+<pre class="highlighted"><code class="sparql">@<span class="keyword">prefix</span> rule: <span class="uri">&lt;tag:stardog:api:rule:&gt;</span> .
+[] <span class="uri">a</span> <span class="uri">rule:SPARQLRule</span>;
+   <span class="uri">rule:content</span> <span class="string">"""
    ...la di dah the rule goes here!
    """</span>.</code></pre>
 <p>So there's a namespace—<code>tag:stardog:api:rule:</code>—that has a predicate, <code>content</code>, and a class, <code>SPARQLRule</code>. The object of this triple contains <em>one</em> rule in Stardog Rules syntax. A more realistic example:</p>
-<pre class="highlighted"><code class="python"><span class="decorator">@prefix rule: &lt;tag:stardog:api:rule:&gt; .</span>
+<pre class="highlighted"><code class="sparql">@<span class="keyword">prefix</span> rule: <span class="uri">&lt;tag:stardog:api:rule:&gt;</span> .
 
-[] a rule:SPARQLRule ;
-  rule:content <span class="string">"""
+[] <span class="uri">a</span> <span class="uri">rule:SPARQLRule</span> ;
+  <span class="uri">rule:content</span> <span class="string">"""
     PREFIX :&lt;urn:test:&gt;
-      IF {
+      <span class="rule"><span class="keyword">IF</span> </span>{
             ?r a :Rectangle ;
                :width ?w ;
                :height ?h
             BIND (?w * ?h AS ?area)
           }
-      THEN {
+      <span class="rule"><span class="keyword">THEN</span> </span>{
               ?r :area ?area
           }"""</span> .</code></pre>
 <p>That's pretty easy!<a id="fn-ref-4" href="#footnote-4" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-4"><sup>4</sup></a></p>
@@ -419,28 +419,28 @@ a kind of template example:</p>
 <li>However, the namespace URIs used <em>by the rules themselves</em> can be defined in only two places: the string that contains the rule—in the example above, you can see the default namespace is <code>urn:test:</code>—or in the Stardog database in which the rules are stored. Either place will work; if there are conflicts, the “closest definition wins”, that is, if <code>foo:Example</code> is defined in both the rule content and in the Stardog database, the definition in the rule content is the one that Stardog will use.</li>
 </ol>
 <h4>Stardog Rules Examples</h4>
-<pre class="highlighted"><code class="asciidoc">PREFIX rule: &lt;tag:stardog:api:rule:&gt;
-PREFIX : &lt;urn:test:&gt;
-PREFIX gr: &lt;http://purl.org/goodrelations/v1#&gt;
+<pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> rule: <span class="uri">&lt;tag:stardog:api:rule:&gt;</span>
+<span class="keyword">PREFIX</span> : <span class="uri">&lt;urn:test:&gt;</span>
+<span class="keyword">PREFIX</span> gr: <span class="uri">&lt;http://purl.org/goodrelations/v1#&gt;</span>
 
-<span class="attribute">:Product1 gr:hasPriceSpecification</span> [ gr:hasCurrencyValue 100.0 ] .
-<span class="attribute">:Product2 gr:hasPriceSpecification</span> [ gr:hasCurrencyValue 500.0 ] .
-<span class="attribute">:Product3 gr:hasPriceSpecification</span> [ gr:hasCurrencyValue 2000.0 ] .
+<span class="uri">:Product1</span> <span class="uri">gr:hasPriceSpecification</span> [ <span class="uri">gr:hasCurrencyValue</span> <span class="number">100.0</span> ] .
+<span class="uri">:Product2</span> <span class="uri">gr:hasPriceSpecification</span> [ <span class="uri">gr:hasCurrencyValue</span> <span class="number">500.0</span> ] .
+<span class="uri">:Product3</span> <span class="uri">gr:hasPriceSpecification</span> [ <span class="uri">gr:hasCurrencyValue</span> <span class="number">2000.0</span> ] .
 
-[] a rule:SPARQLRule ;
-<span class="code">   rule:content """</span>
-<span class="code">       PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;</span>
-<span class="code">       PREFIX gr: &lt;http://purl.org/goodrelations/v1#&gt;</span>
-<span class="code">       PREFIX :&lt;urn:test:&gt;</span>
-<span class="code">     IF {</span>
-<span class="code">        ?offering gr:hasPriceSpecification ?ps .</span>
-<span class="code">        ?ps gr:hasCurrencyValue ?price .</span>
-<span class="code">        FILTER (?price &gt;= 200.00).</span>
-<span class="code">     }</span>
-<span class="code">     THEN {</span>
-<span class="code">        ?offering a :ExpensiveProduct .</span>
-<span class="code">     }</span>
-<span class="code">   """.</span></code></pre>
+[] <span class="uri">a</span> <span class="uri">rule:SPARQLRule</span> ;
+   <span class="uri">rule:content</span> <span class="string">"""
+       PREFIX xsd: &lt;http://www.w3.org/2001/XMLSchema#&gt;
+       PREFIX gr: &lt;http://purl.org/goodrelations/v1#&gt;
+       PREFIX :&lt;urn:test:&gt;
+     <span class="rule"><span class="keyword">IF</span> </span>{
+        ?offering gr:hasPriceSpecification ?ps .
+        ?ps gr:hasCurrencyValue ?price .
+        FILTER (?price &gt;= 200.00).
+     }
+     <span class="rule"><span class="keyword">THEN</span> </span>{
+        ?offering a :ExpensiveProduct .
+     }
+   """</span>.</code></pre>
 <p>This example is self-contained: it contains some data (the <code>:Product...</code> triples) and a rule. It also demonstrates the use of SPARQL's <code>FILTER</code> to do numerical (and other) comparisons.</p>
 <p>Here's a more complex example that includes four rules and, again, some data.</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> rule: <span class="uri">&lt;tag:stardog:api:rule:&gt;</span>

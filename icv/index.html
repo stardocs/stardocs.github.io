@@ -241,8 +241,8 @@ properties.</p>
 <h4>Only project leaders can be responsible for projects.</h4>
 <h5>Constraint</h5>
 <pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: is_responsible_for
-        <span class="keyword">Domain</span>: Project_Leader
-         <span class="keyword">Range</span>: Project</code></pre>
+            <span class="keyword">Domain</span>: Project_Leader
+             <span class="keyword">Range</span>: Project</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
          <span class="keyword">Facts</span>: is_responsible_for MyProject
@@ -517,7 +517,7 @@ properties.</p>
 <h4>The manager of a department must work in that department.</h4>
 <h5>Constraint</h5>
 <pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: manages
-        <span class="keyword">SubPropertyOf</span>: works_in</code></pre>
+     <span class="keyword">SubPropertyOf</span>: works_in</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
          <span class="keyword">Facts</span>: manages MyDepartment</code></pre>
@@ -532,8 +532,8 @@ B, <code>Bob</code> is related to <code>MyDepartment</code> via both <code>manag
 <code>works_in</code>, so B is valid.</p>
 <h4>Department managers must supervise all the department's employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: is_supervisor_of
-        <span class="keyword">SubPropertyChain</span>: manages o <span class="built_in">inverse</span>(works_in)</code></pre>
+<pre class="highlighted"><code class="manchester">      <span class="keyword">ObjectProperty</span>: is_supervisor_of
+    <span class="keyword">SubPropertyChain</span>: manages o <span class="built_in">inverse</span>(works_in)</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Jose
          <span class="keyword">Facts</span>: manages MyDepartment, is_supervisor_of Maria
