@@ -1032,7 +1032,8 @@ and also in reality we know nothing, since the truth is at bottom.—Democritus<
 <p>Atoms in ancient Greece were thought to be uncuttable bits of simple stuff. And it's in something like this sense that databases may provide a guarantee of atomicity—groups of database actions (i.e., mutations) are irreducible and indivisible: either all of the changes happen or none of them happens.</p>
 <p>Stardog's transacted writes are atomic.</p>
 <h4>Consistency</h4>
-<p>ICV stuff, specifically</p>
+<p>Data stored should be valid with respect to the data model (in this case, RDF) and to the guarantees offered by the database, as well as to any appliction-specific integrity contraints that may exist. Stardog's transactions are guaranteed not to violate integrity constraints during execution. A transaction that would leave a database in an inconsistent or invalid state is aborted. </p>
+<p>See the <a href="/icv">ICV chapter</a> for a more detailed consideration of Stardog's integrity constraint mechanism.</p>
 <h4>Isolation</h4>
 <p>A Stardog connection will run in <code>READ COMMITTED</code> isolation level if it has not started an explicit transaction and will run in <code>READ COMMITTED SNAPSHOT</code> isolation level if it has started a transaction. In either mode, uncommitted changes will only be visible to the connection that made the changes: no other connection can see those values before they are committed. Thus, ‘dirty reads’ can never occur. Neither mode locks the database; if there are conflicting changes, the latest commit wins.</p>
 <p>The difference between <code>READ COMMITTED</code> and <code>READ COMMITTED SNAPSHOT</code> isolation levels is that in the former case a connection will see updates committed by another connection immediately, whereas in the latter case a connection will see a transactionally consistent snapshot of the data as it existed at the start of the transaction and will not see any updates. </p>
@@ -1110,6 +1111,7 @@ and also in reality we know nothing, since the truth is at bottom.—Democritus<
 </tbody>
 </table>
 <h4>Durability</h4>
+<p>By default Stardog's transacted writes are durable; in some applications, in which durability of transactions is not required, a performance gain may be achieved by disabling durability.</p>
 <h4>Commit Failure Autorecovery</h4>
 <p>Stardog's transaction framework, which we call
 <code>erg</code>, is mostly maintenance free; but there are some rare conditions in
