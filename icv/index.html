@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.3 Docs: ICV</title>
+  <title>Stardog 2.0.3 Docs: Integrity Constraint Validation</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -40,7 +40,7 @@
             </div>
             
               <!-- 
-	<h3 id="tochead">ICV Contents</h3>
+	<h3 id="tochead">Integrity Constraint Validation Contents</h3>
  -->
 
 <ul class="sidebar-nav">
@@ -157,7 +157,7 @@
           <!-- woof! -->
             <div class="row">
               <p id="quote"><em><strong>It is easier to write an incorrect program than understand a correct one.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
-              <div class="pull_left"><h1 id="title-subhead">ICV</h1></div>
+              <div class="pull_left"><h1 id="title-subhead">Integrity Constraint Validation</h1></div>
             </div>
           <!-- summary -->
           
@@ -222,14 +222,14 @@ the following examples and is also distributed with Stardog.</p>
 (i.e., subsumption) relationships exist between instances.</p>
 <h4>Managers must be employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Manager</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Manager
+    <span class="keyword">SubClassOf</span>: Employee</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Manager</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Manager</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Manager, Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Manager, Employee</code></pre>
 <p>This constraint says that if an RDF individual is an instance of
 <code>Manager</code>, then it must also be an instance of <code>Employee</code>. In 
 A, the only instance of <code>Manager</code>, namely <code>Alice</code>, is not an instance of
@@ -240,28 +240,28 @@ Database both <code>Manager</code> and <code>Employee</code>; therefore, B is va
 properties.</p>
 <h4>Only project leaders can be responsible for projects.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">ObjectProperty</span>: <span class="string">is_responsible_for</span>
-    <span class="attribute">Domain</span>: <span class="string">Project_Leader</span>
-     <span class="attribute">Range</span>: <span class="string">Project</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: is_responsible_for
+        <span class="keyword">Domain</span>: Project_Leader
+         <span class="keyword">Range</span>: Project</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Facts</span>: <span class="string">is_responsible_for MyProject</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Facts</span>: is_responsible_for MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Project_Leader</span>
-     <span class="attribute">Facts</span>: <span class="string">is_responsible_for MyProject</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Project_Leader
+         <span class="keyword">Facts</span>: is_responsible_for MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject</code></pre>
 <h5>Database C <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Project_Leader</span>
-     <span class="attribute">Facts</span>: <span class="string">is_responsible_for MyProject</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Project_Leader
+         <span class="keyword">Facts</span>: is_responsible_for MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <p>This constraint says that if two RDF instances are related to each other via the property <code>is_responsible_for</code>, then 
 the range instance must be an instance of <code>Project_Leader</code> and the domain instance must be an instance of
 <code>Project</code>. In Database A, there is only one pair of individuals related
@@ -274,15 +274,15 @@ therefore, B is not valid. In C, <code>Alice</code> is an instance of
 therefore, C is valid.</p>
 <h4>Only employees can have an SSN.</h4>
 <h5>Constraint</h5>
-<p>   DataProperty: SSN
-         Domain: Employee</p>
+<pre class="highlighted"><code class="manchester">   <span class="keyword">DataProperty</span>: SSN
+         <span class="keyword">Domain</span>: Employee</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Facts</span>: <span class="string">SSN "123-45-6789"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Facts</span>: SSN <span class="string">"123-45-6789"</span></code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">SSN "123-45-6789"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: SSN <span class="string">"123-45-6789"</span></code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> has a data assertion
 via the the property <code>SSN</code>, then <code>i</code> must be an instance of <code>Employee</code>.
 In A, <code>Bob</code> is not an instance of <code>Employee</code> but
@@ -290,14 +290,14 @@ has <code>SSN</code>; therefore, A is invalid. In B, <code>Bob</code> is an
 instance of <code>Employee</code>; therefore, B is valid.</p>
 <h4>A date of birth must be a date.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">DataProperty</span>: <span class="string">DOB</span>
-       <span class="attribute">Range</span>: <span class="string">xsd:date</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">DataProperty</span>: DOB
+           <span class="keyword">Range</span>: <span class="uri">xsd:date</span></code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Facts</span>: <span class="string">DOB "1970-01-01"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Facts</span>: DOB <span class="string">"1970-01-01"</span></code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Facts</span>: <span class="string">DOB "1970-01-01"^^xsd:date</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Facts</span>: DOB <span class="string">"1970-01-01"</span>^^<span class="uri">xsd:date</span></code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is related to a literal
 <code>l</code> via the data property <code>DOB</code>, then <code>l</code> must have the XML Schema type
 <code>xsd:date</code>. In A, <code>Bob</code> is related to the untyped literal
@@ -308,26 +308,26 @@ instance of <code>Employee</code>; therefore, B is valid.</p>
 in some specified relationship.</p>
 <h4>Each supervisor must supervise at least one employee.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Supervisor</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">supervises some Employee</span></code></pre>
-<h5>Database A</h5>
-<pre class="highlighted"><code class="manchester"><span class="keyword">Individual</span>: Alice <span class="uri">&lt;t&gt;</span>v<span class="uri">&lt;/t&gt;</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Supervisor
+    <span class="keyword">SubClassOf</span>: supervises <span class="built_in">some</span> Employee</code></pre>
+<h5>Database A <div class="metro success label">VALID</div></h5>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Supervisor</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Supervisor</code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Supervisor</span>
-     <span class="attribute">Facts</span>: <span class="string">supervises Bob</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Supervisor
+         <span class="keyword">Facts</span>: supervises Bob
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span></span></code></pre>
+    <span class="keyword">Individual</span>: Bob</code></pre>
 <h5>Database D <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Supervisor</span>
-     <span class="attribute">Facts</span>: <span class="string">supervises Bob</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Supervisor
+         <span class="keyword">Facts</span>: supervises Bob
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span></span></code></pre>
+    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is of type
 <code>Supervisor</code>, then <code>i</code> must be related to an individual <code>j</code> via the
 property <code>supervises</code> and also that <code>j</code> must be an instance of <code>Employee</code>. 
@@ -340,25 +340,25 @@ via <code>supervises</code>, and <code>Bob</code> is an instance of <code>Employ
 is valid.</p>
 <h4>Each project must have a valid project number.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Project</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">number some integer[&gt; 0, &lt; 5000]</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Project
+    <span class="keyword">SubClassOf</span>: number <span class="built_in">some</span> integer<span class="constant">[&gt; 0, &lt; 5000]</span></code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">number "23"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: number <span class="string">"23"</span></code></pre>
 <h5>Database D <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">number "6000"^^integer</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: number <span class="string">"6000"</span>^^integer</code></pre>
 <h5>Database E <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">number "23"^^integer</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: number <span class="string">"23"</span>^^integer</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is of type <code>Project</code>,
 then <code>i</code> must be related via the property <code>number</code> to an integer between
 <code>0</code> and <code>5000</code> (inclusive)—that is, projects have project numbers in a certain range.
@@ -377,33 +377,33 @@ of <code>[0,5000]</code> so E is valid.</p>
 property values.</p>
 <h4>Employees must not work on more than 3 projects.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Employee</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">works_on max 3 Project</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Employee
+    <span class="keyword">SubClassOf</span>: works_on <span class="built_in">max</span> <span class="number">3</span> Project</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProjectA, works_on MyProjectB, works_on MyProjectC, works_on MyProjectD</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProjectA, works_on MyProjectB, works_on MyProjectC, works_on MyProjectD
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProjectA</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
+    <span class="keyword">Individual</span>: MyProjectA
+         <span class="keyword">Types</span>: Project
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProjectB</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
+    <span class="keyword">Individual</span>: MyProjectB
+         <span class="keyword">Types</span>: Project
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProjectC</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
+    <span class="keyword">Individual</span>: MyProjectC
+         <span class="keyword">Types</span>: Project
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProjectD</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></span></span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProjectD
+         <span class="keyword">Types</span>: Project</code></pre>
 <p>If an RDF instance <code>i</code> is an <code>Employee</code>, then
 <code>i</code> must not be related via the property <code>works_on</code> to more than 3
 instances of <code>Project</code>. In  A, <code>Bob</code> is not known
@@ -415,28 +415,28 @@ via <code>works_on</code>.</p>
 <p>Now, pay attention, because this is important. Stardog ICV implements a weak form of the <em>unique name assumption</em>, that is, it assumes that things which have different names are, in fact, different things.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> Since Stardog ICV uses closed world (instead of open world) semantics,<a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a> it assumes that the different projects with different names are, in fact, separate projects, which (in this case) violates the constraint and makes C invalid.</p>
 <h4>Departments must have at least 2 employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Department</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">inverse(works_in) min 2 Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Department
+    <span class="keyword">SubClassOf</span>: <span class="built_in">inverse</span>(works_in) <span class="built_in">min</span> <span class="number">2</span> Employee</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span></span></code></pre>
+    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_in MyDepartment</code></pre>
 <h5>Database C <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span>
+    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_in MyDepartment
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Alice</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Alice
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_in MyDepartment</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is a <code>Department</code>, then
 there should exist at least 2 instances <code>j</code> and <code>k</code> of class <code>Employee</code>
 which are related to <code>i</code> via the property <code>works_in</code> (or, equivalently,
@@ -451,34 +451,34 @@ B is invalid. In C, <code>MyDepartment</code> is related to the individuals
 assumed to be distinct, so C is valid.</p>
 <h4>Managers must manage exactly 1 department.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Class</span>: <span class="string">Manager</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">manages exactly 1 Department</span></code></pre>
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Manager
+    <span class="keyword">SubClassOf</span>: manages <span class="built_in">exactly</span> <span class="number">1</span> Department</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Isabella</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Isabella</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Isabella</span>
-     <span class="attribute">Types</span>: <span class="string">Manager</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Isabella
+         <span class="keyword">Types</span>: Manager</code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Isabella</span>
-     <span class="attribute">Types</span>: <span class="string">Manager</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Isabella
+         <span class="keyword">Types</span>: Manager
+         <span class="keyword">Facts</span>: manages MyDepartment</code></pre>
 <h5>Database D <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Isabella</span>
-     <span class="attribute">Types</span>: <span class="string">Manager</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Isabella
+         <span class="keyword">Types</span>: Manager
+         <span class="keyword">Facts</span>: manages MyDepartment
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department</code></pre>
 <h5>Database E <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Isabella</span>
-     <span class="attribute">Types</span>: <span class="string">Manager</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment, MyDepartment1</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Isabella
+         <span class="keyword">Types</span>: Manager
+         <span class="keyword">Facts</span>: manages MyDepartment, MyDepartment1
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span>
+    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment1</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: MyDepartment1
+         <span class="keyword">Types</span>: Department</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is a <code>Manager</code>, then it
 must be related to exactly 1 instance of <code>Department</code> via the property
 <code>manages</code>. In A, the individual <code>Isabella</code> is not known to be
@@ -495,16 +495,16 @@ related to 2 distinct (again, because of weak UNA) instances of
 is invalid.</p>
 <h4>Entities may have no more than one name.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">DataProperty</span>: <span class="string">name</span>
-    <span class="attribute">Characteristics</span>: <span class="string">Functional</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">DataProperty</span>: name
+        <span class="keyword">Characteristics</span>: <span class="keyword">Functional</span></code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-    <span class="attribute">Facts</span>: <span class="string">name "Human Resources"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment
+        <span class="keyword">Facts</span>: name <span class="string">"Human Resources"</span></code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-    <span class="attribute">Facts</span>: <span class="string">name "Human Resources", name "Legal"</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyDepartment
+        <span class="keyword">Facts</span>: name <span class="string">"Human Resources"</span>, name <span class="string">"Legal"</span></code></pre>
 <p>This constraint says that no RDF instance <code>i</code> can have more than 1
 assertion via the data property <code>name</code>. In A, <code>MyDepartment</code> does not have any data property assertions so A is valid.
 In B, <code>MyDepartment</code> has a single assertion via <code>name</code>, so the ontology
@@ -516,14 +516,14 @@ invalid.</p>
 properties.</p>
 <h4>The manager of a department must work in that department.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">ObjectProperty</span>: <span class="string">manages</span>
-    <span class="attribute">SubPropertyOf</span>: <span class="string">works_in</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: manages
+        <span class="keyword">SubPropertyOf</span>: works_in</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Facts</span>: manages MyDepartment</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Bob</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment, works_in MyDepartment</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Bob
+         <span class="keyword">Facts</span>: manages MyDepartment, works_in MyDepartment</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is related to <code>j</code> via
 the property <code>manages</code>, then <code>i</code> must also be related to <code>j</code> va the
 property <code>works_in</code>. In A, <code>Bob</code> is related to <code>MyDepartment</code>
@@ -532,26 +532,26 @@ B, <code>Bob</code> is related to <code>MyDepartment</code> via both <code>manag
 <code>works_in</code>, so B is valid.</p>
 <h4>Department managers must supervise all the department's employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="http"><span class="attribute">ObjectProperty</span>: <span class="string">is_supervisor_of</span>
-    <span class="attribute">SubPropertyChain</span>: <span class="string">manages o inverse(works_in)</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">ObjectProperty</span>: is_supervisor_of
+        <span class="keyword">SubPropertyChain</span>: manages o <span class="built_in">inverse</span>(works_in)</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Jose</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment, is_supervisor_of Maria</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Jose
+         <span class="keyword">Facts</span>: manages MyDepartment, is_supervisor_of Maria
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Maria</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span>
+    <span class="keyword">Individual</span>: Maria
+         <span class="keyword">Facts</span>: works_in MyDepartment
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Diego</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Diego
+         <span class="keyword">Facts</span>: works_in MyDepartment</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Jose</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment, is_supervisor_of Maria, is_supervisor_of Diego</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Jose
+         <span class="keyword">Facts</span>: manages MyDepartment, is_supervisor_of Maria, is_supervisor_of Diego
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Maria</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span>
+    <span class="keyword">Individual</span>: Maria
+         <span class="keyword">Facts</span>: works_in MyDepartment
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Diego</span>
-     <span class="attribute">Facts</span>: <span class="string">works_in MyDepartment</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Diego
+         <span class="keyword">Facts</span>: works_in MyDepartment</code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is related to <code>j</code> via
 the property <code>manages</code> and <code>k</code> is related to <code>j</code> via the property
 <code>works_in</code>, then <code>i</code> must be related to <code>k</code> via the property
@@ -568,47 +568,47 @@ related to <code>MyDepartment</code> by way of <code>works_in</code>—via the p
 one employee that works on at least one project, or manages at least one
 department.</p>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="manchester"><span class="keyword">Class</span>: Employee
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Employee
     <span class="keyword">SubClassOf</span>: works_on <span class="built_in">some</span> Project <span class="built_in">or</span>
         supervises <span class="built_in">some</span> (Employee <span class="built_in">and</span> works_on <span class="built_in">some</span> Project) <span class="built_in">or</span>
         manages <span class="built_in">some</span> Department</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span></code></pre>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Esteban
+         <span class="keyword">Types</span>: Employee</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">supervises Lucinda</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Esteban
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: supervises Lucinda
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Lucinda</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span></span></code></pre>
+    <span class="keyword">Individual</span>: Lucinda
+         <span class="keyword">Types</span>: Employee</code></pre>
 <h5>Database C <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">supervises Lucinda</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Esteban
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: supervises Lucinda
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Lucinda</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject</span>
+    <span class="keyword">Individual</span>: Lucinda
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <h5>Database D <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Esteban
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: manages MyDepartment
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span></span></code></pre>
+    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department</code></pre>
 <h5>Database E <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">Esteban</span>
-     <span class="attribute">Facts</span>: <span class="string">manages MyDepartment, works_on MyProject</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: Esteban
+         <span class="keyword">Facts</span>: manages MyDepartment, works_on MyProject
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyDepartment</span>
-     <span class="attribute">Types</span>: <span class="string">Department</span>
+    <span class="keyword">Individual</span>: MyDepartment
+         <span class="keyword">Types</span>: Department
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project</code></pre>
 <p>This constraint says that if an individual <code>i</code> is an instance of
 <code>Employee</code>, then at least one of three conditions must be met: </p>
 <ul>
@@ -629,70 +629,70 @@ instance of <code>Project</code>, namely <code>MyProject</code>, via the propert
 <p>Only employees who are American citizens can work on a project that
 receives funds from a US government agency.</p>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="manchester"><span class="keyword">Class</span>: Project <span class="built_in">and</span> receives_funds_from <span class="built_in">some</span> US_Government_Agency
+<pre class="highlighted"><code class="manchester">         <span class="keyword">Class</span>: Project <span class="built_in">and</span> receives_funds_from <span class="built_in">some</span> US_Government_Agency
     <span class="keyword">SubClassOf</span>: <span class="built_in">inverse</span>(works_on) <span class="built_in">only</span> (Employee <span class="built_in">and</span> nationality <span class="built_in">value</span> <span class="string">"US"</span>)</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">receives_funds_from NASA</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: receives_funds_from NASA
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">NASA</span>
-     <span class="attribute">Types</span>: <span class="string">US_Government_Agency</span></span></code></pre>
+    <span class="keyword">Individual</span>: NASA
+         <span class="keyword">Types</span>: US_Government_Agency</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">receives_funds_from NASA</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: receives_funds_from NASA
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">NASA</span>
-     <span class="attribute">Types</span>: <span class="string">US_Government_Agency</span>
+    <span class="keyword">Individual</span>: NASA
+         <span class="keyword">Types</span>: US_Government_Agency
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Andy</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Andy
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject</code></pre>
 <h5>Database C <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">receives_funds_from NASA</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: receives_funds_from NASA
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">NASA</span>
-     <span class="attribute">Types</span>: <span class="string">US_Government_Agency</span>
+    <span class="keyword">Individual</span>: NASA
+         <span class="keyword">Types</span>: US_Government_Agency
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Andy</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject, nationality "US"</span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Andy
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject, nationality <span class="string">"US"</span></code></pre>
 <h5>Database D <div class="metro danger label">INVALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">receives_funds_from NASA</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: receives_funds_from NASA
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">NASA</span>
-     <span class="attribute">Types</span>: <span class="string">US_Government_Agency</span>
+    <span class="keyword">Individual</span>: NASA
+         <span class="keyword">Types</span>: US_Government_Agency
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Andy</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject, nationality "US"</span>
+    <span class="keyword">Individual</span>: Andy
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject, nationality <span class="string">"US"</span>
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Heidi</span>
-     <span class="attribute">Types</span>: <span class="string">Supervisor</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject, nationality "US"</span></span></span></span></code></pre>
+    <span class="keyword">Individual</span>: Heidi
+         <span class="keyword">Types</span>: Supervisor
+         <span class="keyword">Facts</span>: works_on MyProject, nationality <span class="string">"US"</span></code></pre>
 <h5>Database E <div class="metro success label">VALID</div></h5>
-<pre class="highlighted"><code class="http"><span class="attribute">Individual</span>: <span class="string">MyProject</span>
-     <span class="attribute">Types</span>: <span class="string">Project</span>
-     <span class="attribute">Facts</span>: <span class="string">receives_funds_from NASA</span>
+<pre class="highlighted"><code class="manchester">    <span class="keyword">Individual</span>: MyProject
+         <span class="keyword">Types</span>: Project
+         <span class="keyword">Facts</span>: receives_funds_from NASA
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">NASA</span>
-     <span class="attribute">Types</span>: <span class="string">US_Government_Agency</span>
+    <span class="keyword">Individual</span>: NASA
+         <span class="keyword">Types</span>: US_Government_Agency
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Andy</span>
-     <span class="attribute">Types</span>: <span class="string">Employee</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject, nationality "US"</span>
+    <span class="keyword">Individual</span>: Andy
+         <span class="keyword">Types</span>: Employee
+         <span class="keyword">Facts</span>: works_on MyProject, nationality <span class="string">"US"</span>
 
-<span class="http"><span class="attribute">Individual</span>: <span class="string">Heidi</span>
-     <span class="attribute">Types</span>: <span class="string">Supervisor</span>
-     <span class="attribute">Facts</span>: <span class="string">works_on MyProject, nationality "US"</span>
+    <span class="keyword">Individual</span>: Heidi
+         <span class="keyword">Types</span>: Supervisor
+         <span class="keyword">Facts</span>: works_on MyProject, nationality <span class="string">"US"</span>
 
-<span class="http"><span class="attribute">Class</span>: <span class="string">Supervisor</span>
-    <span class="attribute">SubClassOf</span>: <span class="string">Employee</span></span></span></span></span></code></pre>
+         <span class="keyword">Class</span>: Supervisor
+    <span class="keyword">SubClassOf</span>: Employee</code></pre>
 <p>This constraint says that if an individual <code>i</code> is an instance of
 <code>Project</code> and is related to an instance of <code>US_Government_Agency</code> via
 the property <code>receives_funds_from</code>, then any individual <code>j</code> which is
@@ -882,7 +882,7 @@ invalid</code>.</li>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">ICV</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
+                <h4>This is <span id="footer-subhead">Integrity Constraint Validation</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
