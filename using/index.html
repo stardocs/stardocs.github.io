@@ -151,7 +151,7 @@
 execute queries against RDF data which it has under direct
 management.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> Stardog supports the <a href="http://www.cambridgesemantics.com/2008/09/sparql-by-example">SPARQL</a> query language, a W3C standard.</p>
 <h2 id="sd-Querying">Querying</h2>
-<p>Stardog currently supports all of the <a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1 Query
+<p>Stardog currently supports the <a href="http://www.w3.org/TR/sparql11-query/">SPARQL 1.1 Query
 language</a>. <a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a> Stardog also supports the <a href="http://www.w3.org/TR/2012/CR-sparql11-entailment-20121108/">OWL 2 Direct Semantics
 entailment regime</a>.</p>
 <p>To execute a SPARQL query against a Stardog database, use the <code>query</code>
@@ -443,6 +443,9 @@ on its <a href="/man/query-execute.html"><code>man</code> page</a>.</p>
 </tr>
 </tbody>
 </table>
+<h3><code>DESCRIBE</code></h3>
+<p>SPARQL's <code>DESCRIBE</code> keyword is deliberately underspecified; vendors are free to do, for good or bad, whatever they want. In Stardog, a <code>DESCRIBE &lt;theResource&gt;</code> query retrieves the predicates and objects for all the triples for which <code>&lt;theResource&gt;</code> is the subject. There are, of course, about seventeen thousand other ways to implement <code>DESCRIBE</code>; we've implemented four or five of them and may expose them to users in a future release of Stardog <em>based on user feedback and requests</em>.</p>
+<p>Now you know and knowing is one-quarter of the fun.</p>
 <h2 id="sd-Updating">Updating</h2>
 <p>There are many ways to update the data in a Stardog database; the most commonly used methods are the CLI and SPARQL Update queries, both of which we discuss below.</p>
 <h3>SPARQL Update <div class="metro label warning">New in 2.0</div></h3>
