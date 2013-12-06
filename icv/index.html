@@ -290,7 +290,14 @@ instance of <code>Employee</code>; therefore, B is valid.</p>
 in some specified relationship.</p>
 <h4>Each supervisor must supervise at least one employee.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Supervisor</span> <span class="uri">rdfs:subClassOf</span> (<span class="uri">:supervises</span> some <span class="uri">:Employee</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Supervisor rdfs:subClassOf (:supervises some :Employee)
+</span>
+<span class="uri">:Supervisor</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> <span class="uri">:supervises</span> ;
+                <span class="uri">owl:someValuesFrom</span> <span class="uri">:Employee</span>
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">owl:Thing</span> .</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
@@ -315,7 +322,18 @@ via <code>supervises</code>, and <code>Bob</code> is an instance of <code>Employ
 is valid.</p>
 <h4>Each project must have a valid project number.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Project</span> <span class="uri">rdfs:subClassOf</span> (<span class="uri">:number</span> some <span class="uri">xsd:integer</span>[&gt;= <span class="number">0</span>, <span class="uri">&lt; 5000])</span></code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Project rdfs:subClassOf (:number some xsd:integer[&gt;= 0, &lt; 5000])
+</span>
+<span class="uri">:Project</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> <span class="uri">:number</span> ;
+                <span class="uri">owl:someValuesFrom</span>
+                        [ <span class="uri">a</span> <span class="uri">rdfs:Datatype</span> ;
+                          <span class="uri">owl:onDatatype</span> <span class="uri">xsd:integer</span> ;
+                          <span class="uri">owl:withRestrictions</span> ([<span class="uri">xsd:minInclusive</span> <span class="number">0</span>] [ <span class="uri">xsd:maxExclusive</span> <span class="number">5000</span>])
+                        ]
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyProject</span> <span class="uri">a</span> <span class="uri">owl:Thing</span> .</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
@@ -347,7 +365,15 @@ of <code>[0,5000]</code> so E is valid.</p>
 property values.</p>
 <h4>Employees must not work on more than 3 projects.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span> (<span class="uri">:works_on</span> <span class="aggregate">max</span> <span class="number">3</span> <span class="uri">:Project</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Employee rdfs:subClassOf (:works_on max 3 :Project)
+</span>
+<span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span>;
+                <span class="uri">owl:maxQualifiedCardinality</span> <span class="string">"3"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
+                <span class="uri">owl:onClass</span> <span class="uri">:Project</span> 
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Bob</span> <span class="uri">a</span> <span class="uri">owl:Thing</span>.</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
@@ -377,7 +403,15 @@ via <code>works_on</code>.</p>
 <p>Now, pay attention, because this is important. Stardog ICV implements a weak form of the <em>unique name assumption</em>, that is, it assumes that things which have different names are, in fact, different things.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> Since Stardog ICV uses closed world (instead of open world) semantics,<a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a> it assumes that the different projects with different names are, in fact, separate projects, which (in this case) violates the constraint and makes C invalid.</p>
 <h4>Departments must have at least 2 employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Department</span> <span class="uri">rdfs:subClassOf</span> (inverse <span class="uri">:works_in</span> <span class="aggregate">min</span> <span class="number">2</span> <span class="uri">:Employee</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Department rdfs:subClassOf (inverse :works_in min 2 :Employee)
+</span>
+<span class="uri">:Department</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> [<span class="uri">owl:inverseOf</span> <span class="uri">:works_in</span>] ;
+                <span class="uri">owl:minQualifiedCardinality</span> <span class="string">"2"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
+                <span class="uri">owl:onClass</span> <span class="uri">:Employee</span> 
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyDepartment</span> <span class="uri">a</span> <span class="uri">owl:NamedIndividual</span> .</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
@@ -407,7 +441,15 @@ B is invalid. In C, <code>MyDepartment</code> is related to the individuals
 assumed to be distinct, so C is valid.</p>
 <h4>Managers must manage exactly 1 department.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> (<span class="uri">:manages</span> exactly <span class="number">1</span> <span class="uri">:Department</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Manager rdfs:subClassOf (:manages exactly 1 :Department)
+</span>
+<span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> <span class="uri">:manages</span> ;
+                <span class="uri">owl:qualifiedCardinality</span> <span class="string">"1"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
+                <span class="uri">owl:onClass</span> <span class="uri">:Department</span> 
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql">    Individual: Isabella</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
@@ -443,7 +485,7 @@ related to 2 distinct (again, because of weak UNA) instances of
 is invalid.</p>
 <h4>Entities may have no more than one name.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:name</span> <span class="uri">a</span> <span class="uri">owl:FunctionalProperty</span></code></pre>
+<pre class="highlighted"><code class="sparql"><span class="uri">:name</span> <span class="uri">a</span> <span class="uri">owl:FunctionalProperty</span> .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyDepartment</span> <span class="uri">a</span> <span class="uri">owl:Thing</span> .</code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
@@ -461,7 +503,7 @@ invalid.</p>
 properties.</p>
 <h4>The manager of a department must work in that department.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:manages</span> <span class="uri">rdfs:subPropertyOf</span> <span class="uri">:works_in</span></code></pre>
+<pre class="highlighted"><code class="sparql"><span class="uri">:manages</span> <span class="uri">rdfs:subPropertyOf</span> <span class="uri">:works_in</span> .</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Bob</span> <span class="uri">:manages</span> <span class="uri">:MyDepartment</span></code></pre>
 <h5>Database B <div class="metro success label">VALID</div></h5>
@@ -475,7 +517,7 @@ B, <code>Bob</code> is related to <code>MyDepartment</code> via both <code>manag
 <code>works_in</code>, so B is valid.</p>
 <h4>Department managers must supervise all the department's employees.</h4>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:is_supervisor_of</span> <span class="uri">owl:propertyChainAxiom</span> (<span class="uri">:manages</span> inverse <span class="uri">:works_in</span>)</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="uri">:is_supervisor_of</span> <span class="uri">owl:propertyChainAxiom</span> (<span class="uri">:manages</span> [<span class="uri">owl:inverseOf</span> <span class="uri">:works_in</span>]) .</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Jose</span> <span class="uri">:manages</span> <span class="uri">:MyDepartment</span> ;
     <span class="uri">:is_supervisor_of</span> <span class="uri">:Maria</span> .
@@ -506,7 +548,30 @@ related to <code>MyDepartment</code> by way of <code>works_in</code>—via the p
 one employee that works on at least one project, or manages at least one
 department.</p>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span> (<span class="uri">:works_on</span> some (<span class="uri">:Project</span> or (<span class="uri">:supervises</span> some (<span class="uri">:Employee</span> and (<span class="uri">:works_on</span> some <span class="uri">:Project</span>))) or (<span class="uri">:manages</span> some <span class="uri">:Department</span>)))</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Employee rdfs:subClassOf (:works_on some (:Project or (:supervises some (:Employee and (:works_on some :Project))) or (:manages some :Department)))
+</span>
+<span class="uri">:Employee</span> <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span> ;
+                <span class="uri">owl:someValuesFrom</span>
+                        [ <span class="uri">owl:unionOf</span> (<span class="uri">:Project</span> 
+                                      [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                                        <span class="uri">owl:onProperty</span> <span class="uri">:supervises</span> ;
+                                        <span class="uri">owl:someValuesFrom</span>
+                                              [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span> 
+                                                                    [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                                                                      <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span> ;
+                                                                      <span class="uri">owl:someValuesFrom</span> <span class="uri">:Project</span>
+                                                                    ])
+                                              ]
+                                      ] 
+                                      [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                                        <span class="uri">owl:onProperty</span> <span class="uri">:manages</span> ;
+                                        <span class="uri">owl:someValuesFrom</span> <span class="uri">:Department</span>
+                                      ])
+                        ]
+              ] .</code></pre>
 <h5>Database A <div class="metro danger label">INVALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Esteban</span> <span class="uri">a</span> <span class="uri">:Employee</span> .</code></pre>
 <h5>Database B <div class="metro danger label">INVALID</div></h5>
@@ -555,7 +620,24 @@ instance of <code>Project</code>, namely <code>MyProject</code>, via the propert
 <p>Only employees who are American citizens can work on a project that
 receives funds from a US government agency.</p>
 <h5>Constraint</h5>
-<pre class="highlighted"><code class="sparql"><span class="uri">:Project</span> and (<span class="uri">:receives_funds_from</span> some <span class="uri">:US_Government_Agency</span>)) <span class="uri">rdfs:subClassOf</span> (inverse <span class="uri">:works_on</span> only (<span class="uri">:Employee</span> and (<span class="uri">:nationality</span> value <span class="string">"US"</span>)))</code></pre>
+<pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
+</span><span class="comment"># :Project and (:receives_funds_from some :US_Government_Agency)) rdfs:subClassOf (inverse :works_on only (:Employee and (:nationality value "US")))
+</span>
+[ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Project</span> 
+                       [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                         <span class="uri">owl:onProperty</span> <span class="uri">:receives_funds_from</span> ;
+                         <span class="uri">owl:someValuesFrom</span> <span class="uri">:US_Government_Agency</span>
+                       ]) .
+] <span class="uri">rdfs:subClassOf</span>
+              [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                <span class="uri">owl:onProperty</span> [<span class="uri">owl:inverseOf</span> <span class="uri">:works_on</span>] ;
+                <span class="uri">owl:allValuesFrom</span> [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span> 
+                                                        [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
+                                                          <span class="uri">owl:hasValue</span> <span class="string">"US"</span> ;
+                                                          <span class="uri">owl:onProperty</span> <span class="uri">:nationality</span>
+                                                        ])
+                                  ] 
+              ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyProject</span> <span class="uri">a</span> <span class="uri">:Project</span> ;
     <span class="uri">:receives_funds_from</span> <span class="uri">:NASA</span> .

@@ -146,10 +146,8 @@
             </div>
           <!-- summary -->
           
-            <p id="summary"><em>Spring is a platform to build and run enterprise applications in Java. Stardog's Spring support makes life easier for enterprise developers who need to work with Semantic Web technology&mdash;including RDF, SPARQL, and OWL&mdash;by way of Stardog.</em></p>
-          
           <div id="mdblock">
-            <p>The Spring for Stardog <a href="http://github.com/clarkparsia/stardog-spring">source code</a> is available on Github. </p>
+            <p>The Spring for Stardog <a href="http://github.com/clarkparsia/stardog-spring">source code</a> is available on Github.</p>
 <h2 id="sd-Overview">Overview</h2>
 <p>Spring for Stardog makes it possible to rapidly build Stardog-backed applications with the Spring Framework. As with many other parts of Spring, Stardog's Spring
 integration uses the template design pattern for abstracting standard
@@ -217,6 +215,8 @@ automatically mapping result set bindings into common data types. The
 <code>SingleMapper</code> that accepts a constructor parameter for binding a single
 parameter for a single result set.</p>
 <p>For example,</p>
+<script src="https://gist.github.com/4570152.js?file=SingleMapper.java"></script>
+
 <p>The key methods on <code>SnarlTemplate</code> include the following:</p>
 <pre class="highlighted"><code class="erlang"><span class="function"><span class="title">query</span><span class="params">(<span class="variable">String</span> sparql<span class="variable">Query</span>, <span class="variable">Map</span> args, <span class="variable">RowMapper</span>)</span></span></code></pre>
 <p><code>query()</code> executes the SELECT query with provided argument list, and
@@ -245,6 +245,8 @@ formats, so if there are many different types of files to load with
 different RDF formats, there would be different <code>DataImporter</code> beans
 configured in Spring.</p>
 <p>Here's a sample <code>applicationContext</code>:</p>
+<script src="https://gist.github.com/1115889.js?file=applicationContext.xml"></script>
+
 <h2 id="sd-Spring-Batch">Spring Batch</h2>
 <p>In addition to the base <code>DataSource</code> and <code>SnarlTemplate</code>, Spring Batch
 support adds the following:</p>
@@ -258,13 +260,24 @@ support adds the following:</p>
 </ul>
 <p>These beans can then be used within Spring Batch job definition, for
 example:</p>
+<script src="https://gist.github.com/4570209.js?file=batchContext.xml"></script>
+
+
 <h2 id="sd-Examples">Examples</h2>
 <h3>query() with SELECT queries</h3>
-<h3>doWithGetter</h3>
-<h3>doWithAdder</h3>
-<h3>doWithRemover</h3>
-<h3>construct()</h3>
+<script src="https://gist.github.com/1115894.js?file=spring-select.java"></script>
 
+<h3>doWithGetter</h3>
+<script src="https://gist.github.com/1115915.js?file=dowithgetter.java"></script>
+
+<h3>doWithAdder</h3>
+<script src="https://gist.github.com/1115915.js?file=doWithAdder.java"></script>
+
+<h3>doWithRemover</h3>
+<script src="https://gist.github.com/1115915.js?file=doWithRemover.java"></script>
+
+<h3>construct()</h3>
+<script src="https://gist.github.com/1115915.js?file=construct.java"></script>
           </div>
           <div class="hidden" id="footnote-container">
             <h2>Notes</h2>
