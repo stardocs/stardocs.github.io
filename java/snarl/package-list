@@ -10,6 +10,8 @@ com.complexible.common.io
 com.complexible.common.io.disk
 com.complexible.common.io.impl
 com.complexible.common.io.mem
+com.complexible.common.memory
+com.complexible.common.memory.buffer
 com.complexible.common.net
 com.complexible.common.net.ssl
 com.complexible.common.netty.codec
@@ -33,5 +35,6 @@ com.complexible.stardog.index
 com.complexible.stardog.jena
 com.complexible.stardog.metadata
 com.complexible.stardog.reasoning
+com.complexible.stardog.reasoning.api
 com.complexible.stardog.security
 com.complexible.stardog.sesame
