@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.3 Docs: OWL & Rule Reasoning</title>
+  <title>Stardog 2.1 Docs: OWL & Rule Reasoning</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -286,14 +286,14 @@ reasoning level. See the <a href="../java/">Java Programming</a> chapter for
 details on specifying the reasoning level programmatically.</p>
 <p>Currently, the API has two methods:</p>
 <ul>
-<li><code>isConsistent()</code>, which can be used to check if the current KB is
+<li><code>isConsistent()</code>, which can be used to check if the current DB is
 consistent with respect to the reasoning level.</li>
 <li><code>isSatisfiable(URI theURIClass)</code>, which can be used to check if the
-given class if satisfiable with respect to the current KB and
+given class if satisfiable with respect to the current DB and
 reasoning level.</li>
 </ul>
 <h2 id="sd-Explaining-Reasoning-Results">Explaining Reasoning Results</h2>
-<p>Stardog can be used to check if the current KB logically entails a set
+<p>Stardog can be used to check if the current DB logically entails a set
 of triples; moreover, Stardog can explain why this is so. An explanation
 of an inference is the minimum set of statements explicitly stored in
 the database that together justify or warrant the inference.
@@ -333,9 +333,93 @@ axioms for every inference:</p>
         ASSERTED <span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span>
         ASSERTED <span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span></code></pre>
 <p>The CLI explanation command prints the proof tree using indented text;
-but, using the SNARL API, it is simple to create a tree widget
+but, using the SNARL API, it is easy to create a tree widget
 in a GUI to show the explanation tree, such that users can expand and
 collapse details in the explanation.</p>
+<p>Another feature of proof trees is the ability to merge multiple 
+explanations into a single proof tree with multiple branches when 
+explanations have common statements. Consider the following example 
+database:</p>
+<pre class="highlighted"><code class="sparql"><span class="comment">#schema
+</span><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:ProjectManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+<span class="uri">:ProjectManager</span> <span class="uri">owl:equivalentClass</span> (<span class="uri">:manages</span> some <span class="uri">:Project</span>)
+<span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span>
+<span class="uri">:ResearchProject</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Project</span>
+<span class="uri">:projectID</span> <span class="uri">rdfs:domain</span> <span class="uri">:Project</span>
+<span class="comment"># instance data
+</span><span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span>
+<span class="uri">:Alice</span> <span class="uri">:manages</span> <span class="uri">:ProjectX</span>
+<span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:ResearchProject</span>
+<span class="uri">:ProjectX</span> <span class="uri">:projectID</span> <span class="string">"123-45-6789"</span></code></pre>
+<p>In this database, there are three different unique explanations 
+for the inference <code>:Alice rdf:type :Employee</code>. The triples
+in each explanation is hown in the following table:</p>
+<table>
+<tr>
+<td>Explanation 1</td><td>Explanation 2</td><td>Explanation 3</td>
+</tr>
+<tr>
+<td>
+<code>sparql
+:Manager rdfs:subClassOf :Employee
+:ProjectManager rdfs:subClassOf :Manager
+:supervises rdfs:domain :Manager
+:Alice :supervises :Bob</code>
+</td>
+<td>
+<code>sparql
+:Manager rdfs:subClassOf :Employee
+:ProjectManager rdfs:subClassOf :Manager
+:ProjectManager owl:equivalentClass (:manages some :Project)
+:ResearchProject rdfs:subClassOf :Project
+:Alice :manages :ProjectX
+:ProjectX a :ResearchProject</code>
+</td>
+<td>
+<code>sparql
+:Manager rdfs:subClassOf :Employee
+:ProjectManager rdfs:subClassOf :Manager
+:ProjectManager owl:equivalentClass (:manages some :Project)
+:projectID rdfs:domain :Project
+:Alice :manages :ProjectX
+:ProjectX :projectID "123-45-6789"</code>
+</td>
+</tr>
+</table> 
+
+<p>Note that, all three explanations have some triples in common but
+when explanations are retrieved separately it is hard to see how
+these explanations are related. When explanations are merged, we
+get a single proof tree where alternatives for subtrees of the
+proof are shown inline. In indented text rendering, the merged 
+tree for the above explanations would look as follows:</p>
+<pre class="highlighted"><code class="sparql">INFERRED <span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:Employee</span>
+   ASSERTED <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+   <span class="number">1.1</span>) INFERRED <span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:Manager</span>
+      ASSERTED <span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span>
+      ASSERTED <span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span>
+   <span class="number">1.2</span>) INFERRED <span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:Manager</span>
+      ASSERTED <span class="uri">:ProjectManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+      INFERRED <span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:ProjectManager</span>
+         ASSERTED <span class="uri">:ProjectManager</span> <span class="uri">owl:equivalentClass</span> (<span class="uri">:manages</span> some <span class="uri">:Project</span>)
+         ASSERTED <span class="uri">:Alice</span> <span class="uri">:manages</span> <span class="uri">:ProjectX</span>
+         <span class="number">2.1</span>) INFERRED <span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:Project</span>
+            ASSERTED <span class="uri">:projectID</span> <span class="uri">rdfs:domain</span> <span class="uri">:Project</span>
+            ASSERTED <span class="uri">:ProjectX</span> <span class="uri">:projectID</span> <span class="string">"123-45-6789"</span>
+         <span class="number">2.2</span>) INFERRED <span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:Project</span>
+            ASSERTED <span class="uri">:ResearchProject</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Project</span>
+            ASSERTED <span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:ResearchProject</span></code></pre>
+<p>In the merged proof tree, alternatives for an
+explanation is shown with a number id. In the above tree, 
+<code>:Alice a :Manager</code> is the first inference for which we have
+multiple explanations so it gets the id <code>1</code>. Then each alternative
+explanation gets an id appended to this (so explanations <code>1.1</code> and 
+<code>1.2</code> are both alternative explanations for inference <code>1</code>). We
+also have multiple explanations for inference <code>:ProjectX a :Project</code>
+so its alternatives get ids <code>2.1</code> and <code>2.2</code>.
+Again, a tree widget in a GUI can show this proof tree in a more 
+user-friendly way.</p>
 <h2 id="sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</h2>
 <p>Many reasoning problems may be solved with OWL‘s axiom-based approach;
 but, of course, not all reasoning problems are amenable to this
@@ -945,7 +1029,7 @@ into account using the <strong>SL</strong> reasoning level.</p>
 </li>
 </ul>
 <h2 id="sd-Known-Issues">Known Issues</h2>
-<p>Stardog 2.0.3 does not</p>
+<p>Stardog 2.1 does not</p>
 <ul>
 <li>Follow ontology <code>owl:imports</code> statements automatically; any imported
 OWL ontologies that are required for reasoning must be loaded into a
@@ -982,10 +1066,10 @@ in that configuration parameter.<a class="skip fn-marker" gumby-easing="easeOutQ
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">OWL & Rule Reasoning</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
+                <h4>This is <span id="footer-subhead">OWL & Rule Reasoning</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </p></div>
         </div>
       </section>

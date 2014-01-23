@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.3 Docs: Integrity Constraint Validation</title>
+  <title>Stardog 2.1 Docs: Integrity Constraint Validation</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -97,6 +97,21 @@
             <strong>ICV Examples</strong>
         </a>
         <!-- <li><a href="#sd-ICV-Examples" class="skiplink">ICV Examples</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Explaining-ICV-Violations" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Explaining-ICV-Violations">
+            <strong>Explaining ICV Violations</strong>
+        </a>
+        <!-- <li><a href="#sd-Explaining-ICV-Violations" class="skiplink">Explaining ICV Violations</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -711,6 +726,14 @@ axiom—which states that every instance of <code>Supervisor</code> is an
 instance of <code>Employee</code>, so <code>Heidi</code> is inferred to be an 
 instance of <code>Employee</code> and, consequently, E is valid.</p>
 <p>If you made it this far, you deserve a drink!</p>
+<h2 id="sd-Explaining-ICV-Violations">Explaining ICV Violations</h2>
+<p>ICV violations can be explained using <a href="../owl2#sd-Proof-Trees">proof trees</a>
+similar to inferences. The following command will explain the IC violations
+for constraints stored in the database:</p>
+<pre class="highlighted"><code class="bash">$ stardog icv explain --reasoning EL <span class="string">"myDB"</span></code></pre>
+<p>It is possible to explain violations for external constraints by passing the
+file with constraints as an additional argument:</p>
+<pre class="highlighted"><code class="bash">$ stardog icv explain --reasoning EL <span class="string">"myDB"</span> constraints.ttl</code></pre>
 <h2 id="sd-Using-ICV-Programmatically">Using ICV Programmatically</h2>
 <p>This section will describe how to use Stardog ICV via the SNARL APIs. For 
 more information on using SNARL in general, please refer to the
@@ -878,10 +901,10 @@ invalid</code>.</li>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Integrity Constraint Validation</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
+                <h4>This is <span id="footer-subhead">Integrity Constraint Validation</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </p></div>
         </div>
       </section>

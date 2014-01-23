@@ -18,7 +18,7 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog-admin [--server &lt;server url&gt;]role revoke (-a &lt;action&gt; | --action &lt;action&gt;) (-o &lt;object&gt; | --object &lt;object&gt;) [(-p &lt;password&gt; | --passwd &lt;password&gt;)] [(-P | --ask-password)] [(-u &lt;username&gt; | --username &lt;username&gt;)] [--] &lt;role name&gt;</div>
+stardog-admin [ --server &lt;server url&gt; ]role revoke {-a | --action} &lt;action&gt; {-o | --object} &lt;obj&gt; [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-u | --username} &lt;username&gt; ] [--] &lt;role name&gt;</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
@@ -33,7 +33,7 @@ Action to be revoked: [read,write,create,delete,grant,revoke,execute,all].</div>
 </div>
 <div class="row">
 <div class="span8 offset1">
--o &lt;object&gt;, --object &lt;object&gt;</div>
+-o &lt;obj&gt;, --object &lt;obj&gt;</div>
 </div>
 <div class="row">
 <div class="span8 offset2">

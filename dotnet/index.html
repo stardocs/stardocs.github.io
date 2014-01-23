@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.0.3 Docs: Programming with .Net</title>
+  <title>Stardog 2.1 Docs: Programming with .Net</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -112,6 +112,21 @@
             <strong>Making SPARQL Queries</strong>
         </a>
         <!-- <li><a href="#sd-Making-SPARQL-Queries" class="skiplink">Making SPARQL Queries</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Making-SPARQL-Updates" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Making-SPARQL-Updates">
+            <strong>Making SPARQL Updates</strong>
+        </a>
+        <!-- <li><a href="#sd-Making-SPARQL-Updates" class="skiplink">Making SPARQL Updates</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -317,13 +332,49 @@ which then must have values set for them using the relevant methods prior to cal
 <h3>Reasoning</h3>
 <p>Stardog supports various levels of reasoning by using a query rewriting technique.
 In short, when reasoning is requested, a query is automatically rewritten into <em>n</em> 
-queries, which are then executed. As mentioned earlier reasoning is enabled at the <code>StardogConnector</code> layer and then 
-any queries executed over that connection are executed with reasoning enabled; you 
-don't need to do anything up front when you create your database if you want to use 
-reasoning.  The in-use reasoning mode for your connection may be changed at any time 
-by setting the <code>Reasoning</code> property appropriately.</p>
+queries, which are then executed. As mentioned earlier reasoning is enabled at the 
+<code>StardogConnector</code> layer and then any queries executed over that connection are 
+executed with reasoning enabled; you don't need to do anything up front when you 
+create your database if you want to use reasoning.  The in-use reasoning mode for 
+your connection may be changed at any time by setting the <code>Reasoning</code> property 
+appropriately.</p>
 <p>For more information on how reasoning is supported in Stardog, check out the 
 <a href="../owl2/">reasoning section</a></p>
+<h2 id="sd-Making-SPARQL-Updates">Making SPARQL Updates</h2>
+<p>From dotNetRDF 1.0.3 onwards it is possible to make native SPARQL updates against Stardog 
+when using the <code>StardogV2Connector</code> or the <code>StardogConnector</code>.  SPARQL Updates are
+made simply by calling the <code>Update()</code> method which is from the 
+<a href="http://www.dotnetrdf.org/api/index.asp?Topic=VDS.RDF.Storage.IUpdateableStorage">IUpdateableStorage</a>
+interface.  SPARQL Updates may be passed in directly as strings like so:</p>
+<script src="https://gist.github.com/8019566.js"></script>
+
+<p>We <strong>strongly</strong> recommend the use of the parameterized update support over 
+concatenating strings together in order to build your SPARQL update.  This 
+latter approach opens up the possibility for SPARQL injection attacks 
+unless you are very careful in scrubbing your input.  This can be done using
+the <a href="http://www.dotnetrdf.org/api/index.asp?Topic=VDS.RDF.Query.SparqlParameterizedString">SparqlParameterizedString</a>
+class like so:</p>
+<script src="https://gist.github.com/8019591.js"></script>
+
+<p>dotNetRDF uses the ADO.Net style <code>@param</code> to specify parameters in the query string
+which then must have values set for them using the relevant methods prior to calling
+<code>ToString()</code> to retrieve the final query string.</p>
+<h3>Approximating Stardog Updates</h3>
+<p>Even when using older versions of dotNetRDF or older versions of Stardog which do not
+support SPARQL Update natively it is still possible to perform SPARQL Updates on
+Stardog using dotNetRDF's approximated update support.</p>
+<p>To do this you create a <a href="http://www.dotnetrdf.org/api/index.asp?Topic=VDS.RDF.Update.GenericUpdateProcessor">GenericUpdateProcessor</a>
+instance which wraps your <code>IStorageProvider</code> instance.  This provides a <code>ProcessCommandSet()</code>
+method which takes in a <a href="http://www.dotnetrdf.org/api/index.asp?Topic=VDS.RDF.Update.SparqlUpdateCommandSet">SparqlUpdateCommandSet</a>
+instance and executes it against the underlying store.  Where the underlying store does
+not support SPARQL Update natively it does its best to translate the update commands into
+their equivalent Storage API operations to execute the update as faithfully as possible.</p>
+<script src="https://gist.github.com/8019694.js"></script>
+
+<p><strong>Note:</strong> You can safely use the <code>GenericUpdateProcessor</code> even with newer versions of
+dotNetRDF and Stardog where native SPARQL Update is supported since if the underlying
+store supports SPARQL Update natively the <code>GenericUpdateProcessor</code> delegates execution
+to the stores <code>Update()</code> method.</p>
 <h2 id="sd-dotNetRDF-Documentation">dotNetRDF Documentation</h2>
 <p>Please see the <a href="http://www.dotnetrdf.org/api/">dotNetRDF API</a> docs for more detailed
 information on the available APIs or see the <a href="http://bitbucket.org/dotnetrdf/dotnetrdf/wiki/User%20Guide">dotNetRDF User Guide</a>
@@ -349,10 +400,10 @@ for a more general overview of dotNetRDF.</p>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Programming with .Net</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.0.3.</h4>
+                <h4>This is <span id="footer-subhead">Programming with .Net</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
-              <p class="copywood">&copy;2010&ndash;2013 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
             </p></div>
         </div>
       </section>

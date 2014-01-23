@@ -18,7 +18,7 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog-admin server start [--bind &lt;network interface&gt;] [--disable-security] [--enable-ssl] [--home &lt;home&gt;] [--logfile &lt;log file&gt;] [--no-http] [--no-snarl] [--no-web-console] [--port &lt;port&gt;] [--require-ssl]</div>
+stardog-admin server start [ --bind &lt;network interface&gt; ] [ --disable-security ] [ --enable-ssl ] [ --home &lt;home&gt; ] [ --logfile &lt;log file&gt; ] [ --no-http ] [ --no-snarl ] [ --no-web-console ] [ --port &lt;port&gt; ] [ --require-ssl ]</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
@@ -37,7 +37,7 @@ Specify the address of the network interface the Stardog server should bind to, 
 </div>
 <div class="row">
 <div class="span8 offset2">
-Disable security flag. If this flag is set, all users using HTTP will be logged in as the user 'anonymous'.</div>
+Disable security flag. If this flag is set, security for the server is completely disabled.</div>
 </div>
 <div class="row">
 <div class="span8 offset1">
@@ -108,7 +108,7 @@ Require SSL for the server; client connections which do not use SSL will be imme
 <br/>
 <div class="row">
 <div class="span8 offset1">
-By default, the server answers SNARL and HTTP protocols on port 5820.A different port for the server can be specified with the --port option. The HTTP interface may be disabled entirely using --no-http. The disable security flag will cause all actions performed over HTTP to be performed as the anonymous user; security is not disabled per se, and continues to function normally for the SNARL server. This option is intended for public SPARQL endpoint hosting where users are not required to have login credentials to access the endpoint.</div>
+By default, the server answers SNARL and HTTP protocols on port 5820.A different port for the server can be specified with the --port option. The HTTP interface may be disabled entirely using --no-http.</div>
 </div>
 <br/>
 <h1 class="text-info">EXAMPLES</h1>
