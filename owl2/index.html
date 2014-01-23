@@ -336,9 +336,9 @@ axioms for every inference:</p>
 but, using the SNARL API, it is easy to create a tree widget
 in a GUI to show the explanation tree, such that users can expand and
 collapse details in the explanation.</p>
-<p>Another feature of proof trees is the ability to merge multiple 
-explanations into a single proof tree with multiple branches when 
-explanations have common statements. Consider the following example 
+<p>Another feature of proof trees is the ability to merge multiple
+explanations into a single proof tree with multiple branches when
+explanations have common statements. Consider the following example
 database:</p>
 <pre class="highlighted"><code class="sparql"><span class="comment">#schema
 </span><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
@@ -347,52 +347,38 @@ database:</p>
 <span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span>
 <span class="uri">:ResearchProject</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Project</span>
 <span class="uri">:projectID</span> <span class="uri">rdfs:domain</span> <span class="uri">:Project</span>
+
 <span class="comment"># instance data
 </span><span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span>
 <span class="uri">:Alice</span> <span class="uri">:manages</span> <span class="uri">:ProjectX</span>
 <span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:ResearchProject</span>
 <span class="uri">:ProjectX</span> <span class="uri">:projectID</span> <span class="string">"123-45-6789"</span></code></pre>
-<p>In this database, there are three different unique explanations 
-for the inference <code>:Alice rdf:type :Employee</code>. The triples
-in each explanation is hown in the following table:</p>
-<table>
-<tr>
-<td>Explanation 1</td><td>Explanation 2</td><td>Explanation 3</td>
-</tr>
-<tr>
-<td>
-<code>sparql
-:Manager rdfs:subClassOf :Employee
-:ProjectManager rdfs:subClassOf :Manager
-:supervises rdfs:domain :Manager
-:Alice :supervises :Bob</code>
-</td>
-<td>
-<code>sparql
-:Manager rdfs:subClassOf :Employee
-:ProjectManager rdfs:subClassOf :Manager
-:ProjectManager owl:equivalentClass (:manages some :Project)
-:ResearchProject rdfs:subClassOf :Project
-:Alice :manages :ProjectX
-:ProjectX a :ResearchProject</code>
-</td>
-<td>
-<code>sparql
-:Manager rdfs:subClassOf :Employee
-:ProjectManager rdfs:subClassOf :Manager
-:ProjectManager owl:equivalentClass (:manages some :Project)
-:projectID rdfs:domain :Project
-:Alice :manages :ProjectX
-:ProjectX :projectID "123-45-6789"</code>
-</td>
-</tr>
-</table> 
-
-<p>Note that, all three explanations have some triples in common but
-when explanations are retrieved separately it is hard to see how
+<p>In this database, there are three different unique explanations
+for the inference <code>:Alice rdf:type :Employee</code>:</p>
+<h5>Explanation 1</h5>
+<pre class="highlighted"><code class="sparql"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:ProjectManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+<span class="uri">:supervises</span> <span class="uri">rdfs:domain</span> <span class="uri">:Manager</span>
+<span class="uri">:Alice</span> <span class="uri">:supervises</span> <span class="uri">:Bob</span></code></pre>
+<h5>Explanation 2</h5>
+<pre class="highlighted"><code class="sparql"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:ProjectManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+<span class="uri">:ProjectManager</span> <span class="uri">owl:equivalentClass</span> (<span class="uri">:manages</span> some <span class="uri">:Project</span>)
+<span class="uri">:ResearchProject</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Project</span>
+<span class="uri">:Alice</span> <span class="uri">:manages</span> <span class="uri">:ProjectX</span>
+<span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:ResearchProject</span></code></pre>
+<h5>Explanation 3</h5>
+<pre class="highlighted"><code class="sparql"><span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
+<span class="uri">:ProjectManager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Manager</span>
+<span class="uri">:ProjectManager</span> <span class="uri">owl:equivalentClass</span> (<span class="uri">:manages</span> some <span class="uri">:Project</span>)
+<span class="uri">:projectID</span> <span class="uri">rdfs:domain</span> <span class="uri">:Project</span>
+<span class="uri">:Alice</span> <span class="uri">:manages</span> <span class="uri">:ProjectX</span>
+<span class="uri">:ProjectX</span> <span class="uri">:projectID</span> <span class="string">"123-45-6789"</span></code></pre>
+<p>All three explanations have some triples in common; but
+when explanations are retrieved separately, it is hard to see how
 these explanations are related. When explanations are merged, we
 get a single proof tree where alternatives for subtrees of the
-proof are shown inline. In indented text rendering, the merged 
+proof are shown inline. In indented text rendering, the merged
 tree for the above explanations would look as follows:</p>
 <pre class="highlighted"><code class="sparql">INFERRED <span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:Employee</span>
    ASSERTED <span class="uri">:Manager</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Employee</span>
@@ -411,14 +397,14 @@ tree for the above explanations would look as follows:</p>
             ASSERTED <span class="uri">:ResearchProject</span> <span class="uri">rdfs:subClassOf</span> <span class="uri">:Project</span>
             ASSERTED <span class="uri">:ProjectX</span> <span class="uri">a</span> <span class="uri">:ResearchProject</span></code></pre>
 <p>In the merged proof tree, alternatives for an
-explanation is shown with a number id. In the above tree, 
+explanation is shown with a number id. In the above tree,
 <code>:Alice a :Manager</code> is the first inference for which we have
 multiple explanations so it gets the id <code>1</code>. Then each alternative
-explanation gets an id appended to this (so explanations <code>1.1</code> and 
+explanation gets an id appended to this (so explanations <code>1.1</code> and
 <code>1.2</code> are both alternative explanations for inference <code>1</code>). We
 also have multiple explanations for inference <code>:ProjectX a :Project</code>
 so its alternatives get ids <code>2.1</code> and <code>2.2</code>.
-Again, a tree widget in a GUI can show this proof tree in a more 
+Again, a tree widget in a GUI can show this proof tree in a more
 user-friendly way.</p>
 <h2 id="sd-User-defined-Rule-Reasoning">User-defined Rule Reasoning</h2>
 <p>Many reasoning problems may be solved with OWL‘s axiom-based approach;
@@ -660,7 +646,7 @@ predicates:</p>
 <li><code>sp:directSubPropertyOf</code></li>
 <li><code>sp:strictSubPropertyOf</code></li>
 </ul>
-<p>Where the <code>sp</code> prefix binds to <code>tag:stardog:api:property:</code>. Stardog also recognizes <code>sesame:directType</code>, 
+<p>Where the <code>sp</code> prefix binds to <code>tag:stardog:api:property:</code>. Stardog also recognizes <code>sesame:directType</code>,
 <code>sesame:directSubClassOf</code>, and <code>sesame:strictSubClassOf</code> predicates where the prefix <code>sesame</code> binds to
 <code>http://www.openrdf.org/schema/sesame#</code>.</p>
 <p>We show what these each of these predicates means by relating them to an
@@ -687,15 +673,15 @@ equivalent triple pattern; that is, you can just write the predicate rather than
                                           }</code></pre>
 <p>The predicates <code>sp:directSubPropertyOf</code> and <code>sp:strictSubPropertyOf</code> are defined analogously.</p>
 <h3>New Individuals with SWRL</h3>
-<p>Stardog also supports a special predicate that extends the expressivity of SWRL rules. According to the SWLR spec, 
+<p>Stardog also supports a special predicate that extends the expressivity of SWRL rules. According to the SWLR spec,
 you can't create new individuals (i.e., new instances of classes) in a SWRL rule.</p>
-<p><strong>Note:</strong> Don‘t get hung up by the tech vocabulary here…“new individual” just means that you can’t have a rule 
+<p><strong>Note:</strong> Don‘t get hung up by the tech vocabulary here…“new individual” just means that you can’t have a rule
 that adds a new instance of some RDF or OWL class as a result of the rule firing.</p>
-<p>This restriction is well-motivated as it can easily cause rules to be non-terminating, that is, they never reach 
+<p>This restriction is well-motivated as it can easily cause rules to be non-terminating, that is, they never reach
 a fixed point, which causes big problems. Stardog's user-defined rules weakens this restriction in some crucial
 aspects, subject to the following restrictions, conditions, and warnings.</p>
 <p><strong>This special predicate is basically a loaded gun with which you may shoot yourselves in the foot if you aren't very careful.</strong></p>
-<p>So despite the general restriction in SWRL, in Stardog we actually can create new individuals with a rule by using 
+<p>So despite the general restriction in SWRL, in Stardog we actually can create new individuals with a rule by using
 the function <code>UUID()</code> as follows:</p>
 <pre class="highlighted"><code class="sparql"><span class="rule"><span class="keyword">IF</span> </span>{
     <span class="variable">?person</span> <span class="uri">a</span> <span class="uri">:Person</span> .
@@ -705,7 +691,7 @@ the function <code>UUID()</code> as follows:</p>
     <span class="variable">?parent</span> <span class="uri">a</span> <span class="uri">:Parent</span> .
 }</code></pre>
 <p><strong>Note:</strong> Alternatively, we can use the predicate <code>&lt;http://www.w3.org/ns/sparql#UUID&gt;</code> as a unary SWRL built-in.</p>
-<p>This rule will create a <em>random</em> URI for each instance of the class <code>:Person</code> and also assert that each new instance 
+<p>This rule will create a <em>random</em> URI for each instance of the class <code>:Person</code> and also assert that each new instance
 is an instance of <code>:Parent</code>.</p>
 <h4>Remarks</h4>
 <ul>
