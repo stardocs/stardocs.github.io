@@ -361,7 +361,7 @@ milliseconds,connections may idle before being automatically closed
 by the server.</li>
 <li><code>http.max.connections</code>: The next two parameters control the maximum
 number of simultaneous connections for a client; for more
-information, see the <a href="%20http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">relevant Apache
+information, see the <a href="http://hc.apache.org/httpcomponents-client-ga/tutorial/html/connmgmt.html">relevant Apache
 docs</a>.</li>
 <li><code>http.max.get.query.length</code>: The length in characters of the longest
 SPARQL query that will be serialized via HTTP <code>GET</code>; queries longer
@@ -377,6 +377,19 @@ identifiers, and multiple files may use the asame bnode idenitifers,
 and you don't want those bnodes to be smushed into a single node in
 the database, then this configuration option should be disabled (set
 to <code>FALSE</code>).</li>
+<li><p><code>load.parser.count</code>, <code>load.processor.count</code>: Determines the number of parser and
+ processor threads, respectively, to be used during bulk loading
+ of data at database creation time. The default values are <code>3</code>
+ and <code>4</code> respectively, but they may be set higher, to good effect,
+ if you have mulitcore CPUs. The former is effective only if multiple
+ input files are being processed; the latter is effective even
+ if a single file is processed as input. The heuristic for these settings is</p>
+<ul>
+<li>the value of <code>load.parser.count</code> + <code>load.processor.count</code> should neither exceed <code>10</code> nor be equal to or greater than the number of available cores</li>
+<li>the two values should be roughly equal</li>
+<li>the values don‘t have much effect unless or until you’re loading billions of triples</li>
+</ul>
+</li>
 </ol>
 <h3>Starting &amp; Stopping the Server</h3>
 <p><strong>Note</strong>: Unlike the other <code>stardog-admin</code> subcommands, starting the
