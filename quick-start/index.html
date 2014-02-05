@@ -51,7 +51,9 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <h2>Linux/Unix/OS X</h2>
+            <h2>Prerequisites</h2>
+<p>Stardog runs on Java 6, Java 7, and is entirely untested on Java 8 (YMMV). Stardog runs best on, but does not require, a 64-bit JVM and one that supports <code>sun.misc.Unsafe</code>.</p>
+<h2>Linux/Unix/OS X</h2>
 <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ <span class="keyword">export</span> STARDOG_HOME=/data/stardog</code></pre>
@@ -60,7 +62,7 @@ files will be stored) is:</p>
 <p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
 <pre class="highlighted"><code class="bash">$ cp stardog-license-key.bin <span class="variable">$STARDOG_HOME</span></code></pre>
 <p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
-process. </p>
+process.</p>
 <p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
@@ -72,7 +74,7 @@ and HTTP interfaces on port 5820.<n>That is, the server listens to one port (582
 <p>You can use the Web Console to search or query the new database you created by hitting <a href="http://localhost:5820/myDB"><a href="http://localhost:5820/myDB">http://localhost:5820/myDB</a></a> in your browser.</p>
 <p>Now, go have a drink: you&#39;ve earned it.</p>
 <h2>Windows</h2>
-<p>The following steps are carried out using the Windows command prompt which you can find under <code>Start &gt; Programs &gt; Accessories &gt; Command Prompts</code> 
+<p>The following steps are carried out using the Windows command prompt which you can find under <code>Start &gt; Programs &gt; Accessories &gt; Command Prompts</code>
 or by going to <code>Start &gt; Run</code> and typing <code>cmd</code></p>
 <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
@@ -82,7 +84,7 @@ files will be stored) is:</p>
 <pre class="highlighted"><code class="dos">&gt; <span class="keyword">COPY</span> /B stardog-license-key.bin <span class="envvar">%STARDOG_HOME%</span></code></pre>
 <p><div class="metro warning btn">NOTE</div> The <code>/B</code> is required to perform a binary copy or the license file may get corrupted.</p>
 <p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
-process. </p>
+process.</p>
 <p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
