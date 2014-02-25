@@ -28,6 +28,7 @@ com.complexible.common.util.concurrent.locks
 com.complexible.stardog.api
 com.complexible.stardog.api.admin
 com.complexible.stardog.api.impl
+com.complexible.stardog.api.reasoning
 com.complexible.stardog.api.search
 com.complexible.stardog.db
 com.complexible.stardog.empire
