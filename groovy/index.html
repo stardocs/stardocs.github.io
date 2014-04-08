@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.1.1 Docs: Programming with Groovy</title>
+  <title>Stardog 2.1.3 Docs: Programming with Groovy</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -126,8 +126,9 @@ OWL by way of Stardog.</p>
 code</a> is available on
 Github.</p>
 <p>Binary releases are available on the <a href="https://github.com/clarkparsia/stardog-groovy/releases">Github release page</a>.</p>
+<p>As of version 2.1.2, Stardog-Groovy can be included via “com.complexible.stardog:stardog-groovy:2.1.2” after installing the local jars in your M2 repo.  Using the embedded server with Stardog Groovy is not supported in 2.1.2, due to conflicts of the asm library for various third party dependencies.  If you wish to use the embedded server with similar convenience APIs, please try <a href="http://docs.stardog.com/spring/">Stardog Spring</a>. </p>
 <h2 id="sd-Overview">Overview</h2>
-<p>Groovy for Stardog 2.1 provides a set of Groovy API
+<p>Groovy for Stardog 2.1.2 provides a set of Groovy API
 wrappers for developers to build applications with Stardog and take
 advantage of native Groovy features. For example, you can create a
 Stardog connection pool in a single line, much like Groovy SQL support.
@@ -157,8 +158,7 @@ other Groovy environments, such as <a href="http://www.grails.org">Grails</a>.</
 <p>To build Groovy for Stardog, you need a release of Stardog; we use
 <a href="http://www.gradle.org/">Gradle</a> to build Stardog for Groovy. Then,</p>
 <ol>
-<li>edit <code>build.gradle</code> to point <code>stardogLocation</code> at a Stardog release
-directory;</li>
+<li>Download and run a Stardog server with a “testdb”, used for testing.</li>
 <li>run <code>gradlew build</code>, which eventually results in a
 <code>stardog-groovy.jar</code> in <code>build/libs</code>; finally,</li>
 <li><code>gradlew install</code> does a build, generates a POM, and installs the
@@ -168,7 +168,7 @@ POM in local Maven repo; alternately,</li>
 <pre class="highlighted"><code class="java">mvn install:install-file
     -DgroupId=com.clarkparsia.stardog
     -DartifactId=stardog-groovy
-    -Dversion=<span class="number">1.1</span><span class="number">.1</span>
+    -Dversion=<span class="number">2.1</span><span class="number">.2</span>
     -Dfile=stardog-groovy.jar
     -Dpackaging=jar
     -DpomFile=pom.xml</code></pre>
@@ -208,7 +208,7 @@ POM in local Maven repo; alternately,</li>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Programming with Groovy</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.1.</h4>
+                <h4>This is <span id="footer-subhead">Programming with Groovy</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.3.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.

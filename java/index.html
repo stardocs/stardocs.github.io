@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.1.1 Docs: Programming with Java</title>
+  <title>Stardog 2.1.3 Docs: Programming with Java</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -501,7 +501,7 @@ to be lazy and more interactions with the server.</p>
 <h2 id="sd-Embedded-Stardog">Embedded Stardog</h2>
 <p>In addition to the <code>url()</code> issue, the other key difference between
 client-server and embedded Stardog is, of course, Java classpath woes.
-As of Stardog 2.1.1, there is one classpath issue to watch out for: if you‘re using Jena in embedded mode, then Jena’s libraries should
+As of Stardog 2.1.3, there is one classpath issue to watch out for: if you‘re using Jena in embedded mode, then Jena’s libraries should
 be on the classpath <em>after</em> Stardog's, because of conflicting Lucene
 JARs.</p>
 <p>Please let us know if you find any other conflicts among JARs or other
@@ -563,7 +563,7 @@ still be included.</p>
 <p>The following table summarizes the type of client to be built and its
 associated stardog dependency.  The stardog dependency list below follows
 the <a href="http://www.gradle.org">Gradle</a> convention, and is of the form:
-<code>groupId:artifactId:version</code>.</p>
+<code>groupId:artifactId:version</code>.  Versions 2.1 and higher supported.</p>
 <table>
 <thead>
 <tr>
@@ -574,55 +574,55 @@ the <a href="http://www.gradle.org">Gradle</a> convention, and is of the form:
 <tbody>
 <tr>
 <td align="left">snarl client</td>
-<td align="left">com.complexible.stardog.protocols.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">http client</td>
-<td align="left">com.complexible.stardog.protocols.http:client:2.1</td>
+<td align="left">com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">reasoning snarl client</td>
-<td align="left">com.complexible.stardog.reasoning.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog.reasoning.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">reasoning http client</td>
-<td align="left">com.complexible.stardog.reasoning.http:client:2.1</td>
+<td align="left">com.complexible.stardog.reasoning.http:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">search snarl client</td>
-<td align="left">com.complexible.stardog.search.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog.search.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">search http client</td>
-<td align="left">com.complexible.stardog.search.http:client:2.1</td>
+<td align="left">com.complexible.stardog.search.http:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">icv snarl client</td>
-<td align="left">com.complexible.stardog.icv.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog.icv.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">icv http client</td>
-<td align="left">com.complexible.stardog.icv.http:client:2.1</td>
+<td align="left">com.complexible.stardog.icv.http:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">empire client</td>
-<td align="left">com.complexible.stardog:empire:2.1</td>
+<td align="left">com.complexible.stardog:empire:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">jena snarl client</td>
-<td align="left">com.complexible.stardog:jena:2.1 com.complexible.stardog.protocols.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">jena http client</td>
-<td align="left">com.complexible.stardog:jena:2.1 com.complexible.stardog.protocols.http:client:2.1</td>
+<td align="left">com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">sesame snarl client</td>
-<td align="left">com.complexible.stardog:sesame:2.1 com.complexible.stardog.protocols.snarl:client:2.1</td>
+<td align="left">com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
 </tr>
 <tr>
 <td align="left">sesame http client</td>
-<td align="left">com.complexible.stardog:sesame:2.1 com.complexible.stardog.protocols.http:client:2.1</td>
+<td align="left">com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
 </tr>
 </tbody>
 </table>
@@ -647,7 +647,7 @@ the <a href="http://www.gradle.org">Gradle</a> convention, and is of the form:
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Programming with Java</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.1.</h4>
+                <h4>This is <span id="footer-subhead">Programming with Java</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.3.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
