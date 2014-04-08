@@ -165,8 +165,6 @@ wrapped with Clojure functions and idiomatic Clojure data structures.</p>
 <dd>Creates a data source, i.e. ConnectionPool, using the database spec.  Best used within the <code>with-connection-pool</code> macro.</dd>
 <dt><code>(with-transaction [connection...] body)</code></dt>
 <dd>Executes the body with a transaction on each of the connections.</dd>
-<dt><code>(with-transaction [connection...] body)</code></dt>
-<dd>Executes the body with a transaction on each of the connections.</dd>
 <dt><code>(with-connection-tx binding-forms body)</code></dt>
 <dd>Establishes a connection and a transaction to execute the body within.</dd>
 <dt><code>(with-connection-pool [con pool] .. con, body ..)</code></dt>
