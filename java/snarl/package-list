@@ -16,6 +16,7 @@ com.complexible.common.net
 com.complexible.common.net.ssl
 com.complexible.common.netty.codec
 com.complexible.common.netty.codec.http
+com.complexible.common.openrdf.query
 com.complexible.common.openrdf.util
 com.complexible.common.pool
 com.complexible.common.primitives
