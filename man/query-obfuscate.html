@@ -18,14 +18,14 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog query obfuscate [ -c, --config &lt;obfuscation configuration&gt; ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-r | --reasoning} &lt;level&gt; ] [ {-u | --username} &lt;username&gt; ] [--] &lt;database&gt; &lt;query&gt;...</div>
+stardog query obfuscate [ {-c | --config} &lt;obfuscation configuration&gt; ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-r | --reasoning} &lt;level&gt; ] [ {-u | --username} &lt;username&gt; ] [--] &lt;database&gt; &lt;query&gt;...</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
 <br/>
 <div class="row">
 <div class="span8 offset1">
--c, --config &lt;obfuscation configuration&gt;</div>
+-c &lt;obfuscation configuration&gt;, --config &lt;obfuscation configuration&gt;</div>
 </div>
 <div class="row">
 <div class="span8 offset2">
@@ -86,7 +86,7 @@ The name of the database or the full connection string of the database to connec
 <br/>
 <div class="row">
 <div class="span8 offset1">
-Obfuscates the given query by replacing replacing all variables, URIs, bnodes, and string literals using a message digest algorithm. This command works in conjunction with the commands 'data obfuscate' such that the queiesobfuscated with this command can be executed over the obfuscated RDF provided that both comands use the same configruation</div>
+Obfuscates the given query by replacing all variables, URIs, bnodes, and string literals using a message digest algorithm. This command works in conjunction with the command 'data obfuscate' such that the queries obfuscated with this command can be executed over the obfuscated RDF provided that both commands use the same configuration.</div>
 </div>
 <br/>
 <h1 class="text-info">EXAMPLES</h1>

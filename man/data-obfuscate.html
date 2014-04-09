@@ -18,14 +18,14 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog data obfuscate [ -c, --config &lt;obfuscation configuration&gt; ] [ {-f | --format} &lt;RDF Format&gt; ] [ {-g | --named-graph} &lt;export graph&gt; ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-u | --username} &lt;username&gt; ] [--] &lt;dbname&gt; &lt;export file&gt;...</div>
+stardog data obfuscate [ {-c | --config} &lt;obfuscation configuration&gt; ] [ {-f | --format} &lt;RDF Format&gt; ] [ {-g | --named-graph} &lt;export named graph(s)&gt;... ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-s | --server-side} ] [ {-u | --username} &lt;username&gt; ] [--] &lt;dbname&gt; &lt;export file&gt;...</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
 <br/>
 <div class="row">
 <div class="span8 offset1">
--c, --config &lt;obfuscation configuration&gt;</div>
+-c &lt;obfuscation configuration&gt;, --config &lt;obfuscation configuration&gt;</div>
 </div>
 <div class="row">
 <div class="span8 offset2">
@@ -41,11 +41,11 @@ RDF Format [NTRIPLES, RDF/XML, TURTLE, TRIG, TRIX, N3, NQUADS] for the exported 
 </div>
 <div class="row">
 <div class="span8 offset1">
--g &lt;export graph&gt;, --named-graph &lt;export graph&gt;</div>
+-g &lt;export named graph(s)&gt;, --named-graph &lt;export named graph(s)&gt;</div>
 </div>
 <div class="row">
 <div class="span8 offset2">
-Named graph to export.</div>
+Named graph(s) to export.  Multiple options are separated by whitespaces, e.g., '-g "urn:context1 urn:context2"'. The keyword ALL can be used if all named graphs in the db are desired, and the keyword DEFAULT can be used to export the default graph. When used as the last option, values should be followed by '--' to denote the end of the named graphs."</div>
 </div>
 <div class="row">
 <div class="span8 offset1">
@@ -62,6 +62,14 @@ Password.</div>
 <div class="row">
 <div class="span8 offset2">
 Prompt for password.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-s, --server-side</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Export the data to the server</div>
 </div>
 <div class="row">
 <div class="span8 offset1">
@@ -94,7 +102,7 @@ The name of the database or the full connection string of the database to connec
 <br/>
 <div class="row">
 <div class="span8 offset1">
-Exports RDF data from a database similar to the export command but obfuscates the contents of the RDF by replacing all URIs, bnodes, and string literals using a message digest algorithm. Non-string typed literals (integers, floats, dates, etc.) are left unchanged. The obfuscation is guided by a configuration file. Configuration can specify which URIs and strings will be obfuscated by defining inclusion and exclusion filters.</div>
+Exports RDF data from a database similar to the export command but obfuscates the contents of the RDF by replacing all URIs, bnodes, and string literals using a message digest algorithm. Non-string typed literals (integers, floats, dates, etc.) are left unchanged. The obfuscation is guided by a configuration file. Configurations can specify which URIs and strings will be obfuscated by defining inclusion and exclusion filters.</div>
 </div>
 <br/>
 <h1 class="text-info">EXAMPLES</h1>
@@ -112,7 +120,7 @@ Obfuscate a named graph of the database 'myDb' as TRIG:</p>
 <p>
 Obfuscate the database 'myDb' using a custom configuration and output to a file in TURTLE:</p>
 <pre>
-    $ stardog data obfuscate myDb export.ttl</pre>
+    $ stardog data obfuscate --config my_config.ttl myDb export.ttl</pre>
 </div>
 </div>
 </body>
