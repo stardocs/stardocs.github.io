@@ -78,6 +78,21 @@
     
     <!-- [data-target='-->
         <li>
+            <a href="#sd-Versioning-t-new22--t-" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Versioning-t-new22--t-">
+            <strong>Versioning new22</strong>
+        </a>
+        <!-- <li><a href="#sd-Versioning-t-new22--t-" class="skiplink">Versioning new22</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
             <a href="#sd-Exporting" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Exporting">
             <strong>Exporting</strong>
         </a>
@@ -166,7 +181,7 @@ on its <a href="/man/query-execute.html"><code>man</code> page</a>.</p>
 <thead>
 <tr>
 <th>Prefix</th>
-<th>Namespace                               </th>
+<th>Namespace</th>
 </tr>
 </thead>
 <tbody>
@@ -197,7 +212,7 @@ on its <a href="/man/query-execute.html"><code>man</code> page</a>.</p>
 <thead>
 <tr>
 <th align="left">Function name</th>
-<th align="left">Recognized URIs          </th>
+<th align="left">Recognized URIs</th>
 </tr>
 </thead>
 <tbody>
@@ -516,6 +531,16 @@ encounter parse errors from which it cannot recover. And loading data in
 lax mode may lead to unexpected SPARQL query results. For example,
 malformed literals (<code>"2.5"^^xsd:int</code>) used in filter evaluation may lead
 to undesired results.</p>
+<h2 id="sd-Versioning-t-new22--t-">Versioning new22</h2>
+<p>Stardog supports database change management capability similar to popular version
+controls systems for source code. This capability lets users track changes between
+revisions of a Stardog database, add comments and other metadata to the revisions,
+extract diffs between those revisions, tag revisions
+with labels, and query over the revision history of the database using SPARQL.</p>
+<h3>Committing Changes</h3>
+<h3>Tagging Revisions</h3>
+<h3>Reverting Revisions</h3>
+<h3>Querying the Revision History</h3>
 <h2 id="sd-Exporting">Exporting</h2>
 <p>To export data from a Stardog database back to RDF,
 <a href="/docs/man/data-export.html">export</a> is used by specifying—</p>
@@ -544,10 +569,10 @@ and contexts.</p>
 <p>We use the predicate <code>http://jena.hpl.hp.com/ARQ/property#textMatch</code> to
 access the search index in a SPARQL query.</p>
 <p>For example,</p>
-<pre class="highlighted"><code class="bash">SELECT DISTINCT ?s ?score 
+<pre class="highlighted"><code class="bash">SELECT DISTINCT ?s ?score
 WHERE {
 ?s ?p ?l.
-( ?l ?score ) &lt;http://jena.hpl.hp.com/ARQ/property<span class="comment">#textMatch&gt; ( 'mac' 0.5 50 ). </span>
+( ?l ?score ) &lt;http://jena.hpl.hp.com/ARQ/property<span class="comment">#textMatch&gt; ( 'mac' 0.5 50 ).</span>
 }</code></pre>
 <p>This query selects the top 50 literals, and their scores, which match
 ‘mac’ and whose scores are above a threshold of 0.5. These literals are
@@ -594,7 +619,7 @@ docs</a>.</p>
 <p>When sharing sensitive RDF data with others, you might want to (selectively) obfuscate it so that sensitive bits are not present, but non-sensitive bits remain. For example, this feature can be used to submit Stardog bug reports using sensitive data.</p>
 <p>Data obfuscation works much the same way as the <code>export</code> command and supports the same set of arguments:</p>
 <pre class="highlighted"><code class="bash">$ stardog data obfuscate myDatabase obfDatabase.ttl</code></pre>
-<p>By default, all URIs, bnodes, and string literals in the database will be obfuscated using the SHA256 message digest algorithm. Non-string typed literals (numbers, dates, etc.) are left unchanged as well as URIs from built-in namespaces RDF, RDFS, and OWL. It is possible to customize obfuscation by providing a configuration file. </p>
+<p>By default, all URIs, bnodes, and string literals in the database will be obfuscated using the SHA256 message digest algorithm. Non-string typed literals (numbers, dates, etc.) are left unchanged as well as URIs from built-in namespaces RDF, RDFS, and OWL. It is possible to customize obfuscation by providing a configuration file.</p>
 <pre class="highlighted"><code class="bash">$ stardog data obfuscate --config obfConfig.ttl myDatabase  obfDatabase.ttl</code></pre>
 <p>The configuration specifies which URIs and strings will be obfuscated by defining inclusion and exclusion filters. See the example configuration file provided in the distribution for details.</p>
 <p>Once the data is obfuscated, queries written against the original data will no longer work. Stradog provides query obfuscation capability, too, so that queries can be executed against the obfuscated data. If a custom configuration file is used to obfuscate the data, then the same configuration should be used for obfuscating the queries as well:</p>
