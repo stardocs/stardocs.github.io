@@ -34,6 +34,7 @@ com.complexible.stardog.api.search
 com.complexible.stardog.db
 com.complexible.stardog.empire
 com.complexible.stardog.icv
+com.complexible.stardog.icv.api
 com.complexible.stardog.index
 com.complexible.stardog.jena
 com.complexible.stardog.metadata
