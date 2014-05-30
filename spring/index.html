@@ -149,12 +149,18 @@
           <div id="mdblock">
             <p>The Spring for Stardog <a href="http://github.com/clarkparsia/stardog-spring">source code</a> is available on Github.</p>
 <p>Binary releases are available on the <a href="https://github.com/clarkparsia/stardog-spring/releases">Github release page</a>.</p>
+<p>As of 2.1.3, Stardog-Spring and Stardog-Spring-Batch can both be retrieved from Maven central:</p>
+<ul>
+<li><code>com.complexible.stardog:stardog-spring:2.1.3</code></li>
+<li><code>com.complexible.stardog:stardog-spring-batch:2.1.3</code></li>
+</ul>
 <h2 id="sd-Overview">Overview</h2>
 <p>Spring for Stardog makes it possible to rapidly build Stardog-backed applications with the Spring Framework. As with many other parts of Spring, Stardog's Spring
 integration uses the template design pattern for abstracting standard
 boilerplate away from application developers.</p>
-<p>Stardog Spring can be included via Maven with “com.complexible.stardog:stardog-spring:2.1.2”, 
-after running the local Maven install.  Embedded server is still supported, but via providing an implementatino of the Provider interface.<br>This enables users of the embedded server to have full control over how to use the embedded server.   </p>
+<p>Stardog Spring can be included via Maven with “com.complexible.stardog:stardog-spring:version” and “com.complexible.stardog:stardog-spring-batch” for Spring Batch support.  Both of these dependencies require the local “mavenInstall” script be run,
+and the Stardog Spring packages installed in Maven.  Embedded server is still supported, but via providing an implementatino of the Provider interface.
+This enables users of the embedded server to have full control over how to use the embedded server.</p>
 <p>At the lowest level, Spring for Stardog includes</p>
 <ol>
 <li><code>DataSouce</code> and <code>DataSourceFactoryBean</code> for managing Stardog
@@ -193,7 +199,7 @@ POM in local Maven repo; alternately,</li>
       <span class="attribute">-DpomFile</span>=pom.xml</code></pre>
 </li>
 </ul>
-<p>Note: The stardogLocation and “fileTree” dependency is included in development of Stardog Spring, as a local embedded server is used for automated testing.</p>
+<p>Note: The stardogLocation and “fileTree” dependency is included in development of Stardog Spring, as a local embedded server is used for automated testing.  Before running the build, you should edit the “CHANGE” areas in teh build file to point to your local Stardog instance.  See the README on the respective Github projects for more details.</p>
 <h2 id="sd-Basic-Spring">Basic Spring</h2>
 <p>There are three Beans to add to a Spring application context:</p>
 <ul>

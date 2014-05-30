@@ -48,6 +48,21 @@
     
     <!-- [data-target='-->
         <li>
+            <a href="#sd-Installation" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Installation">
+            <strong>Installation</strong>
+        </a>
+        <!-- <li><a href="#sd-Installation" class="skiplink">Installation</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
             <a href="#sd-Overview" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Overview">
             <strong>Overview</strong>
         </a>
@@ -132,9 +147,12 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <p><a href="http://clojure.org">Clojure</a> is a Lisp for the JVM. Stardog's Clojure support makes life easier for developers who need to work with RDF, SPARQL, and OWL from Clojure. The Stardog-clj <a href="http://github.com/clarkparsia/stardog-clj">source code</a> is available on
+            <p><a href="http://clojure.org">Clojure</a> is a Lisp for the JVM. Stardog's Clojure support makes life easier for developers who need to work with RDF, SPARQL, and OWL by way of Stardog from Clojure. The Stardog-clj <a href="http://github.com/clarkparsia/stardog-clj">source
+code</a> is available on
 Github and licensed under the Apache 2.0 license.</p>
-<p>For version 0.1.0, installation is done by building and running a local “lein install” or the artifact.  Future versions will be available in Clojars.</p>
+<h2 id="sd-Installation">Installation</h2>
+<p>Stardog-clj is available from Clojars.  To use, just include the following dependency:</p>
+<pre class="highlighted"><code class="json">[stardog-clj <span class="string">"0.3.0"</span>]</code></pre>
 <h2 id="sd-Overview">Overview</h2>
 <p>Stardog-clj provides a set of functions as API wrappers to the native
 SNARL API.  These functions provide the basis for working with Stardog,
@@ -212,6 +230,17 @@ wrapped with Clojure functions and idiomatic Clojure data structures.</p>
 
 <h3>Run a query with a connection pool</h3>
 <script src="https://gist.github.com/10041003.js?file=StardogPool.clj"></script>
+
+
+<h3>SPARQL Update Example</h3>
+<script src="https://gist.github.com/11130645.js?file=StardogUpdate.clj"></script>
+
+
+<h3>Graph function for Construct queries</h3>
+<script src="https://gist.github.com/11130603.js?file=StardogGraph.clj"></script>
+
+<h3>Ask function for ASK queries</h3>
+<script src="https://gist.github.com/11130618.js?file=StardogAsk.clj"></script>
           </div>
           <div class="hidden" id="footnote-container">
             <h2>Notes</h2>

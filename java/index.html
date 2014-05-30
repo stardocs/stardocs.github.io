@@ -229,10 +229,10 @@ and
 <a href="../java/snarl/com/complexible/stardog/api/admin/AdminConnection.html#disk("><code>disk</code></a>)
 functions to configure and create a database in any way you prefer.
 These methods return
-<a href="../java/snarl/com/complexible/stardog/DatabaseBuilder.html"><code>DatabaseBuilder</code></a>
+<a href="../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html"><code>DatabaseBuilder</code></a>
 objects which you can use to configure the options of the database you'd
 like to create. Finally, the
-<a href="../java/snarl/com/complexible/stardog/DatabaseBuilder.html#create("><code>create</code></a>)
+<a href="../java/snarl/com/complexible/stardog/api/admin/DatabaseBuilder.html#create("><code>create</code></a>)
 method takes the list of files to bulk load into the database when you
 create it and returns a valid
 <a href="../java/snarl/com/complexible/stardog/api/ConnectionConfiguration.html"><code>ConnectionConfiguration</code></a>
@@ -574,55 +574,55 @@ the <a href="http://www.gradle.org">Gradle</a> convention, and is of the form:
 <tbody>
 <tr>
 <td align="left">snarl client</td>
-<td align="left">com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.protocols.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">http client</td>
-<td align="left">com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.protocols.http:client:version</td>
 </tr>
 <tr>
 <td align="left">reasoning snarl client</td>
-<td align="left">com.complexible.stardog.reasoning.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.reasoning.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">reasoning http client</td>
-<td align="left">com.complexible.stardog.reasoning.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.reasoning.http:client:version</td>
 </tr>
 <tr>
 <td align="left">search snarl client</td>
-<td align="left">com.complexible.stardog.search.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.search.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">search http client</td>
-<td align="left">com.complexible.stardog.search.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.search.http:client:version</td>
 </tr>
 <tr>
 <td align="left">icv snarl client</td>
-<td align="left">com.complexible.stardog.icv.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.icv.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">icv http client</td>
-<td align="left">com.complexible.stardog.icv.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog.icv.http:client:version</td>
 </tr>
 <tr>
 <td align="left">empire client</td>
-<td align="left">com.complexible.stardog:empire:@@VERSION@@</td>
+<td align="left">com.complexible.stardog:empire:version</td>
 </tr>
 <tr>
 <td align="left">jena snarl client</td>
-<td align="left">com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog:jena:version   com.complexible.stardog.protocols.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">jena http client</td>
-<td align="left">com.complexible.stardog:jena:@@VERSION@@   com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog:jena:version   com.complexible.stardog.protocols.http:client:version</td>
 </tr>
 <tr>
 <td align="left">sesame snarl client</td>
-<td align="left">com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.snarl:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog:sesame:version com.complexible.stardog.protocols.snarl:client:version</td>
 </tr>
 <tr>
 <td align="left">sesame http client</td>
-<td align="left">com.complexible.stardog:sesame:@@VERSION@@ com.complexible.stardog.protocols.http:client:@@VERSION@@</td>
+<td align="left">com.complexible.stardog:sesame:version com.complexible.stardog.protocols.http:client:version</td>
 </tr>
 </tbody>
 </table>

@@ -206,7 +206,7 @@ for a particular command group, just ask for help:</p>
 <li>metadata: get, set;</li>
 <li>user: add, drop, edit, grant, list, permission, revoke, passwd;</li>
 <li>role: add, drop, grant, list, permission, revoke;</li>
-<li>db: copy, create, drop, migrate, optimize, list, online, offline.</li>
+<li>db: backup, copy, create, drop, migrate, optimize, list, online, offline, repair, restore, status.</li>
 </ul>
 <p>The main help command for either CLI tool will print a listing of the
 command groups:</p>
@@ -810,7 +810,7 @@ repair argument. If an I/O error or an index exception occurs while querying a D
 <pre class="highlighted"><code class="bash">$ stardog-admin db repair system</code></pre>
 <h3>Backing Up and Restoring</h3>
 <p>Stardog includes both physical and logical backup utilities; logical backups are accomplished using the <code>export</code> CLI command. Physical backups and restores are accomplished using <code>stardog-admin db backup</code> and <code>stardog-admin db restore</code> respectively. These tools perform physical backups, including database metadata, rather than logical backups via some RDF serialization. They are <em>native</em> Stardog backups and can only be restored with Stardog tools. Backup may be accomplished while a database is online; backup is performed in a read transaction: reads and writes may continue, but writes performed during the backup are not reflected in the backup.</p>
-<p>See the man pages for (<code>backup</code>)[/man/db-backup.html] and (<code>restore</code>)[/man/db-restore.html] for details.</p>
+<p>See the man pages for <a href="/man/db-backup.html"><code>backup</code></a> and <a href="/man/db-restore.html"><code>restore</code></a> for details.</p>
 <h4>Backup</h4>
 <p><code>stardog-admin db backup</code> assumes a default location for its output, namely, <code>$STARDOG_HOME/.backup</code>; that default may be overriden by passing a <code>-t</code> or <code>--to</code> argument. Backup sets are stored in the backup directory by database name and then in data-versioned subdirectories for each backup volume. Of course you can use a variety of OS-specific options to accomplish remote backups over some network or data protocol; those options are left as an exercise for the admin.</p>
 <p>To backup a Stardog database called <code>foobar</code>:</p>
@@ -927,7 +927,7 @@ order to be dropped.</p>
 <p>Stardog supports integrity constraint validation as a data quality
 mechanism via closed world reasoning. Constraints can be specified in
 OWL, SWRL, and SPARQL.</p>
-<p>Please see the <a href="../sdp">ICV chapter</a> for more about using ICV in Stardog
+<p>Please see the <a href="../icv">ICV chapter</a> for more about using ICV in Stardog
 programmatically.</p>
 <p>The CLI <code>icv</code> subcommand can be used to add, delete, or drop all
 constraints from an existing database. It may also be used to validate
@@ -950,12 +950,12 @@ carefully to see whether migration is required or possible.</p>
 <p>You can get some information about a database (online/offline status,
 creation time, last modification time, etc.) by running the following
 command:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin get my_db_name</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin metadata get my_db_name</code></pre>
 <p>This will return all the metadata stored about the database, including
 the values of configuration options used for this database instance. If
 you want to get the value for a specific option then you can run the
 following command:</p>
-<pre class="highlighted"><code class="bash">$ stardog-admin get -o index.named.graphs my_db_name</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog-admin metadata get -o index.named.graphs my_db_name</code></pre>
 <h3>Managing Queries</h3>
 <p>Stardog includes the capability to manage running queries according to
 configurable policies set at run-time; this capability includes support

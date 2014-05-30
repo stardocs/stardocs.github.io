@@ -208,13 +208,13 @@ integration model, mapping rules, etc with SPARQL</li>
 <p>And, finally, the <a href="https://gist.github.com/evren/5612900">full Gist with links to everything</a>. In the rest of this chapter, we explain in more detail about programmatic access, as well as give a full slate of examples of ICV in action.</p>
 <h2 id="sd-ICV-amp--OWL-2-Reasoning">ICV &amp; OWL 2 Reasoning</h2>
 <p><strong>An integrity constraint may be satisfied or violated in either of two
-ways: by an explicit statement in a Stardog database or by a statement that's been legally inferred by Stardog (because a user requested reasoning).</strong> </p>
+ways: by an explicit statement in a Stardog database or by a statement that's been legally inferred by Stardog (because a user requested reasoning).</strong></p>
 <p>This means that when ICV is enabled for a Stardog database, it has to be enabled with respect to a reasoning type (which we sometimes call in the Stardog Docs a “reasoning level”). The valid choices of reasoning type are any type or kind of reasoning supported by Stardog. See <a href="/owl2#reasoning-levels">Stardog's reasoning &amp; inference chapter</a> for more.</p>
-<p>The implication is that ICV is performed with three inputs: </p>
+<p>The implication is that ICV is performed with three inputs:</p>
 <ol>
-<li>a Stardog database, </li>
-<li>a set of constraints, and </li>
-<li>a reasoning type (which may be, of course, no reasoning). </li>
+<li>a Stardog database,</li>
+<li>a set of constraints, and</li>
+<li>a reasoning type (which may be, of course, no reasoning).</li>
 </ol>
 <p>This is the case because domain modelers, ontology developers, or integrity constraint authors must consider the interactions between explicit and inferred statements and how these are accounted for in integrity constraints.</p>
 <h3>Security Implications <div class="metro danger label">Security Notice</div></h3>
@@ -243,7 +243,7 @@ the following examples and is also distributed with Stardog.</p>
 <h5>Database B <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Alice</span> <span class="uri">a</span> <span class="uri">:Manager</span> , <span class="uri">:Employee</span> .</code></pre>
 <p>This constraint says that if an RDF individual is an instance of
-<code>Manager</code>, then it must also be an instance of <code>Employee</code>. In 
+<code>Manager</code>, then it must also be an instance of <code>Employee</code>. In
 A, the only instance of <code>Manager</code>, namely <code>Alice</code>, is not an instance of
 <code>Employee</code>; therefore, A is invalid. In B, <code>Alice</code> is an instance of
 Database both <code>Manager</code> and <code>Employee</code>; therefore, B is valid.</p>
@@ -265,7 +265,7 @@ properties.</p>
     <span class="uri">:is_responsible_for</span> <span class="uri">:MyProject</span> .
 
 <span class="uri">:MyProject</span> <span class="uri">a</span> <span class="uri">:Project</span> .</code></pre>
-<p>This constraint says that if two RDF instances are related to each other via the property <code>is_responsible_for</code>, then 
+<p>This constraint says that if two RDF instances are related to each other via the property <code>is_responsible_for</code>, then
 the range instance must be an instance of <code>Project_Leader</code> and the domain instance must be an instance of
 <code>Project</code>. In Database A, there is only one pair of individuals related
 via <code>is_responsible_for</code>, namely <code>(Alice, MyProject)</code>, and <code>MyProject</code>
@@ -327,7 +327,7 @@ in some specified relationship.</p>
 <span class="uri">:Bob</span> <span class="uri">a</span> <span class="uri">:Employee</span></code></pre>
 <p>This constraint says that if an RDF instance <code>i</code> is of type
 <code>Supervisor</code>, then <code>i</code> must be related to an individual <code>j</code> via the
-property <code>supervises</code> and also that <code>j</code> must be an instance of <code>Employee</code>. 
+property <code>supervises</code> and also that <code>j</code> must be an instance of <code>Employee</code>.
 In A, <code>Supervisor</code> has no instances; therefore, A is trivially
 valid. In B, the only instance of <code>Supervisor</code>, namely <code>Alice</code>, is
 related to no individual; therefore, B is invalid. In C, <code>Alice</code> is
@@ -387,7 +387,7 @@ property values.</p>
               [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                 <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span>;
                 <span class="uri">owl:maxQualifiedCardinality</span> <span class="string">"3"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
-                <span class="uri">owl:onClass</span> <span class="uri">:Project</span> 
+                <span class="uri">owl:onClass</span> <span class="uri">:Project</span>
               ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:Bob</span> <span class="uri">a</span> <span class="uri">owl:Thing</span>.</code></pre>
@@ -425,7 +425,7 @@ via <code>works_on</code>.</p>
               [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                 <span class="uri">owl:onProperty</span> [<span class="uri">owl:inverseOf</span> <span class="uri">:works_in</span>] ;
                 <span class="uri">owl:minQualifiedCardinality</span> <span class="string">"2"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
-                <span class="uri">owl:onClass</span> <span class="uri">:Employee</span> 
+                <span class="uri">owl:onClass</span> <span class="uri">:Employee</span>
               ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyDepartment</span> <span class="uri">a</span> <span class="uri">owl:NamedIndividual</span> .</code></pre>
@@ -445,13 +445,13 @@ via <code>works_on</code>.</p>
 <p>This constraint says that if an RDF instance <code>i</code> is a <code>Department</code>, then
 there should exist at least 2 instances <code>j</code> and <code>k</code> of class <code>Employee</code>
 which are related to <code>i</code> via the property <code>works_in</code> (or, equivalently,
-<code>i</code> should be related to them via the inverse of <code>works_in</code>). In A, 
+<code>i</code> should be related to them via the inverse of <code>works_in</code>). In A,
 <code>MyDepartment</code> is not known to be an instance
-of <code>Department</code> so the constraint does not apply. In B, <code>MyDepartment</code> 
+of <code>Department</code> so the constraint does not apply. In B, <code>MyDepartment</code>
 is an instance of <code>Department</code> but only one
 instance of <code>Employee</code>, namely <code>Bob</code>, is known to work in it, so the
 B is invalid. In C, <code>MyDepartment</code> is related to the individuals
-<code>Bob</code> and <code>Alice</code>, which are both instances of <code>Employee</code> and 
+<code>Bob</code> and <code>Alice</code>, which are both instances of <code>Employee</code> and
 (again, due to weak Unique Name Assumption in Stardog  ICV), are
 assumed to be distinct, so C is valid.</p>
 <h4>Managers must manage exactly 1 department.</h4>
@@ -463,7 +463,7 @@ assumed to be distinct, so C is valid.</p>
               [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                 <span class="uri">owl:onProperty</span> <span class="uri">:manages</span> ;
                 <span class="uri">owl:qualifiedCardinality</span> <span class="string">"1"</span>^^<span class="uri">xsd:nonNegativeInteger</span> ;
-                <span class="uri">owl:onClass</span> <span class="uri">:Department</span> 
+                <span class="uri">owl:onClass</span> <span class="uri">:Department</span>
               ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql">    Individual: Isabella</code></pre>
@@ -570,17 +570,17 @@ department.</p>
               [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                 <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span> ;
                 <span class="uri">owl:someValuesFrom</span>
-                        [ <span class="uri">owl:unionOf</span> (<span class="uri">:Project</span> 
+                        [ <span class="uri">owl:unionOf</span> (<span class="uri">:Project</span>
                                       [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                                         <span class="uri">owl:onProperty</span> <span class="uri">:supervises</span> ;
                                         <span class="uri">owl:someValuesFrom</span>
-                                              [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span> 
+                                              [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span>
                                                                     [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                                                                       <span class="uri">owl:onProperty</span> <span class="uri">:works_on</span> ;
                                                                       <span class="uri">owl:someValuesFrom</span> <span class="uri">:Project</span>
                                                                     ])
                                               ]
-                                      ] 
+                                      ]
                                       [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                                         <span class="uri">owl:onProperty</span> <span class="uri">:manages</span> ;
                                         <span class="uri">owl:someValuesFrom</span> <span class="uri">:Department</span>
@@ -616,7 +616,7 @@ department.</p>
 
 <span class="uri">:MyProject</span> <span class="uri">a</span> <span class="uri">:Project</span> .</code></pre>
 <p>This constraint says that if an individual <code>i</code> is an instance of
-<code>Employee</code>, then at least one of three conditions must be met: </p>
+<code>Employee</code>, then at least one of three conditions must be met:</p>
 <ul>
 <li>it is related to an instance of <code>Project</code> via the property <code>works_on</code></li>
 <li>it is related to an instance <code>j</code> via the property <code>supervises</code> and <code>j</code> is an instance of <code>Employee</code> and is also related to some instance of <code>Project</code> via the property <code>works_on</code></li>
@@ -638,7 +638,7 @@ receives funds from a US government agency.</p>
 <pre class="highlighted"><code class="sparql"><span class="comment"># Constraint in Terp syntax:
 </span><span class="comment"># :Project and (:receives_funds_from some :US_Government_Agency)) rdfs:subClassOf (inverse :works_on only (:Employee and (:nationality value "US")))
 </span>
-[ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Project</span> 
+[ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Project</span>
                        [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                          <span class="uri">owl:onProperty</span> <span class="uri">:receives_funds_from</span> ;
                          <span class="uri">owl:someValuesFrom</span> <span class="uri">:US_Government_Agency</span>
@@ -646,12 +646,12 @@ receives funds from a US government agency.</p>
 ] <span class="uri">rdfs:subClassOf</span>
               [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                 <span class="uri">owl:onProperty</span> [<span class="uri">owl:inverseOf</span> <span class="uri">:works_on</span>] ;
-                <span class="uri">owl:allValuesFrom</span> [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span> 
+                <span class="uri">owl:allValuesFrom</span> [ <span class="uri">owl:intersectionOf</span> (<span class="uri">:Employee</span>
                                                         [ <span class="uri">a</span> <span class="uri">owl:Restriction</span> ;
                                                           <span class="uri">owl:hasValue</span> <span class="string">"US"</span> ;
                                                           <span class="uri">owl:onProperty</span> <span class="uri">:nationality</span>
                                                         ])
-                                  ] 
+                                  ]
               ] .</code></pre>
 <h5>Database A <div class="metro success label">VALID</div></h5>
 <pre class="highlighted"><code class="sparql"><span class="uri">:MyProject</span> <span class="uri">a</span> <span class="uri">:Project</span> ;
@@ -721,9 +721,9 @@ an instance of <code>US_Government_Agency</code>, that is, <code>NASA</code>, vi
 assertions. C is valid because both conditions are met. D is not valid
 because <code>Heidi</code> violated the first condition: she is related to
 <code>MyProject</code> via <code>works_on</code> but is not known to be an instance of
-<code>Employee</code>. Finally, this is fixed in E—by way of a handy OWL 
-axiom—which states that every instance of <code>Supervisor</code> is an 
-instance of <code>Employee</code>, so <code>Heidi</code> is inferred to be an 
+<code>Employee</code>. Finally, this is fixed in E—by way of a handy OWL
+axiom—which states that every instance of <code>Supervisor</code> is an
+instance of <code>Employee</code>, so <code>Heidi</code> is inferred to be an
 instance of <code>Employee</code> and, consequently, E is valid.</p>
 <p>If you made it this far, you deserve a drink!</p>
 <h2 id="sd-Explaining-ICV-Violations">Explaining ICV Violations</h2>
@@ -735,7 +735,7 @@ for constraints stored in the database:</p>
 file with constraints as an additional argument:</p>
 <pre class="highlighted"><code class="bash">$ stardog icv explain --reasoning EL <span class="string">"myDB"</span> constraints.ttl</code></pre>
 <h2 id="sd-Using-ICV-Programmatically">Using ICV Programmatically</h2>
-<p>This section will describe how to use Stardog ICV via the SNARL APIs. For 
+<p>This section will describe how to use Stardog ICV via the SNARL APIs. For
 more information on using SNARL in general, please refer to the
 section on <a href="../java">programming with Stardog in Java</a>.</p>
 <p>There is command-line interface support for many of the operations
@@ -747,14 +747,14 @@ necessary to using ICV with a Stardog database; please see the
 <li>associate those constraints with a Stardog database</li>
 </ol>
 <h3>Creating Constraints</h3>
-<p><a href="../java/snarl/com/clarkparsia/stardog/icv/Constraint.html"><code>Constraints</code></a>
+<p><a href="../java/snarl/com/complexible/stardog/icv/Constraint.html"><code>Constraints</code></a>
 can be created using the
-<a href="../java/snarl/com/clarkparsia/stardog/icv/ConstraintFactory.html"><code>ConstraintFactory</code></a>
+<a href="../java/snarl/com/complexible/stardog/icv/ConstraintFactory.html"><code>ConstraintFactory</code></a>
 which provides methods for creating integrity constraints from OWL
 axioms or from SPARQL select queries. <code>ConstraintFactory</code> expects your
 constraints, if they are defined as OWL axioms, as an RDF triple (or
 graph). To aid in authoring constraints in OWL,
-<a href="../java/snarl/com/clarkparsia/openrdf/util/ExpressionFactory.html"><code>ExpressionFactory</code></a>
+<a href="../java/snarl/com/complexible/openrdf/util/ExpressionFactory.html"><code>ExpressionFactory</code></a>
 is provided for building the <a href="http://www.w3.org/TR/owl2-mapping-to-rdf/">RDF
 equivalent</a> of the OWL axioms
 of your constraint.</p>
@@ -768,7 +768,7 @@ integrity constraint.</p>
 <script src="https://gist.github.com/1333767.js?file=CreateConstraint.java"></script>
 
 <h3>Adding Constraints to Stardog</h3>
-<p>The <a href="../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html">ICVConnection</a> interface provides programmatic access to the ICV support in Stardog.
+<p>The <a href="../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html">ICVConnection</a> interface provides programmatic access to the ICV support in Stardog.
 It provides support for adding, removing and clearing integrity constraints in
 your database as well as methods for checking whether or not the data is
 valid; and when it's not, retrieving the list of violations.</p>
@@ -783,13 +783,13 @@ ontology.</p>
 
 <h3>IC Validation</h3>
 <p>Checking whether or not the contents of a database are valid is easy. Once you have an
-<a href="../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html"><code>ICVConnection</code></a>
+<a href="../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html"><code>ICVConnection</code></a>
 you can simply call its
-<a href="../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html#isValid("><code>isValid()</code></a>)
+<a href="../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#isValid("><code>isValid()</code></a>)
 method which will return whether or not the contents of the database are
 valid with respect to the constraints associated with that database.
 Similarly, you can provide some
-<a href="../java/snarl/com/clarkparsia/stardog/icv/Constraint.html"><code>constraints</code></a>
+<a href="../java/snarl/com/complexible/stardog/icv/Constraint.html"><code>constraints</code></a>
 to the <code>isValid()</code> method to see if the data in the database is invalid
 for those <code>specific</code> constraints; which can be a subset of the
 constraints associated with the database, or they can be new constraints
@@ -798,12 +798,12 @@ you are working on.</p>
 constraints in your database or a new set of constraints you have
 authored—you can get some information about what the violation was from
 the SNARL IC Connection.
-<a href="../java/snarl/com/clarkparsia/stardog/icv/api/ICVConnection.html#getViolationBindings("><code>ICVConnection.getViolationBindings()</code></a>)
+<a href="../java/snarl/com/complexible/stardog/icv/api/ICVConnection.html#getViolationBindings("><code>ICVConnection.getViolationBindings()</code></a>)
 will return the constraints which are violated, and for each constraint,
 you can get the violations as the set of bindings that satisfied the
 constraint query. You can turn the bindings into the individuals which
 are in the violation using
-<a href="../java/snarl/com/clarkparsia/stardog/icv/ICV.html#asIndividuals("><code>ICV.asIndividuals</code></a>).</p>
+<a href="../java/snarl/com/complexible/stardog/icv/ICV.html#asIndividuals("><code>ICV.asIndividuals</code></a>).</p>
 <h3>ICV and Transactions</h3>
 <p>In addition to using the ICConnection a data oracle to tell whether or
 not your data is valid with respect to some constraints, you can also
