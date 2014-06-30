@@ -390,12 +390,12 @@ docs</a>.</li>
 <li>the values don‘t have much effect unless or until you’re loading billions of triples</li>
 </ul>
 </li>
-<li><code>password.length.min</code>: Sets the password policy for the minimum length of 
-user passwords, the value can't be lower than 1 or greater than <code>password.length.max</code>. 
+<li><code>password.length.min</code>: Sets the password policy for the minimum length of
+user passwords, the value can't be lower than 1 or greater than <code>password.length.max</code>.
 Default: <code>4</code>.</li>
-<li><code>password.length.max</code>: Sets the password policy for the maximum length of 
+<li><code>password.length.max</code>: Sets the password policy for the maximum length of
 user passwords, the value can't be greater than 20 or lower than 1. Default: <code>20</code>.</li>
-<li><code>password.regex</code>: Sets the password policy of accepted chars in user passwords, via a 
+<li><code>password.regex</code>: Sets the password policy of accepted chars in user passwords, via a
 Java regular expression. Default: <code>[\\w@#$%]+</code></li>
 </ol>
 <h3>Starting &amp; Stopping the Server</h3>
@@ -460,7 +460,7 @@ or even “off machine”) Logging to a centralized logging facility
 requires a Java plugin that implements the Stardog Server logging
 interface; see the <a href="/java/">Java Chapter</a> for more information; and
 the log rotation policy (file size or time).</p>
-<p>Slow query logging is also available. See the <a href="">Managing Queries</a> section
+<p>Slow query logging is also available. See the <a href="#managing-queries">Managing Queries</a> section
 below.</p>
 <h2 id="sd-Database-Admin">Database Admin</h2>
 <p>Stardog is a multi-tenancacy system and will happily provide access to
@@ -956,6 +956,7 @@ the values of configuration options used for this database instance. If
 you want to get the value for a specific option then you can run the
 following command:</p>
 <pre class="highlighted"><code class="bash">$ stardog-admin metadata get -o index.named.graphs my_db_name</code></pre>
+<p><div id="managing-queries"></div></p>
 <h3>Managing Queries</h3>
 <p>Stardog includes the capability to manage running queries according to
 configurable policies set at run-time; this capability includes support
