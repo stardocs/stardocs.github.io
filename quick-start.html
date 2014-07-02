@@ -1,10 +1,134 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Quick Start Guide</title>
-		<meta http-equiv="REFRESH" content="0;url=/quick-start">
-	</head>
-	<body>
-		This page has moved. You will be automatically redirected to its new location. If you aren't forwarded to the new page, <a href="/quick-start">click here</a>.
-	</body>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.2 Docs: Quick Start Guide</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
+  <link rel="stylesheet" href="/css/gumby.css">
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png">       
+              </a>
+            </div>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong>A good system can't have a weak command language.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Quick Start Guide</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <h2>Prerequisites</h2>
+<p>Stardog runs on Java 6, Java 7, and is entirely untested on Java 8 (YMMV). Stardog runs best on, but does not require, a 64-bit JVM and one that supports <code>sun.misc.Unsafe</code>.</p>
+<h2>Linux/Unix/OS X</h2>
+<p>First, tell Stardog where its home directory (where databases and other
+files will be stored) is:</p>
+<pre class="highlighted"><code class="bash">$ <span class="keyword">export</span> STARDOG_HOME=/data/stardog</code></pre>
+<p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
+<p><div class="metro warning btn">NOTE</div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
+<p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
+<pre class="highlighted"><code class="bash">$ cp stardog-license-key.bin <span class="variable">$STARDOG_HOME</span></code></pre>
+<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
+process.</p>
+<p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
+<p>Third, start the Stardog server. By default the server will expose SNARL
+and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
+<pre class="highlighted"><code class="bash">$ ./stardog-admin server start</code></pre>
+<p>Fourth, create a database with an input file:</p>
+<pre class="highlighted"><code class="bash">$ ./stardog-admin db create -n myDB examples/data/University0_0.owl</code></pre>
+<p>Fifth, query the database:</p>
+<pre class="highlighted"><code class="bash">$ ./stardog query myDB <span class="string">"SELECT DISTINCT ?s WHERE { ?s ?p ?o } LIMIT 10"</span></code></pre>
+<p>You can use the Web Console to search or query the new database you created by hitting <a href="http://localhost:5820/myDB"><a href="http://localhost:5820/myDB">http://localhost:5820/myDB</a></a> in your browser.</p>
+<p>Now, go have a drink: you&#39;ve earned it.</p>
+<h2>Windows</h2>
+<p>The following steps are carried out using the Windows command prompt which you can find under <code>Start &gt; Programs &gt; Accessories &gt; Command Prompts</code>
+or by going to <code>Start &gt; Run</code> and typing <code>cmd</code></p>
+<p>First, tell Stardog where its home directory (where databases and other
+files will be stored) is:</p>
+<pre class="highlighted"><code class="haskell">&gt; set <span class="type">STARDOG_HOME</span>=<span class="type">C</span>:\<span class="typedef"><span class="keyword">data</span>\stardog</span></code></pre>
+<p><div class="metro warning btn">NOTE</div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
+<p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
+<pre class="highlighted"><code class="dos">&gt; <span class="keyword">COPY</span> /B stardog-license-key.bin <span class="envvar">%STARDOG_HOME%</span></code></pre>
+<p><div class="metro warning btn">NOTE</div> The <code>/B</code> is required to perform a binary copy or the license file may get corrupted.</p>
+<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
+process.</p>
+<p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
+<p>Third, start the Stardog server. By default the server will expose SNARL
+and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
+<pre class="highlighted"><code class="avrasm">&gt; stardog-admin<span class="preprocessor">.bat</span> server start</code></pre>
+<p>This will start the server in the current command prompt, you should leave this window open and open a new command prompt
+window to continue.</p>
+<p>Fourth, create a database with an input file:</p>
+<pre class="highlighted"><code class="lasso">&gt; stardog<span class="attribute">-admin</span>.bat db create <span class="attribute">-n</span> myDB examples/<span class="built_in">data</span>/University0_0.owl</code></pre>
+<p>Fifth, query the database:</p>
+<pre class="highlighted"><code class="sql">&gt; stardog.bat query myDB "<span class="operator"><span class="keyword">SELECT</span> <span class="keyword">DISTINCT</span> ?s <span class="keyword">WHERE</span> { ?s ?p ?o } LIMIT <span class="number">10</span><span class="string">"</span></span></code></pre>
+<p>You can use the Web Console to search or query the new database you created by hitting <a href="http://localhost:5820/myDB"><a href="http://localhost:5820/myDB">http://localhost:5820/myDB</a></a> in your browser.</p>
+<p>You should drink the whole bottle, brave Windows User!</p>
+
+          </div>
+          <div class="hidden" id="footnote-container">
+            <h2>Notes</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Quick Start Guide</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </p></div>
+        </div>
+      </section>
+</div>
+
+<script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
+
+</body>
+
 </html>
