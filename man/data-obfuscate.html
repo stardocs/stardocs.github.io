@@ -18,7 +18,7 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog data obfuscate [ {-c | --config} &lt;obfuscation configuration&gt; ] [ {-f | --format} &lt;RDF Format&gt; ] [ {-g | --named-graph} &lt;export named graph(s)&gt;... ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-s | --server-side} ] [ {-u | --username} &lt;username&gt; ] [--] &lt;dbname&gt; &lt;export file&gt;...</div>
+stardog data obfuscate [ {-c | --config} &lt;obfuscation configuration&gt; ] [ --compression &lt;Compression&gt; ] [ {-f | --format} &lt;RDF Format&gt; ] [ {-g | --named-graph} &lt;export named graph(s)&gt;... ] [ {-p | --passwd} &lt;password&gt; ] [ {-P | --ask-password} ] [ {-s | --server-side} ] [ {-u | --username} &lt;username&gt; ] [ {-v | --verbose} ] [--] &lt;dbname&gt; &lt;export file&gt;...</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
@@ -30,6 +30,14 @@ stardog data obfuscate [ {-c | --config} &lt;obfuscation configuration&gt; ] [ {
 <div class="row">
 <div class="span8 offset2">
 Configuration file for obfuscation</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--compression &lt;Compression&gt;</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Compression formot [GZIP, BZ2] for the exported data.</div>
 </div>
 <div class="row">
 <div class="span8 offset1">
@@ -78,6 +86,14 @@ Export the data to the server</div>
 <div class="row">
 <div class="span8 offset2">
 User name.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+-v, --verbose</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+Verbose flag that causes more detailed information to be printed</div>
 </div>
 <div class="row">
 <div class="span8 offset1">

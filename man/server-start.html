@@ -18,7 +18,7 @@
 <br/>
 <div class="row">
 <div class="span8 offset1">
-stardog-admin server start [ --bind &lt;network interface&gt; ] [ --disable-security ] [ --enable-ssl ] [ --home &lt;home&gt; ] [ --logfile &lt;log file&gt; ] [ --no-http ] [ --no-snarl ] [ --no-web-console ] [ --port &lt;port&gt; ] [ --require-ssl ]</div>
+stardog-admin server start [ --bind &lt;network interface&gt; ] [ --disable-security ] [ --enable-ssl ] [ --home &lt;home&gt; ] [ --logfile &lt;log file&gt; ] [ --no-cors ] [ --no-http ] [ --no-snarl ] [ --no-web-console ] [ --port &lt;port&gt; ] [ --require-ssl ]</div>
 </div>
 <br/>
 <h1 class="text-info">OPTIONS</h1>
@@ -62,6 +62,14 @@ Stardog home directory location.</div>
 <div class="row">
 <div class="span8 offset2">
 Stardog log file.</div>
+</div>
+<div class="row">
+<div class="span8 offset1">
+--no-cors</div>
+</div>
+<div class="row">
+<div class="span8 offset2">
+No CORS support flag. If this flag is set, CORS support in the HTTP server will be disabled.</div>
 </div>
 <div class="row">
 <div class="span8 offset1">

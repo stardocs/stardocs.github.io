@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.1.3 Docs: Using Stardog</title>
+  <title>Stardog 2.2 Docs: Using Stardog</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -67,6 +67,21 @@
             <strong>Updating</strong>
         </a>
         <!-- <li><a href="#sd-Updating" class="skiplink">Updating</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Versioning" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Versioning">
+            <strong>Versioning</strong>
+        </a>
+        <!-- <li><a href="#sd-Versioning" class="skiplink">Versioning</a> -->
             
                 <ul class="sidebar-nav">
                 
@@ -448,7 +463,7 @@ on its <a href="/man/query-execute.html"><code>man</code> page</a>.</p>
 <p>Now you know and knowing is one-quarter of the fun.</p>
 <h2 id="sd-Updating">Updating</h2>
 <p>There are many ways to update the data in a Stardog database; the most commonly used methods are the CLI and SPARQL Update queries, both of which we discuss below.</p>
-<h3>SPARQL Update <div class="metro label warning">New in 2.0</div></h3>
+<h3>SPARQL Update </h3>
 <p>SPARQL 1.1 Update can be used to insert RDF into or delete RDF from a Stardog database using SPARQL query forms <code>INSERT</code> and <code>DELETE</code>, respectively.</p>
 <pre class="highlighted"><code class="sparql"><span class="keyword">PREFIX</span> dc: <span class="uri">&lt;http://purl.org/dc/elements/1.1/&gt;</span>
 <span class="keyword">PREFIX</span> ns: <span class="uri">&lt;http://example.org/ns#&gt;</span>
@@ -516,107 +531,34 @@ encounter parse errors from which it cannot recover. And loading data in
 lax mode may lead to unexpected SPARQL query results. For example,
 malformed literals (<code>"2.5"^^xsd:int</code>) used in filter evaluation may lead
 to undesired results.</p>
-<!--
-needs two octothorpes  Versioning new22
-
-Stardog supports database change management capability similar to popular version
-controls systems for source code. This capability lets users track changes between
+<h2 id="sd-Versioning">Versioning</h2>
+<p>Stardog supports graph change management capability that lets users track changes between
 revisions of a Stardog database, add comments and other metadata to the revisions,
-extract diffs between those revisions, tag revisions
-with labels, and query over the revision history of the database using SPARQL.
-
-### Committing Changes
-
-stardog vcs commit —Commits a new version by adding and removing triples specified in files. Different from the 'data add/remove' commands, this command allows one to add and remove triples in one commit and associate a commit message. Removals are performed before additions.
-
-```bash
-$ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m "This is an example commit" myDb
-```
-
-### Viewing Revisions
-
-Lists all the versions (commits) in a database
-
-    $ stardog version list myDb
-$ stardog version list --committer userName myDb
-
-* Lists all the versions committed bin a time range user
-
---after <after>
-Limits the versions displayed to only those committed after this date. The date should be a valid xsd:date (YYYY-MM-DD) or xsd:dateTime (YYYY-MM-DDTHH:MM:SS) value.
---before <before>
-Limits the versions displayed to only those committed before this date. The date should be a valid xsd:date (YYYY-MM-DD) or xsd:dateTime (YYYY-MM-DDTHH:MM:SS) value.
---committer <committer>
-Limits the versions displayed to only those committed by this user.
--l <limit>, --limit <limit>
-Limits the number of versions to show.
-
-### Viewing Diffs
-
-Prints the differences between the head version and its previous versions; i.e. the changes in last commit
-
-    $ stardog version diff myDb
-$ stardog version diff myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-* Prints the differences between two versions, i.e. all the changes committed after the first version until the second version (inclusive)
-Prints the difference between the given version and its previous version, i.e. the changes committed in a specific version
-
-    $ stardog version revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-### Using Tags
-
---create
-Creates a new tags.
---drop
-Drop a tag.
---list
-Lists tags.
--p <password>, --passwd <password>
-Password.
--P, --ask-password
-Prompt for password.
--t <version>, --tag <version>
-Tag name that will be created or removed.
--u <username>, --username <username>
-User name.
--v <version>, --version <version>
-The version that will be tagged.
---verbose
-Print detailed information about each tag.
---
-This option can be used to separate command-line options from the list of argument, (useful when arguments might be mistaken for command-line options
-<database>
-The name of the database or the full connection string of the database to connect to. If only the name is provided, the default server URL will be pre-pended to the name of the database in order to construct the connection string. Connection parameters such as ';reasoning=QL' can be included in the provided database name. Connection parameters specified like this can be overridden by specific options on the command. The default server URL will be read from the JVM argument 'stardog.default.cli.server'. If the JVM argument is not set, the default value 'snarl://localhost:5820' is used. If the server URL has no explicit port value, the default port value '5820' is used. To use a secure connection, you should specify the full connection string and postfix 's' to the protocol, e.g. snarls or https.
-
-EXAMPLES
-
-
-Lists the tags in a database
-
-    $ stardog version tag --list myDb
-
-
-
-### Reverting Revisions
-
-Reverts the last commit and restores the database to the previous version
-
-    $ stardog version revert myDb
-$ stardog version revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-* Reverts all the changes committed in a specific version and everything else until the second version
-Reverts the changes committed in one specific version.
-
-    $ stardog version revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0
-
-### Querying the Revision History
-
-Query the versions in a database
-
-    $ stardog versioning query myDb ''
-
--->
-
+extract diffs between those revisions, tag revisions with labels, and query over the revision history of the database using SPARQL.</p>
+<p>The following examples give a very brief overview of this capability; see the <a href="/manpages/">VCS man pages</a> for all the details.</p>
+<h3>Committing Changes</h3>
+<p>Commit a new version by adding and removing triples specified in files. Different from the ‘data add/remove’ commands, commit allows one to add and remove triples in one commit and associate a commit message. Removals are performed before additions.</p>
+<p>To commit changes:</p>
+<pre class="highlighted"><code class="bash">$ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m <span class="string">"This is an example commit"</span> myDb</code></pre>
+<h3>Viewing Revisions</h3>
+<p>To see all revision (commits) in a database:</p>
+<pre class="highlighted"><code class="bash">$ stardog version list myDb
+$ stardog version list --committer userName myDb</code></pre>
+<p>The output can be tweaked using <code>--after</code>, <code>--before</code>, and <code>--committer</code>.</p>
+<h3>Reverting Revisions</h3>
+<p>You can revert specific revisions, ranges, etc.</p>
+<pre class="highlighted"><code class="bash">$ stardog version revert myDb
+$ stardog version revert myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
+<h3>Viewing Diffs</h3>
+<p>You can also see the differences between revisions; by default, between the head version and its previous versions or the changes in a specific commit, respectively: </p>
+<pre class="highlighted"><code class="bash">$ stardog version diff myDb
+$ stardog version diff myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
+<h3>Using Tags</h3>
+<p>You can also create, drop, list tags, i.e., named revisions:</p>
+<pre class="highlighted"><code class="bash">$ stardog version tag --list myDb</code></pre>
+<h3>Querying the Revision History</h3>
+<p>All of the revision history of the database is represented as RDF using the W3C PROV vocabulary and can be queries using SPARQL:</p>
+<pre class="highlighted"><code class="bash">$ stardog versioning query myDb <span class="string">'SELECT...'</span></code></pre>
 <h2 id="sd-Exporting">Exporting</h2>
 <p>To export data from a Stardog database back to RDF,
 <a href="/docs/man/data-export.html">export</a> is used by specifying—</p>
@@ -725,7 +667,7 @@ existing Stardog database.<a class="skip fn-marker" gumby-easing="easeOutQuad" g
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.1.3.</h4>
+                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
