@@ -542,23 +542,23 @@ extract diffs between those revisions, tag revisions with labels, and query over
 <pre class="highlighted"><code class="bash">$ stardog vcs commit --add add_file1.ttl add_file2.ttl --remove remove_file.ttl -m <span class="string">"This is an example commit"</span> myDb</code></pre>
 <h3>Viewing Revisions</h3>
 <p>To see all revision (commits) in a database:</p>
-<pre class="highlighted"><code class="bash">$ stardog version list myDb
-$ stardog version list --committer userName myDb</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog vcs list myDb
+$ stardog vcs list --committer userName myDb</code></pre>
 <p>The output can be tweaked using <code>--after</code>, <code>--before</code>, and <code>--committer</code>.</p>
 <h3>Reverting Revisions</h3>
 <p>You can revert specific revisions, ranges, etc.</p>
-<pre class="highlighted"><code class="bash">$ stardog version revert myDb
-$ stardog version revert myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog vcs revert myDb
+$ stardog vcs revert myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
 <h3>Viewing Diffs</h3>
 <p>You can also see the differences between revisions; by default, between the head version and its previous versions or the changes in a specific commit, respectively: </p>
-<pre class="highlighted"><code class="bash">$ stardog version diff myDb
-$ stardog version diff myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog vcs diff myDb
+$ stardog vcs diff myDb de44369d-cc7b-<span class="number">4244</span><span class="operator">-a</span>3fb-<span class="number">3</span>f6e271420b0</code></pre>
 <h3>Using Tags</h3>
 <p>You can also create, drop, list tags, i.e., named revisions:</p>
-<pre class="highlighted"><code class="bash">$ stardog version tag --list myDb</code></pre>
+<pre class="highlighted"><code class="bash">$ stardog vcs tag --list myDb</code></pre>
 <h3>Querying the Revision History</h3>
 <p>All of the revision history of the database is represented as RDF using the W3C PROV vocabulary and can be queries using SPARQL:</p>
-<pre class="highlighted"><code class="bash">$ stardog versioning query myDb <span class="string">'SELECT...'</span></code></pre>
+<pre class="highlighted"><code class="bash">$ stardog vcs query myDb <span class="string">'SELECT...'</span></code></pre>
 <h2 id="sd-Exporting">Exporting</h2>
 <p>To export data from a Stardog database back to RDF,
 <a href="/docs/man/data-export.html">export</a> is used by specifying—</p>
