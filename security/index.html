@@ -235,13 +235,27 @@ and to administer the database itself.</p>
 <p>To setup the constraints used to validate passwords when adding new users, configure the following settings in the <code>stardog.properties</code> configuration file.</p>
 <ul>
 <li><code>password.length.min</code>: Sets the password policy for the minimum length of 
-user passwords, the value can't be lower than 1 or greater than <code>password.length.max</code>. 
+user passwords, the value can't be less than 1 or greater than <code>password.length.max</code>. 
 Default: <code>4</code>.</li>
 <li><code>password.length.max</code>: Sets the password policy for the maximum length of 
-user passwords, the value can't be greater than 20 or lower than 1. Default: <code>20</code>.</li>
+user passwords, the value can't be greater than 1024 or less than 1. Default: <code>20</code>.</li>
 <li><code>password.regex</code>: Sets the password policy of accepted chars in user passwords, via a 
 Java regular expression. Default: <code>[\\w@#$%]+</code></li>
 </ul>
+<h3>Using a Password File</h3>
+<p>To avoid putting passwords into scripts or environment variables, you can put them into a suitable secured password file. If no credentials are passed explicitly in CLI invocations or you do not ask Stardog to prompt you for credentials interactively, then it will look for credentials in a password file. On a Unix system, Stardog will look for a file called <code>.sdpass</code> the home directory of the user Stardog is running as; on a Windows system, it will look for <code>sdpass.conf</code> in <code>Application Data\stardog</code> in the home directory of the user Stardog is running as. If the file is not found in this location, Stardog will look in the location provided by the <code>stardog.passwd.file</code> system property.</p>
+<h4>Password File Format</h4>
+<p>The format of the password file is as follows:</p>
+<ul>
+<li>any line that starts with a <code>#</code> is ignored</li>
+<li>each line contains a single password in the format: <code>hostname:port:database:username:password</code>.</li>
+<li>wildcards, <code>*</code>, are permitted for any field but the password field; colons and backslashes in fields are escaped with <code>\</code>.</li>
+</ul>
+<p>For example,</p>
+<pre class="highlighted"><code class="bash">  <span class="comment">#this is my password file; there are no others like it and this one is mine anyway...</span>
+  *:*:*:flannery:aNahthu8
+  *:*:summercamp:jemima:foh9Moaz</code></pre>
+<p>Of course you should secure this file carefully, making sure that only the user that Stardog runs as can read it.</p>
 <h2 id="sd-Managing-Stardog-Securely">Managing Stardog Securely</h2>
 <p>Stardog resources can be managed securely by using the tools included in the admin CLI or by programming against Stardog APIs. In this section we describe the permissions required to manage various Stardog resources either by CLI or API.</p>
 <h3>Users</h3>
