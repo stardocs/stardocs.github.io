@@ -276,7 +276,7 @@ line, a specific reasoning level must be specified in the <a href="../admin/">co
 string</a>:</p>
 <pre class="highlighted"><code class="bash">$ ./stardog query <span class="string">"myDB;reasoning=QL"</span> <span class="string">"SELECT ?s { ?s a :C } LIMIT 10"</span></code></pre>
 <h3>HTTP</h3>
-<p>For HTTP, the reasoning level is specified with the other connection
+<p>For HTTP, the reasoning level is specified with the other HTTP request
 parameters:</p>
 <pre class="highlighted"><code class="bash">$ curl -u admin:admin -X GET <span class="string">"http://localhost:5822/myDB/query?reasoning=ql&amp;query=..."</span></code></pre>
 <h3><code>ReasoningConnection</code> API</h3>
