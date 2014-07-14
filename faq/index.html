@@ -182,10 +182,9 @@ is there some way I can do this without publishing user account
 information?</p>
 <p><strong>Answer:</strong> We don‘t necessarily recommend this, but it’s possible.
 Simply pass <code>--disable-security</code> to <code>stardog-admin</code> when you start the
-Stardog Server; while this may be the worst possible name for an
-argument, since it doesn't actually disable security, it will use the
-built-in anonymous user (given the default configuration and user
-accounts) in a way that makes Stardog usable for a public endpoint.</p>
+Stardog Server.  This <em>completely</em> disables security in Stardog which
+will let users access the SPARQL endpoint, and all other functionality, 
+without needing authorization.</p>
 <h2 id="sd-Remote-Bulk-Loading">Remote Bulk Loading</h2>
 <p><strong>Question:</strong> I‘m trying to create a database and bulk load files from
 my machine to the server and it’s not working, the files don't seem to
