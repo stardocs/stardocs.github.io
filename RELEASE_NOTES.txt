@@ -1,3 +1,97 @@
+2.2.1 Changes
+----------------------------------------------------------------------------
+
+* ADDED: Query panel in Web Console supports SPARQL Update queries
+
+* ADDED: `server status` command to admin CLI
+
+* ADDED: Bulk load from local files
+
+* ADDED: Save query button in Web Console query panel
+
+* ADDED: Method to ExpressionFactory to programmatically create a Stardog Rule from a String
+
+* ADDED: Optimizations for property path evaluation
+
+* MODIFIED: Moved system monitoring into separate page in the web console
+
+* MODIFIED: Check $STARDOG_HOME for file system permissions issues before startup
+
+* MODIFIED: Improved help for `role grant`
+
+* MODIFIED: Return proper status code for invalid export query format
+
+* MODIFIED: Improved round-trip performance of data-time objects in value canonicalization
+
+* MODIFIED: Better cardinality of estimation of chains of joins
+
+* MODIFIED: Extended coverage of database repair utility
+
+* MODIFIED: Better cardinality estimations for scans over union named graphs
+
+* MODIFIED: Improved error logging on server side
+
+* MODIFIED: Throw an error when modifying the reasoning level of a query within a transaction
+
+* MODIFIED: Removed concurrency bottleneck in disk lookups of cardinality statistics
+
+* MODIFIED: Improved error messages on startup when required jar files are missing
+
+* FIXED: Homepage content depending on Watchdog is incorrect for community builds
+
+* FIXED: Queries using "count(distinct *) as ?c" always return a count of 1
+
+* FIXED: Explanations of update queries
+
+* FIXED: Missing semicolon in .bat files causes classpath errors
+
+* FIXED: Lost aggregate function when no explicit group provided in query
+
+* FIXED: Incorrect canonicalization of IN filter expressions
+
+* FIXED: StardogRepositoryConnection.setAutoCommit starts a transaction
+
+* FIXED: Reference to obsolete JSON-LD library
+
+* FIXED: Query results export throws a parse error
+
+* FIXED: Literal values in web console should be escaped when inserted into a page
+
+* FIXED: Inconsistent `getDBOptions` in HTTP Admin falsely reporting `db doesn't exist` message
+
+* FIXED: Failed update queries print wrong message
+
+* FIXED: Handling of very large literals (> 8MB) causes problems during bulk loads
+
+* FIXED: Database can be left in locked state under high numbers of concurrent commits
+
+* FIXED: Direct memory size used for off-heap allocations is incorrect
+
+* FIXED: JSON Serialization errors for Metadata payloads
+
+* FIXED: Invalid connection string yields an NPE
+
+* FIXED: Differential index metadata not flushed to disk
+
+* FIXED: Explaining IC violations can produce NoSuchElementExceptions
+
+* FIXED: Describe queries are slow with union named graphs
+
+* FIXED: False positive detecting 'ask' queries in Query Panel
+
+* FIXED: Language tags are not rendering correctly in Web Console
+
+* FIXED: Invalid rules are included in the rule base
+
+* FIXED: Reasoner can remain locked if there are errors computing new state during commit
+
+* FIXED: Query Panel route double decodes input parameters
+
+* FIXED: Overflow error when querying uncommitted state when changes contain duplicates
+
+* FIXED: In the Web Console, formats in the 'Export as...' drop-down menu on the query panel should be filtered
+according to the query that was executed
+
 2.2 Changes
 ----------------------------------------------------------------------------
 
@@ -533,7 +627,7 @@ duplicates this character (:bb)
 
 * FIXED: Handling of '=' in namespaces
 
-* FIXED: Exception thrown by describe & construct queries via CLI
+* FIXED: Exception thrown by describe queries via CLI
 
 * FIXED: EOF exception over HTTP for large datasets
 
