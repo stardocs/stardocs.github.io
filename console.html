@@ -1,10 +1,218 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Web Console</title>
-		<meta http-equiv="REFRESH" content="0;url=/console">
-	</head>
-	<body>
-		This page has moved. You will be automatically redirected to its new location. If you aren't forwarded to the new page, <a href="/console">click here</a>.
-	</body>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.2.1 Docs: Web Console</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
+  <link rel="stylesheet" href="/css/gumby.css">
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png">       
+              </a>
+            </div>
+            
+              <!-- 
+	<h3 id="tochead">Console Contents</h3>
+ -->
+
+<ul class="sidebar-nav">
+    
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Introduction" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Introduction">
+            <strong>Introduction</strong>
+        </a>
+        <!-- <li><a href="#sd-Introduction" class="skiplink">Introduction</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-A-Screenshot-Tour-" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-A-Screenshot-Tour-">
+            <strong>A Screenshot Tour…</strong>
+        </a>
+        <!-- <li><a href="#sd-A-Screenshot-Tour-" class="skiplink">A Screenshot Tour…</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+
+</ul>
+              <p id="tocnav">
+              
+                <a class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home iconlinks"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish iconlinks"></i>
+              </a> &nbsp;
+              <a href="https://twitter.com/stardog_db" class="iconlinks">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-twitter iconlinks"></i>
+              </a>
+              </p>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong>Interfaces keep things tidy, but don't accelerate growth: Functions do.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Web Console</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <h2 id="sd-Introduction">Introduction</h2>
+<p>The Stardog Web Console is a responsive web app for the Stardog Server and for every Stardog database that makes administration and interaction with data quick and easy; you can access it at <code>http://foo:5820</code> where <code>foo</code> is the name of the machine where Stardog is running.</p>
+<h2 id="sd-A-Screenshot-Tour-">A Screenshot Tour…</h2>
+<p>Seriously, this is a lot more fun if you just <a href="http://stardog.com/">download</a> the damn thing and hit it with a browser!</p>
+<h3>Login</h3>
+<p>To login into the Stardog Web Console, provide your username and password. If you‘re an administrative user, you’ll have all the operations available, otherwise the functionality will be limited by your permissions.</p>
+<p><img src="/img/console/screen_login.png" alt="Stardog Web Console - Login"></p>
+<h3>Homepage</h3>
+<p><img src="/img/console/screen_home.png" alt="Stardog Web Console - Homepage"></p>
+<h3>Databases</h3>
+<p><img src="/img/console/screen_dbs.png" alt="Stardog Web Console - Databases"></p>
+<h4>View a database settings</h4>
+<p><img src="/img/console/screen_db_view.png" alt="Stardog Web Console - DB View"></p>
+<h4>Database Status</h4>
+<p>You can set the database online/offline with the switch included in the top right of the action bar. Setting the switch to <code>on</code> will set the database <code>online</code>, switching it <code>off</code> will set the database <code>offline</code>.</p>
+<p><strong>NOTE</strong>: Setting a database offline will result in downtime on all the services provided by the database, e.g. querying, searching, modifying, etc.</p>
+<h3>DB Actions</h3>
+<p>Within the database view, a bar with actions available on the database is included. Depending on the database status, the actions available are:</p>
+<p>Status: <strong>Online</strong></p>
+<ul>
+<li>Query - Takes you to the Query Panel of the database, letting you query the DB with SPARQL queries</li>
+<li>Browse - Takes you to the Schema Browser of the database</li>
+</ul>
+<p>Status: <strong>Offline</strong></p>
+<ul>
+<li>Edit - Will render the database view in edit mode, letting you modify the database settings</li>
+<li>Migrate - Migrates the existing content of a legacy database to new format</li>
+<li>Optimize - Optimize an existing database</li>
+</ul>
+<h4>Drop a database</h4>
+<p>To drop a database click on the <code>Drop</code> button, a confirmation will appear to verify the removal. </p>
+<p><img src="/img/console/screen_delete_confirm.png" alt="Stardog Web Console - Drop a Database"></p>
+<h4>Creating a new database</h4>
+<p>To create a new database click the <code>New DB</code> button in the database listing screen. A wizard will be shown to select and customize the settings of the DB.
+All values are optional except the database name, and all of them are pre-filled with the default values. You can finish the wizard to create a DB since the first step, just typing the database name and finish.</p>
+<p><img src="/img/console/screen_new_db.png" alt="Stardog Web Console - New DB"></p>
+<p>You can go through the wizard with the <code>Next</code> and <code>Back</code> buttons, setting up every section of the database options. Every option contains help as a tooltip that is shown having the cursor over the option label.</p>
+<p>Once you‘re done setting the database options, at any step of the wizard, just click finish to create the database. You’ll be redirected to the database view once it has been created in Stardog.</p>
+<h4>Browsing the database as Linked Data</h4>
+<p>You can browse the database as Linked Data graph, too.</p>
+<p><img src="/img/console/screen_instance_browsing.png" alt="Stardog Web Console - Browse"></p>
+<h4>Browsing the Schema</h4>
+<p>You can browse the schema (the class and property trees).</p>
+<p><img src="/img/console/screen_schema_browsing.png" alt="Stardog Web Console - Schema Browsing"></p>
+<h4>Querying a database</h4>
+<p>Stardog Web Console includes a SPARQL query editor for executing queries against the database; the editor includes some canned exploration queries, too.</p>
+<p><img src="/img/console/screen_sparql_query.png" alt="Stardog Web Console - SPARQL Query"></p>
+<p><img src="/img/console/screen_exploration_queries.png" alt="Stardog Web Console - Exploration Queries"></p>
+<h3>Searching a database</h3>
+<p>You can search the contents of the database using Stardog's search capability.</p>
+<p><img src="/img/console/screen_semantic_search.png" alt="Stardog Web Console - Searching"></p>
+<h4>Editing data in a database</h4>
+<p>You can edit any statements in the database (with the requisite permissions).</p>
+<p><img src="/img/console/screen_editing.png" alt="Stardog Web Console - Editing"></p>
+<h4>Listing running queries</h4>
+<p>To list the current running queries on the system click on <code>Query Management</code> in the top navbar, you'll be redirected to an accordion style listing of running queries. This listing is refreshed constantly to reflect the running queries in real time, if you have a query that has been running for a while it will be shown here. </p>
+<p><img src="/img/console/screen_query_list.png" alt="Stardog Web Console - Query List"></p>
+<h4>View a running query</h4>
+<p>Clicking on the query entry in the listing will show the running query related information, such as the user who posted the query, the database it is running on, the reasoning level used for the query and the related timestamps. The query will be shown at the bottom.</p>
+<p><img src="/img/console/screen_query_info.png" alt="Stardog Web Console - Query Info"></p>
+<p>To kill a running query, click on the query element in the listing to expand it and show its related information, a <code>Kill</code> button will be show, you can click on that button to terminate the query.</p>
+<h3>Users, Roles, Permissions</h3>
+<h4>Listing users</h4>
+<p>On the navbar click on <code>Security &gt; Users</code>, a listing of the existent users in the system will be shown.</p>
+<p><img src="/img/console/screen_users.png" alt="Stardog Web Admin Console - Users"></p>
+<h4>View user permissions &amp; roles</h4>
+<p>The user‘s view lets you administer a user’s permissions and the roles it has been assigned to. To add permissions to a new resource for the user, click on the <code>Add Permission</code> button and provide the information for the resource, once it has been added to the list, click on the specific allowed actions. To add permissions to a resource already in the permissions table, just click on the permission actions to add/remove.</p>
+<p>To assign the user to a role, just type the role name in the <code>Add role</code> input and click on <code>Add</code>. The role names will be autocompleted to the ones already existing in the system.</p>
+<p><img src="/img/console/screen_user_view.png" alt="Stardog Web Console - User View"></p>
+<h4>Create a new user</h4>
+<p>To create a new user click on the <code>New User</code> button and provide the required information on the new User popup modal. You‘ll be redirected to the user’s view once it has been created in Stardog.</p>
+<p><img src="/img/console/screen_new_user.png" alt="Stardog Web Admin Console - New User"></p>
+<h4>Listing roles</h4>
+<p>On the navbar click on <code>Security &gt; Roles</code>, a listing of the existent roles in the system will be shown.</p>
+<p><img src="/img/console/screen_roles.png" alt="Stardog Web Console - Roles"></p>
+<h4>View role permissions &amp; users assigned to it</h4>
+<p>The roles‘s view lets you administer a role’s permissions and the users it has been assigned to. To add permissions to a new resource for the role, click on the <code>Add Permission</code> button and provide the information for the resource, once it has been added to the list, click on the specific allowed actions. To add permissions to a resource already in the permissions table, just click on the permission actions to add/remove.</p>
+<p>To assign a user to the role, just type the username in the <code>Add user</code> input and click on <code>Add</code>. The usernames will be autocompleted to the ones already existing in the system.</p>
+<p><img src="/img/console/screen_role_view.png" alt="Stardog Web Console - Role View"></p>
+
+          </div>
+          <div class="hidden" id="footnote-container">
+            <h2>Notes</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Web Console</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.1.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </p></div>
+        </div>
+      </section>
+</div>
+
+<script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
+
+</body>
+
 </html>

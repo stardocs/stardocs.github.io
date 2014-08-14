@@ -1,10 +1,277 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Programming with Clojure</title>
-		<meta http-equiv="REFRESH" content="0;url=/clojure">
-	</head>
-	<body>
-		This page has moved. You will be automatically redirected to its new location. If you aren't forwarded to the new page, <a href="/clojure">click here</a>.
-	</body>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.2.1 Docs: Programming with Clojure</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
+  <link rel="stylesheet" href="/css/gumby.css">
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png">       
+              </a>
+            </div>
+            
+              <!-- 
+	<h3 id="tochead">Clojure Contents</h3>
+ -->
+
+<ul class="sidebar-nav">
+    
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Installation" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Installation">
+            <strong>Installation</strong>
+        </a>
+        <!-- <li><a href="#sd-Installation" class="skiplink">Installation</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Overview" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Overview">
+            <strong>Overview</strong>
+        </a>
+        <!-- <li><a href="#sd-Overview" class="skiplink">Overview</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-API-Overview" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-API-Overview">
+            <strong>API Overview</strong>
+        </a>
+        <!-- <li><a href="#sd-API-Overview" class="skiplink">API Overview</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Building-Stardog-clj" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Building-Stardog-clj">
+            <strong>Building Stardog-clj</strong>
+        </a>
+        <!-- <li><a href="#sd-Building-Stardog-clj" class="skiplink">Building Stardog-clj</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Examples" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Examples">
+            <strong>Examples</strong>
+        </a>
+        <!-- <li><a href="#sd-Examples" class="skiplink">Examples</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+
+</ul>
+              <p id="tocnav">
+              
+                <a class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home iconlinks"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish iconlinks"></i>
+              </a> &nbsp;
+              <a href="https://twitter.com/stardog_db" class="iconlinks">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-twitter iconlinks"></i>
+              </a>
+              </p>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong>It is better to have 100 functions operate on one data structure than 10 functions on 10 data structures.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Programming with Clojure</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <p><a href="http://clojure.org">Clojure</a> is a Lisp for the JVM. Stardog's Clojure support makes life easier for developers who need to work with RDF, SPARQL, and OWL by way of Stardog from Clojure. The Stardog-clj <a href="http://github.com/clarkparsia/stardog-clj">source
+code</a> is available on
+Github and licensed under the Apache 2.0 license.</p>
+<h2 id="sd-Installation">Installation</h2>
+<p>Stardog-clj is available from Clojars.  To use, just include the following dependency:</p>
+<pre class="highlighted"><code class="json">[stardog-clj <span class="string">"0.3.0"</span>]</code></pre>
+<h2 id="sd-Overview">Overview</h2>
+<p>Stardog-clj provides a set of functions as API wrappers to the native
+SNARL API.  These functions provide the basis for working with Stardog,
+starting with connection management, connection pooling, and the core parts
+of the API, such as executing a SPARQL query or adding and removing RDF from
+the Stardog database.  Over time, other parts of the Stardog API will be appropriately
+wrapped with Clojure functions and idiomatic Clojure data structures.</p>
+<p>Stardog-clj provides the following features:</p>
+<ol>
+<li>Specification based descriptions for connections, and corresponding “connection” and “with-connection-pool” functions and macros</li>
+<li>Functions for query, ask, graph, and update to execute SELECT, ASK, CONSTRUCT, and SPARQL-Update queries respectively</li>
+<li>Functions for insert and remove, for orchestrating the Adder and Remover APIs in SNARL</li>
+<li>Macros for resource handling, including with-connection-tx, with-connnection-pool, and with-transaction</li>
+<li>Support for programming Stardog applications with either the connection pool or direct handling of the connection</li>
+<li>Idiomatic clojure handling of data structures, with converters that can be passed to query functions</li>
+</ol>
+<p>The API with source docs can be found in the stardog.core and stardog.values namespaces.</p>
+<h2 id="sd-API-Overview">API Overview</h2>
+<p>The API provides a natural progression of functions for interacting with Stardog</p>
+<dl class="metro">
+<dt><code>(create-db-spec "testdb" "snarl://localhost:5820/" "admin" "admin" "none")</code></dt>
+<dd>Creates a connection spec, for use in <code>connect</code> or <code>make-datasource</code> with the potential parameters:
+<code>{:url "snarl://localhost:5820/" :db "testdb" :pass "admin" :user "admin" :max-idle 100 :max-pool 200 :min-pool 10 :reasoning "none"}</code></dd>
+<dt><code>(connect db-spec)</code></dt>
+<dd>Creates a single Connection using the database spec.  Can be used with standard <code>with-open</code> macro, <code>with-transaction</code>, <code>with-connection-tx</code>.</dd>
+<dt><code>(make-datasource db-spec)</code></dt>
+<dd>Creates a data source, i.e. ConnectionPool, using the database spec.  Best used within the <code>with-connection-pool</code> macro.</dd>
+<dt><code>(with-transaction [connection...] body)</code></dt>
+<dd>Executes the body with a transaction on each of the connections.</dd>
+<dt><code>(with-connection-tx binding-forms body)</code></dt>
+<dd>Establishes a connection and a transaction to execute the body within.</dd>
+<dt><code>(with-connection-pool [con pool] .. con, body ..)</code></dt>
+<dd>Evaluates body in the context of an active connection obtained from the connection pool.</dd>
+</dl>
+
+<p>Using these functions, queries can then be made against the database.</p>
+<p><code>query</code></p>
+<p>Executes a query and returns results. When constructing a query from text, the parameters are:</p>
+<ul>
+<li>connection: The connection to query over (required).</li>
+<li>text: The text of the connection (String - required).</li>
+</ul>
+<p>Remaining argument are optional, and may be positional args, a map of args, or named args. Mapped and named args use the keys:</p>
+<ul>
+<li>base, parameters, reasoning, limit, offset, converter, key-converter</li>
+</ul>
+<p>Positional arguments are in order:</p>
+<ul>
+<li>base: The base URI for the query (String).</li>
+<li>parameters: A parameter map to bind parameters in the query (Map).</li>
+<li>reasoning: The type of reasoning to use with the query (String/keyword).</li>
+<li>converter: A function to convert returned values with (Function).</li>
+<li>key-converter: A function to convert returned binding names with (Function).</li>
+<li>limit: The limit for the result. Must be present to use offset (integer).</li>
+<li>offset: The offset to start the result (integer)."</li>
+</ul>
+<h2 id="sd-Building-Stardog-clj">Building Stardog-clj</h2>
+<p>To build Stardog-clj, you need a release of Stardog; we use
+<a href="http://leiningen.org/">Leiningen</a> as the build tool. Then,</p>
+<ol>
+<li>Download stardog from <a href="http://www.stardog.com">Stardog.com</a></li>
+<li>Run “mavenInstall” from the stardog-2.1.2/bin folder</li>
+<li>Run “stardog-admin server start”</li>
+<li>Run "stardog-admin db create -n testdb data/University0_0.owl"</li>
+<li>You can now run lein compile, use the lein repl, and run lein midje to perform the tests</li>
+<li>Run “lein install”, which will install stardog-clj into ~/.m2/repository/stardog-clj/stardog-clj</li>
+</ol>
+<h2 id="sd-Examples">Examples</h2>
+<p>Here are some examples of using stardog-clj</p>
+<h3>Create a connection and run a query</h3>
+<script src="https://gist.github.com/10039066.js?file=Stardog.clj"></script>
+
+<h3>Insert data</h3>
+<script src="https://gist.github.com/10039743.js?file=StardogInsert.clj"></script>
+
+<h3>Run a query with a connection pool</h3>
+<script src="https://gist.github.com/10041003.js?file=StardogPool.clj"></script>
+
+
+<h3>SPARQL Update Example</h3>
+<script src="https://gist.github.com/11130645.js?file=StardogUpdate.clj"></script>
+
+
+<h3>Graph function for Construct queries</h3>
+<script src="https://gist.github.com/11130603.js?file=StardogGraph.clj"></script>
+
+<h3>Ask function for ASK queries</h3>
+<script src="https://gist.github.com/11130618.js?file=StardogAsk.clj"></script>
+          </div>
+          <div class="hidden" id="footnote-container">
+            <h2>Notes</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Programming with Clojure</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.1.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </p></div>
+        </div>
+      </section>
+</div>
+
+<script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
+
+</body>
+
 </html>
