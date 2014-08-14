@@ -124,11 +124,11 @@ Export the database 'myDb' as NTRIPLES:</p>
 <p>
 Export the entire database 'myDb' to a file in TURTLE:</p>
 <pre>
-    $ stardog data export --named-graph ALL myDb export.ttl</pre>
+    $ stardog data export --named-graph ALL -- myDb export.ttl</pre>
 <p>
-Export a named graph of the database 'myDb' as TRIG:</p>
+Export two named graphs of the database 'myDb' as TRIG:</p>
 <pre>
-    $ stardog data export --format TRIG --named-graph http://mycontext.org/theContextid myDb</pre>
+    $ stardog data export --named-graph http://examples.org/graph1 http://examples.org/graph2 --format TRIG myDb</pre>
 <p>
 Export the database 'myDb' to a file in TURTLE:</p>
 <pre>
