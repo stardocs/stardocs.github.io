@@ -19,12 +19,11 @@ com.complexible.common.util
 com.complexible.common.util.concurrent
 com.complexible.common.util.concurrent.locks
 com.complexible.common.view
+com.complexible.stardog
 com.complexible.stardog.api
 com.complexible.stardog.api.admin
 com.complexible.stardog.api.reasoning
 com.complexible.stardog.api.search
-com.complexible.stardog.api.update
-com.complexible.stardog.api.update.io
 com.complexible.stardog.db
 com.complexible.stardog.empire
 com.complexible.stardog.icv
