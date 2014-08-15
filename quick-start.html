@@ -51,19 +51,17 @@
           <!-- summary -->
           
           <div id="mdblock">
-            <h2>Prerequisites</h2>
+            <h2>Prerequisites and Notes</h2>
 <p>Stardog runs on Java 6, Java 7, and is entirely untested on Java 8 (YMMV). Stardog runs best on, but does not require, a 64-bit JVM and one that supports <code>sun.misc.Unsafe</code>.</p>
-<h2>Linux/Unix/OS X</h2>
-<p>First, tell Stardog where its home directory (where databases and other
-files will be stored) is:</p>
+<p>Note: <u>Stardog ships with an <em>insecure</em> but usable default setting: the super user is <code>admin</code> and the <code>admin</code> password is “admin”. This is fine until it isn&#39;t, at which point you should read the</u> <a href="/security">security chapter</a>.</p>
+<h2>Linux and OSX</h2>
+<p>First, tell Stardog where its home directory (where databases and other files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ <span class="keyword">export</span> STARDOG_HOME=/data/stardog</code></pre>
-<p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
-<p><div class="metro warning btn">NOTE</div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
+<p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly. <strong>If <code>STARDOG_HOME</code> isn&#39;t defined, Stardog will use the Java <code>user.dir</code> property value.</strong></p>
 <p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
 <pre class="highlighted"><code class="bash">$ cp stardog-license-key.bin <span class="variable">$STARDOG_HOME</span></code></pre>
-<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
-process.</p>
-<p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
+<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog process.</p>
+<p><strong>Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</strong></p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
 <pre class="highlighted"><code class="bash">$ ./stardog-admin server start</code></pre>
@@ -79,13 +77,11 @@ or by going to <code>Start &gt; Run</code> and typing <code>cmd</code></p>
 <p>First, tell Stardog where its home directory (where databases and other
 files will be stored) is:</p>
 <pre class="highlighted"><code class="haskell">&gt; set <span class="type">STARDOG_HOME</span>=<span class="type">C</span>:\<span class="typedef"><span class="keyword">data</span>\stardog</span></code></pre>
-<p><div class="metro warning btn">NOTE</div> Stardog requires <code>STARDOG_HOME</code> to be defined.</p>
 <p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
 <pre class="highlighted"><code class="dos">&gt; <span class="keyword">COPY</span> /B stardog-license-key.bin <span class="envvar">%STARDOG_HOME%</span></code></pre>
-<p><div class="metro warning btn">NOTE</div> The <code>/B</code> is required to perform a binary copy or the license file may get corrupted.</p>
-<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog
-process.</p>
-<p><div class="metro warning btn">NOTE</div> Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</p>
+<p><strong>The <code>/B</code> is required to perform a binary copy or the license file may get corrupted.</strong></p>
+<p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog process.</p>
+<p><strong>Stardog won&#39;t run without a valid <code>stardog-license-key.bin</code> in <code>STARDOG_HOME</code>.</strong></p>
 <p>Third, start the Stardog server. By default the server will expose SNARL
 and HTTP interfaces on port 5820.<n>That is, the server listens to one port (5820) and handles both protocols.</n></p>
 <pre class="highlighted"><code class="avrasm">&gt; stardog-admin<span class="preprocessor">.bat</span> server start</code></pre>
