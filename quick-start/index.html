@@ -57,8 +57,7 @@
 <h2>Linux and OSX</h2>
 <p>First, tell Stardog where its home directory (where databases and other files will be stored) is:</p>
 <pre class="highlighted"><code class="bash">$ <span class="keyword">export</span> STARDOG_HOME=/data/stardog</code></pre>
-<p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly.</p>
-<p><strong>If <code>STARDOG_HOME</code> isn&#39;t defined, Stardog will use the Java <code>user.dir</code> property value.</strong></p>
+<p>If you‘re using some weird Unix shell that doesn’t create environment variables in this way, adjust accordingly. <strong>If <code>STARDOG_HOME</code> isn&#39;t defined, Stardog will use the Java <code>user.dir</code> property value.</strong></p>
 <p>Second, copy the <code>stardog-license-key.bin</code> into the right place:</p>
 <pre class="highlighted"><code class="bash">$ cp stardog-license-key.bin <span class="variable">$STARDOG_HOME</span></code></pre>
 <p>Of course <code>stardog-license-key.bin</code> has to be readable by the Stardog process.</p>
