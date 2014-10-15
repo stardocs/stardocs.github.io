@@ -1,3 +1,80 @@
+2.2.2 Changes
+----------------------------------------------------------------------------
+
+* ADDED: Support xpath:subtract-dateTimes
+
+* MODIFIED: Improved performance of BIND operator
+
+* MODIFIED: Improved performance of count aggregate
+
+* MODIFIED: Better join cost model
+
+* MODIFIED: Configuration option for auto stats updates should be writable while online
+
+* MODIFIED: Pre-compile all HTML templates for Web Console
+
+* MODIFIED: Remove function in Jena interface is not optimal
+
+* MODIFIED: Improved performance of scans joined by a context variable
+
+* MODIFIED: Reduced join operator initialization time
+
+* MODIFIED: Improved selection of scan order
+
+* MODIFIED: Updated to Netty 4.0.23
+
+* MODIFIED: Improved performance of property path evaluation
+
+* FIXED: Cycles in free pages list
+
+* FIXED: BNodes can't be browsed in Query Panel
+
+* FIXED: Database list in web console displays all databases regardless of user permissions
+
+* FIXED: Query Panel results browsing does not include non-default graphs
+
+* FIXED: Server side export creates empty file
+
+* FIXED: Running `server status` with only one database results in parse error sending status to client
+
+* FIXED: Returning duplicate values from a join
+
+* FIXED: Corrected help content for VCS functions
+
+* FIXED: Display of `index.named.graphs` in web console is backwards
+
+* FIXED: Order of updates in VCS commit command backwards
+
+* FIXED: Handling of duration constants with undefined fields
+
+* FIXED: OOB that manifests itself as a protocol error
+
+* FIXED: Cannot override limit of search results in Waldo
+
+* FIXED: Jena graph returns incorrect size
+
+* FIXED: Empty node optimization can cause aggregates to be incorrect
+
+* FIXED: Named models in Jena to do comply with Jena spec
+
+* FIXED: Version diff causes NPE
+
+* FIXED: Incorrect projection vars returned in result set for queries with sub queries
+
+* FIXED: Enable logging for plans causes incorrect results for queries with filters
+
+* FIXED: Join optimization can create invalid joins
+
+* FIXED: Data cycles can lead to duplicate results in property path evaluation
+
+* FIXED: Filter selectivity estimation incorrect for comparisons of literals
+
+* FIXED: Incorrect results with property paths containing multiple inverses
+
+* FIXED: Infinite loop rewriting of transitive properties
+
+* FIXED: Release packaging missing correct vcs HTTP bindings
+
 2.2.1 Changes
 ----------------------------------------------------------------------------
 
@@ -627,7 +704,7 @@ duplicates this character (:bb)
 
 * FIXED: Handling of '=' in namespaces
 
-* FIXED: Exception thrown by describe queries via CLI
+* FIXED: Exception thrown by describe & construct queries via CLI
 
 * FIXED: EOF exception over HTTP for large datasets
 

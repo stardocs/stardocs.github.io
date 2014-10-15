@@ -121,11 +121,15 @@ The name of the database or the full connection string of the database to connec
 <p>
 Lists all the versions (commits) in a database</p>
 <pre>
-    $ stardog version list myDb</pre>
+    $ stardog vcs list myDb</pre>
 <p>
-$ stardog version list --committer userName myDb</p>
+Lists all the versions committed by a specific user</p>
 <pre>
-* Lists all the versions committed bin a time range user</pre>
+    $ stardog vcs list --committer userName myDb</pre>
+<p>
+Lists all the versions committed bin a time range user</p>
+<pre>
+    $ stardog vcs list --after 2014-01-06T09:00:00.000-05:00 --before 2014-01-07T15:00:00.000-05:00 myDb</pre>
 </div>
 </div>
 </body>

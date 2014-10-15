@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.2.1 Docs: Using Stardog</title>
+  <title>Stardog 2.2.2 Docs: Using Stardog</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -535,6 +535,9 @@ to undesired results.</p>
 <p>Stardog supports graph change management capability that lets users track changes between
 revisions of a Stardog database, add comments and other metadata to the revisions,
 extract diffs between those revisions, tag revisions with labels, and query over the revision history of the database using SPARQL.</p>
+<p>Versioning support for a database is disabled by default but can be enabled at any time by setting the configuration option <code>versioning.enabled</code> to true. For example, you can create a database with versioning support as follows:</p>
+<pre class="highlighted"><code class="bash">$ stardog-admin db create -o versioning.enabled=<span class="literal">true</span> -n myDb</code></pre>
+<p>This option can also be set after database creation using the <code>stardog-admin metadata set</code> command.</p>
 <p>The following examples give a very brief overview of this capability; see the <a href="/manpages/">VCS man pages</a> for all the details.</p>
 <h3>Committing Changes</h3>
 <p>Commit a new version by adding and removing triples specified in files. Different from the ‘data add/remove’ commands, commit allows one to add and remove triples in one commit and associate a commit message. Removals are performed before additions.</p>
@@ -667,7 +670,7 @@ existing Stardog database.<a class="skip fn-marker" gumby-easing="easeOutQuad" g
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.1.</h4>
+                <h4>This is <span id="footer-subhead">Using Stardog</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.2.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.

@@ -11,7 +11,7 @@
 <hr/>
 <h1 class="text-info">NAME</h1>
 <br/>
-<div class="row"><div class="span8 offset1">stardog vcs query &mdash;Queries the versions in a database using a SPARQL query.</div>
+<div class="row"><div class="span8 offset1">stardog vcs query &mdash;Queries the version metadata in the database using a SPARQL query.</div>
 </div>
 <br/>
 <h1 class="text-info">SYNOPSIS</h1>
@@ -97,7 +97,7 @@ The name of the database or the full connection string of the database to connec
 <p>
 Query the versions in a database</p>
 <pre>
-    $ stardog versioning query myDb ''</pre>
+    $ stardog vcs query myDb 'select * where { ?s ?p ?o } limit 10'</pre>
 </div>
 </div>
 </body>

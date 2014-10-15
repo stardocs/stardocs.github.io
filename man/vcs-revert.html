@@ -97,15 +97,19 @@ The name of the database or the full connection string of the database to connec
 <p>
 Reverts the last commit and restores the database to the previous version</p>
 <pre>
-    $ stardog version revert myDb</pre>
+    $ stardog vcs revert myDb</pre>
 <p>
-$ stardog version revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0</p>
+Reverts all the changes committed in a specific version and thereafter effectively restoring to the state right before the given commit</p>
 <pre>
-* Reverts all the changes committed in a specific version and everything else until the second version</pre>
+    $ stardog vcs revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0 </pre>
+<p>
+Reverts all the changes committed in a specific version and everything else until the second version</p>
+<pre>
+    $ stardog vcs revert myDb de44369d-cc7b-4244-a3fb-3f6e271420b0 bd5b2cc8-c625-46ca-a5ce-934327d27e3c</pre>
 <p>
 Reverts the changes committed in one specific version.</p>
 <pre>
-    $ stardog version revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0 </pre>
+    $ stardog vcs revert --single myDb de44369d-cc7b-4244-a3fb-3f6e271420b0 </pre>
 </div>
 </div>
 </body>

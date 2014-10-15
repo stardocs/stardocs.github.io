@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-  <title>Stardog 2.2.1 Docs: HTTP Programming</title>
+  <title>Stardog 2.2.2 Docs: HTTP Programming</title>
   <script src="/js/libs/modernizr-2.6.2.min.js"></script>
   <meta charset="utf-8">
   <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
@@ -165,7 +165,7 @@ Protocol, the latter is documented below alongside the former.</p>
 if you want details.</p>
 <h2 id="sd-Stardog-HTTP-Protocol">Stardog HTTP Protocol</h2>
 <p>The Stardog HTTP Protocol supports SPARQL Protocol 1.1 and additional resource representations and capabilities.</p>
-<p>The Stardog HTTP API v3 is also available on Apiary:
+<p>The Stardog HTTP API v4 is also available on Apiary:
 <a href="http://docs.stardog.apiary.io/"><a href="http://docs.stardog.apiary.io/">http://docs.stardog.apiary.io/</a></a>.</p>
 <p>The Stardog Linked Data API (aka “Annex”) is also documented on Apiary: <a href="http://docs.annex.apiary.io/"><a href="http://docs.annex.apiary.io/">http://docs.annex.apiary.io/</a></a>.</p>
 <h3>Generating URLs</h3>
@@ -231,15 +231,19 @@ the <code>SD-Error-Code</code> header will clarify.</p>
 <li><code>0</code>: Authentication error</li>
 <li><code>1</code>: Authorization error</li>
 <li><code>2</code>: Query evaluation error</li>
-<li><code>3</code>: Unknown transaction</li>
-<li><code>4</code>: Unknown database</li>
-<li><code>5</code>: Database already exists</li>
-<li><code>6</code>: Invalid database name</li>
-<li><code>7</code>: Resource (user, role, etc) already exists</li>
-<li><code>8</code>: Invalid connection parameter(s)</li>
-<li><code>9</code>: Invalid database state for the request</li>
-<li><code>10</code>: Resource in use</li>
-<li><code>11</code>: Resource not found</li>
+<li><code>3</code>: Query contained parse errors</li>
+<li><code>4</code>: Query is unknown</li>
+<li><code>5</code>: Transaction not found</li>
+<li><code>6</code>: Database not found</li>
+<li><code>7</code>: Database already exists</li>
+<li><code>8</code>: Database name is invalid</li>
+<li><code>9</code>: Resource (user, role, etc) already exists</li>
+<li><code>10</code>: Invalid connection parameter(s)</li>
+<li><code>11</code>: Invalid database state for the request</li>
+<li><code>12</code>: Resource in use</li>
+<li><code>13</code>: Resource not found</li>
+<li><code>14</code>: Operation not supported by the server</li>
+<li><code>15</code>: Password specified in the request was invalid</li>
 </ul>
 <p>In cases of error, the message body of the result will include any error
 information provided by the server to indicate the cause of the error.</p>
@@ -248,7 +252,7 @@ information provided by the server to indicate the cause of the error.</p>
 representations, HTTP response codes, and resource identifiers.</p>
 <h3>A Stardog Database</h3>
 <pre class="highlighted"><code class="httpstardog"><span class="keyword">GET</span> /<span class="variable">{db}</span> → <span class="title"><span class="keyword">void</span></span></code></pre>
-<p>Returns a representation of the database. As of Stardog 2.2.1, this is
+<p>Returns a representation of the database. As of Stardog 2.2.2, this is
 merely a placeholder; in a later release, this resource will serve the
 web console where the database can be interacted with in a browser.</p>
 <h3>Database Size</h3>
@@ -388,7 +392,7 @@ file contents as a multipart <code>POST</code> request.</p>
         <span class="string">"search.enabled"</span> : <span class="literal">true</span>,
         ...
       },
-      <span class="string">"files"</span> : [{ <span class="string">"name"</span>:<span class="string">"fileX.ttl"</span>, <span class="string">"context"</span>:<span class="string">"some:context"</span> }, ...]
+      <span class="string">"files"</span> : [{ <span class="string">"filename"</span>:<span class="string">"fileX.ttl"</span>, <span class="string">"context"</span>:<span class="string">"some:context"</span> }, ...]
     }</code></pre>
 <h3>Drop an existing database</h3>
 <pre class="highlighted"><code class="httpstardog">    <span class="keyword">DELETE</span> /admin/databases/<span class="variable">{db}</span></code></pre>
@@ -599,6 +603,29 @@ input JSON Object in the following format:</p>
 <p>Shuts down the Stardog Server. If successful, returns a <code>202</code> to
 indicate that the request was recieved and that the server will be shut
 down shortly.</p>
+<h3>Query Version Metadata</h3>
+<pre class="highlighted"><code class="httpstardog"><span class="keyword">GET</span> | <span class="keyword">POST</span> /<span class="variable">{db}</span>/vcs/query</code></pre>
+<p>Issue a query over the version history metadata using SPARQL.  Method has the same arguments and outputs as the normal query method of a database.</p>
+<h3>Versioned Commit</h3>
+<pre class="highlighted"><code class="httpstardog"><span class="keyword">POST</span> /<span class="variable">{db}</span>/vcs/<span class="variable">{tid}</span>/commit</code></pre>
+<p>Input example:</p>
+<pre class="highlighted"><code class="applescript">This <span class="keyword">is</span> <span class="keyword">the</span> commit message</code></pre>
+<p>Accepts a commit message in the body of the request and performs a VCS commit of the specified transaction</p>
+<h3>Create Tag</h3>
+<pre class="highlighted"><code class="httpstardog"><span class="keyword">POST</span> /<span class="variable">{db}</span>/vcs/tags/create</code></pre>
+<p>Input example:</p>
+<pre class="highlighted"><code class="mizar">"f09c0e02350627480839da4661b8e9cbd70f6372", "This <span class="keyword">is</span> the commit message"</code></pre>
+<p>Create a tag from the given revision id with the specified commit message.</p>
+<h3>Delete Tag</h3>
+<pre class="highlighted"><code class="httpstardog"><span class="keyword">POST</span> /<span class="variable">{db}</span>/vcs/tags/<span class="keyword">delete</span></code></pre>
+<p>Input example:</p>
+<pre class="highlighted"><code class="undefined">"f09c0e02350627480839da4661b8e9cbd70f6372"</code></pre>
+<p>Delete the tag with the given revision.</p>
+<h3>Revert to Tag</h3>
+<pre class="highlighted"><code class="httpstardog"><span class="keyword">POST</span> /<span class="variable">{db}</span>/vcs/revert</code></pre>
+<p>Input example:</p>
+<pre class="highlighted"><code class="mizar">"f09c0e02350627480839da4661b8e9cbd70f6372", "893220fba7910792084dd85207db94292886c4d7", "This <span class="keyword">is</span> the revert message"</code></pre>
+<p>Perform a revert of a revision to the specified revision with the given commit message.</p>
 
           </div>
           <div class="hidden" id="footnote-container">
@@ -620,7 +647,7 @@ down shortly.</p>
             </div>
             <div class="eight columns">
               
-                <h4>This is <span id="footer-subhead">HTTP Programming</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.1.</h4>
+                <h4>This is <span id="footer-subhead">HTTP Programming</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.2.</h4>
               
               <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
               <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.

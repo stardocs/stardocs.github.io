@@ -1,10 +1,251 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>SNARL Migration Guide</title>
-		<meta http-equiv="REFRESH" content="0;url=/migration">
-	</head>
-	<body>
-		This page has moved. You will be automatically redirected to its new location. If you aren't forwarded to the new page, <a href="/migration">click here</a>.
-	</body>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.2.2 Docs: SNARL Migration Guide</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
+  <link rel="stylesheet" href="/css/gumby.css">
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png">       
+              </a>
+            </div>
+            
+              <!-- 
+	<h3 id="tochead">SNARL Migration Guide Contents</h3>
+ -->
+
+<ul class="sidebar-nav">
+    
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Deprecating-and-Renaming" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Deprecating-and-Renaming">
+            <strong>Deprecating and Renaming</strong>
+        </a>
+        <!-- <li><a href="#sd-Deprecating-and-Renaming" class="skiplink">Deprecating and Renaming</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Queries" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Queries">
+            <strong>Queries</strong>
+        </a>
+        <!-- <li><a href="#sd-Queries" class="skiplink">Queries</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Connections" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Connections">
+            <strong>Connections</strong>
+        </a>
+        <!-- <li><a href="#sd-Connections" class="skiplink">Connections</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Explanations" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Explanations">
+            <strong>Explanations</strong>
+        </a>
+        <!-- <li><a href="#sd-Explanations" class="skiplink">Explanations</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Starting-the-server" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Starting-the-server">
+            <strong>Starting the server</strong>
+        </a>
+        <!-- <li><a href="#sd-Starting-the-server" class="skiplink">Starting the server</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Protocols" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Protocols">
+            <strong>Protocols</strong>
+        </a>
+        <!-- <li><a href="#sd-Protocols" class="skiplink">Protocols</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Command-line" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Command-line">
+            <strong>Command line</strong>
+        </a>
+        <!-- <li><a href="#sd-Command-line" class="skiplink">Command line</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+
+</ul>
+              <p id="tocnav">
+              
+                <a class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home iconlinks"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish iconlinks"></i>
+              </a> &nbsp;
+              <a href="https://twitter.com/stardog_db" class="iconlinks">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-twitter iconlinks"></i>
+              </a>
+              </p>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong>A programming language is low level when its programs require attention to the irrelevant.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">SNARL Migration Guide</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <p>This document guides migration of code from SNARL 1.0 to SNARL 2.0 API. </p>
+<h2 id="sd-Deprecating-and-Renaming">Deprecating and Renaming</h2>
+<p>All deprecated methods have been removed.</p>
+<p>All <code>com.clarkparsia</code> packages have been moved to <code>com.complexible</code>.</p>
+<p><code>com.clarkparsia.stardog.reasoning.ReasoningType</code> has been moved to <code>com.complexible.stardog.reasoning.api.ReasoningType</code>.</p>
+<p><code>com.clarkparsia.openrdf.query</code> has been moved to <code>org.openrdf.queryrender</code>.</p>
+<p>Everything else in <code>com.clarkparsia.openrdf</code> has been moved to <code>com.complexible.common.openrdf</code>.</p>
+<p>All methods marked @Beta have been promoted.</p>
+<h2 id="sd-Queries">Queries</h2>
+<p>We introduced a new hierarchy for the class <code>com.complexible.stardog.api.Query</code>:</p>
+<pre class="highlighted"><code class="avrasm">    + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.Query</span>
+           + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.ReadQuery</span>
+              + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.BooleanQuery</span>
+              + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.GraphQuery</span>
+              + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.SelectQuery</span>
+           + <span class="keyword">com</span><span class="preprocessor">.complexible</span><span class="preprocessor">.stardog</span><span class="preprocessor">.api</span><span class="preprocessor">.UpdateQuery</span></code></pre>
+<p>Queries can be created from a <code>com.complexible.stardog.api.Connection</code> object using the suitable method according to desired type of query: <code>select</code>, <code>ask</code>, <code>graph</code>, or <code>update</code>.</p>
+<p>Now you can specify the reasoning type with which a particular <code>com.complexible.stardog.api.ReadQuery</code> is to be executed via the method <code>reasoning(ReasoningType)</code>. The query reasoning type overrides the reasoning type of the parent connection. Note that setting the reasoning type to <code>ReasoningType.NONE</code> will disable reasoning for that particular query, it does not affect the default reasoning specified by the <code>Connection</code>.</p>
+<p>The methods <code>executeAsk()</code>, <code>executeSelect()</code>, and <code>executeGraph()</code> on <code>com.complexible.stardog.api.Query</code> have been removed. Queries can be executed by using the <code>execute()</code> method which will return a value appropriate for the type of query being executed.</p>
+<h2 id="sd-Connections">Connections</h2>
+<p>The class <code>com.complexible.stardog.api.admin.StardogDBMS</code> was removed.  It has been replaced by <code>com.complexible.stardog.api.admin.AdminConnectionConfiguration</code> for creating connections to the Stardog DBMS and <code>com.complexible.stardog.api.admin.AdminConnection</code> for the actual connection.</p>
+<p>The method <code>login</code> on <code>com.complexible.stardog.api.admin.StardogDBMS</code> (now <code>com.complexible.stardog.api.admin.AdminConnectionConfiguration</code>) has been renamed <code>connect</code> to align with usage of the standard <code>com.complexible.stardog.api.ConnectionConfiguration</code></p>
+<p>The method <code>connect(ReasoningType)</code> on <code>com.complexible.stardog.api.ConnectionConfiguration</code> has been removed.</p>
+<p>The method <code>getBaseConnection()</code> on <code>com.complexible.stardog.api.reasoning.ReasoningConnection</code> has been removed.  To obtain a <code>ReasoningConnection</code> from a base connection, simply use <code>Connection.as(ReasoningConnection.class)</code>.</p>
+<h2 id="sd-Explanations">Explanations</h2>
+<p>The explain functions of <code>com.complexible.stardog.api.reasoning.ReasoningConnection</code> now return <code>com.complexible.stardog.reasoning.Proof</code> objects. The <code>com.complexible.stardog.reasoning.Proof.getStatements()</code> function can be used to get only the asserted statements which is equivalent to what explain functions returned in 1.x.</p>
+<h2 id="sd-Starting-the-server">Starting the server</h2>
+<p>In order to create a new server we use a <code>ServerBuilder</code> obtained via the method <code>buildServer()</code> on <code>com.complexible.stardog.Stardog</code>; configuration options can be <code>set(Option&lt;T&gt;, T)</code> and the server is created for a particular address with <code>bind</code>. The following example shows how to create a new embedded SNARL server.</p>
+<pre class="highlighted"><code class="java">Server aServer = Stardog
+            .buildServer()
+            .bind(SNARLProtocol.EMBEDDED_ADDRESS)
+            .start();</code></pre>
+<p>When programmatically starting a Stardog server in your application, you <em>must</em> stop the server when you're done with it, otherwise it can prevent the JVM from exiting.</p>
+<h2 id="sd-Protocols">Protocols</h2>
+<p>As of Stardog 2.0, Stardog's supported protocols, SNARL &amp; HTTP, now run on the <em>same</em> port.  There is no need to start separate servers or specify different ports.  The new unified Stardog server will automatically detect what protocol you are using and forward the traffic appropriately.  The default port for the server remains <code>5820</code>. </p>
+<h2 id="sd-Command-line">Command line</h2>
+<p>The global options —home, —logfile, —disable-security for <code>server start</code> command have been turned into regular options. See the <code>stardog-admin help server start</code> for details.</p>
+
+          </div>
+          <div class="hidden" id="footnote-container">
+            <h2>Notes</h2>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">SNARL Migration Guide</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.2.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </p></div>
+        </div>
+      </section>
+</div>
+
+<script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
+
+</body>
+
 </html>

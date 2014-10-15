@@ -1,10 +1,432 @@
-<!DOCTYPE html>
-<html>
-	<head>
-		<title>Stardog Cluster</title>
-		<meta http-equiv="REFRESH" content="0;url=/cluster">
-	</head>
-	<body>
-		This page has moved. You will be automatically redirected to its new location. If you aren't forwarded to the new page, <a href="/cluster">click here</a>.
-	</body>
+<!doctype html>
+<html lang="en">
+  <head>
+  <title>Stardog 2.2.2 Docs: Stardog Cluster</title>
+  <script src="/js/libs/modernizr-2.6.2.min.js"></script>
+  <meta charset="utf-8">
+  <meta http-equiv="X-Powered-By" content="DocPad v6.44.0">
+  <link rel="stylesheet" href="/css/gumby.css">
+  <!--     //a block for ipad, etc... might should go in meta -->
+  </head>
+
+<body>
+<!--
+  <div class="" id="the-content">
+    <div class="wrapper shaded" id="topblock">
+    <div class="row">
+      <div class="four columns">
+        <a href="/"><img class="resrc" src="http://app.resrc.it/S=H55/R=L/http://docs.stardog.com/img/logotype.png"/></a>
+      </div>
+      <div class="eight columns">
+        
+      </div>
+    </div>
+  </div>
+-->
+<div id="page-wrap">
+ <div id="the-content">
+  <div id="theborder" class="wrapper">
+    <!-- full bleed top border styling.... -->
+      <div class="twelve columns"></div>
+  </div>
+
+    <div class="row">
+        <div class="four columns stretch-container" id="sidebar1">
+          <nav id="sidebar-nav-holder" class="fixed vertical-nav stretch-y" gumby-fixed="top">
+            <div id="sidebar-logo">
+              <a id="a52" style="text-decoration: none; background-color: none; border: none; color: none;" href="http://stardog.com/">
+                <img id="thelogo" src="http://docs.stardog.com/img/sd.png">       
+              </a>
+            </div>
+            
+              <!-- 
+	<h3 id="tochead">Stardog Cluster Contents</h3>
+ -->
+
+<ul class="sidebar-nav">
+    
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-The-Big-Picture" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-The-Big-Picture">
+            <strong>The Big Picture</strong>
+        </a>
+        <!-- <li><a href="#sd-The-Big-Picture" class="skiplink">The Big Picture</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Configuring-Stardog-Cluster" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Configuring-Stardog-Cluster">
+            <strong>Configuring Stardog Cluster</strong>
+        </a>
+        <!-- <li><a href="#sd-Configuring-Stardog-Cluster" class="skiplink">Configuring Stardog Cluster</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Setting-Up-Stardog-Cluster-with-Starman" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Setting-Up-Stardog-Cluster-with-Starman">
+            <strong>Setting Up Stardog Cluster with Starman</strong>
+        </a>
+        <!-- <li><a href="#sd-Setting-Up-Stardog-Cluster-with-Starman" class="skiplink">Setting Up Stardog Cluster with Starman</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Deploying-Stardog-Cluster" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Deploying-Stardog-Cluster">
+            <strong>Deploying Stardog Cluster</strong>
+        </a>
+        <!-- <li><a href="#sd-Deploying-Stardog-Cluster" class="skiplink">Deploying Stardog Cluster</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Cluster-Management" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Cluster-Management">
+            <strong>Cluster Management</strong>
+        </a>
+        <!-- <li><a href="#sd-Cluster-Management" class="skiplink">Cluster Management</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Stardog-Client" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Stardog-Client">
+            <strong>Stardog Client</strong>
+        </a>
+        <!-- <li><a href="#sd-Stardog-Client" class="skiplink">Stardog Client</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Troubleshooting" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Troubleshooting">
+            <strong>Troubleshooting</strong>
+        </a>
+        <!-- <li><a href="#sd-Troubleshooting" class="skiplink">Troubleshooting</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+    <!-- [data-target='-->
+        <li>
+            <a href="#sd-Stardog-Cluster-Guarantees" class="skip" gumby-easing="easeOutQuad" gumby-duration="300" gumby-goto="#sd-Stardog-Cluster-Guarantees">
+            <strong>Stardog Cluster Guarantees</strong>
+        </a>
+        <!-- <li><a href="#sd-Stardog-Cluster-Guarantees" class="skiplink">Stardog Cluster Guarantees</a> -->
+            
+                <ul class="sidebar-nav">
+                
+    
+
+                </ul>
+            
+        </li>
+    
+
+</ul>
+              <p id="tocnav">
+              
+                <a class="iconlinks" href="/"><i style="padding-left:0px; margin-left:0px;" class="icon-home iconlinks"></i></a>&nbsp;
+              
+              <a href="#" id="" class="skip iconlinks" gumby-easing="easeInOutQuad" gumby-goto="top" gumby-duration="2000">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-publish iconlinks"></i>
+              </a> &nbsp;
+              <a href="https://twitter.com/stardog_db" class="iconlinks">
+                <i style="padding-left:0px; margin-left:0px;" class="icon-twitter iconlinks"></i>
+              </a>
+              </p>
+            
+          </nav>
+        </div>
+
+        <div class="eight columns">
+          <!-- woof! -->
+            <div class="row">
+              <p id="quote"><em><strong>For systems, the analogue of a face-lift is to add to the control graph an edge that creates a cycle, not just an additional node.</strong></em>&mdash;Alan Perlis, <cite>Epigrams in Programming</cite></p>
+              <div class="pull_left"><h1 id="title-subhead">Stardog Cluster</h1></div>
+            </div>
+          <!-- summary -->
+          
+          <div id="mdblock">
+            <p>In this chapter we explain how to configure, use, and administer Stardog Cluster for uninterrupted operations.</p>
+<p><u>Stardog Cluster 2.2.1 is <strong>BETA</strong> software and should be used accordingly. Please help us test it and report bugs!</u></p>
+<h2 id="sd-The-Big-Picture">The Big Picture</h2>
+<p>Let's start with a few big picture points about Stardog Cluster and deployment strategies.</p>
+<h3>What is Stardog Cluster?</h3>
+<p>Stardog Cluster is a collection of Stardog Server instances running on one or more virtual or physical machines that, <em>from the client's perspective</em>, behave like a single Stardog Server instance.<a id="fn-ref-1" href="#footnote-1" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-1"><sup>1</sup></a> Of course Stardog Cluster should have some different operational properties, the main one of which is high availability. But from the client's perspective Stardog Cluster should be indistinguishable from non-clustered Stardog.<a id="fn-ref-2" href="#footnote-2" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-2"><sup>2</sup></a></p>
+<h3>What about Deployment?</h3>
+<p>Clustered database deployment is notable for being a complete pain in the ass and different in every computing environment on earth. We‘ve made Stardog Cluster deployment easier for you, but we haven’t solved the problem of universal devops or deployment of distributed databases. It may be painful to deploy Stardog Cluster, and that will likely depend on details of yr computing environment about which we probably know very little.</p>
+<p>Three additional points ameliorate this pain. We've built a deployment tool, called <a href="http://github.com/clarkparsia/starman">Starman</a>, that will work for many cases; and we‘ve open sourced it. We’ve fully documented what is required to configure and deploy a Stardog Cluster. The dependencies are few and ubiquitous (SSH, JVM 1.6 or newer).</p>
+<p>Okay, so a quick deployment overview:</p>
+<ol>
+<li>if you‘re deploying to EC2, yr own servers, or to Oracle’s VirtualBox, Starman will very likely just work</li>
+<li>if you're deploying to something else, <a href="https://github.com/clarkparsia/starman/wiki/How-to-deploy-Stardog-Cluster-manually">read the deployment recipe</a> and adapt it to yr infrastructure<ul>
+<li>sharing configurations based on other systems so we can put them in Starman's repo would be cool</li>
+<li>pull requests to make Starman (which is based on <a href="http://palletops.com/">Pallet</a>) work with other targets are even cooler</li>
+</ul>
+</li>
+</ol>
+<p>Finally, here's the very high-level overview of how to deploy with Starman:</p>
+<ol>
+<li>configure Stardog Cluster</li>
+<li>bootstrap and locally install Stardog Cluster images</li>
+<li>depending on yr deployment target, do some deploy target specific stuff…</li>
+<li>deploy Stardog Cluster to the chosen deployment target</li>
+</ol>
+<h2 id="sd-Configuring-Stardog-Cluster">Configuring Stardog Cluster</h2>
+<p>First, make sure that you have the Stardog Cluster software and dependencies:</p>
+<ul>
+<li>stardog-x.x.zip: Stardog &gt;= 2.2.1 </li>
+<li>starman and starman-*-standalone.jar: the Starman distribution</li>
+<li>stardog-license-key.bin: a valid Stardog license</li>
+</ul>
+<p>In fact this is pretty easy since we distribute Starman with Stardog starting with 2.2.1; but you may at some point start using a custom Starman separately, etc. so just remember that it is a Stardog Cluster dependency unless yr using some other deployment system.</p>
+<p>By default Starman creates a configuration file in <code>~/.starmanconfig</code> and all installed Stardog Cluster images will be stored under
+<code>~/.starman</code>. If you wish to change the location where Starman stores Stardog Cluster images, simply set the environment variable 
+<code>$STARMAN_HOME</code> to where you want the installations to reside. This will change the location of <code>~/.starman</code> to <code>$STARMAN_HOME/starman</code>,
+and <code>~/.starmanconfig</code> to <code>$STARMAN_HOME/starmanconfig</code>.</p>
+<p>The following properties can be configured in <code>starmanconfig</code>, depending on which deploy targets (EC2, VirtualBox, or other servers you choose):</p>
+<pre class="highlighted"><code class="bash"><span class="comment"># for deploying on some machines you have access to over an IP network...</span>
+<span class="comment"># the list of IPs for deploying on existing machines</span>
+default-nodes = <span class="number">10.11</span>.<span class="number">12.13</span>:<span class="number">10.11</span>.<span class="number">12.14</span>:<span class="number">10.11</span>.<span class="number">12.15</span>
+
+<span class="comment"># for deploying on EC2...</span>
+<span class="comment"># EC2 credentials</span>
+ec2-access-id = myaccessid
+ec2-secret-key = secret
+<span class="comment"># EC2 instance type</span>
+ec2-instance-type = m1.medium
+<span class="comment"># EC2 AMI ID - Ubuntu 14.04 AMIs are supported*</span>
+ec2-ami-id = ami-c8cf3ba0
+ec2-region-id = us-east-<span class="number">1</span>d
+
+<span class="comment"># if you're using VirtualBox...    </span>
+<span class="comment"># Minimum RAM assigned for VM in VirtualBox deployments</span>
+vmfest-node-min-ram = <span class="number">3500</span>
+<span class="comment"># Minimum cores assigned for VM in VirtualBox deployments</span>
+vmfest-node-min-cores = <span class="number">2</span>
+
+<span class="comment"># JVM options for Stardog instances – they will override the default JVM options specified in stardog-admin</span>
+stardog-java-args = -Xmx3g -Xms3g -Dapple.awt.UIElement=<span class="literal">true</span> -Dfile.encoding=UTF-<span class="number">8</span>
+
+<span class="comment"># Stardog additional properties – these will be appended to stardog.properties</span>
+<span class="comment"># in addition to the properties used for Stardog cluster configuration.</span>
+<span class="comment"># Simply use the same property names that Stardog already uses prefixed with 'stardog-properties-'.</span>
+<span class="comment"># E.g.:</span>
+stardog-properties-stardog.default.cli.server = snarl://localhost:<span class="number">6000</span>
+
+<span class="comment"># Additional CLI options for ./stardog-admin server start – these will be added at the end of the command.</span>
+<span class="comment"># Note that Starman already sets values for the options --home, --port, and --bind in order to run Stardog in</span>
+<span class="comment"># cluster mode</span>
+stardog-cli-opts = --disable-security
+
+<span class="comment"># Additional properties for zookeeper – these will be appended at the end of zookeeper.properties.</span>
+<span class="comment"># Use the prefix 'zookeeper-properties-'</span>
+zookeeper-properties-tickTime=<span class="number">2000</span></code></pre>
+<p>As of Stardog 2.2.1, Starman is only tested with Ubuntu 14.04 AMIs. It may or may not work with other AMIs. You can find a comprehensive list of available Ubuntu 14.04 AMIs and the instance types compatible with each of them <a href="https://cloud-images.ubuntu.com/locator/ec2/">here</a>.</p>
+<h2 id="sd-Setting-Up-Stardog-Cluster-with-Starman">Setting Up Stardog Cluster with Starman</h2>
+<p>Second, you have to do some general setup for Stardog Cluster.</p>
+<p>Now we have to setup Stardog Cluster.</p>
+<p>First, bootstrap your Stardog Cluster image with Starman:</p>
+<pre class="highlighted"><code class="bash">./starman svm bootstrap --tag &lt;tag_name&gt; \
+                    --stardog /path/to/stardog-&lt;version&gt;.zip \
+                    --license /path/to/stardog-license-key.bin</code></pre>
+<p>where <code>&lt;tag_name&gt;</code> is a custom name for the Stardog Cluster image to install, e.g. myImage.</p>
+<p>Second, locally install a cluster image:</p>
+<pre class="highlighted"><code class="bash">./starman svm install --id &lt;cluster_id&gt; --tag &lt;tag_name&gt;</code></pre>
+<p>where <code>&lt;cluster_id&gt;</code> should be a positive integer larger than 0.</p>
+<p>You can list yr bootstrapped and locally installed Stardog Cluster images using:</p>
+<pre class="highlighted"><code class="bash">./starman svm list</code></pre>
+<p>Third, now that Stardog Cluster is bootstrapped and its images are localled prepared, we can deploy them to one of the deployment targets, so now you have to decide what yr deployment target is: EC2, VirtualBox, or other servers. Then follow the instructions in the appropriate subsection below:</p>
+<h3>Virtual Machine</h3>
+<p>Requirement: Oracle VirtualBox v4.2.x if deploying to VirtualBox servers</p>
+<p>Before deploying Stardog Cluster image nodes to VirtualBox—-we refer to this provider as <code>vmfest</code>—-make sure to follow these steps.</p>
+<p>Open a terminal and start VirtualBox's webservice:</p>
+<pre class="highlighted"><code class="bash">VBoxManage setproperty websrvauthlibrary null <span class="comment"># needs to be done</span></code></pre>
+<p>only once</p>
+<pre class="highlighted"><code class="bash">vboxwebsrv -t0</code></pre>
+<p>In a new terminal add the identities stored in your public ssh key:</p>
+<p>OS X:</p>
+<pre class="highlighted"><code class="bash">ssh-add -K /path/to/your/public/SSH/key</code></pre>
+<p>Linux:</p>
+<pre class="highlighted"><code class="bash">ssh-add /path/to/your/public/SSH/key</code></pre>
+<p>Adding your public key to the ssh agent allows interacting with the vitual machine, and also lets you log in to the 
+virtual machine using <code>ssh &lt;ip address&gt;</code>.</p>
+<h3>Amazon EC2</h3>
+<p>Requirements: An EC2 account on Amazon Web Services for EC2 deployments, along with your key pair and Access ID and Secret Key.</p>
+<p>Make sure to have a <a href="http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-key-pairs.html">key pair</a> and add it via the ssh agent using:</p>
+<p>OS X:</p>
+<pre class="highlighted"><code class="bash">ssh-add -K /path/to/your/pem</code></pre>
+<p>Linux:</p>
+<pre class="highlighted"><code class="bash">ssh-add /path/to/your/pem</code></pre>
+<p>Adding your public key to the ssh agent allows interacting with the remote machine, and also lets you log in to the 
+virtual machine using <code>ssh &lt;ip address&gt;</code>.</p>
+<p>Make sure to have an <a href="http://docs.aws.amazon.com/AWSSecurityCredentials/1.0/AboutAWSCredentials.html#AccessKeys"><em>Access Key ID</em> and a <em>Secret Access Key</em></a> and then add them to your configuration file located in 
+<code>~/.starmanconfig</code>:</p>
+<pre class="highlighted"><code class="bash">ec2-access-id = &lt;your Access Key ID&gt;
+ec2-secret-key = &lt;your Access Key ID&gt;</code></pre>
+<p>(Optional) Specify the instance type. Starman by default creates <code>m1.medium</code> EC2 instances, but you can specify in 
+.starmanconfig` some other EC2 instance types:</p>
+<pre class="highlighted"><code class="bash">ec2-instance-type = &lt;some instance <span class="built_in">type</span>&gt;</code></pre>
+<p>Note that the only instance types allowed are the ones in the AWS SDK <a href="https://github.com/aws/aws-sdk-java/blob/1.8.2/src%2Fmain%2Fjava%2Fcom%2Famazonaws%2Fservices%2Fec2%2Fmodel%2FInstanceType.java#L22-L56"><code>v1.8.2</code></a>. Compare those values with the most
+current EC2 <a href="http://aws.amazon.com/ec2/instance-types/">instance types</a> for more info.</p>
+<h3>Other Servers</h3>
+<p>In order to simplify the process we assume that the remote machines are running Ubuntu, and that the user has <a href="http://www.howtogeek.com/168147/add-public-ssh-key-to-remote-server-in-a-single-command/">password-less</a> SSH
+access and is able to execute <a href="http://askubuntu.com/a/192062">password-less</a> sudo in the remote machines.</p>
+<p>As of Stardog 2.2.1, the only cluster commands supported for deploying to existing servers are <code>cluster deploy</code>, <code>cluster start</code> and <code>cluster stop</code>.
+Before using Starman with existing servers, you will need to edit the Starman configuration file located in <code>~/.starmanconfig</code>
+and make sure to add the list of default nodes as follows:</p>
+<pre class="highlighted"><code class="bash">default-nodes=<span class="number">10.11</span>.<span class="number">12.13</span>:<span class="number">10.11</span>.<span class="number">12.14</span>:<span class="number">10.11</span>.<span class="number">12.15</span></code></pre>
+<p>where the property <code>default-nodes</code> is a colon-separated list of IP addresses that correspond to the existing servers.</p>
+<h2 id="sd-Deploying-Stardog-Cluster">Deploying Stardog Cluster</h2>
+<p>When using any of the following commands make sure to replace the <code>--provider</code> option argument with any of these: <code>vmfest</code> for
+VirtualBox, <code>ec2</code> for Amazon EC2, or <code>default</code> for existing servers.</p>
+<p>The last bit of information here is the <em>cluster size</em>. As of 2.2.1, Stardog Cluster only supports the cluster topology “one coordinator, many followers”, but we need to determine the size of the cluster, which should be a multiple of 3. We pass that to Starman deploy using the <code>--numvms</code><a id="fn-ref-3" href="#footnote-3" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-3"><sup>3</sup></a> argument.</p>
+<p>Now we're ready to deploy Stardog Cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster deploy --id &lt;cluster_id&gt; --numvms &lt;num_nodes&gt; --provider &lt;provider&gt;</code></pre>
+<p>Starman will create the Cluster, and then perform the required setup on the required nodes. This step will take a 
+while depending on the network, since Starman is copying Stardog Cluster images to <em>n</em> machines.</p>
+<p>Detailed output can be seen in the log file <code>./logs/pallet.log</code>.</p>
+<h2 id="sd-Cluster-Management">Cluster Management</h2>
+<p>To start the Cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster start --id &lt;cluster_id&gt; --provider &lt;provider&gt;</code></pre>
+<p>The output of cluster startup is a list of IP addresses; to meld these into a single symbolic name for the database is left as an exercise for the reader but we recommend suitable configuration of DNS or HaProxy or similar. The nodes of the Stardog Cluster, as of Stardog 2.2.1, implement a simple round robin strategy for distributing read operations over the cluster; write operations are directed to the Coordinator exclusively.</p>
+<p>To stop the Cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster stop --id &lt;cluster_id&gt; --provider &lt;provider&gt;</code></pre>
+<h3>Adding or removing nodes</h3>
+<p>To add nodes to an existing cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster addnodes --id &lt;cluster_id&gt; --numvms &lt;num_vms&gt; --provider &lt;provider&gt;</code></pre>
+<p>It will add <code>num_vms</code> to a cluster. Please note that if a node is added to a cluster, it will only start a Stardog server
+in the new nodes; if you want to also replicate the ZooKeeper servers, you will have to stop the cluster and start it
+again. This limitation is due to the fact that ZooKeeper is not capable of hot reconfiguration as of <code>v3.4.x</code>.</p>
+<p>To remove nodes from an existing cluster there are two options:</p>
+<pre class="highlighted"><code class="bash">./starman cluster removenodes --id &lt;cluster_id&gt; --provider &lt;provider&gt; --numvms &lt;num_vms&gt;</code></pre>
+<p>It will remove <code>num_vms</code> from a cluster. Note that this will remove an entire VM from the cluster, which may or not also
+remove a ZooKeeper server. ZooKeeper is able to account for node failures, but this may not be the behavior the user intended.
+The other option is to specify a comma-separated list of IP addresses that correspond to the IPs of nodes to be removed:</p>
+<pre class="highlighted"><code class="bash">./starman cluster removenodes --id &lt;cluster_id&gt; --provider &lt;provider&gt; --nodes <span class="number">10.11</span>.<span class="number">12.13</span>,<span class="number">10.11</span>.<span class="number">12.14</span>,<span class="number">10.11</span>.<span class="number">12.15</span></code></pre>
+<h3>Listing Nodes</h3>
+<p>We can verify that Stardog Cluster was deployed successfully using</p>
+<pre class="highlighted"><code class="bash">./starman cluster list --provider</code></pre>
+<p>You should see a list of the created nodes. Since Starman adds a password-less login with SSH authentication on the remote machines, you can also log in via SSH</p>
+<pre class="highlighted"><code class="bash">ssh &lt;ipaddress&gt;</code></pre>
+<h3>Undeploying</h3>
+<p>In order to undeploy a Cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster undeploy --id &lt;cluster_id&gt; --provider &lt;provider&gt;</code></pre>
+<p>This will destroy all the virtual or remote machines part of cluster.</p>
+<h3>Managing local Starman Repo</h3>
+<p>If you wish to uninstall a Stardog Cluster image from your local Starman system use:</p>
+<pre class="highlighted"><code class="bash">./starman svm uninstall --id &lt;cluster_id&gt;</code></pre>
+<p>If you wish to remove a Stardog Cluster image tag from your local Starman system use:</p>
+<pre class="highlighted"><code class="bash">./starman svm remove --tag &lt;version&gt;</code></pre>
+<p>To list bootstrapped and installed Stardog Pack versions:</p>
+<pre class="highlighted"><code class="bash">./starman svm list</code></pre>
+<h2 id="sd-Stardog-Client">Stardog Client</h2>
+<p>In order to interact with the Stardog Cluster using Stardog CLI tools in the ordinary way—-<code>stardog-admin</code> and <code>stardog</code>—-you must install Stardog locally as you usually do by unzipping the contents of <code>stardog-*.zip</code>, for example (for <code>v2.2.1</code>).</p>
+<p>With the provided Stardog binaries in the Stardog Cluster distribution you can query the state of the cluster using</p>
+<pre class="highlighted"><code class="bash">stardog-<span class="number">2.2</span>.<span class="number">1</span>/bin/stardog-admin --server snarl://&lt;ipaddress&gt;:<span class="number">5820</span>/ pack info</code></pre>
+<p>where <code>ipaddress</code> is the IP address of any of the nodes in the cluster. This will print the available nodes in the 
+cluster, as well as the roles (participant or coordinator). You can also input the proxy IP address and port to get 
+the same information.</p>
+<h3>Adding/Removing data</h3>
+<p>To add or remove data, simply use the <code>stardog data add</code> or <code>remove</code> commands to any node in the cluster. Queries 
+can be issued to any node in the cluster using the <code>stardog query</code> command. All the <code>stardog-admin</code> features are also available in cluster mode, which means you can use any of the commands to create databases, adminster users, and the rest of the functionality available in single server mode.</p>
+<p>You can use Starman to copy files remotely for bulk loading files to your cluster:</p>
+<pre class="highlighted"><code class="bash">./starman cluster copyfile --id &lt;cluster id&gt; --provider &lt;provider&gt; &lt;origin&gt; &lt;destination&gt;</code></pre>
+<p><code>&lt;origin&gt;</code> is the path in your local machine and <code>&lt;destination&gt;</code> is the path in the remote machines. This command 
+will copy the local files to all the servers in the cluster in the specified path.</p>
+<h2 id="sd-Troubleshooting">Troubleshooting</h2>
+<h3>ZooKeeper</h3>
+<p>By default, ZooKeeper uses <a href="http://zookeeper.apache.org/doc/r3.3.5/zookeeperInternals.html#sc_quorum">majority quorums</a> for leader election which means that, at any given time,
+ZooKeeper requires that there are at least <em>n/2 + 1</em> nodes when leader election is happening. In the unfortunate event
+that a Stardog Cluster is stuck in this phase, you can use Starman to recover a ZooKeeper node using:</p>
+<pre class="highlighted"><code class="bash">./starman cluster addnodes --provider &lt;provider&gt; --id &lt;cluster id&gt; --zk-node</code></pre>
+<p>Starman will attempt to guess which of the ZooKeeper server(s) was lost and try to bring a ZooKeeper server back—-one at
+a time—-with the same hostname.</p>
+<p>Starman creates a list of hostnames when nodes are deployed to a cluster and uses that list to communicate between
+nodes in the ZooKeeper cluster. This way whenever a ZooKeeper server is lost, a new one can be brought back without
+having to use the same IP address, which may not be possible or expensive for some cloud providers.</p>
+<h2 id="sd-Stardog-Cluster-Guarantees">Stardog Cluster Guarantees</h2>
+<p>Stardog Cluster implements an atomic commitment protocol based on <a href="http://en.wikipedia.org/wiki/Two-phase_commit_protocol">two-phase commit (2PC)</a> over a shared replicated memory that's provided by <a href="http://zookeeper.apache.org/">Apache ZooKeeper</a>. A cluster is composed of a set of Stardog servers running together. One of the servers is known as the Coordinator and the rest as Participants. In case the Coordinator fails at any point, a new Coordinator will be elected out of the remaining available participants. Stardog Cluster supports both <code>read</code> (e.g., querying) and <code>write</code> (e.g., adding data) requests. Read requests are load-balanced over the available Participants, whereas write requests are transparently forwarded to and handled by the Coordinator. In some future release we may change the protocol implemented by the Cluster and thus change some of the allowable topologies, including multiple-writers and multiple-readers.</p>
+<h3>Consistency Guarantees</h3>
+<p>When a client commits a transaction (containing a list of <code>write</code> requests), it will be acknowledged by the Coordinator only after every non-failing Participant has committed the transaction. If a Participant fails during the process of committing a transaction, it will be expelled from the cluster by the Coordinator and put in a temporary <code>failed</code> state. If the Coordinator fails during the process, the transaction will be aborted, and a new Coordinator will be elected automatically. Since <code>failed</code> nodes are not used for any subsequent <code>read</code> or <code>write</code> requests, <strong>if a commit is acknowledged by the Coordinator, then Stardog Cluster guarantees that the data has been accordingly modified at <em>every</em> available node in the cluster</strong>.</p>
+<p>While this approach to consistency is less performant, with respect to write operations, than eventual consistency used by other distributed databases, typically those databases offer a much less expressive data model than Stardog, which makes an eventually consistency model more appropriate for those systems. But since Stardog's data model is not only richly expressive but rests in part on provably correct semantics, we think that a strong consistency model is worth the cost.<a id="fn-ref-4" href="#footnote-4" class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#footnote-4"><sup>4</sup></a></p>
+
+          </div>
+          <div class="" id="footnote-container" style="display: block;">
+            <h2>Notes</h2>
+          <div class="footnote" id="footnote-1"><p>1. To fully achieve this effect requires, as noted above, DNS or HaProxy or similar environment configuration that&#39;s left as an exercise for the user.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-1">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-2"><p>2. The client here means the client of Stardog APIs, not necessarily people, administrators, etc.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-2">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-3"><p>3. This will be renamed in a future release.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-3">&nbsp;&#8618;</a></p></div><div class="footnote" id="footnote-4"><p>4. Based on customer feedback we may relax these consistency guarantees in some future release. Please get in touch if you think an eventually consistent approach is more appropriate for yr use of Stardog.<a class="skip fn-marker" gumby-easing="easeOutQuad" gumby-duration="400" gumby-goto="#fn-ref-4">&nbsp;&#8618;</a></p></div></div>
+        </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="wrapper shaded" id="subfoot">
+      <section class="row">
+        <div class="twelve columns">
+            <div class="four columns">
+              <a style="text-decoration: none; border-bottom: 0;" href="http://clarkparsia.com/"><img id="footer-logo" style="max-width: 50%;" src="/img/cp.png"></a>
+              <div> </div>
+              <!-- follow us on Twitter -->
+            </div>
+            <div class="eight columns">
+              
+                <h4>This is <span id="footer-subhead">Stardog Cluster</span>, part of <a href="http://docs.stardog.com/">Stardog Docs</a> 2.2.2.</h4>
+              
+              <p class="copywood">For comments, questions, or to report problems with this page, visit the <a href="https://groups.google.com/a/clarkparsia.com/group/stardog/about">Stardog Support Forum</a>.</p>
+              <p class="copywood">&copy;2010&ndash;2014 Clark &amp; Parsia LLC. <a href="http://creativecommons.org/licenses/by-sa/3.0/">Some rights reserved</a>.
+            </p></div>
+        </div>
+      </section>
+</div>
+
+<script defer="defer" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script><script defer="defer" src="/js/libs/gumby.js"></script><script defer="defer" src="/js/libs/ui/gumby.fittext.js"></script><script defer="defer" src="/js/libs/ui/gumby.fixed.js"></script><script defer="defer" src="/js/libs/ui/gumby.navbar.js"></script><script defer="defer" src="/js/libs/ui/gumby.retina.js"></script><script defer="defer" src="/js/libs/ui/gumby.skiplink.js"></script><script defer="defer" src="/js/libs/ui/gumby.tabs.js"></script><script defer="defer" src="/js/libs/ui/gumby.toggleswitch.js"></script><script defer="defer" src="/js/libs/gumby.init.js"></script><script defer="defer" src="/js/plugins.js"></script><script defer="defer" src="/js/main.js"></script>
+
+</body>
+
 </html>
