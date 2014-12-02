@@ -1,3 +1,58 @@
+2.2.3 Changes
+----------------------------------------------------------------------------
+
+* MODIFIED: Querying an uncommitted state with reasoning updates reasoner state eagerly
+
+* MODIFIED: More optimized implementation for MINUS when using sorted operands
+
+* MODIFIED: Improve SPARQL query pre-processing in Query Panel
+
+* MODIFIED: Added timeout to classification which will revert to RDFS when passed
+
+* MODIFIED: Finer grained cancel checks in reasoning operators
+
+* MODIFIED: Updated to Sesame 2.7.14
+
+* MODIFIED: Improved performance of count aggregate
+
+* MODIFIED: Added a default setting for the direct memory in the stardog-admin script
+
+* FIXED: Transitive symmetric properties in Stardog are also considered to be reflexive
+
+* FIXED: Validation checks in oracle mode incorrect in tx containing local changes
+
+* FIXED: Size in transaction reported incorrectly
+
+* FIXED: Redundant atom optimization can incorrectly get rid of atoms containing literals
+
+* FIXED: Cannot clausify some queries using bnodes
+
+* FIXED: Exporting results ignore reasoning parameter
+
+* FIXED: Queries with reasoning might blow up if typing is ambiguous
+
+* FIXED: Query Panel doesn't recognize db namespaces
+
+* FIXED: Property chain pre-processing can cause reasoning not to terminate
+
+* FIXED: Using a graph variable in a query as a join variable will lead to incorrect results
+
+* FIXED: SWRL rules with nonatomic heads might lead to incomplete results
+
+* FIXED: Property paths not using wildcard active graph
+
+* FIXED: The 'CPU Load' and 'Heap Used' charts might be displayed incorrectly depending on the window size
+
+* FIXED: Rule extraction does not take int account the schema graphs
+
+* FIXED: count(distinct *) does not count the distincts correctly
+
+* FIXED: "@" and "." are not considered to be legal user name characters
+
+* FIXED: Failed transaction prevents future transactions when versioning is enabled
+
+* FIXED: Reasoning with transitive reflexive properties with SL causes class cast exception
+
 2.2.2 Changes
 ----------------------------------------------------------------------------
 
@@ -1351,8 +1406,9 @@ describe occur in named graphs
 
 * FIXED: Handling DESCRIBE queries with multiple resources to describe
 
-* ADDED: Handling DESCRIBE queries with multiple resources to 1.0 RC1
-Changes
+* ADDED: Handling DESCRIBE queries with multiple resources to
+
+1.0 RC1 Changes
 ----------------------------------------------------------------------------
 
 * ADDED: Batch files for executing the Stardog command line in Windows
